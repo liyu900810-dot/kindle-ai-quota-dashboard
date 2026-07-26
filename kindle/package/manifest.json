@@ -1,0 +1,10 @@
+{
+  "manifest_version": 2,
+  "id": "kindle-ai-quota-dashboard",
+  "name": "AI 额度中控台",
+  "author": "Community contributors",
+  "description": "在越狱 Kindle 上全屏显示自托管的 AI 额度页面。",
+  "version": [0, 1, 0],
+  "supported_platforms": ["kindlehf", "kindlepw2"],
+  "dependencies": []
+}

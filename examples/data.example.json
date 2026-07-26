@@ -1,0 +1,79 @@
+{
+  "updatedAt": "2026-01-01T08:00:00.000+08:00",
+  "weather": {
+    "ok": true,
+    "description": "晴",
+    "iconKey": "clear",
+    "tempC": 23,
+    "feelsLikeC": 24,
+    "humidity": 50,
+    "windKph": 6,
+    "windDir": "东风",
+    "place": "示例城市",
+    "observedAt": "2026-01-01T08:00:00.000+08:00"
+  },
+  "quote": {
+    "text": "这是一条不包含私人信息的示例句子。",
+    "source": "演示数据"
+  },
+  "sources": {
+    "claude": {
+      "ok": true,
+      "label": "Claude",
+      "windows": [
+        {
+          "name": "5小时",
+          "usedPct": 23,
+          "resetAt": "2026-01-01T11:00:00.000+08:00"
+        },
+        {
+          "name": "7天",
+          "usedPct": 42,
+          "resetAt": "2026-01-05T08:00:00.000+08:00"
+        }
+      ],
+      "fetchedAt": "2026-01-01T08:00:00.000+08:00",
+      "error": null
+    },
+    "codex": {
+      "ok": true,
+      "label": "Codex",
+      "windows": [
+        {
+          "name": "周",
+          "usedPct": 18,
+          "resetAt": "2026-01-06T08:00:00.000+08:00"
+        }
+      ],
+      "fetchedAt": "2026-01-01T08:00:00.000+08:00",
+      "error": null
+    },
+    "kimi": {
+      "ok": true,
+      "label": "Kimi",
+      "windows": [
+        {
+          "name": "5小时",
+          "usedPct": 35,
+          "resetAt": "2026-01-01T12:00:00.000+08:00"
+        },
+        {
+          "name": "周",
+          "usedPct": 56,
+          "resetAt": "2026-01-04T08:00:00.000+08:00"
+        }
+      ],
+      "fetchedAt": "2026-01-01T08:00:00.000+08:00",
+      "error": null
+    },
+    "deepseek": {
+      "ok": true,
+      "label": "DeepSeek",
+      "balance": 12.34,
+      "currency": "CNY",
+      "detail": "余额 ¥12.34",
+      "fetchedAt": "2026-01-01T08:00:00.000+08:00",
+      "error": null
+    }
+  }
+}

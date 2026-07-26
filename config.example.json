@@ -1,0 +1,30 @@
+{
+  "outputDir": "state",
+  "keepLocalHistory": false,
+  "quoteFile": "config/quote.json",
+  "weatherFile": "",
+  "providers": {
+    "deepseek": {
+      "enabled": false,
+      "apiKeyEnv": "DEEPSEEK_API_KEY"
+    },
+    "claude": {
+      "enabled": false,
+      "experimental": true,
+      "allowLocalCredentialRead": false,
+      "credentialsFile": "~/.claude/.credentials.json"
+    },
+    "codex": {
+      "enabled": false,
+      "experimental": true,
+      "executableEnv": "CODEX_CLI_PATH"
+    },
+    "kimi": {
+      "enabled": false,
+      "experimental": true,
+      "allowLocalCredentialRead": false,
+      "credentialsFile": "~/.kimi-code/credentials/kimi-code.json",
+      "baseUrl": "https://api.kimi.com/coding/v1"
+    }
+  }
+}
