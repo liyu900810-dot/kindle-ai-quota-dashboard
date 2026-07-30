@@ -1,22 +1,22 @@
 {
-  "updatedAt": "2026-07-30T18:05:57.049+08:00",
+  "updatedAt": "2026-07-30T20:36:08.102+08:00",
   "calendar": {
     "solar": "2026年7月30日 星期四",
     "lunar": "农历六月十七"
   },
   "weather": {
-    "ok": false,
-    "description": null,
-    "iconKey": null,
-    "tempC": null,
-    "feelsLikeC": null,
-    "humidity": null,
-    "windKph": null,
-    "windDir": null,
+    "ok": true,
+    "description": "Sunny",
+    "iconKey": "clear",
+    "tempC": 30,
+    "feelsLikeC": 36,
+    "humidity": 74,
+    "windKph": 4,
+    "windDir": "SSW",
     "place": "扬州",
-    "observedAt": null,
-    "fetchedAt": "2026-07-30T18:05:57.062+08:00",
-    "error": "fetch failed"
+    "observedAt": "2026-07-30T20:36:08.115+08:00",
+    "fetchedAt": "2026-07-30T20:36:08.115+08:00",
+    "error": null
   },
   "quote": null,
   "sources": {
@@ -24,7 +24,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-07-30T18:05:56.261+08:00",
+      "fetchedAt": "2026-07-30T20:36:07.226+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -34,18 +34,18 @@
       "windows": [
         {
           "name": "周",
-          "usedPct": 28,
+          "usedPct": 40,
           "resetAt": "2026-08-05T13:13:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-07-30T18:05:56.262+08:00",
+      "fetchedAt": "2026-07-30T20:36:07.227+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-07-30T18:05:56.275+08:00",
+      "fetchedAt": "2026-07-30T20:36:07.239+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -55,7 +55,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-07-30T18:05:56.275+08:00",
+      "fetchedAt": "2026-07-30T20:36:07.239+08:00",
       "error": "未启用",
       "disabled": true
     }
