@@ -9,7 +9,12 @@ const {
 
 function readCodexRateLimits(executable, timeoutMs = 20_000) {
   return new Promise((resolve, reject) => {
-    const child = spawn(executable, ['app-server', '--listen', 'stdio://'], {
+    const useShell = process.platform === 'win32' && /\.(cmd|bat)$/i.test(executable);
+    const command = useShell ? (process.env.ComSpec || 'cmd.exe') : executable;
+    const args = useShell
+      ? ['/d', '/s', '/c', `${executable} app-server --listen stdio://`]
+      : ['app-server', '--listen', 'stdio://'];
+    const child = spawn(command, args, {
       windowsHide: true,
       stdio: ['pipe', 'pipe', 'pipe'],
       env: { ...process.env },
