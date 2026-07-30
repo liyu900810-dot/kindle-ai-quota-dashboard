@@ -1,21 +1,72 @@
 {
-  "updatedAt": "2026-07-30T22:02:32.501+08:00",
+  "updatedAt": "2026-07-30T22:04:53.878+08:00",
   "calendar": {
     "solar": "2026年7月30日 星期四",
     "lunar": "农历六月十七"
   },
   "weather": {
     "ok": true,
-    "description": "Smoky haze",
+    "description": "多云",
     "iconKey": "cloudy",
-    "tempC": 29,
-    "feelsLikeC": 33,
-    "humidity": 77,
-    "windKph": 4,
-    "windDir": "SE",
+    "tempC": 28.6,
+    "feelsLikeC": 35.2,
+    "humidity": 87,
+    "windKph": 5.5,
+    "windDir": "西南风",
+    "forecast": [
+      {
+        "time": "2026-07-31T00:00",
+        "tempC": 27.6,
+        "weatherCode": 1,
+        "description": "多云",
+        "iconKey": "cloudy",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-07-31T02:00",
+        "tempC": 27.2,
+        "weatherCode": 0,
+        "description": "晴",
+        "iconKey": "clear",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-07-31T04:00",
+        "tempC": 26.8,
+        "weatherCode": 0,
+        "description": "晴",
+        "iconKey": "clear",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-07-31T06:00",
+        "tempC": 27,
+        "weatherCode": 0,
+        "description": "晴",
+        "iconKey": "clear",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-07-31T08:00",
+        "tempC": 30,
+        "weatherCode": 0,
+        "description": "晴",
+        "iconKey": "clear",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-07-31T10:00",
+        "tempC": 32.5,
+        "weatherCode": 0,
+        "description": "晴",
+        "iconKey": "clear",
+        "precipitationProbability": 0
+      }
+    ],
     "place": "扬州",
-    "observedAt": "2026-07-30T22:02:32.515+08:00",
-    "fetchedAt": "2026-07-30T22:02:32.515+08:00",
+    "observedAt": "2026-07-30T22:00:00+08:00",
+    "fetchedAt": "2026-07-30T22:04:53.891+08:00",
+    "source": "open-meteo",
     "error": null
   },
   "quote": null,
@@ -43,7 +94,7 @@
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-07-30T22:02:31.478+08:00",
+    "fetchedAt": "2026-07-30T22:04:53.838+08:00",
     "error": null
   },
   "sources": {
@@ -51,7 +102,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-07-30T22:02:31.466+08:00",
+      "fetchedAt": "2026-07-30T22:04:53.823+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -66,13 +117,15 @@
         }
       ],
       "fetchedAt": "2026-07-30T22:02:31.467+08:00",
-      "error": null
+      "error": "'\"node\"' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���\r\n���������ļ���",
+      "stale": true,
+      "lastAttemptAt": "2026-07-30T22:04:53.824+08:00"
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-07-30T22:02:31.478+08:00",
+      "fetchedAt": "2026-07-30T22:04:53.838+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -82,7 +135,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-07-30T22:02:31.478+08:00",
+      "fetchedAt": "2026-07-30T22:04:53.838+08:00",
       "error": "未启用",
       "disabled": true
     }

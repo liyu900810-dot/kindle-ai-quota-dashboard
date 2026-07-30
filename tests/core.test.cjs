@@ -7,10 +7,12 @@ const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 const test = require('node:test');
 const {
+  buildHourlyForecast,
   calendarSnapshot,
   demoSnapshot,
   preserveLastKnownGood,
   validateSnapshot,
+  weatherCodeDetails,
   writeSnapshot,
 } = require('../src/collect.cjs');
 const { safeError } = require('../src/lib/common.cjs');
@@ -36,6 +38,28 @@ test('calendar snapshot formats solar and lunar dates in Chinese', () => {
     solar: '2026年7月30日 星期四',
     lunar: '农历六月十七',
   });
+});
+
+test('hourly weather samples the next 12 hours in two-hour steps', () => {
+  const hourly = {
+    time: Array.from({ length: 13 }, (_, index) => `2026-07-30T${String(10 + index).padStart(2, '0')}:00`),
+    temperature_2m: Array.from({ length: 13 }, (_, index) => 20 + index),
+    weather_code: Array.from({ length: 13 }, (_, index) => index % 2),
+    precipitation_probability: Array.from({ length: 13 }, (_, index) => index * 2),
+  };
+  const forecast = buildHourlyForecast(hourly);
+  assert.equal(forecast.length, 6);
+  assert.deepEqual(forecast.map((item) => item.time), [
+    '2026-07-30T12:00',
+    '2026-07-30T14:00',
+    '2026-07-30T16:00',
+    '2026-07-30T18:00',
+    '2026-07-30T20:00',
+    '2026-07-30T22:00',
+  ]);
+  assert.deepEqual(forecast.map((item) => item.tempC), [22, 24, 26, 28, 30, 32]);
+  assert.deepEqual(weatherCodeDetails(0), { description: '晴', iconKey: 'clear' });
+  assert.deepEqual(weatherCodeDetails(61), { description: '雨', iconKey: 'rain' });
 });
 
 test('last known good data is preserved only for enabled failing providers', () => {

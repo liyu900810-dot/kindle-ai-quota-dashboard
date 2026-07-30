@@ -64,6 +64,7 @@ function readWeather(filePath) {
       humidity: null,
       windKph: null,
       windDir: null,
+      forecast: [],
       place: null,
       observedAt: null,
       fetchedAt,
@@ -81,6 +82,7 @@ function readWeather(filePath) {
       humidity: Number.isFinite(Number(value.humidity)) ? Number(value.humidity) : null,
       windKph: Number.isFinite(Number(value.windKph)) ? Number(value.windKph) : null,
       windDir: String(value.windDir || '').slice(0, 20),
+      forecast: normalizeHourlyForecast(value.forecast),
       place: String(value.place || '').slice(0, 30),
       observedAt: isoBeijing(value.observedAt) || fetchedAt,
       fetchedAt,
@@ -96,6 +98,7 @@ function readWeather(filePath) {
       humidity: null,
       windKph: null,
       windDir: null,
+      forecast: [],
       place: null,
       observedAt: null,
       fetchedAt,
@@ -104,21 +107,110 @@ function readWeather(filePath) {
   }
 }
 
-function weatherDescription(value) {
-  const description = value?.current_condition?.[0]?.weatherDesc?.[0]?.value;
-  return String(description || 'Weather').slice(0, 20);
+function weatherCodeDetails(value) {
+  const code = Number(value);
+  if (code === 0) return { description: '晴', iconKey: 'clear' };
+  if ([1, 2].includes(code)) return { description: '多云', iconKey: 'cloudy' };
+  if (code === 3) return { description: '阴', iconKey: 'cloudy' };
+  if ([45, 48].includes(code)) return { description: '雾', iconKey: 'fog' };
+  if ([51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 80, 81, 82].includes(code)) {
+    return { description: '雨', iconKey: 'rain' };
+  }
+  if ([71, 73, 75, 77, 85, 86].includes(code)) {
+    return { description: '雪', iconKey: 'snow' };
+  }
+  if ([95, 96, 99].includes(code)) return { description: '雷雨', iconKey: 'thunder' };
+  return { description: '多云', iconKey: 'cloudy' };
 }
 
-function weatherIconKey(value) {
-  const code = Number(value?.current_condition?.[0]?.weatherCode);
-  if (code === 113) return 'clear';
-  if ([176, 263, 266, 293, 296, 299, 302, 305, 308, 353, 356, 359, 362, 365, 386, 389, 392, 395].includes(code)) return 'rain';
-  if ([179, 182, 185, 227, 230, 281, 284, 317, 320, 323, 326, 329, 332, 335, 338, 368, 371, 374, 377].includes(code)) return 'snow';
-  if ([116, 119, 122, 143, 248, 260].includes(code)) return 'cloudy';
-  return 'cloudy';
+function windDirectionLabel(value) {
+  const degrees = Number(value);
+  if (!Number.isFinite(degrees)) return '';
+  const directions = ['北风', '东北风', '东风', '东南风', '南风', '西南风', '西风', '西北风'];
+  return directions[Math.round((((degrees % 360) + 360) % 360) / 45) % directions.length];
 }
 
-async function readRemoteWeather(place, label) {
+function normalizeHourlyForecast(value) {
+  if (!Array.isArray(value)) return [];
+  return value.slice(0, 6).map((item) => {
+    const details = weatherCodeDetails(item?.weatherCode ?? item?.code);
+    return {
+      time: String(item?.time || '').slice(0, 25),
+      tempC: Number.isFinite(Number(item?.tempC)) ? Number(item.tempC) : null,
+      weatherCode: Number.isFinite(Number(item?.weatherCode ?? item?.code))
+        ? Number(item?.weatherCode ?? item?.code)
+        : null,
+      description: String(item?.description || details.description).slice(0, 12),
+      iconKey: String(item?.iconKey || details.iconKey).slice(0, 20),
+      precipitationProbability: Number.isFinite(Number(item?.precipitationProbability))
+        ? Number(item.precipitationProbability)
+        : null,
+    };
+  });
+}
+
+function buildHourlyForecast(hourly) {
+  if (!hourly || !Array.isArray(hourly.time)) return [];
+  const items = [];
+  for (let index = 2; index <= 12; index += 2) {
+    if (!hourly.time[index]) continue;
+    const details = weatherCodeDetails(hourly.weather_code?.[index]);
+    items.push({
+      time: String(hourly.time[index]).slice(0, 25),
+      tempC: Number.isFinite(Number(hourly.temperature_2m?.[index]))
+        ? Number(hourly.temperature_2m[index])
+        : null,
+      weatherCode: Number.isFinite(Number(hourly.weather_code?.[index]))
+        ? Number(hourly.weather_code[index])
+        : null,
+      description: details.description,
+      iconKey: details.iconKey,
+      precipitationProbability: Number.isFinite(Number(hourly.precipitation_probability?.[index]))
+        ? Number(hourly.precipitation_probability[index])
+        : null,
+    });
+  }
+  return items;
+}
+
+async function resolveWeatherLocation(place, options = {}) {
+  const latitude = Number(options.latitude);
+  const longitude = Number(options.longitude);
+  if (Number.isFinite(latitude) && Number.isFinite(longitude)) {
+    return { latitude, longitude, timezone: options.timezone || 'Asia/Shanghai' };
+  }
+  const url = new URL('https://geocoding-api.open-meteo.com/v1/search');
+  url.searchParams.set('name', place);
+  url.searchParams.set('count', '1');
+  url.searchParams.set('language', 'zh');
+  url.searchParams.set('countryCode', 'CN');
+  const response = await fetch(url, {
+    headers: { 'User-Agent': 'kindle-ai-quota-dashboard/0.1' },
+    signal: AbortSignal.timeout(10000),
+  });
+  if (!response.ok) throw new Error(`天气城市定位失败（HTTP ${response.status}）`);
+  const payload = await response.json();
+  const result = payload?.results?.[0];
+  if (!result || !Number.isFinite(Number(result.latitude)) || !Number.isFinite(Number(result.longitude))) {
+    throw new Error(`未找到天气城市：${place}`);
+  }
+  return {
+    latitude: Number(result.latitude),
+    longitude: Number(result.longitude),
+    timezone: String(result.timezone || options.timezone || 'Asia/Shanghai'),
+  };
+}
+
+function localWeatherTimestamp(value, timezone) {
+  const text = String(value || '');
+  if (!text) return null;
+  if (timezone === 'Asia/Shanghai' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(text)) {
+    return `${text}:00+08:00`;
+  }
+  return text;
+}
+
+async function readRemoteWeather(place, label, options = {}) {
   const fetchedAt = isoBeijing();
   if (!place) {
     return {
@@ -130,6 +222,7 @@ async function readRemoteWeather(place, label) {
       humidity: null,
       windKph: null,
       windDir: null,
+      forecast: [],
       place: null,
       observedAt: null,
       fetchedAt,
@@ -137,28 +230,43 @@ async function readRemoteWeather(place, label) {
     };
   }
   try {
-    const url = `https://wttr.in/${encodeURIComponent(place)}?format=j1&lang=zh`;
+    const location = await resolveWeatherLocation(place, options);
+    const url = new URL('https://api.open-meteo.com/v1/forecast');
+    url.searchParams.set('latitude', String(location.latitude));
+    url.searchParams.set('longitude', String(location.longitude));
+    url.searchParams.set(
+      'current',
+      'temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,wind_direction_10m',
+    );
+    url.searchParams.set(
+      'hourly',
+      'temperature_2m,weather_code,precipitation_probability',
+    );
+    url.searchParams.set('forecast_hours', '13');
+    url.searchParams.set('timezone', location.timezone);
     const response = await fetch(url, {
       headers: { 'User-Agent': 'kindle-ai-quota-dashboard/0.1' },
       signal: AbortSignal.timeout(15000),
     });
     if (!response.ok) throw new Error(`天气请求失败（HTTP ${response.status}）`);
     const value = await response.json();
-    const current = value?.current_condition?.[0] || {};
-    const area = value?.nearest_area?.[0]?.areaName?.[0]?.value;
+    const current = value?.current || {};
     const number = (field) => Number.isFinite(Number(current[field])) ? Number(current[field]) : null;
+    const details = weatherCodeDetails(current.weather_code);
     return {
       ok: true,
-      description: weatherDescription(value),
-      iconKey: weatherIconKey(value),
-      tempC: number('temp_C'),
-      feelsLikeC: number('FeelsLikeC'),
-      humidity: number('humidity'),
-      windKph: number('windspeedKmph'),
-      windDir: String(current.winddir16Point || '').slice(0, 20),
-      place: String(label || area || place).slice(0, 30),
-      observedAt: fetchedAt,
+      description: details.description,
+      iconKey: details.iconKey,
+      tempC: number('temperature_2m'),
+      feelsLikeC: number('apparent_temperature'),
+      humidity: number('relative_humidity_2m'),
+      windKph: number('wind_speed_10m'),
+      windDir: windDirectionLabel(current.wind_direction_10m),
+      forecast: buildHourlyForecast(value?.hourly),
+      place: String(label || place).slice(0, 30),
+      observedAt: localWeatherTimestamp(current.time, location.timezone) || fetchedAt,
       fetchedAt,
+      source: 'open-meteo',
       error: null,
     };
   } catch (error) {
@@ -171,6 +279,7 @@ async function readRemoteWeather(place, label) {
       humidity: null,
       windKph: null,
       windDir: null,
+      forecast: [],
       place: String(label || place).slice(0, 30),
       observedAt: null,
       fetchedAt,
@@ -194,6 +303,14 @@ function demoSnapshot() {
       humidity: 55,
       windKph: 8,
       windDir: '东南风',
+      forecast: [
+        { time: afterHours(2), tempC: 25, weatherCode: 1, description: '多云', iconKey: 'cloudy', precipitationProbability: 10 },
+        { time: afterHours(4), tempC: 24, weatherCode: 0, description: '晴', iconKey: 'clear', precipitationProbability: 0 },
+        { time: afterHours(6), tempC: 24, weatherCode: 0, description: '晴', iconKey: 'clear', precipitationProbability: 0 },
+        { time: afterHours(8), tempC: 26, weatherCode: 1, description: '多云', iconKey: 'cloudy', precipitationProbability: 5 },
+        { time: afterHours(10), tempC: 29, weatherCode: 2, description: '多云', iconKey: 'cloudy', precipitationProbability: 10 },
+        { time: afterHours(12), tempC: 31, weatherCode: 61, description: '雨', iconKey: 'rain', precipitationProbability: 40 },
+      ],
       place: '示例城市',
       observedAt: now,
       fetchedAt: now,
@@ -270,7 +387,11 @@ async function realSnapshot(config) {
     calendar: calendarSnapshot(),
     weather: config.weatherFile
       ? readWeather(config.weatherFile)
-      : await readRemoteWeather(config.weatherPlace, config.weatherLabel),
+      : await readRemoteWeather(config.weatherPlace, config.weatherLabel, {
+        latitude: config.weatherLatitude,
+        longitude: config.weatherLongitude,
+        timezone: config.weatherTimezone,
+      }),
     quote: readQuote(config.quoteFile),
     todo,
     sources: { claude, codex, kimi, deepseek },
@@ -400,6 +521,9 @@ module.exports = {
   readQuote,
   readWeather,
   readRemoteWeather,
+  buildHourlyForecast,
+  normalizeHourlyForecast,
+  weatherCodeDetails,
   validateSnapshot,
   writeSnapshot,
 };

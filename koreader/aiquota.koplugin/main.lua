@@ -1,7 +1,8 @@
 -- AI Quota Dashboard for KOReader
--- Version 6.1: KPW1 landscape layout with a five-row read-only to-do card.
+-- Version 6.2: KPW1 landscape layout with a 12-hour, two-hourly weather strip.
 
 local Blitbuffer = require("ffi/blitbuffer")
+local CenterContainer = require("ui/widget/container/centercontainer")
 local DataStorage = require("datastorage")
 local Device = require("device")
 local Dispatcher = require("dispatcher")
@@ -51,6 +52,17 @@ local function number_or_nil(value)
         return math.max(0, math.min(100, number))
     end
     return nil
+end
+
+local function rounded_text(value)
+    local number = tonumber(value)
+    if not number then
+        return "--"
+    end
+    if number >= 0 then
+        return tostring(math.floor(number + 0.5))
+    end
+    return tostring(math.ceil(number - 0.5))
 end
 
 local function compact_timestamp(value, short_date)
@@ -217,12 +229,37 @@ end
 
 function WeatherIcon:paintCloud(bb, x, y)
     local base_y = y + math.floor(self.height * 0.58)
-    local left = x + S(4)
-    local width = self.width - S(8)
-    bb:paintCircle(left + S(7), base_y, S(6), Blitbuffer.COLOR_BLACK, S(2))
-    bb:paintCircle(left + S(14), base_y - S(4), S(8), Blitbuffer.COLOR_BLACK, S(2))
-    bb:paintCircle(left + S(22), base_y, S(6), Blitbuffer.COLOR_BLACK, S(2))
-    bb:paintRect(left + S(4), base_y + S(5), width - S(8), S(2), Blitbuffer.COLOR_BLACK)
+    local line = math.max(1, math.floor(self.width * 0.06))
+    local small_radius = math.max(2, math.floor(self.width * 0.17))
+    local large_radius = math.max(3, math.floor(self.width * 0.23))
+    bb:paintCircle(
+        x + math.floor(self.width * 0.29),
+        base_y,
+        small_radius,
+        Blitbuffer.COLOR_BLACK,
+        line
+    )
+    bb:paintCircle(
+        x + math.floor(self.width * 0.50),
+        base_y - math.floor(self.height * 0.12),
+        large_radius,
+        Blitbuffer.COLOR_BLACK,
+        line
+    )
+    bb:paintCircle(
+        x + math.floor(self.width * 0.72),
+        base_y,
+        small_radius,
+        Blitbuffer.COLOR_BLACK,
+        line
+    )
+    bb:paintRect(
+        x + math.floor(self.width * 0.20),
+        base_y + small_radius - line,
+        math.floor(self.width * 0.62),
+        line,
+        Blitbuffer.COLOR_BLACK
+    )
 end
 
 function WeatherIcon:paintTo(bb, x, y)
@@ -235,14 +272,21 @@ function WeatherIcon:paintTo(bb, x, y)
     if self.kind == "rain" then
         local rain_y = y + math.floor(self.height * 0.76)
         for i = 0, 2 do
-            bb:paintRect(x + S(9) + i * S(7), rain_y, S(2), S(6), Blitbuffer.COLOR_BLACK)
+            bb:paintRect(
+                x + math.floor(self.width * (0.28 + i * 0.22)),
+                rain_y,
+                math.max(1, math.floor(self.width * 0.05)),
+                math.max(2, math.floor(self.height * 0.18)),
+                Blitbuffer.COLOR_BLACK
+            )
         end
     elseif self.kind == "snow" then
         local snow_y = y + math.floor(self.height * 0.82)
         for i = 0, 2 do
-            local snow_x = x + S(9) + i * S(7)
-            bb:paintRect(snow_x - S(2), snow_y, S(5), S(1), Blitbuffer.COLOR_BLACK)
-            bb:paintRect(snow_x, snow_y - S(2), S(1), S(5), Blitbuffer.COLOR_BLACK)
+            local snow_x = x + math.floor(self.width * (0.28 + i * 0.22))
+            local arm = math.max(2, math.floor(self.width * 0.12))
+            bb:paintRect(snow_x - arm, snow_y, arm * 2 + 1, 1, Blitbuffer.COLOR_BLACK)
+            bb:paintRect(snow_x, snow_y - arm, 1, arm * 2 + 1, Blitbuffer.COLOR_BLACK)
         end
     end
 end
@@ -298,11 +342,16 @@ local function weather_kind(weather)
     local key = string.lower(text_value(weather.iconKey, ""))
     local description = string.lower(text_value(weather.description, ""))
     local combined = key .. " " .. description
-    if combined:find("snow", 1, true) or combined:find("雪", 1, true) then
+    if combined:find("thunder", 1, true) or combined:find("雷", 1, true) then
+        return "rain"
+    elseif combined:find("snow", 1, true) or combined:find("雪", 1, true) then
         return "snow"
     elseif combined:find("rain", 1, true) or combined:find("shower", 1, true)
             or combined:find("雨", 1, true) then
         return "rain"
+    elseif combined:find("fog", 1, true) or combined:find("mist", 1, true)
+            or combined:find("雾", 1, true) then
+        return "cloud"
     elseif combined:find("cloud", 1, true) or combined:find("overcast", 1, true)
             or combined:find("阴", 1, true) or combined:find("云", 1, true) then
         return "cloud"
@@ -310,14 +359,60 @@ local function weather_kind(weather)
     return "sun"
 end
 
-local function metric(label, value, width, height)
-    local group = VerticalGroup:new{
-        align = "left",
-        text_widget(label, 10, width, false),
-        spacer(S(2)),
-        text_widget(value, 13, width, true),
+local function forecast_time(value)
+    local time = text_value(value, ""):match("T(%d%d:%d%d)")
+    return time or "--:--"
+end
+
+local function forecast_cell(item, width, height)
+    local padding = S(2)
+    local border = S(1)
+    local inner_width = width - 2 * (padding + border)
+    local inner_height = height - 2 * (padding + border)
+    local content = VerticalGroup:new{
+        align = "center",
+        text_widget(forecast_time(item and item.time), 9, inner_width, true),
+        spacer(S(1)),
+        WeatherIcon:new{
+            kind = weather_kind(item or {}),
+            width = S(18),
+            height = S(18),
+        },
+        spacer(S(1)),
+        text_widget(rounded_text(item and item.tempC) .. " C", 10, inner_width, true),
     }
-    return left_cell(group, width, height)
+    return FrameContainer:new{
+        width = width,
+        height = height,
+        padding = padding,
+        bordersize = border,
+        color = Blitbuffer.COLOR_BLACK,
+        background = Blitbuffer.COLOR_WHITE,
+        CenterContainer:new{
+            dimen = Geom:new{ x = 0, y = 0, w = inner_width, h = inner_height },
+            content,
+        },
+    }
+end
+
+local function hourly_forecast_strip(forecast, width, height)
+    local values = type(forecast) == "table" and forecast or {}
+    if #values == 0 then
+        return left_cell(
+            text_widget("未来 12 小时分时预报暂不可用", 10, width, false),
+            width,
+            height
+        )
+    end
+    local children = { allow_mirroring = false }
+    local base_width = math.floor(width / 6)
+    local used_width = 0
+    for index = 1, 6 do
+        local cell_width = index == 6 and (width - used_width) or base_width
+        table.insert(children, forecast_cell(values[index] or {}, cell_width, height))
+        used_width = used_width + cell_width
+    end
+    return HorizontalGroup:new(children)
 end
 
 local function quota_label(window)
@@ -571,10 +666,10 @@ function DashboardView:init()
     local inner_weather = weather_width - S(28)
     local weather_place = text_value(weather.place, "扬州")
     local weather_description = text_value(weather.description, "--")
-    local weather_temp = text_value(weather.tempC, "--") .. " C"
-    local weather_feels = "体感 " .. text_value(weather.feelsLikeC, "--") .. " C"
-    local weather_humidity = "湿度 " .. text_value(weather.humidity, "--") .. "%"
-    local weather_wind = "风 " .. text_value(weather.windKph, "--") .. " km/h"
+    local weather_temp = rounded_text(weather.tempC) .. " C"
+    local weather_feels = rounded_text(weather.feelsLikeC) .. " C"
+    local weather_humidity = rounded_text(weather.humidity) .. "%"
+    local weather_wind = rounded_text(weather.windKph) .. " km/h"
     local weather_title = HorizontalGroup:new{
         allow_mirroring = false,
         left_cell(
@@ -588,21 +683,11 @@ function DashboardView:init()
             S(34)
         ),
     }
-    local metric_gap = S(12)
-    local metric_width = math.floor((inner_weather - metric_gap) / 2)
-    local metric_height = S(35)
-    local weather_metrics_1 = HorizontalGroup:new{
-        allow_mirroring = false,
-        metric("温度", weather_temp, metric_width, metric_height),
-        HorizontalSpan:new{ width = metric_gap },
-        metric("体感", weather_feels, metric_width, metric_height),
-    }
-    local weather_metrics_2 = HorizontalGroup:new{
-        allow_mirroring = false,
-        metric("湿度", weather_humidity, metric_width, metric_height),
-        HorizontalSpan:new{ width = metric_gap },
-        metric("风速", weather_wind, metric_width, metric_height),
-    }
+    local weather_metrics = "温 " .. weather_temp
+        .. " · 体感 " .. weather_feels
+        .. " · 湿度 " .. weather_humidity
+        .. " · 风 " .. weather_wind
+    local forecast_strip = hourly_forecast_strip(weather.forecast, inner_weather, S(55))
     local now_card = card({
         text_widget("NOW", 13, inner_now, true),
         spacer(S(11)),
@@ -613,12 +698,12 @@ function DashboardView:init()
     }, now_width, top_height)
     local weather_card = card({
         text_widget("WEATHER", 13, inner_weather, true),
-        spacer(S(4)),
+        spacer(S(2)),
         weather_title,
+        spacer(S(1)),
+        text_widget(weather_metrics, 10, inner_weather, true),
         spacer(S(4)),
-        weather_metrics_1,
-        spacer(S(3)),
-        weather_metrics_2,
+        forecast_strip,
     }, weather_width, top_height)
     local top_row = HorizontalGroup:new{
         allow_mirroring = false,

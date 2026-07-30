@@ -43,6 +43,13 @@ function loadConfig(configPath = process.env.KINDLE_QUOTA_CONFIG) {
     weatherFile: config.weatherFile ? resolveFromRoot(config.weatherFile) : '',
     weatherPlace: String(config.weatherPlace || '').trim(),
     weatherLabel: String(config.weatherLabel || '').trim(),
+    weatherLatitude: Number.isFinite(Number(config.weatherLatitude))
+      ? Number(config.weatherLatitude)
+      : null,
+    weatherLongitude: Number.isFinite(Number(config.weatherLongitude))
+      ? Number(config.weatherLongitude)
+      : null,
+    weatherTimezone: String(config.weatherTimezone || 'Asia/Shanghai').trim(),
     todo: {
       ...(config.todo || {}),
       file: config.todo?.file ? resolveFromRoot(config.todo.file) : '',

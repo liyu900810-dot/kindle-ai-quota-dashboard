@@ -5,6 +5,9 @@
   "weatherFile": "",
   "weatherPlace": "Yangzhou",
   "weatherLabel": "扬州",
+  "weatherLatitude": 32.39722,
+  "weatherLongitude": 119.43583,
+  "weatherTimezone": "Asia/Shanghai",
   "todo": {
     "provider": "file",
     "file": "config/todo.json",

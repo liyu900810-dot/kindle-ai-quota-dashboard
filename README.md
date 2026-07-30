@@ -125,10 +125,18 @@ npm run serve
 
 ```json
 "weatherPlace": "Yangzhou",
-"weatherLabel": "扬州"
+"weatherLabel": "扬州",
+"weatherLatitude": 32.39722,
+"weatherLongitude": 119.43583,
+"weatherTimezone": "Asia/Shanghai"
 ```
 
-如果设置了 `weatherFile`，则优先读取本地 JSON 文件；格式可以参考 `examples/weather.example.json`。
+默认使用 Open-Meteo 获取当前天气和逐小时预报。KOReader 天气卡片会从当前小时开始，
+按 `+2、+4、+6、+8、+10、+12` 小时抽取 6 个分时节点。配置经纬度可以省去每次
+城市定位请求；未配置时会通过城市名自动定位。
+
+如果设置了 `weatherFile`，则优先读取本地 JSON 文件；格式可以参考
+`examples/weather.example.json`，其中 `forecast` 最多读取 6 条。
 
 ## 待办事项（TO DO）
 
