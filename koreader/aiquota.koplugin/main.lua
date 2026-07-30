@@ -112,12 +112,13 @@ function AiQuota:formatData(data)
     table.insert(lines, "------------------------------------------")
     appendWeather(lines, data.weather)
 
-    if data.quote and data.quote.text then
+    local quote = type(data.quote) == "table" and data.quote or nil
+    if quote and quote.text then
         table.insert(lines, "------------------------------------------")
         table.insert(lines, "[ QUOTE ]")
-        table.insert(lines, "\"" .. one_line(data.quote.text) .. "\"")
-        if data.quote.source then
-            table.insert(lines, "- " .. one_line(data.quote.source))
+        table.insert(lines, "\"" .. one_line(quote.text) .. "\"")
+        if quote.source then
+            table.insert(lines, "- " .. one_line(quote.source))
         end
     end
 
