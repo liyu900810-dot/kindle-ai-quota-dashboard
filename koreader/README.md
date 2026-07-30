@@ -17,6 +17,6 @@ KPW1 使用 KOReader 的 `kindle` 架构包，不要使用 `kindlepw2` 包。本
 
 ## 使用
 
-插件每次打开时请求最新数据。KPW1 需要先连接 Wi-Fi；这不是 Kindle 浏览器访问，而是 KOReader 插件的网络请求。
+插件打开时请求最新数据，并在页面保持打开时每 3 分钟自动刷新。KPW1 需要先连接 Wi-Fi；这不是 Kindle 浏览器访问，而是 KOReader 插件的网络请求。
 
 如果没有网络，插件会显示请求失败，不会修改 Kindle 系统界面。
