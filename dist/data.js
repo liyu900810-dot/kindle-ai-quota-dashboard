@@ -1,5 +1,5 @@
 window.DASH_DATA = {
-  "updatedAt": "2026-07-30T20:37:31.091+08:00",
+  "updatedAt": "2026-07-30T20:42:32.090+08:00",
   "calendar": {
     "solar": "2026年7月30日 星期四",
     "lunar": "农历六月十七"
@@ -14,8 +14,8 @@ window.DASH_DATA = {
     "windKph": 4,
     "windDir": "SSW",
     "place": "扬州",
-    "observedAt": "2026-07-30T20:37:31.103+08:00",
-    "fetchedAt": "2026-07-30T20:37:31.103+08:00",
+    "observedAt": "2026-07-30T20:42:32.103+08:00",
+    "fetchedAt": "2026-07-30T20:42:32.103+08:00",
     "error": null
   },
   "quote": null,
@@ -24,7 +24,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-07-30T20:37:29.668+08:00",
+      "fetchedAt": "2026-07-30T20:42:30.702+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -34,18 +34,18 @@ window.DASH_DATA = {
       "windows": [
         {
           "name": "周",
-          "usedPct": 40,
+          "usedPct": 41,
           "resetAt": "2026-08-05T13:13:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-07-30T20:37:29.669+08:00",
+      "fetchedAt": "2026-07-30T20:42:30.703+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-07-30T20:37:29.682+08:00",
+      "fetchedAt": "2026-07-30T20:42:30.717+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -55,7 +55,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-07-30T20:37:29.682+08:00",
+      "fetchedAt": "2026-07-30T20:42:30.718+08:00",
       "error": "未启用",
       "disabled": true
     }
