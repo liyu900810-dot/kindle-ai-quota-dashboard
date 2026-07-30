@@ -18,6 +18,9 @@ function validateConfig(config) {
   if (config.providers && typeof config.providers !== 'object') {
     throw new Error('config.providers 必须是对象');
   }
+  if (config.todo && typeof config.todo !== 'object') {
+    throw new Error('config.todo 必须是对象');
+  }
   const serialized = JSON.stringify(config);
   if (/"(?:apiKey|token|password|secret)"\s*:/i.test(serialized)) {
     throw new Error('config.json 不允许保存密钥值；只填写环境变量名称');
@@ -40,6 +43,13 @@ function loadConfig(configPath = process.env.KINDLE_QUOTA_CONFIG) {
     weatherFile: config.weatherFile ? resolveFromRoot(config.weatherFile) : '',
     weatherPlace: String(config.weatherPlace || '').trim(),
     weatherLabel: String(config.weatherLabel || '').trim(),
+    todo: {
+      ...(config.todo || {}),
+      file: config.todo?.file ? resolveFromRoot(config.todo.file) : '',
+      fallbackFile: config.todo?.fallbackFile
+        ? resolveFromRoot(config.todo.fallbackFile)
+        : '',
+    },
     providers: config.providers || {},
   };
 }

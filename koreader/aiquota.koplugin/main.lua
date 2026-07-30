@@ -1,5 +1,5 @@
 -- AI Quota Dashboard for KOReader
--- Version 5: KPW1 landscape layout (1024 x 758), monochrome e-ink friendly.
+-- Version 6: KPW1 landscape layout with quota, weather and read-only to-do data.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local DataStorage = require("datastorage")
@@ -247,6 +247,53 @@ function WeatherIcon:paintTo(bb, x, y)
     end
 end
 
+local CodexIcon = Widget:extend{
+    width = S(22),
+    height = S(22),
+}
+
+function CodexIcon:getSize()
+    return Geom:new{ x = 0, y = 0, w = self.width, h = self.height }
+end
+
+function CodexIcon:paintTo(bb, x, y)
+    self.dimen = Geom:new{ x = x, y = y, w = self.width, h = self.height }
+    local cx = x + math.floor(self.width / 2)
+    local cy = y + math.floor(self.height / 2)
+    local orbit = S(5)
+    local radius = S(4)
+    local line = math.max(1, S(2))
+    local points = {
+        { 0, -orbit },
+        { orbit, -math.floor(orbit / 2) },
+        { orbit, math.floor(orbit / 2) },
+        { 0, orbit },
+        { -orbit, math.floor(orbit / 2) },
+        { -orbit, -math.floor(orbit / 2) },
+    }
+    for _, point in ipairs(points) do
+        bb:paintCircle(cx + point[1], cy + point[2], radius, Blitbuffer.COLOR_BLACK, line)
+    end
+end
+
+local TodoBox = Widget:extend{
+    width = S(16),
+    height = S(16),
+}
+
+function TodoBox:getSize()
+    return Geom:new{ x = 0, y = 0, w = self.width, h = self.height }
+end
+
+function TodoBox:paintTo(bb, x, y)
+    self.dimen = Geom:new{ x = x, y = y, w = self.width, h = self.height }
+    local line = math.max(1, S(2))
+    bb:paintRect(x, y, self.width, line, Blitbuffer.COLOR_BLACK)
+    bb:paintRect(x, y + self.height - line, self.width, line, Blitbuffer.COLOR_BLACK)
+    bb:paintRect(x, y, line, self.height, Blitbuffer.COLOR_BLACK)
+    bb:paintRect(x + self.width - line, y, line, self.height, Blitbuffer.COLOR_BLACK)
+end
+
 local function weather_kind(weather)
     local key = string.lower(text_value(weather.iconKey, ""))
     local description = string.lower(text_value(weather.description, ""))
@@ -309,7 +356,7 @@ local function quota_card(window, width, height)
     local inner_width = width - S(28)
     local used = number_or_nil(window.usedPct)
     local used_text = used and string.format("%d%% used", math.floor(used + 0.5)) or "-- used"
-    local provider_width = S(110)
+    local provider_width = S(128)
     local value_width = S(190)
     local row_height = S(35)
     local bar = ProgressWidget:new{
@@ -324,6 +371,12 @@ local function quota_card(window, width, height)
         bgcolor = Blitbuffer.COLOR_WHITE,
         fillcolor = Blitbuffer.COLOR_BLACK,
     }
+    local provider = HorizontalGroup:new{
+        allow_mirroring = false,
+        CodexIcon:new{},
+        HorizontalSpan:new{ width = S(7) },
+        text_widget("Codex", 13, S(88), true),
+    }
     local top_row = HorizontalGroup:new{
         allow_mirroring = false,
         left_cell(
@@ -331,7 +384,7 @@ local function quota_card(window, width, height)
             inner_width - provider_width,
             S(22)
         ),
-        right_cell(text_widget("Codex", 13, provider_width, true), provider_width, S(22)),
+        right_cell(provider, provider_width, S(22)),
     }
     local value_row = HorizontalGroup:new{
         allow_mirroring = false,
@@ -351,6 +404,57 @@ local function quota_card(window, width, height)
         spacer(S(7)),
         text_widget("Reset: " .. compact_timestamp(window.resetAt, true), 11, inner_width, false),
     }, width, height)
+end
+
+local function todo_card(todo, width, height)
+    local inner_width = width - S(28)
+    local items = type(todo) == "table" and type(todo.items) == "table" and todo.items or {}
+    local total = tonumber(todo and todo.totalOpen) or #items
+    local count_width = S(78)
+    local header = HorizontalGroup:new{
+        allow_mirroring = false,
+        left_cell(text_widget("TO DO", 13, inner_width - count_width, true),
+            inner_width - count_width, S(22)),
+        right_cell(text_widget(string.format("%d 项", total), 11, count_width, true),
+            count_width, S(22)),
+    }
+    local children = { header, spacer(S(7)) }
+    local row_height = S(34)
+    local box_width = S(18)
+    local row_gap = S(8)
+    local due_width = S(76)
+    local title_width = inner_width - box_width - row_gap - due_width
+
+    if #items == 0 then
+        table.insert(children, spacer(S(10)))
+        table.insert(children, text_widget("暂无待办 · 可在 Notion 中添加", 13, inner_width, true))
+    else
+        for index = 1, math.min(3, #items) do
+            local item = items[index] or {}
+            local title = text_value(item.title, "未命名事项")
+            if text_value(item.priority, "") == "高" then
+                title = "! " .. title
+            end
+            table.insert(children, HorizontalGroup:new{
+                allow_mirroring = false,
+                left_cell(TodoBox:new{}, box_width, row_height),
+                HorizontalSpan:new{ width = row_gap },
+                left_cell(text_widget(title, 12, title_width, index == 1),
+                    title_width, row_height),
+                right_cell(text_widget(text_value(item.dueLabel, ""), 11, due_width, true),
+                    due_width, row_height),
+            })
+        end
+        if total > #items then
+            table.insert(children, text_widget(
+                string.format("另有 %d 项未显示", total - #items),
+                9,
+                inner_width,
+                false
+            ))
+        end
+    end
+    return card(children, width, height)
 end
 
 local function load_cache()
@@ -405,23 +509,23 @@ function DashboardView:init()
     local sources = data.sources or {}
     local codex = sources.codex or {}
     local weather = data.weather or {}
+    local todo = data.todo or {}
     local solar_date, lunar_date = calendar_text(data)
 
-    local header_height = is_landscape and S(62) or S(78)
-    local status_height = is_landscape and S(34) or S(38)
+    local header_height = is_landscape and S(50) or S(68)
+    local status_height = is_landscape and S(42) or S(42)
     local top_height = is_landscape and S(166) or S(182)
-    local quota_height = is_landscape and S(166) or S(184)
-    local footer_height = S(31)
+    local quota_height = is_landscape and S(145) or S(174)
+    local todo_height = is_landscape and S(205) or S(205)
+    local footer_height = S(24)
 
     local header_right_width = math.floor(content_width * 0.36)
     local title_width = content_width - header_right_width
     local right_header = VerticalGroup:new{
         align = "right",
-        text_widget(os.date("%H:%M"), 21, header_right_width, true),
-        spacer(S(1)),
-        text_widget(solar_date, 10, header_right_width, true),
-        text_widget(lunar_date, 10, header_right_width, true),
-        text_widget(device_status(), 9, header_right_width, false),
+        text_widget(device_status(), 11, header_right_width, true),
+        spacer(S(3)),
+        text_widget("自动刷新 · 每 5 分钟", 9, header_right_width, false),
     }
     local header = is_landscape and fixed_content({
         HorizontalGroup:new{
@@ -439,8 +543,7 @@ function DashboardView:init()
     ) or fixed_content({
         text_widget("KINDLE AI QUOTA DASHBOARD", 18, content_width, true),
         spacer(S(3)),
-        text_widget(os.date("%H:%M  ") .. solar_date, 13, content_width, true),
-        text_widget(lunar_date .. " · " .. device_status(), 10, content_width, false),
+        text_widget(device_status() .. " · 每 5 分钟刷新", 10, content_width, false),
     }, content_width, header_height)
 
     local last_success = state.last_success_at or data.updatedAt
@@ -453,8 +556,7 @@ function DashboardView:init()
     elseif state.mode == "error" then
         status_text = "更新失败 · " .. text_value(state.message, "未知错误")
     else
-        status_text = "数据已同步 · 更新 " .. compact_timestamp(last_success, true)
-            .. " · " .. age_text(last_success)
+        status_text = "数据已同步 · " .. age_text(last_success) .. " · 下次检查 5 分钟"
     end
     local status = card({
         text_widget(status_text, 10, content_width - S(22), true),
@@ -548,17 +650,26 @@ function DashboardView:init()
     local footer_updated = last_success or data.updatedAt
     local footer = fixed_content({
         text_widget(
-            "更新: " .. compact_timestamp(footer_updated, false) .. " · " .. age_text(footer_updated),
-            10,
-            content_width,
-            false
-        ),
-        spacer(S(2)),
-        text_widget("每 5 分钟检查更新 · 点击屏幕关闭", 10, content_width, false),
+            "更新: " .. compact_timestamp(footer_updated, false)
+                .. " · 每 5 分钟检查 · 点击屏幕关闭",
+            9, content_width, false
+        )
     }, content_width, footer_height)
 
-    local children = { header, spacer(gap), status, spacer(gap), top_row, spacer(gap), quota }
-    local fixed_height = header_height + status_height + top_height + quota_height + footer_height + gap * 3
+    local todo_panel = todo_card(todo, content_width, todo_height)
+    local children = {
+        header,
+        spacer(gap),
+        status,
+        spacer(gap),
+        top_row,
+        spacer(gap),
+        quota,
+        spacer(gap),
+        todo_panel,
+    }
+    local fixed_height = header_height + status_height + top_height + quota_height
+        + todo_height + footer_height + gap * 4
     local available_height = screen_height - 2 * outer
     local bottom_fill = available_height - fixed_height
     table.insert(children, spacer(bottom_fill > 0 and bottom_fill or gap))

@@ -5,6 +5,22 @@
   "weatherFile": "",
   "weatherPlace": "Yangzhou",
   "weatherLabel": "扬州",
+  "todo": {
+    "provider": "file",
+    "file": "config/todo.json",
+    "fallbackFile": "config/todo.json",
+    "maxItems": 3,
+    "notion": {
+      "tokenEnv": "NOTION_API_KEY",
+      "dataSourceIdEnv": "NOTION_DATA_SOURCE_ID",
+      "titleProperty": "任务",
+      "statusProperty": "状态",
+      "dueProperty": "截止日期",
+      "priorityProperty": "优先级",
+      "visibleProperty": "Kindle显示",
+      "doneValues": ["完成", "已完成", "Done", "Completed"]
+    }
+  },
   "providers": {
     "deepseek": {
       "enabled": false,

@@ -6,6 +6,7 @@ const { collectClaude } = require('./collectors/claude.cjs');
 const { collectCodex } = require('./collectors/codex.cjs');
 const { collectDeepSeek } = require('./collectors/deepseek.cjs');
 const { collectKimi } = require('./collectors/kimi.cjs');
+const { collectTodo } = require('./collectors/todo.cjs');
 const { ROOT, loadConfig } = require('./lib/config.cjs');
 const {
   isoBeijing,
@@ -202,6 +203,18 @@ function demoSnapshot() {
       text: '把无人走过的路，踩成后来人的近路。',
       source: '开源演示',
     },
+    todo: {
+      ok: true,
+      source: 'demo',
+      items: [
+        { title: '检查 Kindle 新版界面', dueAt: null, dueLabel: '今天', priority: '高' },
+        { title: '补充个人待办事项', dueAt: null, dueLabel: '明天', priority: '普通' },
+        { title: '确认电脑自动更新任务', dueAt: null, dueLabel: '本周', priority: '普通' },
+      ],
+      totalOpen: 3,
+      fetchedAt: now,
+      error: null,
+    },
     sources: {
       claude: {
         ok: true,
@@ -245,11 +258,12 @@ function demoSnapshot() {
 
 async function realSnapshot(config) {
   const providers = config.providers || {};
-  const [claude, codex, kimi, deepseek] = await Promise.all([
+  const [claude, codex, kimi, deepseek, todo] = await Promise.all([
     collectClaude(providers.claude),
     collectCodex(providers.codex),
     collectKimi(providers.kimi),
     collectDeepSeek(providers.deepseek),
+    collectTodo(config.todo),
   ]);
   return {
     updatedAt: isoBeijing(),
@@ -258,6 +272,7 @@ async function realSnapshot(config) {
       ? readWeather(config.weatherFile)
       : await readRemoteWeather(config.weatherPlace, config.weatherLabel),
     quote: readQuote(config.quoteFile),
+    todo,
     sources: { claude, codex, kimi, deepseek },
   };
 }
@@ -285,6 +300,20 @@ function preserveLastKnownGood(snapshot, previous) {
       error: snapshot.weather.error,
     };
   }
+  if (
+    snapshot.todo
+    && !snapshot.todo.ok
+    && !snapshot.todo.disabled
+    && previous.todo
+    && previous.todo.ok
+  ) {
+    snapshot.todo = {
+      ...previous.todo,
+      stale: true,
+      lastAttemptAt: snapshot.todo.fetchedAt,
+      error: snapshot.todo.error,
+    };
+  }
   if (!previous.sources) return snapshot;
   for (const name of SOURCE_NAMES) {
     const current = snapshot.sources[name];
@@ -306,6 +335,9 @@ function validateSnapshot(snapshot) {
   }
   if (!snapshot.weather || typeof snapshot.weather.ok !== 'boolean') {
     throw new Error('快照缺少 weather');
+  }
+  if (!snapshot.todo || typeof snapshot.todo.ok !== 'boolean' || !Array.isArray(snapshot.todo.items)) {
+    throw new Error('快照缺少 todo');
   }
   for (const name of SOURCE_NAMES) {
     const source = snapshot.sources[name];

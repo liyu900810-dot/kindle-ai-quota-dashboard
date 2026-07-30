@@ -15,12 +15,20 @@ const {
 } = require('../src/collect.cjs');
 const { safeError } = require('../src/lib/common.cjs');
 const { ROOT, validateConfig } = require('../src/lib/config.cjs');
+const {
+  dueLabel,
+  notionPageIsDone,
+  notionPageIsVisible,
+  notionPageToItem,
+  readTodoFile,
+} = require('../src/collectors/todo.cjs');
 
 test('demo snapshot passes the public schema', () => {
   const snapshot = demoSnapshot();
   assert.doesNotThrow(() => validateSnapshot(snapshot));
   assert.equal(snapshot.weather.place, '示例城市');
   assert.equal(snapshot.sources.deepseek.balance, 12.34);
+  assert.equal(snapshot.todo.items.length, 3);
 });
 
 test('calendar snapshot formats solar and lunar dates in Chinese', () => {
@@ -71,6 +79,71 @@ test('last known good weather is preserved after a transient weather failure', (
   assert.equal(next.weather.place, '示例城市');
   assert.equal(next.weather.error, 'fetch failed');
   assert.equal(next.weather.lastAttemptAt, next.updatedAt);
+});
+
+test('last known good todo is preserved after a transient source failure', () => {
+  const previous = demoSnapshot();
+  const next = demoSnapshot();
+  next.todo = {
+    ok: false,
+    source: 'notion',
+    items: [],
+    totalOpen: 0,
+    fetchedAt: next.updatedAt,
+    error: 'Notion unavailable',
+  };
+  preserveLastKnownGood(next, previous);
+  assert.equal(next.todo.ok, true);
+  assert.equal(next.todo.stale, true);
+  assert.equal(next.todo.items.length, 3);
+  assert.equal(next.todo.error, 'Notion unavailable');
+});
+
+test('todo file excludes completed items and limits public output', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'kindle-todo-test-'));
+  const file = path.join(dir, 'todo.json');
+  try {
+    fs.writeFileSync(file, JSON.stringify({
+      items: [
+        { title: '第一项', dueLabel: '今天' },
+        { title: '已完成', completed: true },
+        { title: '第二项', dueLabel: '明天' },
+        { title: '第三项', dueLabel: '本周' },
+      ],
+    }), 'utf8');
+    const result = readTodoFile(file, 2);
+    assert.equal(result.ok, true);
+    assert.equal(result.totalOpen, 3);
+    assert.deepEqual(result.items.map((item) => item.title), ['第一项', '第二项']);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('Notion task properties map to the public todo schema', () => {
+  const page = {
+    properties: {
+      任务: { type: 'title', title: [{ plain_text: '整理项目材料' }] },
+      状态: { type: 'status', status: { name: '进行中' } },
+      截止日期: { type: 'date', date: { start: '2026-07-31' } },
+      优先级: { type: 'select', select: { name: '高' } },
+      Kindle显示: { type: 'checkbox', checkbox: true },
+    },
+  };
+  const config = {};
+  assert.equal(notionPageIsDone(page, config), false);
+  assert.equal(notionPageIsVisible(page, config), true);
+  assert.deepEqual(notionPageToItem(page, config, new Date('2026-07-30T08:00:00Z')), {
+    title: '整理项目材料',
+    dueAt: '2026-07-31',
+    dueLabel: '明天',
+    priority: '高',
+  });
+  page.properties.状态.status.name = '完成';
+  assert.equal(notionPageIsDone(page, config), true);
+  page.properties.Kindle显示.checkbox = false;
+  assert.equal(notionPageIsVisible(page, config), false);
+  assert.equal(dueLabel('2026-07-29', new Date('2026-07-30T08:00:00Z')), '逾期');
 });
 
 test('safeError removes obvious credential material', () => {

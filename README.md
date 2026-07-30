@@ -130,6 +130,27 @@ npm run serve
 
 如果设置了 `weatherFile`，则优先读取本地 JSON 文件；格式可以参考 `examples/weather.example.json`。
 
+## 待办事项（TO DO）
+
+默认从本机的 `config/todo.json` 读取最多 3 条未完成事项。这个文件已被 Git 忽略，
+可以安全地在电脑上修改，不会把原始文件提交到仓库。
+
+如需连接 Notion，把 `config.json` 中的 `todo.provider` 改为 `notion`，并配置：
+
+- 用户环境变量 `NOTION_API_KEY`：Notion integration token；
+- 用户环境变量 `NOTION_DATA_SOURCE_ID`：待办数据库的数据源 ID；
+- 数据源属性：`任务`（标题）、`状态`、`截止日期`、`优先级`、`Kindle显示`（复选框）。
+
+Windows 用户可以运行 `scripts/enable-notion-todo.ps1 -DataSourceId "你的数据源 ID"`。
+脚本会安全提示输入 token，把凭据保存为当前用户环境变量，并切换数据源；token 不会写入仓库。
+
+电脑端只会同步 `Kindle显示` 已勾选且状态不是“完成”的事项。Notion 数据源必须主动
+共享给相应 connection，否则 API 会返回 404。接口使用 Notion Data Source API：
+https://developers.notion.com/reference/query-a-data-source
+
+> 隐私提醒：GitHub Pages 地址默认公开。不要勾选包含敏感内容的任务；Kindle 快照中
+> 会包含被选中任务的标题、截止日期标签和优先级。
+
 ## 每日一语
 
 `examples/quote.example.json` 是模板，复制到 `config/` 后可以：
