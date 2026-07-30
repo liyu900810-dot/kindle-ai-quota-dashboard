@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-30T21:17:31.877+08:00",
+  "updatedAt": "2026-07-30T21:31:10.506+08:00",
   "calendar": {
     "solar": "2026年7月30日 星期四",
     "lunar": "农历六月十七"
@@ -14,17 +14,44 @@
     "windKph": 4,
     "windDir": "SE",
     "place": "扬州",
-    "observedAt": "2026-07-30T21:17:31.890+08:00",
-    "fetchedAt": "2026-07-30T21:17:31.890+08:00",
+    "observedAt": "2026-07-30T21:31:10.519+08:00",
+    "fetchedAt": "2026-07-30T21:31:10.519+08:00",
     "error": null
   },
   "quote": null,
+  "todo": {
+    "ok": true,
+    "source": "file",
+    "items": [
+      {
+        "title": "检查 Kindle 新版界面",
+        "dueAt": null,
+        "dueLabel": "今天",
+        "priority": "高"
+      },
+      {
+        "title": "完成 Notion 待办数据源授权",
+        "dueAt": null,
+        "dueLabel": "明天",
+        "priority": "高"
+      },
+      {
+        "title": "补充个人待办事项",
+        "dueAt": null,
+        "dueLabel": "本周",
+        "priority": "普通"
+      }
+    ],
+    "totalOpen": 3,
+    "fetchedAt": "2026-07-30T21:31:09.131+08:00",
+    "error": null
+  },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-07-30T21:17:30.709+08:00",
+      "fetchedAt": "2026-07-30T21:31:09.116+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -34,18 +61,18 @@
       "windows": [
         {
           "name": "周",
-          "usedPct": 42,
+          "usedPct": 45,
           "resetAt": "2026-08-05T13:13:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-07-30T21:17:30.709+08:00",
+      "fetchedAt": "2026-07-30T21:31:09.116+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-07-30T21:17:30.723+08:00",
+      "fetchedAt": "2026-07-30T21:31:09.130+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -55,7 +82,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-07-30T21:17:30.723+08:00",
+      "fetchedAt": "2026-07-30T21:31:09.131+08:00",
       "error": "未启用",
       "disabled": true
     }
