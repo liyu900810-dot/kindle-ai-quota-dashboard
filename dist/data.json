@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-30T21:31:10.506+08:00",
+  "updatedAt": "2026-07-30T21:34:21.509+08:00",
   "calendar": {
     "solar": "2026年7月30日 星期四",
     "lunar": "农历六月十七"
@@ -14,8 +14,8 @@
     "windKph": 4,
     "windDir": "SE",
     "place": "扬州",
-    "observedAt": "2026-07-30T21:31:10.519+08:00",
-    "fetchedAt": "2026-07-30T21:31:10.519+08:00",
+    "observedAt": "2026-07-30T21:34:21.523+08:00",
+    "fetchedAt": "2026-07-30T21:34:21.523+08:00",
     "error": null
   },
   "quote": null,
@@ -43,7 +43,7 @@
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-07-30T21:31:09.131+08:00",
+    "fetchedAt": "2026-07-30T21:34:20.487+08:00",
     "error": null
   },
   "sources": {
@@ -51,7 +51,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-07-30T21:31:09.116+08:00",
+      "fetchedAt": "2026-07-30T21:34:20.472+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -61,18 +61,18 @@
       "windows": [
         {
           "name": "周",
-          "usedPct": 45,
+          "usedPct": 47,
           "resetAt": "2026-08-05T13:13:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-07-30T21:31:09.116+08:00",
+      "fetchedAt": "2026-07-30T21:34:20.473+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-07-30T21:31:09.130+08:00",
+      "fetchedAt": "2026-07-30T21:34:20.487+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -82,7 +82,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-07-30T21:31:09.131+08:00",
+      "fetchedAt": "2026-07-30T21:34:20.487+08:00",
       "error": "未启用",
       "disabled": true
     }
