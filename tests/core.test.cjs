@@ -56,6 +56,23 @@ test('last known good data is preserved only for enabled failing providers', () 
   assert.equal(next.sources.kimi.disabled, true);
 });
 
+test('last known good weather is preserved after a transient weather failure', () => {
+  const previous = demoSnapshot();
+  const next = demoSnapshot();
+  next.weather = {
+    ok: false,
+    place: '扬州',
+    fetchedAt: next.updatedAt,
+    error: 'fetch failed',
+  };
+  preserveLastKnownGood(next, previous);
+  assert.equal(next.weather.ok, true);
+  assert.equal(next.weather.stale, true);
+  assert.equal(next.weather.place, '示例城市');
+  assert.equal(next.weather.error, 'fetch failed');
+  assert.equal(next.weather.lastAttemptAt, next.updatedAt);
+});
+
 test('safeError removes obvious credential material', () => {
   const secret = 'A'.repeat(90);
   const output = safeError(`authorization: bearer ${secret}`);
@@ -90,4 +107,11 @@ test('browser runtime is valid JavaScript', () => {
     encoding: 'utf8',
   });
   assert.equal(result.status, 0, result.stderr);
+});
+
+test('browser runtime tolerates deployment cache without reporting false offline', () => {
+  const runtime = fs.readFileSync(path.join(ROOT, 'web', 'dashboard-runtime.js'), 'utf8');
+  assert.match(runtime, /delayAfterMinutes:\s*10/);
+  assert.match(runtime, /offlineAfterMinutes:\s*30/);
+  assert.match(runtime, /age > settings\.offlineAfterMinutes/);
 });

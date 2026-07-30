@@ -271,7 +271,21 @@ function previousSnapshot(outputDir) {
 }
 
 function preserveLastKnownGood(snapshot, previous) {
-  if (!previous || !previous.sources) return snapshot;
+  if (!previous) return snapshot;
+  if (
+    snapshot.weather
+    && !snapshot.weather.ok
+    && previous.weather
+    && previous.weather.ok
+  ) {
+    snapshot.weather = {
+      ...previous.weather,
+      stale: true,
+      lastAttemptAt: snapshot.weather.fetchedAt,
+      error: snapshot.weather.error,
+    };
+  }
+  if (!previous.sources) return snapshot;
   for (const name of SOURCE_NAMES) {
     const current = snapshot.sources[name];
     const fallback = previous.sources[name];

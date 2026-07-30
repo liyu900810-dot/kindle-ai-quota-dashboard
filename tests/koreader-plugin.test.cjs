@@ -24,12 +24,13 @@ test('KOReader plugin protects network requests and preserves cached data', () =
   assert.match(main, /aiquota-dashboard-cache\.json/);
   assert.match(main, /showCachedError/);
   assert.match(main, /last_good_data/);
+  assert.match(main, /request_url = self\.endpoint .* "_=" \.\. tostring\(os\.time\(\)\)/);
 });
 
-test('KOReader plugin is e-ink aware and includes v5 metadata', () => {
+test('KOReader plugin is e-ink aware and includes v5.1 metadata', () => {
   assert.match(main, /REFRESH_SECONDS = 300/);
   assert.match(main, /refresh_count % 4 == 0 and "full" or "ui"/);
   assert.match(main, /function WeatherIcon:paintTo/);
   assert.doesNotMatch(main, /[☀☁☂☼]/u);
-  assert.match(meta, /version = "5\.0\.0"/);
+  assert.match(meta, /version = "5\.1\.0"/);
 });

@@ -6,6 +6,8 @@
     endpointPointer: 'live-endpoint.js',
     pollEvery: 3 * 60 * 1000,
     pollOffset: 5000,
+    delayAfterMinutes: 10,
+    offlineAfterMinutes: 30,
     quietStart: 3,
     quietEnd: 8
   };
@@ -97,7 +99,7 @@
       return;
     }
 
-    if (!state.latest || age > 15) {
+    if (!state.latest || age > settings.offlineAfterMinutes) {
       ui.textNode(status, '离线 · 最后 ' + lastClock);
       ui.className(status, 'warn');
       ui.textNode(alert, '电脑或数据链路已离线 · 最后在线 ' + lastClock);
@@ -105,7 +107,7 @@
       return;
     }
 
-    if (age >= 7) {
+    if (age >= settings.delayAfterMinutes) {
       ui.textNode(status, '延迟 ' + age + ' 分钟 · ' + lastClock);
       ui.className(status, 'warn');
       ui.textNode(alert, '实时数据延迟 ' + age + ' 分钟 · 正在显示最后一次结果');

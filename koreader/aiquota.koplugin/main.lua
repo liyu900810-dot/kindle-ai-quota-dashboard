@@ -789,6 +789,8 @@ end
 
 function AiQuota:fetchAndShow(request_id)
     local body = {}
+    local separator = string.find(self.endpoint, "?", 1, true) and "&" or "?"
+    local request_url = self.endpoint .. separator .. "_=" .. tostring(os.time())
     local request_headers = {
         ["accept"] = "application/json",
         ["cache-control"] = "no-cache",
@@ -802,7 +804,7 @@ function AiQuota:fetchAndShow(request_id)
 
     socketutil:set_timeout(REQUEST_BLOCK_TIMEOUT, REQUEST_TOTAL_TIMEOUT)
     local request_ok, ok, code, headers = pcall(http.request, {
-        url = self.endpoint,
+        url = request_url,
         method = "GET",
         headers = request_headers,
         sink = capped_sink(body),
