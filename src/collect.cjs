@@ -82,6 +82,81 @@ function readWeather(filePath) {
   }
 }
 
+function weatherDescription(value) {
+  const description = value?.current_condition?.[0]?.weatherDesc?.[0]?.value;
+  return String(description || 'Weather').slice(0, 20);
+}
+
+function weatherIconKey(value) {
+  const code = Number(value?.current_condition?.[0]?.weatherCode);
+  if (code === 113) return 'clear';
+  if ([176, 263, 266, 293, 296, 299, 302, 305, 308, 353, 356, 359, 362, 365, 386, 389, 392, 395].includes(code)) return 'rain';
+  if ([179, 182, 185, 227, 230, 281, 284, 317, 320, 323, 326, 329, 332, 335, 338, 368, 371, 374, 377].includes(code)) return 'snow';
+  if ([116, 119, 122, 143, 248, 260].includes(code)) return 'cloudy';
+  return 'cloudy';
+}
+
+async function readRemoteWeather(place, label) {
+  const fetchedAt = isoBeijing();
+  if (!place) {
+    return {
+      ok: false,
+      description: null,
+      iconKey: null,
+      tempC: null,
+      feelsLikeC: null,
+      humidity: null,
+      windKph: null,
+      windDir: null,
+      place: null,
+      observedAt: null,
+      fetchedAt,
+      error: '未配置天气城市',
+    };
+  }
+  try {
+    const url = `https://wttr.in/${encodeURIComponent(place)}?format=j1&lang=zh`;
+    const response = await fetch(url, {
+      headers: { 'User-Agent': 'kindle-ai-quota-dashboard/0.1' },
+      signal: AbortSignal.timeout(15000),
+    });
+    if (!response.ok) throw new Error(`天气请求失败（HTTP ${response.status}）`);
+    const value = await response.json();
+    const current = value?.current_condition?.[0] || {};
+    const area = value?.nearest_area?.[0]?.areaName?.[0]?.value;
+    const number = (field) => Number.isFinite(Number(current[field])) ? Number(current[field]) : null;
+    return {
+      ok: true,
+      description: weatherDescription(value),
+      iconKey: weatherIconKey(value),
+      tempC: number('temp_C'),
+      feelsLikeC: number('FeelsLikeC'),
+      humidity: number('humidity'),
+      windKph: number('windspeedKmph'),
+      windDir: String(current.winddir16Point || '').slice(0, 20),
+      place: String(label || area || place).slice(0, 30),
+      observedAt: fetchedAt,
+      fetchedAt,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      description: null,
+      iconKey: null,
+      tempC: null,
+      feelsLikeC: null,
+      humidity: null,
+      windKph: null,
+      windDir: null,
+      place: String(label || place).slice(0, 30),
+      observedAt: null,
+      fetchedAt,
+      error: safeError(error),
+    };
+  }
+}
+
 function demoSnapshot() {
   const now = isoBeijing();
   const afterHours = (hours) => isoBeijing(Date.now() + hours * 60 * 60 * 1000);
@@ -156,7 +231,9 @@ async function realSnapshot(config) {
   ]);
   return {
     updatedAt: isoBeijing(),
-    weather: readWeather(config.weatherFile),
+    weather: config.weatherFile
+      ? readWeather(config.weatherFile)
+      : await readRemoteWeather(config.weatherPlace, config.weatherLabel),
     quote: readQuote(config.quoteFile),
     sources: { claude, codex, kimi, deepseek },
   };
@@ -252,6 +329,7 @@ module.exports = {
   preserveLastKnownGood,
   readQuote,
   readWeather,
+  readRemoteWeather,
   validateSnapshot,
   writeSnapshot,
 };

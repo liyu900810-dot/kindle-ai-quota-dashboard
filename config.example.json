@@ -3,6 +3,8 @@
   "keepLocalHistory": false,
   "quoteFile": "config/quote.json",
   "weatherFile": "",
+  "weatherPlace": "Yangzhou",
+  "weatherLabel": "扬州",
   "providers": {
     "deepseek": {
       "enabled": false,

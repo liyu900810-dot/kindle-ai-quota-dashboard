@@ -121,9 +121,14 @@ npm run serve
 
 ## 天气
 
-天气数据从你提供的 JSON 文件读取。可以用任意免费天气 API 生成这个文件（比如 [wttr.in](https://wttr.in)、[OpenWeatherMap 免费版](https://openweathermap.org/price)），不需要额外花钱。
+天气默认从 wttr.in 获取，不需要 API Key。在 `config.json` 中设置 `weatherPlace`（查询城市）和 `weatherLabel`（显示名称），例如扬州：
 
-把 `examples/weather.example.json` 复制到 `config/` 目录，然后告诉你的 Agent 你在哪个城市，它会帮你配好自动更新。
+```json
+"weatherPlace": "Yangzhou",
+"weatherLabel": "扬州"
+```
+
+如果设置了 `weatherFile`，则优先读取本地 JSON 文件；格式可以参考 `examples/weather.example.json`。
 
 ## 每日一语
 

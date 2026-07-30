@@ -38,6 +38,8 @@ function loadConfig(configPath = process.env.KINDLE_QUOTA_CONFIG) {
     outputDir: resolveFromRoot(config.outputDir, 'state'),
     quoteFile: config.quoteFile ? resolveFromRoot(config.quoteFile) : '',
     weatherFile: config.weatherFile ? resolveFromRoot(config.weatherFile) : '',
+    weatherPlace: String(config.weatherPlace || '').trim(),
+    weatherLabel: String(config.weatherLabel || '').trim(),
     providers: config.providers || {},
   };
 }
