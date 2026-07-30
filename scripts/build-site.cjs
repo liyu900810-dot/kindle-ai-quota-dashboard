@@ -8,6 +8,7 @@ const webDir = path.join(ROOT, 'web');
 const stateDir = path.join(ROOT, 'state');
 const distDir = path.join(ROOT, 'dist');
 const required = ['index.html', 'style.css', 'dashboard-runtime.js'];
+const staticAssets = ['kpw1-plugin-preview.png'];
 
 for (const name of required) {
   const source = path.join(webDir, name);
@@ -24,6 +25,12 @@ fs.rmSync(distDir, { recursive: true, force: true });
 fs.mkdirSync(distDir, { recursive: true });
 for (const name of required) {
   fs.copyFileSync(path.join(webDir, name), path.join(distDir, name));
+}
+for (const name of staticAssets) {
+  const source = path.join(webDir, name);
+  if (fs.existsSync(source)) {
+    fs.copyFileSync(source, path.join(distDir, name));
+  }
 }
 for (const name of ['data.json', 'data.js']) {
   fs.copyFileSync(path.join(stateDir, name), path.join(distDir, name));
