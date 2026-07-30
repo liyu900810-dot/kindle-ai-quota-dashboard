@@ -9,7 +9,7 @@
     "provider": "file",
     "file": "config/todo.json",
     "fallbackFile": "config/todo.json",
-    "maxItems": 3,
+    "maxItems": 5,
     "notion": {
       "tokenEnv": "NOTION_API_KEY",
       "dataSourceIdEnv": "NOTION_DATA_SOURCE_ID",

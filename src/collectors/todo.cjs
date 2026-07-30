@@ -76,7 +76,7 @@ function failure(source, error, fetchedAt = isoBeijing()) {
   };
 }
 
-function readTodoFile(filePath, maxItems = 3, now = new Date()) {
+function readTodoFile(filePath, maxItems = 5, now = new Date()) {
   const fetchedAt = isoBeijing();
   if (!filePath) return failure('file', '未配置待办文件', fetchedAt);
   try {
@@ -117,7 +117,7 @@ function notionPageIsVisible(page, config) {
   return propertyValue(property) === true;
 }
 
-async function readNotionTodo(config = {}, maxItems = 3, now = new Date()) {
+async function readNotionTodo(config = {}, maxItems = 5, now = new Date()) {
   const fetchedAt = isoBeijing();
   const tokenEnv = String(config.tokenEnv || 'NOTION_API_KEY');
   const dataSourceIdEnv = String(config.dataSourceIdEnv || 'NOTION_DATA_SOURCE_ID');
@@ -165,7 +165,7 @@ async function readNotionTodo(config = {}, maxItems = 3, now = new Date()) {
 }
 
 async function collectTodo(config = {}) {
-  const maxItems = Math.max(1, Math.min(5, Number(config.maxItems || 3)));
+  const maxItems = Math.max(1, Math.min(5, Number(config.maxItems || 5)));
   if (config.enabled === false || !config.provider) {
     return {
       ...failure('disabled', '待办数据源未启用'),

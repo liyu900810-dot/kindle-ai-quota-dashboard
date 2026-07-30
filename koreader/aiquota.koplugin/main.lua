@@ -1,5 +1,5 @@
 -- AI Quota Dashboard for KOReader
--- Version 6: KPW1 landscape layout with quota, weather and read-only to-do data.
+-- Version 6.1: KPW1 landscape layout with a five-row read-only to-do card.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local DataStorage = require("datastorage")
@@ -356,8 +356,9 @@ local function quota_card(window, width, height)
     local inner_width = width - S(28)
     local used = number_or_nil(window.usedPct)
     local used_text = used and string.format("%d%% used", math.floor(used + 0.5)) or "-- used"
-    local provider_width = S(128)
-    local value_width = S(190)
+    local right_inset = S(16)
+    local provider_width = S(104)
+    local value_width = S(176)
     local row_height = S(35)
     local bar = ProgressWidget:new{
         width = inner_width,
@@ -374,26 +375,28 @@ local function quota_card(window, width, height)
     local provider = HorizontalGroup:new{
         allow_mirroring = false,
         CodexIcon:new{},
-        HorizontalSpan:new{ width = S(7) },
-        text_widget("Codex", 13, S(88), true),
+        HorizontalSpan:new{ width = S(2) },
+        text_widget("Codex", 13, S(64), true),
     }
     local top_row = HorizontalGroup:new{
         allow_mirroring = false,
         left_cell(
-            text_widget("QUOTA", 13, inner_width - provider_width, true),
-            inner_width - provider_width,
+            text_widget("QUOTA", 13, inner_width - provider_width - right_inset, true),
+            inner_width - provider_width - right_inset,
             S(22)
         ),
         right_cell(provider, provider_width, S(22)),
+        HorizontalSpan:new{ width = right_inset },
     }
     local value_row = HorizontalGroup:new{
         allow_mirroring = false,
         left_cell(
-            text_widget(quota_label(window), 14, inner_width - value_width, true),
-            inner_width - value_width,
+            text_widget(quota_label(window), 14, inner_width - value_width - right_inset, true),
+            inner_width - value_width - right_inset,
             row_height
         ),
         right_cell(text_widget(used_text, 27, value_width, true), value_width, row_height),
+        HorizontalSpan:new{ width = right_inset },
     }
     return card({
         top_row,
@@ -429,7 +432,7 @@ local function todo_card(todo, width, height)
         table.insert(children, spacer(S(10)))
         table.insert(children, text_widget("暂无待办 · 可在 Notion 中添加", 13, inner_width, true))
     else
-        for index = 1, math.min(3, #items) do
+        for index = 1, math.min(5, #items) do
             local item = items[index] or {}
             local title = text_value(item.title, "未命名事项")
             if text_value(item.priority, "") == "高" then
@@ -516,8 +519,7 @@ function DashboardView:init()
     local status_height = is_landscape and S(42) or S(42)
     local top_height = is_landscape and S(166) or S(182)
     local quota_height = is_landscape and S(145) or S(174)
-    local todo_height = is_landscape and S(205) or S(205)
-    local footer_height = S(24)
+    local todo_height = is_landscape and S(255) or S(255)
 
     local header_right_width = math.floor(content_width * 0.36)
     local title_width = content_width - header_right_width
@@ -647,15 +649,6 @@ function DashboardView:init()
         }, content_width, quota_height)
     end
 
-    local footer_updated = last_success or data.updatedAt
-    local footer = fixed_content({
-        text_widget(
-            "更新: " .. compact_timestamp(footer_updated, false)
-                .. " · 每 5 分钟检查 · 点击屏幕关闭",
-            9, content_width, false
-        )
-    }, content_width, footer_height)
-
     local todo_panel = todo_card(todo, content_width, todo_height)
     local children = {
         header,
@@ -669,11 +662,12 @@ function DashboardView:init()
         todo_panel,
     }
     local fixed_height = header_height + status_height + top_height + quota_height
-        + todo_height + footer_height + gap * 4
+        + todo_height + gap * 4
     local available_height = screen_height - 2 * outer
     local bottom_fill = available_height - fixed_height
-    table.insert(children, spacer(bottom_fill > 0 and bottom_fill or gap))
-    table.insert(children, footer)
+    if bottom_fill > 0 then
+        table.insert(children, spacer(bottom_fill))
+    end
 
     self.dimen = Geom:new{ x = 0, y = 0, w = screen_width, h = screen_height }
     self[1] = FrameContainer:new{

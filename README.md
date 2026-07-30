@@ -132,7 +132,7 @@ npm run serve
 
 ## 待办事项（TO DO）
 
-默认从本机的 `config/todo.json` 读取最多 3 条未完成事项。这个文件已被 Git 忽略，
+默认从本机的 `config/todo.json` 读取最多 5 条未完成事项。这个文件已被 Git 忽略，
 可以安全地在电脑上修改，不会把原始文件提交到仓库。
 
 如需连接 Notion，把 `config.json` 中的 `todo.provider` 改为 `notion`，并配置：
