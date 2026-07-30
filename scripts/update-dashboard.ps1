@@ -42,8 +42,14 @@ function Invoke-External {
         [switch]$AllowFailure
     )
     Write-Log ('Run: {0} {1}' -f $FilePath, ($Arguments -join ' '))
-    $output = & $FilePath @Arguments 2>&1
-    $exitCode = $LASTEXITCODE
+    $oldErrorActionPreference = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    try {
+        $output = & $FilePath @Arguments 2>&1
+        $exitCode = $LASTEXITCODE
+    } finally {
+        $ErrorActionPreference = $oldErrorActionPreference
+    }
     foreach ($line in $output) {
         Write-Log ([string]$line)
     }
