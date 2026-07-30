@@ -1,7 +1,9 @@
 -- AI Quota Dashboard for KOReader
--- KPW1 landscape layout: 1024 x 758, monochrome e-ink friendly.
+-- Version 5: KPW1 landscape layout (1024 x 758), monochrome e-ink friendly.
 
 local Blitbuffer = require("ffi/blitbuffer")
+local DataStorage = require("datastorage")
+local Device = require("device")
 local Dispatcher = require("dispatcher")
 local Font = require("ui/font")
 local Geom = require("ui/geometry")
@@ -10,21 +12,30 @@ local HorizontalGroup = require("ui/widget/horizontalgroup")
 local HorizontalSpan = require("ui/widget/horizontalspan")
 local InputContainer = require("ui/widget/container/inputcontainer")
 local FrameContainer = require("ui/widget/container/framecontainer")
+local LeftContainer = require("ui/widget/container/leftcontainer")
 local NetworkMgr = require("ui/network/manager")
 local ProgressWidget = require("ui/widget/progresswidget")
-local Screen = require("device").screen
+local RightContainer = require("ui/widget/container/rightcontainer")
+local Screen = Device.screen
 local TextWidget = require("ui/widget/textwidget")
 local Trapper = require("ui/trapper")
 local UIManager = require("ui/uimanager")
 local VerticalGroup = require("ui/widget/verticalgroup")
 local VerticalSpan = require("ui/widget/verticalspan")
+local Widget = require("ui/widget/widget")
 local WidgetContainer = require("ui/widget/container/widgetcontainer")
 local http = require("socket.http")
 local json = require("json")
-local ltn12 = require("ltn12")
+local socketutil = require("socketutil")
+local util = require("util")
 local _ = require("gettext")
 
-local REFRESH_SECONDS = 180
+local REFRESH_SECONDS = 300
+local LOW_BATTERY_REFRESH_SECONDS = 900
+local REQUEST_BLOCK_TIMEOUT = 8
+local REQUEST_TOTAL_TIMEOUT = 15
+local MAX_RESPONSE_BYTES = 256 * 1024
+local CACHE_FILE = DataStorage:getDataDir() .. "/aiquota-dashboard-cache.json"
 local S = function(value) return Screen:scaleBySize(value) end
 
 local function text_value(value, fallback)
@@ -46,12 +57,50 @@ local function compact_timestamp(value, short_date)
     local text = text_value(value, "-")
     local date, time = text:match("^(%d%d%d%d%-%d%d%-%d%d)T(%d%d:%d%d)")
     if not date then
+        date, time = text:match("^(%d%d%d%d%-%d%d%-%d%d) (%d%d:%d%d)")
+    end
+    if not date then
         return text
     end
     if short_date then
         return date:sub(6) .. " " .. time
     end
     return date .. " " .. time
+end
+
+local function timestamp_epoch(value)
+    if type(value) ~= "string" then
+        return nil
+    end
+    local year, month, day, hour, minute, second =
+        value:match("^(%d%d%d%d)%-(%d%d)%-(%d%d)[T ](%d%d):(%d%d):?(%d*)")
+    if not year then
+        return nil
+    end
+    return os.time{
+        year = tonumber(year),
+        month = tonumber(month),
+        day = tonumber(day),
+        hour = tonumber(hour),
+        min = tonumber(minute),
+        sec = tonumber(second) or 0,
+    }
+end
+
+local function age_text(value)
+    local epoch = timestamp_epoch(value)
+    if not epoch then
+        return "时间未知"
+    end
+    local age = math.max(0, os.time() - epoch)
+    if age < 90 then
+        return "刚刚"
+    elseif age < 3600 then
+        return string.format("%d 分钟前", math.floor(age / 60))
+    elseif age < 86400 then
+        return string.format("%d 小时前", math.floor(age / 3600))
+    end
+    return string.format("%d 天前", math.floor(age / 86400))
 end
 
 local function calendar_text(data)
@@ -75,15 +124,14 @@ end
 local function text_widget(value, size, max_width, bold)
     return TextWidget:new{
         text = text_value(value),
-        face = Font:getFace("cfont", S(size)),
+        -- Font:getFace performs Screen:scaleBySize internally.
+        face = Font:getFace("cfont", size),
         max_width = max_width,
         padding = 0,
         bold = bold == true,
     }
 end
 
--- KOReader containers use the child natural size. Add explicit spans so
--- every card keeps its intended KPW1 size instead of collapsing vertically.
 local function fixed_content(children, width, height)
     local args = { align = "left" }
     table.insert(args, HorizontalSpan:new{ width = width })
@@ -102,6 +150,22 @@ local function spacer(height)
     return VerticalSpan:new{ width = height }
 end
 
+local function left_cell(widget, width, height)
+    return LeftContainer:new{
+        dimen = Geom:new{ x = 0, y = 0, w = width, h = height },
+        allow_mirroring = false,
+        widget,
+    }
+end
+
+local function right_cell(widget, width, height)
+    return RightContainer:new{
+        dimen = Geom:new{ x = 0, y = 0, w = width, h = height },
+        allow_mirroring = false,
+        widget,
+    }
+end
+
 local function card(children, width, height, border_size)
     local border = border_size or S(2)
     local padding = S(12)
@@ -118,31 +182,136 @@ local function card(children, width, height, border_size)
     }
 end
 
-local function metric(label, value, width)
-    return VerticalGroup:new{
-        text_widget(label, 11, width, false),
+local WeatherIcon = Widget:extend{
+    width = S(34),
+    height = S(34),
+    kind = "sun",
+}
+
+function WeatherIcon:getSize()
+    return Geom:new{ x = 0, y = 0, w = self.width, h = self.height }
+end
+
+function WeatherIcon:paintSun(bb, x, y)
+    local cx = x + math.floor(self.width / 2)
+    local cy = y + math.floor(self.height / 2)
+    local radius = math.max(S(5), math.floor(self.width / 6))
+    local line = math.max(1, S(1))
+    local ray = math.max(S(4), math.floor(self.width / 7))
+    bb:paintCircle(cx, cy, radius, Blitbuffer.COLOR_BLACK, line)
+    bb:paintRect(cx - line, y, line * 2, ray, Blitbuffer.COLOR_BLACK)
+    bb:paintRect(cx - line, y + self.height - ray, line * 2, ray, Blitbuffer.COLOR_BLACK)
+    bb:paintRect(x, cy - line, ray, line * 2, Blitbuffer.COLOR_BLACK)
+    bb:paintRect(x + self.width - ray, cy - line, ray, line * 2, Blitbuffer.COLOR_BLACK)
+    for offset = 0, math.max(1, S(3)) do
+        bb:setPixelClamped(x + S(5) + offset, y + S(5) + offset, Blitbuffer.COLOR_BLACK)
+        bb:setPixelClamped(x + self.width - S(6) - offset, y + S(5) + offset, Blitbuffer.COLOR_BLACK)
+        bb:setPixelClamped(x + S(5) + offset, y + self.height - S(6) - offset, Blitbuffer.COLOR_BLACK)
+        bb:setPixelClamped(
+            x + self.width - S(6) - offset,
+            y + self.height - S(6) - offset,
+            Blitbuffer.COLOR_BLACK
+        )
+    end
+end
+
+function WeatherIcon:paintCloud(bb, x, y)
+    local base_y = y + math.floor(self.height * 0.58)
+    local left = x + S(4)
+    local width = self.width - S(8)
+    bb:paintCircle(left + S(7), base_y, S(6), Blitbuffer.COLOR_BLACK, S(2))
+    bb:paintCircle(left + S(14), base_y - S(4), S(8), Blitbuffer.COLOR_BLACK, S(2))
+    bb:paintCircle(left + S(22), base_y, S(6), Blitbuffer.COLOR_BLACK, S(2))
+    bb:paintRect(left + S(4), base_y + S(5), width - S(8), S(2), Blitbuffer.COLOR_BLACK)
+end
+
+function WeatherIcon:paintTo(bb, x, y)
+    self.dimen = Geom:new{ x = x, y = y, w = self.width, h = self.height }
+    if self.kind == "sun" then
+        self:paintSun(bb, x, y)
+        return
+    end
+    self:paintCloud(bb, x, y)
+    if self.kind == "rain" then
+        local rain_y = y + math.floor(self.height * 0.76)
+        for i = 0, 2 do
+            bb:paintRect(x + S(9) + i * S(7), rain_y, S(2), S(6), Blitbuffer.COLOR_BLACK)
+        end
+    elseif self.kind == "snow" then
+        local snow_y = y + math.floor(self.height * 0.82)
+        for i = 0, 2 do
+            local snow_x = x + S(9) + i * S(7)
+            bb:paintRect(snow_x - S(2), snow_y, S(5), S(1), Blitbuffer.COLOR_BLACK)
+            bb:paintRect(snow_x, snow_y - S(2), S(1), S(5), Blitbuffer.COLOR_BLACK)
+        end
+    end
+end
+
+local function weather_kind(weather)
+    local key = string.lower(text_value(weather.iconKey, ""))
+    local description = string.lower(text_value(weather.description, ""))
+    local combined = key .. " " .. description
+    if combined:find("snow", 1, true) or combined:find("雪", 1, true) then
+        return "snow"
+    elseif combined:find("rain", 1, true) or combined:find("shower", 1, true)
+            or combined:find("雨", 1, true) then
+        return "rain"
+    elseif combined:find("cloud", 1, true) or combined:find("overcast", 1, true)
+            or combined:find("阴", 1, true) or combined:find("云", 1, true) then
+        return "cloud"
+    end
+    return "sun"
+end
+
+local function metric(label, value, width, height)
+    local group = VerticalGroup:new{
+        align = "left",
+        text_widget(label, 10, width, false),
         spacer(S(2)),
-        text_widget(value, 14, width, true),
+        text_widget(value, 13, width, true),
     }
+    return left_cell(group, width, height)
 end
 
 local function quota_label(window)
     local name = text_value(window.name, "周")
-    if name:find("周") then
+    if name:find("周", 1, true) then
         return "周"
-    end
-    if name:find("月") then
+    elseif name:find("月", 1, true) then
         return "月"
     end
     return name
+end
+
+local function battery_capacity()
+    local ok, value = pcall(function()
+        return Device:getPowerDevice():getCapacity()
+    end)
+    if ok and tonumber(value) then
+        return math.max(0, math.min(100, math.floor(tonumber(value) + 0.5)))
+    end
+    return nil
+end
+
+local function device_status()
+    local capacity = battery_capacity()
+    local battery = capacity and ("电量 " .. capacity .. "%") or "电量 --"
+    local wifi = "Wi-Fi 关闭"
+    local ok_on, is_on = pcall(function() return NetworkMgr:isWifiOn() end)
+    if ok_on and is_on then
+        local ok_connected, connected = pcall(function() return NetworkMgr:isConnected() end)
+        wifi = ok_connected and connected and "Wi-Fi 在线" or "Wi-Fi 未联网"
+    end
+    return battery .. " · " .. wifi
 end
 
 local function quota_card(window, width, height)
     local inner_width = width - S(28)
     local used = number_or_nil(window.usedPct)
     local used_text = used and string.format("%d%% used", math.floor(used + 0.5)) or "-- used"
-    local provider_width = S(105)
-    local value_width = S(175)
+    local provider_width = S(110)
+    local value_width = S(190)
+    local row_height = S(35)
     local bar = ProgressWidget:new{
         width = inner_width,
         height = S(18),
@@ -156,24 +325,68 @@ local function quota_card(window, width, height)
         fillcolor = Blitbuffer.COLOR_BLACK,
     }
     local top_row = HorizontalGroup:new{
-        text_widget("QUOTA", 13, inner_width - provider_width, true),
-        HorizontalSpan:new{ width = inner_width - provider_width - S(5) },
-        text_widget("Codex", 13, provider_width, true),
+        allow_mirroring = false,
+        left_cell(
+            text_widget("QUOTA", 13, inner_width - provider_width, true),
+            inner_width - provider_width,
+            S(22)
+        ),
+        right_cell(text_widget("Codex", 13, provider_width, true), provider_width, S(22)),
     }
     local value_row = HorizontalGroup:new{
-        text_widget(quota_label(window), 14, inner_width - value_width - S(5), true),
-        HorizontalSpan:new{ width = inner_width - value_width - S(5) },
-        text_widget(used_text, 27, value_width, true),
+        allow_mirroring = false,
+        left_cell(
+            text_widget(quota_label(window), 14, inner_width - value_width, true),
+            inner_width - value_width,
+            row_height
+        ),
+        right_cell(text_widget(used_text, 27, value_width, true), value_width, row_height),
     }
     return card({
         top_row,
-        spacer(S(13)),
-        value_row,
-        spacer(S(10)),
-        bar,
         spacer(S(8)),
-        text_widget("Reset: " .. compact_timestamp(window.resetAt, true), 12, inner_width, false),
+        value_row,
+        spacer(S(8)),
+        bar,
+        spacer(S(7)),
+        text_widget("Reset: " .. compact_timestamp(window.resetAt, true), 11, inner_width, false),
     }, width, height)
+end
+
+local function load_cache()
+    local file = io.open(CACHE_FILE, "r")
+    if not file then
+        return nil
+    end
+    local body = file:read("*a")
+    file:close()
+    local ok, data = pcall(json.decode, body)
+    if ok and type(data) == "table" then
+        return data
+    end
+    return nil
+end
+
+local function save_cache(data)
+    local ok, encoded = pcall(json.encode, data)
+    if ok and type(encoded) == "string" then
+        return util.writeToFile(encoded, CACHE_FILE, true)
+    end
+    return false
+end
+
+local function capped_sink(target)
+    local received = 0
+    return function(chunk, err)
+        if chunk then
+            received = received + #chunk
+            if received > MAX_RESPONSE_BYTES then
+                return nil, "response too large"
+            end
+            target[#target + 1] = chunk
+        end
+        return 1, err
+    end
 end
 
 local DashboardView = InputContainer:extend{
@@ -188,13 +401,12 @@ function DashboardView:init()
     local gap = S(12)
     local content_width = screen_width - 2 * outer
     local data = self.data or {}
+    local state = self.view_state or {}
     local sources = data.sources or {}
     local codex = sources.codex or {}
     local weather = data.weather or {}
     local solar_date, lunar_date = calendar_text(data)
 
-    -- Fixed KPW1 landscape geometry. The same proportions remain usable in
-    -- portrait mode if KOReader restores the original rotation unexpectedly.
     local header_height = is_landscape and S(62) or S(78)
     local status_height = is_landscape and S(34) or S(38)
     local top_height = is_landscape and S(166) or S(182)
@@ -202,18 +414,25 @@ function DashboardView:init()
     local footer_height = S(31)
 
     local header_right_width = math.floor(content_width * 0.36)
-    local title_width = content_width - header_right_width - S(18)
+    local title_width = content_width - header_right_width
+    local right_header = VerticalGroup:new{
+        align = "right",
+        text_widget(os.date("%H:%M"), 21, header_right_width, true),
+        spacer(S(1)),
+        text_widget(solar_date, 10, header_right_width, true),
+        text_widget(lunar_date, 10, header_right_width, true),
+        text_widget(device_status(), 9, header_right_width, false),
+    }
     local header = is_landscape and fixed_content({
         HorizontalGroup:new{
-            text_widget("KINDLE AI QUOTA DASHBOARD", 19, title_width, true),
-            HorizontalSpan:new{ width = S(18) },
-            VerticalGroup:new{
-                text_widget(os.date("%H:%M"), 22, header_right_width, true),
-                spacer(S(2)),
-                text_widget(solar_date, 11, header_right_width, true),
-                spacer(S(1)),
-                text_widget(lunar_date, 11, header_right_width, true),
-            },
+            allow_mirroring = false,
+            left_cell(
+                text_widget("KINDLE AI QUOTA DASHBOARD", 19, title_width, true),
+                title_width,
+                header_height
+            ),
+            right_cell(right_header, header_right_width, header_height),
+        },
         },
         content_width,
         header_height
@@ -221,19 +440,24 @@ function DashboardView:init()
         text_widget("KINDLE AI QUOTA DASHBOARD", 18, content_width, true),
         spacer(S(3)),
         text_widget(os.date("%H:%M  ") .. solar_date, 13, content_width, true),
-        spacer(S(1)),
-        text_widget(lunar_date, 11, content_width, true),
+        text_widget(lunar_date .. " · " .. device_status(), 10, content_width, false),
     }, content_width, header_height)
 
-    local updated_time = compact_timestamp(data.updatedAt, true)
+    local last_success = state.last_success_at or data.updatedAt
     local status_text
-    if codex.ok == true or weather.ok == true then
-        status_text = "数据已同步 · 最后更新 " .. updated_time
+    if state.mode == "loading" then
+        status_text = "正在连接数据源…"
+    elseif state.mode == "cached" then
+        status_text = "正在使用离线缓存 · 更新 " .. compact_timestamp(last_success, true)
+            .. " · " .. age_text(last_success)
+    elseif state.mode == "error" then
+        status_text = "更新失败 · " .. text_value(state.message, "未知错误")
     else
-        status_text = "电脑或数据链路已离线 · 最后在线 " .. os.date("%H:%M")
+        status_text = "数据已同步 · 更新 " .. compact_timestamp(last_success, true)
+            .. " · " .. age_text(last_success)
     end
     local status = card({
-        text_widget(status_text, 11, content_width - S(22), true),
+        text_widget(status_text, 10, content_width - S(22), true),
     }, content_width, status_height, S(2))
 
     local card_gap = S(14)
@@ -247,41 +471,53 @@ function DashboardView:init()
     local weather_feels = "体感 " .. text_value(weather.feelsLikeC, "--") .. " C"
     local weather_humidity = "湿度 " .. text_value(weather.humidity, "--") .. "%"
     local weather_wind = "风 " .. text_value(weather.windKph, "--") .. " km/h"
-    local icon = weather.ok == true and "☼" or "○"
     local weather_title = HorizontalGroup:new{
-        text_widget(icon, 24, S(34), false),
-        HorizontalSpan:new{ width = S(8) },
-        text_widget(weather_place .. "  " .. weather_description, 16, inner_weather - S(42), true),
+        allow_mirroring = false,
+        left_cell(
+            WeatherIcon:new{ kind = weather_kind(weather) },
+            S(42),
+            S(34)
+        ),
+        left_cell(
+            text_widget(weather_place .. "  " .. weather_description, 16, inner_weather - S(42), true),
+            inner_weather - S(42),
+            S(34)
+        ),
     }
+    local metric_gap = S(12)
+    local metric_width = math.floor((inner_weather - metric_gap) / 2)
+    local metric_height = S(35)
     local weather_metrics_1 = HorizontalGroup:new{
-        metric("温度", weather_temp, math.floor((inner_weather - S(12)) / 2)),
-        HorizontalSpan:new{ width = S(12) },
-        metric("体感", weather_feels, math.floor((inner_weather - S(12)) / 2)),
+        allow_mirroring = false,
+        metric("温度", weather_temp, metric_width, metric_height),
+        HorizontalSpan:new{ width = metric_gap },
+        metric("体感", weather_feels, metric_width, metric_height),
     }
     local weather_metrics_2 = HorizontalGroup:new{
-        metric("湿度", weather_humidity, math.floor((inner_weather - S(12)) / 2)),
-        HorizontalSpan:new{ width = S(12) },
-        metric("风速", weather_wind, math.floor((inner_weather - S(12)) / 2)),
+        allow_mirroring = false,
+        metric("湿度", weather_humidity, metric_width, metric_height),
+        HorizontalSpan:new{ width = metric_gap },
+        metric("风速", weather_wind, metric_width, metric_height),
     }
     local now_card = card({
         text_widget("NOW", 13, inner_now, true),
-        spacer(S(14)),
+        spacer(S(11)),
         text_widget(os.date("%H:%M"), 37, inner_now, true),
-        spacer(S(3)),
-        text_widget(solar_date, 12, inner_now, true),
         spacer(S(2)),
-        text_widget(lunar_date, 12, inner_now, true),
+        text_widget(solar_date, 11, inner_now, true),
+        text_widget(lunar_date, 11, inner_now, true),
     }, now_width, top_height)
     local weather_card = card({
         text_widget("WEATHER", 13, inner_weather, true),
-        spacer(S(6)),
+        spacer(S(4)),
         weather_title,
-        spacer(S(6)),
+        spacer(S(4)),
         weather_metrics_1,
-        spacer(S(5)),
+        spacer(S(3)),
         weather_metrics_2,
     }, weather_width, top_height)
     local top_row = HorizontalGroup:new{
+        allow_mirroring = false,
         now_card,
         HorizontalSpan:new{ width = card_gap },
         weather_card,
@@ -295,27 +531,37 @@ function DashboardView:init()
             end
         end
     end
-    local quota = quota_window and quota_card(quota_window, content_width, quota_height) or card({
-        text_widget("QUOTA", 13, content_width - S(28), true),
-        spacer(S(14)),
-        text_widget("暂时无法取得额度数据", 17, content_width - S(28), true),
-    }, content_width, quota_height)
+    local quota
+    if quota_window then
+        quota = quota_card(quota_window, content_width, quota_height)
+    else
+        local reason = state.message or codex.error or "暂时无法取得额度数据"
+        quota = card({
+            text_widget("QUOTA", 13, content_width - S(28), true),
+            spacer(S(13)),
+            text_widget("暂时无法取得额度数据", 17, content_width - S(28), true),
+            spacer(S(5)),
+            text_widget(reason, 10, content_width - S(28), false),
+        }, content_width, quota_height)
+    end
 
+    local footer_updated = last_success or data.updatedAt
     local footer = fixed_content({
-        text_widget("更新: " .. compact_timestamp(data.updatedAt, false), 11, content_width, false),
-        spacer(S(3)),
-        text_widget("每 3 分钟自动刷新 · 点击屏幕关闭", 11, content_width, false),
+        text_widget(
+            "更新: " .. compact_timestamp(footer_updated, false) .. " · " .. age_text(footer_updated),
+            10,
+            content_width,
+            false
+        ),
+        spacer(S(2)),
+        text_widget("每 5 分钟检查更新 · 点击屏幕关闭", 10, content_width, false),
     }, content_width, footer_height)
 
     local children = { header, spacer(gap), status, spacer(gap), top_row, spacer(gap), quota }
-    local fixed_height = header_height + status_height + top_height + quota_height + footer_height + gap * 4
+    local fixed_height = header_height + status_height + top_height + quota_height + footer_height + gap * 3
     local available_height = screen_height - 2 * outer
     local bottom_fill = available_height - fixed_height
-    if bottom_fill > 0 then
-        table.insert(children, spacer(bottom_fill))
-    else
-        table.insert(children, spacer(gap))
-    end
+    table.insert(children, spacer(bottom_fill > 0 and bottom_fill or gap))
     table.insert(children, footer)
 
     self.dimen = Geom:new{ x = 0, y = 0, w = screen_width, h = screen_height }
@@ -340,7 +586,9 @@ function DashboardView:init()
             range = function() return self.dimen end,
         }
     }
-    UIManager:setDirty(self, function() return "ui", self.dimen end)
+    UIManager:setDirty(self, function()
+        return self.refresh_type or "ui", self.dimen
+    end)
 end
 
 function DashboardView:onTapClose()
@@ -369,6 +617,13 @@ local AiQuota = WidgetContainer:extend{
     refresh_task = nil,
     rotation_mode_backup = nil,
     rebuilding = false,
+    request_sequence = 0,
+    refresh_count = 0,
+    last_good_data = nil,
+    last_signature = nil,
+    last_render_at = 0,
+    etag = nil,
+    last_modified = nil,
 }
 
 function AiQuota:onDispatcherRegisterActions()
@@ -381,6 +636,7 @@ function AiQuota:onDispatcherRegisterActions()
 end
 
 function AiQuota:init()
+    self.last_good_data = load_cache()
     self:onDispatcherRegisterActions()
     self.ui.menu:registerToMainMenu(self)
 end
@@ -389,12 +645,16 @@ function AiQuota:addToMainMenu(menu_items)
     menu_items.ai_quota_dashboard = {
         text = _("AI quota dashboard"),
         sorting_hint = "more_tools",
-        callback = function() self:refresh() end,
+        callback = function() self:openDashboard() end,
     }
 end
 
 function AiQuota:onAIQuotaRefresh()
-    self:refresh()
+    if self.dashboard_message then
+        self:refresh(false)
+    else
+        self:openDashboard()
+    end
 end
 
 function AiQuota:stopAutoRefresh()
@@ -404,15 +664,23 @@ function AiQuota:stopAutoRefresh()
     end
 end
 
+function AiQuota:refreshInterval()
+    local capacity = battery_capacity()
+    if capacity and capacity <= 15 then
+        return LOW_BATTERY_REFRESH_SECONDS
+    end
+    return REFRESH_SECONDS
+end
+
 function AiQuota:startAutoRefresh()
     self:stopAutoRefresh()
     self.refresh_task = function()
         self.refresh_task = nil
         if self.dashboard_message then
-            self:refresh()
+            self:refresh(true)
         end
     end
-    UIManager:scheduleIn(REFRESH_SECONDS, self.refresh_task)
+    UIManager:scheduleIn(self:refreshInterval(), self.refresh_task)
 end
 
 function AiQuota:enterLandscape()
@@ -433,7 +701,24 @@ function AiQuota:restoreRotation()
     self.rotation_mode_backup = nil
 end
 
-function AiQuota:showDashboard(data)
+function AiQuota:dataSignature(data, state)
+    return table.concat({
+        text_value(data and data.updatedAt, ""),
+        text_value(state and state.mode, ""),
+        text_value(state and state.message, ""),
+    }, "|")
+end
+
+function AiQuota:showDashboard(data, view_state, force)
+    data = data or {}
+    view_state = view_state or { mode = "online" }
+    local signature = self:dataSignature(data, view_state)
+    if not force and self.dashboard_message and signature == self.last_signature
+            and os.time() - self.last_render_at < 900 then
+        self:startAutoRefresh()
+        return
+    end
+
     if self.dashboard_message then
         self.rebuilding = true
         UIManager:close(self.dashboard_message)
@@ -441,56 +726,147 @@ function AiQuota:showDashboard(data)
         self.rebuilding = false
     end
     self:enterLandscape()
-    local message = DashboardView:new{
+    self.refresh_count = self.refresh_count + 1
+    local refresh_type = self.refresh_count % 4 == 0 and "full" or "ui"
+    local message
+    message = DashboardView:new{
         data = data,
+        view_state = view_state,
+        refresh_type = refresh_type,
         on_close = function()
             if self.dashboard_message == message then
                 self.dashboard_message = nil
                 self:stopAutoRefresh()
             end
             if not self.rebuilding then
+                self.request_sequence = self.request_sequence + 1
                 self:restoreRotation()
             end
         end,
     }
     self.dashboard_message = message
+    self.last_signature = signature
+    self.last_render_at = os.time()
     UIManager:show(message)
     self:startAutoRefresh()
 end
 
-function AiQuota:showError(message)
-    self:showDashboard{
-        updatedAt = os.date("%Y-%m-%d %H:%M:%S"),
-        sources = { codex = { ok = false } },
-        weather = { ok = false, place = "扬州" },
-        quote = { text = message },
-    }
+function AiQuota:showCachedError(message)
+    if self.last_good_data then
+        self:showDashboard(self.last_good_data, {
+            mode = "error",
+            message = message,
+            last_success_at = self.last_good_data.updatedAt,
+        })
+    else
+        self:showDashboard({
+            updatedAt = nil,
+            sources = { codex = { ok = false, error = message } },
+            weather = { ok = false, place = "扬州" },
+        }, {
+            mode = "error",
+            message = message,
+        })
+    end
 end
 
-function AiQuota:fetchAndShow()
+function AiQuota:openDashboard()
+    if self.last_good_data then
+        self:showDashboard(self.last_good_data, {
+            mode = "cached",
+            last_success_at = self.last_good_data.updatedAt,
+        }, true)
+    else
+        self:showDashboard({
+            sources = { codex = { ok = false } },
+            weather = { ok = false, place = "扬州" },
+        }, {
+            mode = "loading",
+        }, true)
+    end
+    self:refresh(false)
+end
+
+function AiQuota:fetchAndShow(request_id)
     local body = {}
-    local url = self.endpoint .. "?t=" .. tostring(os.time())
-    local ok, code = http.request{
-        url = url,
-        method = "GET",
-        sink = ltn12.sink.table(body),
+    local request_headers = {
+        ["accept"] = "application/json",
+        ["cache-control"] = "no-cache",
     }
+    if self.etag then
+        request_headers["if-none-match"] = self.etag
+    end
+    if self.last_modified then
+        request_headers["if-modified-since"] = self.last_modified
+    end
+
+    socketutil:set_timeout(REQUEST_BLOCK_TIMEOUT, REQUEST_TOTAL_TIMEOUT)
+    local request_ok, ok, code, headers = pcall(http.request, {
+        url = self.endpoint,
+        method = "GET",
+        headers = request_headers,
+        sink = capped_sink(body),
+    })
+    socketutil:reset_timeout()
+
+    if request_id ~= self.request_sequence or not self.dashboard_message then
+        return
+    end
+    if not request_ok then
+        self:showCachedError("网络请求异常")
+        return
+    end
+    if tonumber(code) == 304 and self.last_good_data then
+        self:showDashboard(self.last_good_data, {
+            mode = "online",
+            last_success_at = self.last_good_data.updatedAt,
+        })
+        return
+    end
     if not ok or tonumber(code) ~= 200 then
-        self:showError("网络请求失败：HTTP " .. text_value(code, "error"))
+        self:showCachedError("网络请求失败：HTTP " .. text_value(code, "error"))
         return
     end
 
     local decoded, data = pcall(json.decode, table.concat(body))
     if not decoded or type(data) ~= "table" then
-        self:showError("收到的数据无法读取")
+        self:showCachedError("收到的数据无法读取")
         return
     end
-    self:showDashboard(data)
+    if type(data.sources) ~= "table" or type(data.sources.codex) ~= "table" then
+        self:showCachedError("数据格式不完整")
+        return
+    end
+
+    if type(headers) == "table" then
+        self.etag = headers.etag or headers.ETag
+        self.last_modified = headers["last-modified"] or headers["Last-Modified"]
+    end
+    self.last_good_data = data
+    save_cache(data)
+    self:showDashboard(data, {
+        mode = "online",
+        last_success_at = data.updatedAt,
+    })
 end
 
-function AiQuota:refresh()
+function AiQuota:refresh(is_automatic)
+    if is_automatic then
+        local ok, connected = pcall(function() return NetworkMgr:isConnected() end)
+        if not ok or not connected then
+            self:showCachedError("Wi-Fi 未联网")
+            self:startAutoRefresh()
+            return
+        end
+    end
+
+    self.request_sequence = self.request_sequence + 1
+    local request_id = self.request_sequence
     NetworkMgr:runWhenOnline(function()
-        Trapper:wrap(function() self:fetchAndShow() end)
+        if request_id ~= self.request_sequence or not self.dashboard_message then
+            return
+        end
+        Trapper:wrap(function() self:fetchAndShow(request_id) end)
     end)
 end
 
