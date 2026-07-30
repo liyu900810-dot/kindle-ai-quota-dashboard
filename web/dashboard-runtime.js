@@ -121,9 +121,14 @@
 
   function updateClock() {
     var now = new Date();
-    ui.text('dtTime', twoDigits(now.getHours()) + ':' + twoDigits(now.getMinutes()));
-    ui.text('dtDate', now.getFullYear() + '年' + (now.getMonth() + 1) + '月' + now.getDate() + '日');
-    ui.text('dtWeek', weekdays[now.getDay()]);
+    var time = twoDigits(now.getHours()) + ':' + twoDigits(now.getMinutes());
+    var calendar = state.latest && state.latest.calendar;
+    ui.text('clock', time);
+    ui.text('dtTime', time);
+    ui.text('solarDate', calendar && calendar.solar || formatDate(now));
+    ui.text('lunarDate', calendar && calendar.lunar || '农历日期');
+    ui.text('dtDate', calendar && calendar.solar || formatDate(now));
+    ui.text('dtLunar', calendar && calendar.lunar || '农历日期');
     updateFreshness();
   }
 
@@ -174,9 +179,9 @@
 
   function windowTitle(value) {
     var name = String(value || '');
-    if (/5小时|5H/i.test(name)) return '5H QUOTA';
-    if (/7天|周|WEEK/i.test(name)) return 'WEEKLY';
-    if (/月|MONTH/i.test(name)) return 'MONTHLY';
+    if (/5小时|5H/i.test(name)) return '5小时';
+    if (/7天|周|WEEK/i.test(name)) return '周';
+    if (/月|MONTH/i.test(name)) return '月';
     return name || 'QUOTA';
   }
 
@@ -259,31 +264,50 @@
 
   function selectWeatherIcon(key, description) {
     var text = (String(key || '') + ' ' + String(description || '')).toLowerCase();
-    if (/thunder|雷/.test(text)) return 'ϟ';
-    if (/snow|雪/.test(text)) return '❄';
-    if (/rain|wet|雨/.test(text)) return '☂';
-    if (/fog|mist|haze|雾/.test(text)) return '≋';
-    if (/clear|sun|晴/.test(text)) return '☀';
-    return '☁';
+    if (/thunder|雷/.test(text)) return 'thunder';
+    if (/snow|雪/.test(text)) return 'snow';
+    if (/rain|wet|雨/.test(text)) return 'rain';
+    if (/fog|mist|haze|雾/.test(text)) return 'fog';
+    if (/clear|sun|晴/.test(text)) return 'clear';
+    return 'cloud';
+  }
+
+  function weatherIconSvg(key, description) {
+    var icon = selectWeatherIcon(key, description);
+    var start = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" focusable="false">';
+    var end = '</svg>';
+    if (icon === 'clear') {
+      return start + '<circle cx="24" cy="24" r="8"/><path d="M24 4v7M24 37v7M4 24h7M37 24h7M9.9 9.9l5 5M33.1 33.1l5 5M38.1 9.9l-5 5M14.9 33.1l-5 5"/>' + end;
+    }
+    if (icon === 'rain') {
+      return start + '<path d="M10 25h25c4 0 7-3 7-7s-3-7-7-7h-1a11 11 0 0 0-21 3h-3c-4 0-7 3-7 7s3 4 7 4Z"/><path d="M16 33l-3 6M25 33l-3 6M34 33l-3 6"/>' + end;
+    }
+    if (icon === 'snow') {
+      return start + '<path d="M10 25h25c4 0 7-3 7-7s-3-7-7-7h-1a11 11 0 0 0-21 3h-3c-4 0-7 3-7 7s3 4 7 4Z"/><path d="M16 33v10M12 35l8 6M20 35l-8 6M31 33v10M27 35l8 6M35 35l-8 6"/>' + end;
+    }
+    if (icon === 'fog') {
+      return start + '<path d="M7 18h34M4 25h40M8 32h32M14 39h20"/>' + end;
+    }
+    if (icon === 'thunder') {
+      return start + '<path d="M10 25h25c4 0 7-3 7-7s-3-7-7-7h-1a11 11 0 0 0-21 3h-3c-4 0-7 3-7 7s3 4 7 4Z"/><path d="M26 29l-6 9h5l-3 7 8-11h-5l5-5Z"/>' + end;
+    }
+    return start + '<path d="M10 25h25c4 0 7-3 7-7s-3-7-7-7h-1a11 11 0 0 0-21 3h-3c-4 0-7 3-7 7s3 4 7 4Z"/>' + end;
+  }
+
+  function rounded(value, fallback) {
+    var number = Number(value);
+    return isFinite(number) ? String(Math.round(number)) : fallback;
   }
 
   function updateWeather(weather) {
     if (!weather || !weather.ok) return;
-    ui.text('weatherTemp', Math.round(Number(weather.tempC)) + '°');
-    ui.html(
-      ui.find('weatherIcon'),
-      '<span style="font-size:30px;line-height:1">' +
-        selectWeatherIcon(weather.iconKey, weather.description) +
-      '</span>'
-    );
-    ui.html(
-      ui.find('weatherDetail'),
-      String(weather.description || '天气') +
-        ' · 体感 ' + Math.round(Number(weather.feelsLikeC)) +
-        '° · 湿度 ' + Math.round(Number(weather.humidity)) +
-        '%<br>风 ' + Math.round(Number(weather.windKph)) +
-        'km/h · ' + String(weather.place || '北京')
-    );
+    ui.text('weatherCity', weather.place || '扬州');
+    ui.text('weatherDescription', weather.description || 'Sunny');
+    ui.text('weatherTemp', rounded(weather.tempC, '--') + ' C');
+    ui.text('weatherFeels', '体感 ' + rounded(weather.feelsLikeC, '--') + ' C');
+    ui.text('weatherHumidity', '湿度 ' + rounded(weather.humidity, '--') + '%');
+    ui.text('weatherWind', '风 ' + rounded(weather.windKph, '--') + ' km/h');
+    ui.html(ui.find('weatherIcon'), weatherIconSvg(weather.iconKey, weather.description));
   }
 
   function updateBalance(source) {
@@ -297,11 +321,15 @@
   }
 
   function updateQuote(quote) {
-    if (!quote || !quote.text) return;
-    ui.textNode(doc.querySelector('.quote-text'), quote.text);
-    if (quote.source) {
-      ui.textNode(doc.querySelector('.quote-src'), '— ' + quote.source);
+    var card = ui.find('quoteCard');
+    if (!card) return;
+    if (!quote || !quote.text) {
+      card.hidden = true;
+      return;
     }
+    card.hidden = false;
+    ui.text('quoteText', quote.text);
+    ui.text('quoteSource', quote.source ? '— ' + quote.source : '');
   }
 
   function present(data) {
@@ -312,6 +340,7 @@
     state.latest = data;
     if (data.updatedAt !== state.renderedAt) {
       state.renderedAt = data.updatedAt;
+      updateClock();
       updateWeather(data.weather);
       updateQuotaCard('cardClaude', data.sources.claude);
       updateQuotaCard('cardCodex', data.sources.codex);
