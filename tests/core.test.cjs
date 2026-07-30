@@ -7,6 +7,7 @@ const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 const test = require('node:test');
 const {
+  calendarSnapshot,
   demoSnapshot,
   preserveLastKnownGood,
   validateSnapshot,
@@ -20,6 +21,13 @@ test('demo snapshot passes the public schema', () => {
   assert.doesNotThrow(() => validateSnapshot(snapshot));
   assert.equal(snapshot.weather.place, '示例城市');
   assert.equal(snapshot.sources.deepseek.balance, 12.34);
+});
+
+test('calendar snapshot formats solar and lunar dates in Chinese', () => {
+  assert.deepEqual(calendarSnapshot(new Date('2026-07-30T00:00:00+08:00')), {
+    solar: '2026年7月30日 星期四',
+    lunar: '农历六月十七',
+  });
 });
 
 test('last known good data is preserved only for enabled failing providers', () => {

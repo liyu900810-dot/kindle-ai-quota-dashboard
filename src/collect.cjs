@@ -16,6 +16,27 @@ const {
 
 const SOURCE_NAMES = ['claude', 'codex', 'kimi', 'deepseek'];
 
+function calendarSnapshot(value = new Date()) {
+  const date = value instanceof Date ? value : new Date(value);
+  if (!Number.isFinite(date.getTime())) return null;
+  const solarParts = new Intl.DateTimeFormat('zh-CN', {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    weekday: 'long',
+    timeZone: 'Asia/Shanghai',
+  }).formatToParts(date);
+  const lunarParts = new Intl.DateTimeFormat('zh-CN-u-ca-chinese', {
+    dateStyle: 'full',
+    timeZone: 'Asia/Shanghai',
+  }).formatToParts(date);
+  const part = (parts, type) => parts.find((item) => item.type === type)?.value || '';
+  return {
+    solar: `${part(solarParts, 'year')}年${part(solarParts, 'month')}月${part(solarParts, 'day')}日 ${part(solarParts, 'weekday')}`,
+    lunar: `农历${part(lunarParts, 'month')}${part(lunarParts, 'day')}`,
+  };
+}
+
 function readQuote(filePath) {
   if (!filePath) return null;
   try {
@@ -162,6 +183,7 @@ function demoSnapshot() {
   const afterHours = (hours) => isoBeijing(Date.now() + hours * 60 * 60 * 1000);
   return {
     updatedAt: now,
+    calendar: calendarSnapshot(),
     weather: {
       ok: true,
       description: '晴',
@@ -231,6 +253,7 @@ async function realSnapshot(config) {
   ]);
   return {
     updatedAt: isoBeijing(),
+    calendar: calendarSnapshot(),
     weather: config.weatherFile
       ? readWeather(config.weatherFile)
       : await readRemoteWeather(config.weatherPlace, config.weatherLabel),
@@ -325,6 +348,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  calendarSnapshot,
   demoSnapshot,
   preserveLastKnownGood,
   readQuote,
