@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-07-31T13:37:32.932+08:00",
+  "updatedAt": "2026-07-31T13:42:07.656+08:00",
   "calendar": {
     "solar": "2026年7月31日 星期五",
     "lunar": "农历六月十八"
@@ -73,49 +73,25 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-07-31T13:30:00+08:00",
-    "fetchedAt": "2026-07-31T13:37:32.950+08:00",
+    "fetchedAt": "2026-07-31T13:42:07.671+08:00",
     "source": "open-meteo",
     "error": null
   },
   "quote": null,
   "todo": {
     "ok": true,
-    "source": "notion-fallback",
-    "items": [
-      {
-        "title": "检查 Kindle 新版界面",
-        "dueAt": null,
-        "dueLabel": "今天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "完成 Notion 待办数据源授权",
-        "dueAt": null,
-        "dueLabel": "明天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "补充个人待办事项",
-        "dueAt": null,
-        "dueLabel": "本周",
-        "priority": "普通",
-        "pinned": false
-      }
-    ],
-    "totalOpen": 3,
-    "fetchedAt": "2026-07-31T13:37:32.368+08:00",
-    "error": "Notion 请求失败（HTTP 400）：path failed validation: path.data_source_id should be a valid uuid, instead was `\"真实的数据源ID\"`.",
-    "stale": true,
-    "lastAttemptAt": "2026-07-31T13:37:31.952+08:00"
+    "source": "notion",
+    "items": [],
+    "totalOpen": 0,
+    "fetchedAt": "2026-07-31T13:42:06.619+08:00",
+    "error": null
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-07-31T13:37:31.934+08:00",
+      "fetchedAt": "2026-07-31T13:42:06.593+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -129,14 +105,14 @@ window.DASH_DATA = {
           "resetAt": "2026-08-05T13:13:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-07-31T13:37:31.935+08:00",
+      "fetchedAt": "2026-07-31T13:42:06.594+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-07-31T13:37:31.952+08:00",
+      "fetchedAt": "2026-07-31T13:42:06.617+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -146,7 +122,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-07-31T13:37:31.952+08:00",
+      "fetchedAt": "2026-07-31T13:42:06.618+08:00",
       "error": "未启用",
       "disabled": true
     }
