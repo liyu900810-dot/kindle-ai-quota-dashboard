@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-07-31T18:12:31.858+08:00",
+  "updatedAt": "2026-07-31T18:17:31.883+08:00",
   "calendar": {
     "solar": "2026年7月31日 星期五",
     "lunar": "农历六月十八"
@@ -9,9 +9,9 @@ window.DASH_DATA = {
     "ok": true,
     "description": "晴",
     "iconKey": "clear",
-    "tempC": 32.5,
-    "feelsLikeC": 38,
-    "humidity": 64,
+    "tempC": 32.2,
+    "feelsLikeC": 37.6,
+    "humidity": 66,
     "windKph": 8,
     "windDir": "南风",
     "isDay": 1,
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-07-31T18:00:00+08:00",
-    "fetchedAt": "2026-07-31T18:12:31.869+08:00",
+    "observedAt": "2026-07-31T18:15:00+08:00",
+    "fetchedAt": "2026-07-31T18:17:31.897+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -83,13 +83,6 @@ window.DASH_DATA = {
     "source": "notion",
     "items": [
       {
-        "title": "与笨笨一起设置非诉行政审查、执行异议案由由毕庭专办",
-        "dueAt": "2026-07-31",
-        "dueLabel": "今天",
-        "priority": "普通",
-        "pinned": false
-      },
-      {
         "title": "联系建行分期提前结清",
         "dueAt": "2026-08-01",
         "dueLabel": "明天",
@@ -97,8 +90,8 @@ window.DASH_DATA = {
         "pinned": false
       }
     ],
-    "totalOpen": 2,
-    "fetchedAt": "2026-07-31T18:12:30.924+08:00",
+    "totalOpen": 1,
+    "fetchedAt": "2026-07-31T18:17:31.061+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +99,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-07-31T18:12:30.913+08:00",
+      "fetchedAt": "2026-07-31T18:17:31.048+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -120,14 +113,14 @@ window.DASH_DATA = {
           "resetAt": "2026-08-05T13:13:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-07-31T18:12:30.913+08:00",
+      "fetchedAt": "2026-07-31T18:17:31.049+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-07-31T18:12:30.923+08:00",
+      "fetchedAt": "2026-07-31T18:17:31.061+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -137,7 +130,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-07-31T18:12:30.924+08:00",
+      "fetchedAt": "2026-07-31T18:17:31.061+08:00",
       "error": "未启用",
       "disabled": true
     }
