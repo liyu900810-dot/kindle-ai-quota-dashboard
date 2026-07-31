@@ -266,6 +266,8 @@
 
   function selectWeatherIcon(key, description) {
     var text = (String(key || '') + ' ' + String(description || '')).toLowerCase();
+    if (/unknown|未知/.test(text)) return 'unknown';
+    if (/clear-night/.test(text)) return 'moon';
     if (/thunder|雷/.test(text)) return 'thunder';
     if (/snow|雪/.test(text)) return 'snow';
     if (/rain|wet|雨/.test(text)) return 'rain';
@@ -278,6 +280,12 @@
     var icon = selectWeatherIcon(key, description);
     var start = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" focusable="false">';
     var end = '</svg>';
+    if (icon === 'moon') {
+      return start + '<path d="M34 34A16 16 0 0 1 21 8a16 16 0 1 0 13 26Z"/>' + end;
+    }
+    if (icon === 'unknown') {
+      return start + '<circle cx="24" cy="24" r="18"/><path d="M18 18a7 7 0 1 1 9 7c-3 1-3 3-3 5M24 37h.1"/>' + end;
+    }
     if (icon === 'clear') {
       return start + '<circle cx="24" cy="24" r="8"/><path d="M24 4v7M24 37v7M4 24h7M37 24h7M9.9 9.9l5 5M33.1 33.1l5 5M38.1 9.9l-5 5M14.9 33.1l-5 5"/>' + end;
     }
@@ -297,6 +305,7 @@
   }
 
   function rounded(value, fallback) {
+    if (value === null || value === undefined || value === '') return fallback;
     var number = Number(value);
     return isFinite(number) ? String(Math.round(number)) : fallback;
   }
@@ -308,7 +317,14 @@
     ui.text('weatherTemp', rounded(weather.tempC, '--') + ' C');
     ui.text('weatherFeels', '体感 ' + rounded(weather.feelsLikeC, '--') + ' C');
     ui.text('weatherHumidity', '湿度 ' + rounded(weather.humidity, '--') + '%');
-    ui.text('weatherWind', '风 ' + rounded(weather.windKph, '--') + ' km/h');
+    ui.text(
+      'weatherWind',
+      (weather.windDir || '风') + ' ' + rounded(weather.windKph, '--') + ' km/h'
+    );
+    ui.text(
+      'weatherSource',
+      'Weather: Open-Meteo' + (weather.stale ? ' · 缓存' : '')
+    );
     ui.html(ui.find('weatherIcon'), weatherIconSvg(weather.iconKey, weather.description));
   }
 

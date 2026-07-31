@@ -121,7 +121,7 @@ npm run serve
 
 ## 天气
 
-天气默认从 wttr.in 获取，不需要 API Key。在 `config.json` 中设置 `weatherPlace`（查询城市）和 `weatherLabel`（显示名称），例如扬州：
+天气默认从 Open-Meteo 获取，不需要 API Key。在 `config.json` 中设置城市、显示名称和坐标，例如扬州：
 
 ```json
 "weatherPlace": "Yangzhou",
@@ -133,7 +133,11 @@ npm run serve
 
 默认使用 Open-Meteo 获取当前天气和逐小时预报。KOReader 天气卡片会从当前小时开始，
 按 `+2、+4、+6、+8、+10、+12` 小时抽取 6 个分时节点。配置经纬度可以省去每次
-城市定位请求；未配置时会通过城市名自动定位。
+城市定位请求；未配置时会通过城市名自动定位。卡片会区分昼夜图标、标记跨日时段，
+并在降雨概率达到 10% 时显示百分比。
+
+天气数据来自 [Open-Meteo](https://open-meteo.com/)，依据
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) 使用。
 
 如果设置了 `weatherFile`，则优先读取本地 JSON 文件；格式可以参考
 `examples/weather.example.json`，其中 `forecast` 最多读取 6 条。

@@ -107,6 +107,20 @@ body { padding: 18px; }
 
 .lunar-line { margin-top: 5px; color: var(--dark-gray); }
 
+.weather-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.weather-card-header a {
+  color: var(--black);
+  font-size: 10px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
 .weather-heading {
   display: flex;
   align-items: center;

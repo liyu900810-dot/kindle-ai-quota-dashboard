@@ -45,6 +45,7 @@ test('hourly weather samples the next 12 hours in two-hour steps', () => {
     time: Array.from({ length: 13 }, (_, index) => `2026-07-30T${String(10 + index).padStart(2, '0')}:00`),
     temperature_2m: Array.from({ length: 13 }, (_, index) => 20 + index),
     weather_code: Array.from({ length: 13 }, (_, index) => index % 2),
+    is_day: Array.from({ length: 13 }, (_, index) => index >= 7 ? 1 : 0),
     precipitation_probability: Array.from({ length: 13 }, (_, index) => index * 2),
   };
   const forecast = buildHourlyForecast(hourly);
@@ -58,8 +59,17 @@ test('hourly weather samples the next 12 hours in two-hour steps', () => {
     '2026-07-30T22:00',
   ]);
   assert.deepEqual(forecast.map((item) => item.tempC), [22, 24, 26, 28, 30, 32]);
+  assert.deepEqual(forecast.map((item) => item.isDay), [0, 0, 0, 1, 1, 1]);
   assert.deepEqual(weatherCodeDetails(0), { description: '晴', iconKey: 'clear' });
+  assert.deepEqual(weatherCodeDetails(0, 0), { description: '晴', iconKey: 'clear-night' });
+  assert.deepEqual(weatherCodeDetails(null), { description: '未知', iconKey: 'unknown' });
   assert.deepEqual(weatherCodeDetails(61), { description: '雨', iconKey: 'rain' });
+});
+
+test('weather schema rejects malformed hourly forecast data', () => {
+  const snapshot = demoSnapshot();
+  snapshot.weather.forecast[0].time = 'not-a-time';
+  assert.throws(() => validateSnapshot(snapshot), /weather\.forecast/);
 });
 
 test('last known good data is preserved only for enabled failing providers', () => {

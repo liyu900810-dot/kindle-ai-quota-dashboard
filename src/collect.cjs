@@ -16,6 +16,7 @@ const {
 } = require('./lib/common.cjs');
 
 const SOURCE_NAMES = ['claude', 'codex', 'kimi', 'deepseek'];
+const SNAPSHOT_SCHEMA_VERSION = 3;
 
 function calendarSnapshot(value = new Date()) {
   const date = value instanceof Date ? value : new Date(value);
@@ -52,6 +53,12 @@ function readQuote(filePath) {
   }
 }
 
+function finiteNumber(value) {
+  if (value === null || value === undefined || value === '') return null;
+  const number = Number(value);
+  return Number.isFinite(number) ? number : null;
+}
+
 function readWeather(filePath) {
   const fetchedAt = isoBeijing();
   if (!filePath) {
@@ -64,6 +71,7 @@ function readWeather(filePath) {
       humidity: null,
       windKph: null,
       windDir: null,
+      isDay: null,
       forecast: [],
       place: null,
       observedAt: null,
@@ -77,11 +85,12 @@ function readWeather(filePath) {
       ok: true,
       description: String(value.description || '天气').slice(0, 20),
       iconKey: String(value.iconKey || 'cloudy').slice(0, 30),
-      tempC: Number.isFinite(Number(value.tempC)) ? Number(value.tempC) : null,
-      feelsLikeC: Number.isFinite(Number(value.feelsLikeC)) ? Number(value.feelsLikeC) : null,
-      humidity: Number.isFinite(Number(value.humidity)) ? Number(value.humidity) : null,
-      windKph: Number.isFinite(Number(value.windKph)) ? Number(value.windKph) : null,
+      tempC: finiteNumber(value.tempC),
+      feelsLikeC: finiteNumber(value.feelsLikeC),
+      humidity: finiteNumber(value.humidity),
+      windKph: finiteNumber(value.windKph),
       windDir: String(value.windDir || '').slice(0, 20),
+      isDay: value.isDay === 0 || value.isDay === 1 ? value.isDay : null,
       forecast: normalizeHourlyForecast(value.forecast),
       place: String(value.place || '').slice(0, 30),
       observedAt: isoBeijing(value.observedAt) || fetchedAt,
@@ -98,6 +107,7 @@ function readWeather(filePath) {
       humidity: null,
       windKph: null,
       windDir: null,
+      isDay: null,
       forecast: [],
       place: null,
       observedAt: null,
@@ -107,9 +117,15 @@ function readWeather(filePath) {
   }
 }
 
-function weatherCodeDetails(value) {
+function weatherCodeDetails(value, isDay = 1) {
+  if (value === null || value === undefined || value === '') {
+    return { description: '未知', iconKey: 'unknown' };
+  }
   const code = Number(value);
-  if (code === 0) return { description: '晴', iconKey: 'clear' };
+  if (!Number.isFinite(code)) return { description: '未知', iconKey: 'unknown' };
+  if (code === 0) {
+    return { description: '晴', iconKey: Number(isDay) === 0 ? 'clear-night' : 'clear' };
+  }
   if ([1, 2].includes(code)) return { description: '多云', iconKey: 'cloudy' };
   if (code === 3) return { description: '阴', iconKey: 'cloudy' };
   if ([45, 48].includes(code)) return { description: '雾', iconKey: 'fog' };
@@ -124,8 +140,8 @@ function weatherCodeDetails(value) {
 }
 
 function windDirectionLabel(value) {
-  const degrees = Number(value);
-  if (!Number.isFinite(degrees)) return '';
+  const degrees = finiteNumber(value);
+  if (degrees === null) return '';
   const directions = ['北风', '东北风', '东风', '东南风', '南风', '西南风', '西风', '西北风'];
   return directions[Math.round((((degrees % 360) + 360) % 360) / 45) % directions.length];
 }
@@ -133,18 +149,20 @@ function windDirectionLabel(value) {
 function normalizeHourlyForecast(value) {
   if (!Array.isArray(value)) return [];
   return value.slice(0, 6).map((item) => {
-    const details = weatherCodeDetails(item?.weatherCode ?? item?.code);
+    const rawCode = item?.weatherCode ?? item?.code;
+    const isDay = item?.isDay === 0 || item?.isDay === 1 ? item.isDay : null;
+    const details = weatherCodeDetails(rawCode, isDay);
     return {
       time: String(item?.time || '').slice(0, 25),
-      tempC: Number.isFinite(Number(item?.tempC)) ? Number(item.tempC) : null,
-      weatherCode: Number.isFinite(Number(item?.weatherCode ?? item?.code))
-        ? Number(item?.weatherCode ?? item?.code)
+      tempC: finiteNumber(item?.tempC),
+      weatherCode: rawCode !== null && rawCode !== undefined && rawCode !== ''
+        && Number.isFinite(Number(rawCode))
+        ? Number(rawCode)
         : null,
+      isDay,
       description: String(item?.description || details.description).slice(0, 12),
       iconKey: String(item?.iconKey || details.iconKey).slice(0, 20),
-      precipitationProbability: Number.isFinite(Number(item?.precipitationProbability))
-        ? Number(item.precipitationProbability)
-        : null,
+      precipitationProbability: finiteNumber(item?.precipitationProbability),
     };
   });
 }
@@ -154,20 +172,18 @@ function buildHourlyForecast(hourly) {
   const items = [];
   for (let index = 2; index <= 12; index += 2) {
     if (!hourly.time[index]) continue;
-    const details = weatherCodeDetails(hourly.weather_code?.[index]);
+    const isDay = hourly.is_day?.[index] === 0 || hourly.is_day?.[index] === 1
+      ? hourly.is_day[index]
+      : null;
+    const details = weatherCodeDetails(hourly.weather_code?.[index], isDay);
     items.push({
       time: String(hourly.time[index]).slice(0, 25),
-      tempC: Number.isFinite(Number(hourly.temperature_2m?.[index]))
-        ? Number(hourly.temperature_2m[index])
-        : null,
-      weatherCode: Number.isFinite(Number(hourly.weather_code?.[index]))
-        ? Number(hourly.weather_code[index])
-        : null,
+      tempC: finiteNumber(hourly.temperature_2m?.[index]),
+      weatherCode: finiteNumber(hourly.weather_code?.[index]),
+      isDay,
       description: details.description,
       iconKey: details.iconKey,
-      precipitationProbability: Number.isFinite(Number(hourly.precipitation_probability?.[index]))
-        ? Number(hourly.precipitation_probability[index])
-        : null,
+      precipitationProbability: finiteNumber(hourly.precipitation_probability?.[index]),
     });
   }
   return items;
@@ -222,6 +238,7 @@ async function readRemoteWeather(place, label, options = {}) {
       humidity: null,
       windKph: null,
       windDir: null,
+      isDay: null,
       forecast: [],
       place: null,
       observedAt: null,
@@ -236,11 +253,11 @@ async function readRemoteWeather(place, label, options = {}) {
     url.searchParams.set('longitude', String(location.longitude));
     url.searchParams.set(
       'current',
-      'temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,wind_direction_10m',
+      'temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,wind_direction_10m,is_day',
     );
     url.searchParams.set(
       'hourly',
-      'temperature_2m,weather_code,precipitation_probability',
+      'temperature_2m,weather_code,precipitation_probability,is_day',
     );
     url.searchParams.set('forecast_hours', '13');
     url.searchParams.set('timezone', location.timezone);
@@ -251,8 +268,9 @@ async function readRemoteWeather(place, label, options = {}) {
     if (!response.ok) throw new Error(`天气请求失败（HTTP ${response.status}）`);
     const value = await response.json();
     const current = value?.current || {};
-    const number = (field) => Number.isFinite(Number(current[field])) ? Number(current[field]) : null;
-    const details = weatherCodeDetails(current.weather_code);
+    const number = (field) => finiteNumber(current[field]);
+    const isDay = current.is_day === 0 || current.is_day === 1 ? current.is_day : null;
+    const details = weatherCodeDetails(current.weather_code, isDay);
     return {
       ok: true,
       description: details.description,
@@ -262,6 +280,7 @@ async function readRemoteWeather(place, label, options = {}) {
       humidity: number('relative_humidity_2m'),
       windKph: number('wind_speed_10m'),
       windDir: windDirectionLabel(current.wind_direction_10m),
+      isDay,
       forecast: buildHourlyForecast(value?.hourly),
       place: String(label || place).slice(0, 30),
       observedAt: localWeatherTimestamp(current.time, location.timezone) || fetchedAt,
@@ -279,6 +298,7 @@ async function readRemoteWeather(place, label, options = {}) {
       humidity: null,
       windKph: null,
       windDir: null,
+      isDay: null,
       forecast: [],
       place: String(label || place).slice(0, 30),
       observedAt: null,
@@ -292,6 +312,7 @@ function demoSnapshot() {
   const now = isoBeijing();
   const afterHours = (hours) => isoBeijing(Date.now() + hours * 60 * 60 * 1000);
   return {
+    schemaVersion: SNAPSHOT_SCHEMA_VERSION,
     updatedAt: now,
     calendar: calendarSnapshot(),
     weather: {
@@ -303,13 +324,14 @@ function demoSnapshot() {
       humidity: 55,
       windKph: 8,
       windDir: '东南风',
+      isDay: 1,
       forecast: [
-        { time: afterHours(2), tempC: 25, weatherCode: 1, description: '多云', iconKey: 'cloudy', precipitationProbability: 10 },
-        { time: afterHours(4), tempC: 24, weatherCode: 0, description: '晴', iconKey: 'clear', precipitationProbability: 0 },
-        { time: afterHours(6), tempC: 24, weatherCode: 0, description: '晴', iconKey: 'clear', precipitationProbability: 0 },
-        { time: afterHours(8), tempC: 26, weatherCode: 1, description: '多云', iconKey: 'cloudy', precipitationProbability: 5 },
-        { time: afterHours(10), tempC: 29, weatherCode: 2, description: '多云', iconKey: 'cloudy', precipitationProbability: 10 },
-        { time: afterHours(12), tempC: 31, weatherCode: 61, description: '雨', iconKey: 'rain', precipitationProbability: 40 },
+        { time: afterHours(2), tempC: 25, weatherCode: 1, isDay: 1, description: '多云', iconKey: 'cloudy', precipitationProbability: 10 },
+        { time: afterHours(4), tempC: 24, weatherCode: 0, isDay: 0, description: '晴', iconKey: 'clear-night', precipitationProbability: 0 },
+        { time: afterHours(6), tempC: 24, weatherCode: 0, isDay: 0, description: '晴', iconKey: 'clear-night', precipitationProbability: 0 },
+        { time: afterHours(8), tempC: 26, weatherCode: 1, isDay: 1, description: '多云', iconKey: 'cloudy', precipitationProbability: 5 },
+        { time: afterHours(10), tempC: 29, weatherCode: 2, isDay: 1, description: '多云', iconKey: 'cloudy', precipitationProbability: 10 },
+        { time: afterHours(12), tempC: 31, weatherCode: 61, isDay: 1, description: '雨', iconKey: 'rain', precipitationProbability: 40 },
       ],
       place: '示例城市',
       observedAt: now,
@@ -383,6 +405,7 @@ async function realSnapshot(config) {
     collectTodo(config.todo),
   ]);
   return {
+    schemaVersion: SNAPSHOT_SCHEMA_VERSION,
     updatedAt: isoBeijing(),
     calendar: calendarSnapshot(),
     weather: config.weatherFile
@@ -451,11 +474,59 @@ function preserveLastKnownGood(snapshot, previous) {
 }
 
 function validateSnapshot(snapshot) {
-  if (!snapshot || typeof snapshot.updatedAt !== 'string' || !snapshot.sources) {
+  if (
+    !snapshot
+    || snapshot.schemaVersion !== SNAPSHOT_SCHEMA_VERSION
+    || typeof snapshot.updatedAt !== 'string'
+    || !snapshot.sources
+  ) {
     throw new Error('快照缺少 updatedAt 或 sources');
   }
   if (!snapshot.weather || typeof snapshot.weather.ok !== 'boolean') {
     throw new Error('快照缺少 weather');
+  }
+  if (snapshot.weather.ok) {
+    if (
+      snapshot.weather.tempC === null
+      || snapshot.weather.tempC === undefined
+      || snapshot.weather.tempC === ''
+      || !Number.isFinite(Number(snapshot.weather.tempC))
+      || typeof snapshot.weather.description !== 'string'
+      || !snapshot.weather.description
+      || typeof snapshot.weather.iconKey !== 'string'
+      || !snapshot.weather.iconKey
+      || (
+        snapshot.weather.isDay !== null
+        && snapshot.weather.isDay !== 0
+        && snapshot.weather.isDay !== 1
+      )
+    ) {
+      throw new Error('weather 当前天气格式不完整');
+    }
+    if (!Array.isArray(snapshot.weather.forecast) || snapshot.weather.forecast.length > 6) {
+      throw new Error('weather.forecast 必须是最多 6 项的数组');
+    }
+    for (const item of snapshot.weather.forecast) {
+      if (
+        !item
+        || typeof item.time !== 'string'
+        || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(item.time)
+        || (item.tempC !== null && !Number.isFinite(Number(item.tempC)))
+        || typeof item.iconKey !== 'string'
+        || !item.iconKey
+        || (item.isDay !== null && item.isDay !== 0 && item.isDay !== 1)
+        || (
+          item.precipitationProbability !== null
+          && (
+            !Number.isFinite(Number(item.precipitationProbability))
+            || Number(item.precipitationProbability) < 0
+            || Number(item.precipitationProbability) > 100
+          )
+        )
+      ) {
+        throw new Error('weather.forecast 项格式不完整');
+      }
+    }
   }
   if (!snapshot.todo || typeof snapshot.todo.ok !== 'boolean' || !Array.isArray(snapshot.todo.items)) {
     throw new Error('快照缺少 todo');

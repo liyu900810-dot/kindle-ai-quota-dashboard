@@ -27,7 +27,7 @@ test('KOReader plugin protects network requests and preserves cached data', () =
   assert.match(main, /request_url = self\.endpoint .* "_=" \.\. tostring\(os\.time\(\)\)/);
 });
 
-test('KOReader plugin is e-ink aware and includes v6.2 metadata', () => {
+test('KOReader plugin is e-ink aware and includes v6.3 metadata', () => {
   assert.match(main, /REFRESH_SECONDS = 300/);
   assert.match(main, /refresh_count % 4 == 0 and "full" or "ui"/);
   assert.match(main, /function WeatherIcon:paintTo/);
@@ -36,8 +36,11 @@ test('KOReader plugin is e-ink aware and includes v6.2 metadata', () => {
   assert.match(main, /local function todo_card/);
   assert.match(main, /local function hourly_forecast_strip/);
   assert.match(main, /for index = 1, 6 do/);
-  assert.match(main, /math\.min\(5, #items\)/);
+  assert.match(main, /displayed_count = math\.min\(5, #items\)/);
+  assert.match(main, /function WeatherIcon:paintMoon/);
+  assert.match(main, /Open-Meteo/);
+  assert.match(main, /validate_dashboard_data/);
+  assert.match(main, /refresh_seconds/);
   assert.doesNotMatch(main, /local footer = fixed_content/);
-  assert.match(main, /自动刷新 · 每 5 分钟/);
-  assert.match(meta, /version = "6\.2\.0"/);
+  assert.match(meta, /version = "6\.3\.0"/);
 });

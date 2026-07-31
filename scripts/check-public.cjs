@@ -2,18 +2,9 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const { execFileSync } = require('node:child_process');
 const { ROOT } = require('../src/lib/config.cjs');
 
-const ignoredDirs = new Set([
-  '.git',
-  'dist',
-  'history',
-  'logs',
-  'node_modules',
-  'release',
-  'state',
-]);
-const ignoredFiles = new Set(['package-lock.json']);
 const forbiddenNames = [
   /^data\.(?:json|js)$/i,
   /\.jsonl$/i,
@@ -21,6 +12,10 @@ const forbiddenNames = [
   /\.kpkg$/i,
   /^config\.json$/i,
 ];
+const textExtensions = new Set([
+  '', '.cjs', '.css', '.html', '.js', '.json', '.lua', '.md', '.ps1', '.sh',
+  '.txt', '.yml', '.yaml',
+]);
 const contentPatterns = [
   { label: 'Windows 私人用户目录', regex: /[A-Za-z]:\\Users\\[^\\\r\n]+\\/i },
   { label: 'macOS/Linux 私人用户目录', regex: /\/(?:Users|home)\/[^/\r\n]+\//i },
@@ -32,23 +27,31 @@ const contentPatterns = [
   },
 ];
 
-function walk(dir) {
-  const output = [];
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (entry.isDirectory() && ignoredDirs.has(entry.name)) continue;
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) output.push(...walk(fullPath));
-    else if (!ignoredFiles.has(entry.name)) output.push(fullPath);
-  }
-  return output;
+function trackedFiles() {
+  const output = execFileSync('git', ['ls-files', '-z'], {
+    cwd: ROOT,
+    encoding: 'utf8',
+    windowsHide: true,
+  });
+  return output
+    .split('\0')
+    .filter(Boolean)
+    .map((relative) => path.join(ROOT, relative))
+    .filter((filePath) => fs.existsSync(filePath) && fs.statSync(filePath).isFile());
 }
 
 const problems = [];
-for (const filePath of walk(ROOT)) {
+for (const filePath of trackedFiles()) {
   const relative = path.relative(ROOT, filePath);
   if (relative === path.join('scripts', 'check-public.cjs')) continue;
   const inExamples = relative.startsWith(`examples${path.sep}`);
-  if (!inExamples && forbiddenNames.some((pattern) => pattern.test(path.basename(filePath)))) {
+  const publishedRuntime = relative.startsWith(`dist${path.sep}`)
+    && /^data\.(?:json|js)$/i.test(path.basename(filePath));
+  if (
+    !inExamples
+    && !publishedRuntime
+    && forbiddenNames.some((pattern) => pattern.test(path.basename(filePath)))
+  ) {
     problems.push(`${relative}: 不应进入公开仓库的运行产物`);
     continue;
   }
@@ -56,6 +59,7 @@ for (const filePath of walk(ROOT)) {
     problems.push(`${relative}: 文件超过 2 MiB，需人工确认`);
     continue;
   }
+  if (!textExtensions.has(path.extname(filePath).toLowerCase())) continue;
   const content = fs.readFileSync(filePath, 'utf8');
   for (const item of contentPatterns) {
     if (item.regex.test(content)) problems.push(`${relative}: ${item.label}`);

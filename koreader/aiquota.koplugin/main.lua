@@ -1,5 +1,5 @@
 -- AI Quota Dashboard for KOReader
--- Version 6.2: KPW1 landscape layout with a 12-hour, two-hourly weather strip.
+-- Version 6.3: KPW1 dashboard with day/night forecast, stale status and stronger validation.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local CenterContainer = require("ui/widget/container/centercontainer")
@@ -36,6 +36,7 @@ local LOW_BATTERY_REFRESH_SECONDS = 900
 local REQUEST_BLOCK_TIMEOUT = 8
 local REQUEST_TOTAL_TIMEOUT = 15
 local MAX_RESPONSE_BYTES = 256 * 1024
+local DATA_SCHEMA_VERSION = 3
 local CACHE_FILE = DataStorage:getDataDir() .. "/aiquota-dashboard-cache.json"
 local S = function(value) return Screen:scaleBySize(value) end
 
@@ -227,6 +228,36 @@ function WeatherIcon:paintSun(bb, x, y)
     end
 end
 
+function WeatherIcon:paintMoon(bb, x, y)
+    local cx = x + math.floor(self.width * 0.46)
+    local cy = y + math.floor(self.height * 0.50)
+    local radius = math.max(3, math.floor(math.min(self.width, self.height) * 0.34))
+    bb:paintCircle(cx, cy, radius, Blitbuffer.COLOR_BLACK)
+    bb:paintCircle(
+        cx + math.max(2, math.floor(radius * 0.48)),
+        cy - math.max(1, math.floor(radius * 0.18)),
+        math.max(2, math.floor(radius * 0.82)),
+        Blitbuffer.COLOR_WHITE
+    )
+end
+
+function WeatherIcon:paintUnknown(bb, x, y)
+    local cx = x + math.floor(self.width / 2)
+    local cy = y + math.floor(self.height / 2)
+    local radius = math.max(3, math.floor(math.min(self.width, self.height) * 0.34))
+    local line = math.max(1, math.floor(self.width * 0.07))
+    bb:paintCircle(cx, cy, radius, Blitbuffer.COLOR_BLACK, line)
+    bb:paintRect(
+        cx - math.floor(line / 2),
+        cy - math.floor(radius * 0.52),
+        line,
+        math.max(2, math.floor(radius * 0.60)),
+        Blitbuffer.COLOR_BLACK
+    )
+    bb:paintRect(cx - math.floor(line / 2), cy + math.floor(radius * 0.42), line, line,
+        Blitbuffer.COLOR_BLACK)
+end
+
 function WeatherIcon:paintCloud(bb, x, y)
     local base_y = y + math.floor(self.height * 0.58)
     local line = math.max(1, math.floor(self.width * 0.06))
@@ -266,6 +297,12 @@ function WeatherIcon:paintTo(bb, x, y)
     self.dimen = Geom:new{ x = x, y = y, w = self.width, h = self.height }
     if self.kind == "sun" then
         self:paintSun(bb, x, y)
+        return
+    elseif self.kind == "moon" then
+        self:paintMoon(bb, x, y)
+        return
+    elseif self.kind == "unknown" then
+        self:paintUnknown(bb, x, y)
         return
     end
     self:paintCloud(bb, x, y)
@@ -338,11 +375,29 @@ function TodoBox:paintTo(bb, x, y)
     bb:paintRect(x + self.width - line, y, line, self.height, Blitbuffer.COLOR_BLACK)
 end
 
+local ForecastDivider = Widget:extend{
+    width = S(1),
+    height = S(49),
+}
+
+function ForecastDivider:getSize()
+    return Geom:new{ x = 0, y = 0, w = self.width, h = self.height }
+end
+
+function ForecastDivider:paintTo(bb, x, y)
+    self.dimen = Geom:new{ x = x, y = y, w = self.width, h = self.height }
+    bb:paintRect(x, y, self.width, self.height, Blitbuffer.COLOR_BLACK)
+end
+
 local function weather_kind(weather)
     local key = string.lower(text_value(weather.iconKey, ""))
     local description = string.lower(text_value(weather.description, ""))
     local combined = key .. " " .. description
-    if combined:find("thunder", 1, true) or combined:find("雷", 1, true) then
+    if combined:find("unknown", 1, true) or combined:find("未知", 1, true) then
+        return "unknown"
+    elseif combined:find("clear-night", 1, true) then
+        return "moon"
+    elseif combined:find("thunder", 1, true) or combined:find("雷", 1, true) then
         return "rain"
     elseif combined:find("snow", 1, true) or combined:find("雪", 1, true) then
         return "snow"
@@ -360,15 +415,28 @@ local function weather_kind(weather)
 end
 
 local function forecast_time(value)
-    local time = text_value(value, ""):match("T(%d%d:%d%d)")
-    return time or "--:--"
+    local date, time = text_value(value, ""):match("^(%d%d%d%d%-%d%d%-%d%d)T(%d%d:%d%d)")
+    if not time then
+        return "--:--"
+    end
+    local today = os.date("%Y-%m-%d")
+    local tomorrow = os.date("%Y-%m-%d", os.time() + 24 * 60 * 60)
+    if date == tomorrow then
+        return "明" .. time:sub(1, 2)
+    elseif date ~= today then
+        return date:sub(6) .. " " .. time:sub(1, 2)
+    end
+    return time
 end
 
 local function forecast_cell(item, width, height)
-    local padding = S(2)
-    local border = S(1)
-    local inner_width = width - 2 * (padding + border)
-    local inner_height = height - 2 * (padding + border)
+    local inner_width = width
+    local inner_height = height
+    local rain = tonumber(item and item.precipitationProbability)
+    local bottom_text = rounded_text(item and item.tempC) .. "C"
+    if rain and rain >= 10 then
+        bottom_text = bottom_text .. " " .. rounded_text(rain) .. "%"
+    end
     local content = VerticalGroup:new{
         align = "center",
         text_widget(forecast_time(item and item.time), 9, inner_width, true),
@@ -379,19 +447,11 @@ local function forecast_cell(item, width, height)
             height = S(18),
         },
         spacer(S(1)),
-        text_widget(rounded_text(item and item.tempC) .. " C", 10, inner_width, true),
+        text_widget(bottom_text, 9, inner_width, true),
     }
-    return FrameContainer:new{
-        width = width,
-        height = height,
-        padding = padding,
-        bordersize = border,
-        color = Blitbuffer.COLOR_BLACK,
-        background = Blitbuffer.COLOR_WHITE,
-        CenterContainer:new{
-            dimen = Geom:new{ x = 0, y = 0, w = inner_width, h = inner_height },
-            content,
-        },
+    return CenterContainer:new{
+        dimen = Geom:new{ x = 0, y = 0, w = inner_width, h = inner_height },
+        content,
     }
 end
 
@@ -404,15 +464,34 @@ local function hourly_forecast_strip(forecast, width, height)
             height
         )
     end
+    local border = S(1)
+    local inner_width = width - border * 2
+    local inner_height = height - border * 2
+    local divider_width = S(1)
+    local cells_width = inner_width - divider_width * 5
     local children = { allow_mirroring = false }
-    local base_width = math.floor(width / 6)
+    local base_width = math.floor(cells_width / 6)
     local used_width = 0
     for index = 1, 6 do
-        local cell_width = index == 6 and (width - used_width) or base_width
-        table.insert(children, forecast_cell(values[index] or {}, cell_width, height))
+        local cell_width = index == 6 and (cells_width - used_width) or base_width
+        table.insert(children, forecast_cell(values[index] or {}, cell_width, inner_height))
         used_width = used_width + cell_width
+        if index < 6 then
+            table.insert(children, ForecastDivider:new{
+                width = divider_width,
+                height = inner_height,
+            })
+        end
     end
-    return HorizontalGroup:new(children)
+    return FrameContainer:new{
+        width = width,
+        height = height,
+        padding = 0,
+        bordersize = border,
+        color = Blitbuffer.COLOR_BLACK,
+        background = Blitbuffer.COLOR_WHITE,
+        HorizontalGroup:new(children),
+    }
 end
 
 local function quota_label(window)
@@ -445,6 +524,15 @@ local function device_status()
         wifi = ok_connected and connected and "Wi-Fi 在线" or "Wi-Fi 未联网"
     end
     return battery .. " · " .. wifi
+end
+
+local function refresh_minutes(seconds)
+    local value = tonumber(seconds) or REFRESH_SECONDS
+    return math.max(1, math.floor(value / 60 + 0.5))
+end
+
+local function timestamp_time(value)
+    return text_value(value, ""):match("[T ](%d%d:%d%d)") or "--:--"
 end
 
 local function quota_card(window, width, height)
@@ -522,12 +610,13 @@ local function todo_card(todo, width, height)
     local row_gap = S(8)
     local due_width = S(76)
     local title_width = inner_width - box_width - row_gap - due_width
+    local displayed_count = math.min(5, #items)
 
     if #items == 0 then
         table.insert(children, spacer(S(10)))
         table.insert(children, text_widget("暂无待办 · 可在 Notion 中添加", 13, inner_width, true))
     else
-        for index = 1, math.min(5, #items) do
+        for index = 1, displayed_count do
             local item = items[index] or {}
             local title = text_value(item.title, "未命名事项")
             if text_value(item.priority, "") == "高" then
@@ -543,9 +632,9 @@ local function todo_card(todo, width, height)
                     due_width, row_height),
             })
         end
-        if total > #items then
+        if total > displayed_count then
             table.insert(children, text_widget(
-                string.format("另有 %d 项未显示", total - #items),
+                string.format("另有 %d 项未显示", total - displayed_count),
                 9,
                 inner_width,
                 false
@@ -575,6 +664,37 @@ local function save_cache(data)
         return util.writeToFile(encoded, CACHE_FILE, true)
     end
     return false
+end
+
+local function validate_dashboard_data(data)
+    if type(data) ~= "table" or tonumber(data.schemaVersion) ~= DATA_SCHEMA_VERSION then
+        return false, "数据版本不兼容"
+    end
+    if type(data.updatedAt) ~= "string"
+            or type(data.sources) ~= "table"
+            or type(data.sources.codex) ~= "table" then
+        return false, "额度数据格式不完整"
+    end
+    if type(data.weather) ~= "table" or type(data.weather.ok) ~= "boolean" then
+        return false, "天气数据格式不完整"
+    end
+    if data.weather.ok then
+        if type(data.weather.forecast) ~= "table" or #data.weather.forecast > 6 then
+            return false, "分时预报格式不完整"
+        end
+        for _, item in ipairs(data.weather.forecast) do
+            if type(item) ~= "table"
+                    or type(item.time) ~= "string"
+                    or (item.tempC ~= nil and tonumber(item.tempC) == nil)
+                    or type(item.iconKey) ~= "string" then
+                return false, "分时预报内容不可用"
+            end
+        end
+    end
+    if type(data.todo) ~= "table" or type(data.todo.items) ~= "table" then
+        return false, "待办数据格式不完整"
+    end
+    return true
 end
 
 local function capped_sink(target)
@@ -609,6 +729,7 @@ function DashboardView:init()
     local weather = data.weather or {}
     local todo = data.todo or {}
     local solar_date, lunar_date = calendar_text(data)
+    local refresh_min = refresh_minutes(state.refresh_seconds)
 
     local header_height = is_landscape and S(50) or S(68)
     local status_height = is_landscape and S(42) or S(42)
@@ -622,7 +743,7 @@ function DashboardView:init()
         align = "right",
         text_widget(device_status(), 11, header_right_width, true),
         spacer(S(3)),
-        text_widget("自动刷新 · 每 5 分钟", 9, header_right_width, false),
+        text_widget("自动刷新 · 每 " .. refresh_min .. " 分钟", 9, header_right_width, false),
     }
     local header = is_landscape and fixed_content({
         HorizontalGroup:new{
@@ -640,7 +761,8 @@ function DashboardView:init()
     ) or fixed_content({
         text_widget("KINDLE AI QUOTA DASHBOARD", 18, content_width, true),
         spacer(S(3)),
-        text_widget(device_status() .. " · 每 5 分钟刷新", 10, content_width, false),
+        text_widget(device_status() .. " · 每 " .. refresh_min .. " 分钟刷新",
+            10, content_width, false),
     }, content_width, header_height)
 
     local last_success = state.last_success_at or data.updatedAt
@@ -653,7 +775,8 @@ function DashboardView:init()
     elseif state.mode == "error" then
         status_text = "更新失败 · " .. text_value(state.message, "未知错误")
     else
-        status_text = "数据已同步 · " .. age_text(last_success) .. " · 下次检查 5 分钟"
+        status_text = "数据已同步 · " .. age_text(last_success)
+            .. " · 下次检查 " .. refresh_min .. " 分钟"
     end
     local status = card({
         text_widget(status_text, 10, content_width - S(22), true),
@@ -670,6 +793,28 @@ function DashboardView:init()
     local weather_feels = rounded_text(weather.feelsLikeC) .. " C"
     local weather_humidity = rounded_text(weather.humidity) .. "%"
     local weather_wind = rounded_text(weather.windKph) .. " km/h"
+    local weather_wind_dir = text_value(weather.windDir, "")
+    if weather_wind_dir == "-" then
+        weather_wind_dir = ""
+    end
+    local weather_source = "Open-Meteo"
+    if weather.stale then
+        weather_source = weather_source .. " · 缓存 " .. timestamp_time(weather.fetchedAt)
+    end
+    local source_width = S(190)
+    local weather_header = HorizontalGroup:new{
+        allow_mirroring = false,
+        left_cell(
+            text_widget("WEATHER", 13, inner_weather - source_width, true),
+            inner_weather - source_width,
+            S(20)
+        ),
+        right_cell(
+            text_widget(weather_source, 8, source_width, weather.stale == true),
+            source_width,
+            S(20)
+        ),
+    }
     local weather_title = HorizontalGroup:new{
         allow_mirroring = false,
         left_cell(
@@ -686,7 +831,7 @@ function DashboardView:init()
     local weather_metrics = "温 " .. weather_temp
         .. " · 体感 " .. weather_feels
         .. " · 湿度 " .. weather_humidity
-        .. " · 风 " .. weather_wind
+        .. " · " .. weather_wind_dir .. " " .. weather_wind
     local forecast_strip = hourly_forecast_strip(weather.forecast, inner_weather, S(55))
     local now_card = card({
         text_widget("NOW", 13, inner_now, true),
@@ -697,7 +842,7 @@ function DashboardView:init()
         text_widget(lunar_date, 11, inner_now, true),
     }, now_width, top_height)
     local weather_card = card({
-        text_widget("WEATHER", 13, inner_weather, true),
+        weather_header,
         spacer(S(2)),
         weather_title,
         spacer(S(1)),
@@ -896,12 +1041,14 @@ function AiQuota:dataSignature(data, state)
         text_value(data and data.updatedAt, ""),
         text_value(state and state.mode, ""),
         text_value(state and state.message, ""),
+        text_value(state and state.refresh_seconds, ""),
     }, "|")
 end
 
 function AiQuota:showDashboard(data, view_state, force)
     data = data or {}
     view_state = view_state or { mode = "online" }
+    view_state.refresh_seconds = self:refreshInterval()
     local signature = self:dataSignature(data, view_state)
     if not force and self.dashboard_message and signature == self.last_signature
             and os.time() - self.last_render_at < 900 then
@@ -1025,8 +1172,9 @@ function AiQuota:fetchAndShow(request_id)
         self:showCachedError("收到的数据无法读取")
         return
     end
-    if type(data.sources) ~= "table" or type(data.sources.codex) ~= "table" then
-        self:showCachedError("数据格式不完整")
+    local valid, validation_error = validate_dashboard_data(data)
+    if not valid then
+        self:showCachedError(validation_error)
         return
     end
 
