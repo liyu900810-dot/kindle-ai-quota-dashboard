@@ -1,5 +1,5 @@
 -- AI Quota Dashboard for KOReader
--- Version 6.4: wider split weather card, compact time card and three-row to-do layout.
+-- Version 6.5: compact vertical layout with three fully visible to-do rows.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local CenterContainer = require("ui/widget/container/centercontainer")
@@ -542,10 +542,10 @@ local function quota_card(window, width, height)
     local right_inset = S(16)
     local provider_width = S(104)
     local value_width = S(176)
-    local row_height = S(35)
+    local row_height = S(30)
     local bar = ProgressWidget:new{
         width = inner_width,
-        height = S(18),
+        height = S(14),
         percentage = used and used / 100 or 0,
         bordersize = S(2),
         margin_h = S(3),
@@ -583,11 +583,11 @@ local function quota_card(window, width, height)
     }
     return card({
         top_row,
-        spacer(S(8)),
+        spacer(S(5)),
         value_row,
-        spacer(S(8)),
+        spacer(S(5)),
         bar,
-        spacer(S(7)),
+        spacer(S(5)),
         text_widget("Reset: " .. compact_timestamp(window.resetAt, true), 11, inner_width, false),
     }, width, height)
 end
@@ -714,8 +714,8 @@ function DashboardView:init()
     local screen_width = Screen:getWidth()
     local screen_height = Screen:getHeight()
     local is_landscape = screen_width > screen_height
-    local outer = is_landscape and S(26) or S(18)
-    local gap = S(12)
+    local outer = is_landscape and S(14) or S(18)
+    local gap = is_landscape and S(8) or S(12)
     local content_width = screen_width - 2 * outer
     local data = self.data or {}
     local state = self.view_state or {}
@@ -726,11 +726,11 @@ function DashboardView:init()
     local solar_date, lunar_date = calendar_text(data)
     local refresh_min = refresh_minutes(state.refresh_seconds)
 
-    local header_height = is_landscape and S(50) or S(68)
-    local status_height = is_landscape and S(42) or S(42)
-    local top_height = is_landscape and S(166) or S(182)
-    local quota_height = is_landscape and S(145) or S(174)
-    local todo_height = is_landscape and S(185) or S(205)
+    local header_height = is_landscape and S(44) or S(68)
+    local status_height = is_landscape and S(34) or S(42)
+    local top_height = is_landscape and S(156) or S(182)
+    local quota_height = is_landscape and S(132) or S(174)
+    local todo_height = is_landscape and S(210) or S(205)
 
     local header_right_width = math.floor(content_width * 0.36)
     local title_width = content_width - header_right_width
@@ -810,12 +810,11 @@ function DashboardView:init()
             S(20)
         ),
     }
-    local weather_body_height = S(110)
-    local weather_body_gap = S(9)
-    local weather_divider_width = S(2)
+    local weather_body_height = S(104)
+    local weather_body_gap = S(12)
     local current_weather_width = math.floor(inner_weather * 0.34)
     local forecast_width = inner_weather - current_weather_width
-        - weather_body_gap * 2 - weather_divider_width
+        - weather_body_gap
     local weather_title = HorizontalGroup:new{
         allow_mirroring = false,
         left_cell(
@@ -864,7 +863,7 @@ function DashboardView:init()
     local forecast_strip = hourly_forecast_strip(
         weather.forecast,
         forecast_width,
-        S(82)
+        S(76)
     )
     local forecast_panel = fixed_content({
         text_widget("未来 12 小时 · 每 2 小时", 10, forecast_width, true),
@@ -874,11 +873,6 @@ function DashboardView:init()
     local weather_body = HorizontalGroup:new{
         allow_mirroring = false,
         current_weather,
-        HorizontalSpan:new{ width = weather_body_gap },
-        ForecastDivider:new{
-            width = weather_divider_width,
-            height = weather_body_height,
-        },
         HorizontalSpan:new{ width = weather_body_gap },
         forecast_panel,
     }
