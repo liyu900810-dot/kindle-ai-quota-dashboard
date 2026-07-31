@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-07-31T13:32:33.032+08:00",
+  "updatedAt": "2026-07-31T13:37:32.932+08:00",
   "calendar": {
     "solar": "2026年7月31日 星期五",
     "lunar": "农历六月十八"
@@ -73,7 +73,7 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-07-31T13:30:00+08:00",
-    "fetchedAt": "2026-07-31T13:32:33.053+08:00",
+    "fetchedAt": "2026-07-31T13:37:32.950+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -105,17 +105,17 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-07-31T13:32:32.426+08:00",
+    "fetchedAt": "2026-07-31T13:37:32.368+08:00",
     "error": "Notion 请求失败（HTTP 400）：path failed validation: path.data_source_id should be a valid uuid, instead was `\"真实的数据源ID\"`.",
     "stale": true,
-    "lastAttemptAt": "2026-07-31T13:32:31.992+08:00"
+    "lastAttemptAt": "2026-07-31T13:37:31.952+08:00"
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-07-31T13:32:31.971+08:00",
+      "fetchedAt": "2026-07-31T13:37:31.934+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -129,14 +129,14 @@ window.DASH_DATA = {
           "resetAt": "2026-08-05T13:13:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-07-31T13:32:31.973+08:00",
+      "fetchedAt": "2026-07-31T13:37:31.935+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-07-31T13:32:31.991+08:00",
+      "fetchedAt": "2026-07-31T13:37:31.952+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -146,7 +146,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-07-31T13:32:31.992+08:00",
+      "fetchedAt": "2026-07-31T13:37:31.952+08:00",
       "error": "未启用",
       "disabled": true
     }
