@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-07-31T13:17:32.973+08:00",
+  "updatedAt": "2026-07-31T13:22:34.013+08:00",
   "calendar": {
     "solar": "2026年7月31日 星期五",
     "lunar": "农历六月十八"
@@ -73,14 +73,14 @@
     ],
     "place": "扬州",
     "observedAt": "2026-07-31T13:15:00+08:00",
-    "fetchedAt": "2026-07-31T13:17:32.990+08:00",
+    "fetchedAt": "2026-07-31T13:22:34.029+08:00",
     "source": "open-meteo",
     "error": null
   },
   "quote": null,
   "todo": {
     "ok": true,
-    "source": "file",
+    "source": "notion-fallback",
     "items": [
       {
         "title": "检查 Kindle 新版界面",
@@ -105,15 +105,17 @@
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-07-31T13:17:31.912+08:00",
-    "error": null
+    "fetchedAt": "2026-07-31T13:22:33.040+08:00",
+    "error": "Notion 请求失败（HTTP 400）：path failed validation: path.data_source_id should be a valid uuid, instead was `\"真实的数据源ID\"`.",
+    "stale": true,
+    "lastAttemptAt": "2026-07-31T13:22:32.380+08:00"
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-07-31T13:17:31.895+08:00",
+      "fetchedAt": "2026-07-31T13:22:32.358+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -127,14 +129,14 @@
           "resetAt": "2026-08-05T13:13:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-07-31T13:17:31.896+08:00",
+      "fetchedAt": "2026-07-31T13:22:32.360+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-07-31T13:17:31.912+08:00",
+      "fetchedAt": "2026-07-31T13:22:32.380+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -144,7 +146,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-07-31T13:17:31.912+08:00",
+      "fetchedAt": "2026-07-31T13:22:32.380+08:00",
       "error": "未启用",
       "disabled": true
     }
