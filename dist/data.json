@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-07-31T18:04:45.142+08:00",
+  "updatedAt": "2026-07-31T18:06:08.142+08:00",
   "calendar": {
     "solar": "2026年7月31日 星期五",
     "lunar": "农历六月十八"
@@ -73,49 +73,40 @@
     ],
     "place": "扬州",
     "observedAt": "2026-07-31T18:00:00+08:00",
-    "fetchedAt": "2026-07-31T18:04:45.155+08:00",
+    "fetchedAt": "2026-07-31T18:06:08.155+08:00",
     "source": "open-meteo",
     "error": null
   },
   "quote": null,
   "todo": {
     "ok": true,
-    "source": "notion-fallback",
+    "source": "notion",
     "items": [
       {
-        "title": "检查 Kindle 新版界面",
-        "dueAt": null,
+        "title": "与笨笨一起设置非诉行政审查、执行异议案由由毕庭专办",
+        "dueAt": "2026-07-31",
         "dueLabel": "今天",
-        "priority": "高",
+        "priority": "普通",
         "pinned": false
       },
       {
-        "title": "完成 Notion 待办数据源授权",
-        "dueAt": null,
+        "title": "联系建行分期提前结清",
+        "dueAt": "2026-08-01",
         "dueLabel": "明天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "补充个人待办事项",
-        "dueAt": null,
-        "dueLabel": "本周",
         "priority": "普通",
         "pinned": false
       }
     ],
-    "totalOpen": 3,
-    "fetchedAt": "2026-07-31T18:04:43.827+08:00",
-    "error": "环境变量 NOTION_API_KEY 未配置",
-    "stale": true,
-    "lastAttemptAt": "2026-07-31T18:04:43.827+08:00"
+    "totalOpen": 2,
+    "fetchedAt": "2026-07-31T18:06:06.848+08:00",
+    "error": null
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-07-31T18:04:43.815+08:00",
+      "fetchedAt": "2026-07-31T18:06:06.834+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -129,14 +120,14 @@
           "resetAt": "2026-08-05T13:13:04.000+08:00"
         }
       ],
-      "fetchedAt": "2026-07-31T18:04:43.816+08:00",
+      "fetchedAt": "2026-07-31T18:06:06.835+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-07-31T18:04:43.827+08:00",
+      "fetchedAt": "2026-07-31T18:06:06.847+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -146,7 +137,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-07-31T18:04:43.827+08:00",
+      "fetchedAt": "2026-07-31T18:06:06.847+08:00",
       "error": "未启用",
       "disabled": true
     }
