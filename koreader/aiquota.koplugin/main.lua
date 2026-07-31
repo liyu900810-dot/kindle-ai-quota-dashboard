@@ -1,5 +1,5 @@
 -- AI Quota Dashboard for KOReader
--- Version 6.7: one-minute data checks and minute-accurate local clock refresh.
+-- Version 6.9: retry dashboard refresh after Wi-Fi connects.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local CenterContainer = require("ui/widget/container/centercontainer")
@@ -33,6 +33,8 @@ local _ = require("gettext")
 
 local REFRESH_SECONDS = 60
 local LOW_BATTERY_REFRESH_SECONDS = 300
+local ONLINE_RETRY_SECONDS = 5
+local ONLINE_RETRY_ATTEMPTS = 12
 local REQUEST_BLOCK_TIMEOUT = 8
 local REQUEST_TOTAL_TIMEOUT = 15
 local MAX_RESPONSE_BYTES = 256 * 1024
@@ -605,7 +607,7 @@ local function todo_card(todo, width, height)
         allow_mirroring = false,
         left_cell(text_widget("TO DO", 13, inner_width - count_width, true),
             inner_width - count_width, S(22)),
-        right_cell(text_widget(count_text, 12, count_width, true),
+        right_cell(text_widget(count_text, 13, count_width, true),
             count_width, S(22)),
     }
     local children = { header, spacer(S(7)) }
@@ -629,9 +631,9 @@ local function todo_card(todo, width, height)
                 allow_mirroring = false,
                 left_cell(TodoBox:new{}, box_width, row_height),
                 HorizontalSpan:new{ width = row_gap },
-                left_cell(text_widget(title, 14, title_width, index == 1),
+                left_cell(text_widget(title, 16, title_width, index == 1),
                     title_width, row_height),
-                right_cell(text_widget(text_value(item.dueLabel, ""), 12, due_width, true),
+                right_cell(text_widget(text_value(item.dueLabel, ""), 13, due_width, true),
                     due_width, row_height),
             })
         end
@@ -727,7 +729,7 @@ function DashboardView:init()
     local refresh_min = refresh_minutes(state.refresh_seconds)
 
     local header_height = is_landscape and S(44) or S(68)
-    local status_height = is_landscape and S(34) or S(42)
+    local status_height = is_landscape and S(42) or S(48)
     local top_height = is_landscape and S(156) or S(182)
     local quota_height = is_landscape and S(132) or S(174)
     local todo_height = is_landscape and S(210) or S(205)
@@ -774,7 +776,7 @@ function DashboardView:init()
             .. " · 下次检查 " .. refresh_min .. " 分钟"
     end
     local status = card({
-        text_widget(status_text, 10, content_width - S(22), true),
+        text_widget(status_text, 12, content_width - S(22), true),
     }, content_width, status_height, S(2))
 
     local card_gap = S(14)
@@ -881,8 +883,8 @@ function DashboardView:init()
         spacer(S(11)),
         text_widget(os.date("%H:%M"), 35, inner_now, true),
         spacer(S(2)),
-        text_widget(solar_date, 10, inner_now, true),
-        text_widget(lunar_date, 10, inner_now, true),
+        text_widget(solar_date, 12, inner_now, true),
+        text_widget(lunar_date, 12, inner_now, true),
     }, now_width, top_height)
     local weather_card = card({
         weather_header,
@@ -990,6 +992,7 @@ local AiQuota = WidgetContainer:extend{
     endpoint = "https://liyu900810-dot.github.io/kindle-ai-quota-dashboard/data.json",
     dashboard_message = nil,
     refresh_task = nil,
+    online_retry_task = nil,
     rotation_mode_backup = nil,
     rebuilding = false,
     request_sequence = 0,
@@ -1032,11 +1035,39 @@ function AiQuota:onAIQuotaRefresh()
     end
 end
 
+function AiQuota:stopOnlineRetry()
+    if self.online_retry_task then
+        UIManager:unschedule(self.online_retry_task)
+        self.online_retry_task = nil
+    end
+end
+
+function AiQuota:scheduleOnlineRetry(request_id, attempt)
+    self:stopOnlineRetry()
+    if attempt > ONLINE_RETRY_ATTEMPTS then
+        return
+    end
+    self.online_retry_task = function()
+        self.online_retry_task = nil
+        if request_id ~= self.request_sequence or not self.dashboard_message then
+            return
+        end
+        local ok, connected = pcall(function() return NetworkMgr:isConnected() end)
+        if ok and connected then
+            self:refresh(false)
+            return
+        end
+        self:scheduleOnlineRetry(request_id, attempt + 1)
+    end
+    UIManager:scheduleIn(ONLINE_RETRY_SECONDS, self.online_retry_task)
+end
+
 function AiQuota:stopAutoRefresh()
     if self.refresh_task then
         UIManager:unschedule(self.refresh_task)
         self.refresh_task = nil
     end
+    self:stopOnlineRetry()
 end
 
 function AiQuota:refreshInterval()
@@ -1232,11 +1263,22 @@ function AiQuota:fetchAndShow(request_id)
 end
 
 function AiQuota:refresh(is_automatic)
+    self:stopOnlineRetry()
     if is_automatic then
         local ok, connected = pcall(function() return NetworkMgr:isConnected() end)
         if not ok or not connected then
             self:showCachedError("Wi-Fi 未联网")
             self:startAutoRefresh()
+            self.request_sequence = self.request_sequence + 1
+            local request_id = self.request_sequence
+            self:scheduleOnlineRetry(request_id, 1)
+            NetworkMgr:runWhenOnline(function()
+                if request_id ~= self.request_sequence or not self.dashboard_message then
+                    return
+                end
+                self:stopOnlineRetry()
+                Trapper:wrap(function() self:fetchAndShow(request_id) end)
+            end)
             return
         end
     end

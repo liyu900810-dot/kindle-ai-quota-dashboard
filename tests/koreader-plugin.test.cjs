@@ -27,7 +27,7 @@ test('KOReader plugin protects network requests and preserves cached data', () =
   assert.match(main, /request_url = self\.endpoint .* "_=" \.\. tostring\(os\.time\(\)\)/);
 });
 
-test('KOReader plugin is e-ink aware and includes v6.7 metadata', () => {
+test('KOReader plugin is e-ink aware and includes v6.9 metadata', () => {
   assert.match(main, /REFRESH_SECONDS = 60/);
   assert.match(main, /LOW_BATTERY_REFRESH_SECONDS = 300/);
   assert.match(main, /refresh_count % 4 == 0 and "full" or "ui"/);
@@ -50,5 +50,5 @@ test('KOReader plugin is e-ink aware and includes v6.7 metadata', () => {
   assert.match(main, /validate_dashboard_data/);
   assert.match(main, /refresh_seconds/);
   assert.doesNotMatch(main, /local footer = fixed_content/);
-  assert.match(meta, /version = "6\.7\.0"/);
+  assert.match(meta, /version = "6\.9\.0"/);
 });
