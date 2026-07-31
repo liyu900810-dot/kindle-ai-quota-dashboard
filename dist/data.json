@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-01T01:42:31.498+08:00",
+  "updatedAt": "2026-08-01T01:47:31.380+08:00",
   "calendar": {
     "solar": "2026年8月1日 星期六",
     "lunar": "农历六月十九"
@@ -10,9 +10,9 @@
     "description": "晴",
     "iconKey": "clear-night",
     "tempC": 27.8,
-    "feelsLikeC": 34,
+    "feelsLikeC": 33.9,
     "humidity": 86,
-    "windKph": 4.8,
+    "windKph": 4.9,
     "windDir": "西南风",
     "isDay": 0,
     "forecast": [
@@ -72,8 +72,8 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-01T01:30:00+08:00",
-    "fetchedAt": "2026-08-01T01:42:31.510+08:00",
+    "observedAt": "2026-08-01T01:45:00+08:00",
+    "fetchedAt": "2026-08-01T01:47:31.392+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-08-01T01:42:30.522+08:00",
+    "fetchedAt": "2026-08-01T01:47:30.509+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-01T01:42:30.510+08:00",
+      "fetchedAt": "2026-08-01T01:47:30.497+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -110,17 +110,17 @@
         {
           "name": "周",
           "usedPct": 70,
-          "resetAt": "2026-08-05T13:13:04.000+08:00"
+          "resetAt": "2026-08-05T13:13:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-01T01:42:30.511+08:00",
+      "fetchedAt": "2026-08-01T01:47:30.498+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-01T01:42:30.522+08:00",
+      "fetchedAt": "2026-08-01T01:47:30.508+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -130,7 +130,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-01T01:42:30.522+08:00",
+      "fetchedAt": "2026-08-01T01:47:30.508+08:00",
       "error": "未启用",
       "disabled": true
     }
