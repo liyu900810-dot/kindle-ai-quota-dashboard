@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kindle 待办助手"
+  short_description: "识别自然语言待办并同步 Notion 与 Kindle"
+  default_prompt: "使用 $kindle-todo 将这段话整理为待办，确认后写入 Notion 并同步到 Kindle。"

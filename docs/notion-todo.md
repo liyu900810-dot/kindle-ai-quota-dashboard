@@ -55,7 +55,7 @@ npm.cmd run build
 
 ## 5. 用 ChatGPT / Codex 管理待办
 
-项目同时提供了本机 Codex 技能：`C:\Users\LIYU\.codex\skills\kindle-todo\`。它的工作规则是：
+项目同时提供了本机 Codex 技能 `kindle-todo`。它的工作规则是：
 
 1. 从自然语言识别任务、截止时间、优先级和是否显示到 Kindle。
 2. 创建、修改或标记完成前先向你确认。
