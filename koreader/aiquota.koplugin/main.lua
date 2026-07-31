@@ -1,5 +1,5 @@
 -- AI Quota Dashboard for KOReader
--- Version 6.3: KPW1 dashboard with day/night forecast, stale status and stronger validation.
+-- Version 6.4: wider split weather card, compact time card and three-row to-do layout.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local CenterContainer = require("ui/widget/container/centercontainer")
@@ -596,25 +596,28 @@ local function todo_card(todo, width, height)
     local inner_width = width - S(28)
     local items = type(todo) == "table" and type(todo.items) == "table" and todo.items or {}
     local total = tonumber(todo and todo.totalOpen) or #items
-    local count_width = S(78)
+    local displayed_count = math.min(3, #items)
+    local count_text = total > displayed_count
+        and string.format("%d / %d 项", displayed_count, total)
+        or string.format("%d 项", total)
+    local count_width = S(96)
     local header = HorizontalGroup:new{
         allow_mirroring = false,
         left_cell(text_widget("TO DO", 13, inner_width - count_width, true),
             inner_width - count_width, S(22)),
-        right_cell(text_widget(string.format("%d 项", total), 11, count_width, true),
+        right_cell(text_widget(count_text, 12, count_width, true),
             count_width, S(22)),
     }
     local children = { header, spacer(S(7)) }
-    local row_height = S(34)
-    local box_width = S(18)
-    local row_gap = S(8)
-    local due_width = S(76)
+    local row_height = S(39)
+    local box_width = S(20)
+    local row_gap = S(10)
+    local due_width = S(88)
     local title_width = inner_width - box_width - row_gap - due_width
-    local displayed_count = math.min(5, #items)
 
     if #items == 0 then
         table.insert(children, spacer(S(10)))
-        table.insert(children, text_widget("暂无待办 · 可在 Notion 中添加", 13, inner_width, true))
+        table.insert(children, text_widget("暂无待办 · 可在 Notion 中添加", 14, inner_width, true))
     else
         for index = 1, displayed_count do
             local item = items[index] or {}
@@ -626,19 +629,11 @@ local function todo_card(todo, width, height)
                 allow_mirroring = false,
                 left_cell(TodoBox:new{}, box_width, row_height),
                 HorizontalSpan:new{ width = row_gap },
-                left_cell(text_widget(title, 12, title_width, index == 1),
+                left_cell(text_widget(title, 14, title_width, index == 1),
                     title_width, row_height),
-                right_cell(text_widget(text_value(item.dueLabel, ""), 11, due_width, true),
+                right_cell(text_widget(text_value(item.dueLabel, ""), 12, due_width, true),
                     due_width, row_height),
             })
-        end
-        if total > displayed_count then
-            table.insert(children, text_widget(
-                string.format("另有 %d 项未显示", total - displayed_count),
-                9,
-                inner_width,
-                false
-            ))
         end
     end
     return card(children, width, height)
@@ -735,7 +730,7 @@ function DashboardView:init()
     local status_height = is_landscape and S(42) or S(42)
     local top_height = is_landscape and S(166) or S(182)
     local quota_height = is_landscape and S(145) or S(174)
-    local todo_height = is_landscape and S(255) or S(255)
+    local todo_height = is_landscape and S(185) or S(205)
 
     local header_right_width = math.floor(content_width * 0.36)
     local title_width = content_width - header_right_width
@@ -783,7 +778,7 @@ function DashboardView:init()
     }, content_width, status_height, S(2))
 
     local card_gap = S(14)
-    local now_width = math.floor((content_width - card_gap) * 0.43)
+    local now_width = math.floor((content_width - card_gap) * 0.30)
     local weather_width = content_width - card_gap - now_width
     local inner_now = now_width - S(28)
     local inner_weather = weather_width - S(28)
@@ -801,7 +796,7 @@ function DashboardView:init()
     if weather.stale then
         weather_source = weather_source .. " · 缓存 " .. timestamp_time(weather.fetchedAt)
     end
-    local source_width = S(190)
+    local source_width = S(150)
     local weather_header = HorizontalGroup:new{
         allow_mirroring = false,
         left_cell(
@@ -815,40 +810,90 @@ function DashboardView:init()
             S(20)
         ),
     }
+    local weather_body_height = S(110)
+    local weather_body_gap = S(9)
+    local weather_divider_width = S(2)
+    local current_weather_width = math.floor(inner_weather * 0.34)
+    local forecast_width = inner_weather - current_weather_width
+        - weather_body_gap * 2 - weather_divider_width
     local weather_title = HorizontalGroup:new{
         allow_mirroring = false,
         left_cell(
-            WeatherIcon:new{ kind = weather_kind(weather) },
-            S(42),
+            WeatherIcon:new{
+                kind = weather_kind(weather),
+                width = S(38),
+                height = S(38),
+            },
+            S(44),
+            S(40)
+        ),
+        left_cell(
+            text_widget(weather_place .. "  " .. weather_description,
+                17, current_weather_width - S(44), true),
+            current_weather_width - S(44),
+            S(40)
+        ),
+    }
+    local temperature_width = math.floor(current_weather_width * 0.42)
+    local weather_temperature = HorizontalGroup:new{
+        allow_mirroring = false,
+        left_cell(
+            text_widget(weather_temp, 24, temperature_width, true),
+            temperature_width,
             S(34)
         ),
         left_cell(
-            text_widget(weather_place .. "  " .. weather_description, 16, inner_weather - S(42), true),
-            inner_weather - S(42),
+            text_widget("体感 " .. weather_feels, 12,
+                current_weather_width - temperature_width, true),
+            current_weather_width - temperature_width,
             S(34)
         ),
     }
-    local weather_metrics = "温 " .. weather_temp
-        .. " · 体感 " .. weather_feels
-        .. " · 湿度 " .. weather_humidity
-        .. " · " .. weather_wind_dir .. " " .. weather_wind
-    local forecast_strip = hourly_forecast_strip(weather.forecast, inner_weather, S(55))
+    local current_weather = fixed_content({
+        weather_title,
+        spacer(S(2)),
+        weather_temperature,
+        text_widget(
+            "湿度 " .. weather_humidity .. " · "
+                .. weather_wind_dir .. " " .. weather_wind,
+            11,
+            current_weather_width,
+            true
+        ),
+    }, current_weather_width, weather_body_height)
+    local forecast_strip = hourly_forecast_strip(
+        weather.forecast,
+        forecast_width,
+        S(82)
+    )
+    local forecast_panel = fixed_content({
+        text_widget("未来 12 小时 · 每 2 小时", 10, forecast_width, true),
+        spacer(S(3)),
+        forecast_strip,
+    }, forecast_width, weather_body_height)
+    local weather_body = HorizontalGroup:new{
+        allow_mirroring = false,
+        current_weather,
+        HorizontalSpan:new{ width = weather_body_gap },
+        ForecastDivider:new{
+            width = weather_divider_width,
+            height = weather_body_height,
+        },
+        HorizontalSpan:new{ width = weather_body_gap },
+        forecast_panel,
+    }
     local now_card = card({
         text_widget("NOW", 13, inner_now, true),
         spacer(S(11)),
-        text_widget(os.date("%H:%M"), 37, inner_now, true),
+        text_widget(os.date("%H:%M"), 35, inner_now, true),
         spacer(S(2)),
-        text_widget(solar_date, 11, inner_now, true),
-        text_widget(lunar_date, 11, inner_now, true),
+        text_widget(solar_date, 10, inner_now, true),
+        text_widget(lunar_date, 10, inner_now, true),
     }, now_width, top_height)
     local weather_card = card({
         weather_header,
-        spacer(S(2)),
-        weather_title,
-        spacer(S(1)),
-        text_widget(weather_metrics, 10, inner_weather, true),
         spacer(S(4)),
-        forecast_strip,
+        weather_body,
     }, weather_width, top_height)
     local top_row = HorizontalGroup:new{
         allow_mirroring = false,
