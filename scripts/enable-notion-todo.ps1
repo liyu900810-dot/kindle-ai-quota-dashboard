@@ -38,6 +38,11 @@ if (-not $config.todo) {
     throw 'config.todo is missing. Update the project before enabling Notion.'
 }
 $config.todo.provider = 'notion'
+$config.todo.maxItems = 3
+if (-not $config.todo.notion) {
+    $config.todo | Add-Member -MemberType NoteProperty -Name notion -Value ([pscustomobject]@{})
+}
+$config.todo.notion.pinnedProperty = 'Kindle置顶'
 $json = $config | ConvertTo-Json -Depth 20
 [IO.File]::WriteAllText(
     $configPath,

@@ -5,6 +5,31 @@ const { isoBeijing, readJson, safeError } = require('../lib/common.cjs');
 const NOTION_VERSION = '2026-03-11';
 const DEFAULT_DONE_VALUES = ['完成', '已完成', 'Done', 'Completed', 'Archived'];
 
+function priorityRank(value) {
+  const normalized = String(value || '').trim().toLowerCase();
+  if (normalized === '高' || normalized === 'high') return 0;
+  if (normalized === '低' || normalized === 'low') return 2;
+  return 1;
+}
+
+function dueRank(value) {
+  if (!value) return Number.POSITIVE_INFINITY;
+  const time = Date.parse(value);
+  return Number.isFinite(time) ? time : Number.POSITIVE_INFINITY;
+}
+
+function compareTodoItems(left, right) {
+  if (Boolean(left?.pinned) !== Boolean(right?.pinned)) {
+    return left?.pinned ? -1 : 1;
+  }
+  const leftDue = dueRank(left?.dueAt);
+  const rightDue = dueRank(right?.dueAt);
+  if (leftDue !== rightDue) return leftDue - rightDue;
+  const priorityDifference = priorityRank(left?.priority) - priorityRank(right?.priority);
+  if (priorityDifference !== 0) return priorityDifference;
+  return 0;
+}
+
 function plainText(parts) {
   if (!Array.isArray(parts)) return '';
   return parts.map((part) => part?.plain_text || part?.text?.content || '').join('').trim();
@@ -51,6 +76,7 @@ function normalizeItem(value, now = new Date()) {
     dueAt: dueAt ? String(dueAt).slice(0, 40) : null,
     dueLabel: String(value?.dueLabel || dueLabel(dueAt, now)).trim().slice(0, 12),
     priority: String(value?.priority || '').trim().slice(0, 16),
+    pinned: value?.pinned === true || value?.kindlePinned === true,
   };
 }
 
@@ -76,7 +102,7 @@ function failure(source, error, fetchedAt = isoBeijing()) {
   };
 }
 
-function readTodoFile(filePath, maxItems = 5, now = new Date()) {
+function readTodoFile(filePath, maxItems = 3, now = new Date()) {
   const fetchedAt = isoBeijing();
   if (!filePath) return failure('file', '未配置待办文件', fetchedAt);
   try {
@@ -86,7 +112,8 @@ function readTodoFile(filePath, maxItems = 5, now = new Date()) {
     const openItems = rawItems
       .filter((item) => item && item.done !== true && item.completed !== true)
       .map((item) => normalizeItem(item, now))
-      .filter(Boolean);
+      .filter(Boolean)
+      .sort(compareTodoItems);
     return success(openItems.slice(0, maxItems), 'file', openItems.length, fetchedAt);
   } catch (error) {
     return failure('file', error, fetchedAt);
@@ -98,7 +125,8 @@ function notionPageToItem(page, config, now = new Date()) {
   const title = propertyValue(properties[config.titleProperty || '任务']);
   const dueAt = propertyValue(properties[config.dueProperty || '截止日期']);
   const priority = propertyValue(properties[config.priorityProperty || '优先级']);
-  return normalizeItem({ title, dueAt, priority }, now);
+  const pinned = propertyValue(properties[config.pinnedProperty || 'Kindle置顶']);
+  return normalizeItem({ title, dueAt, priority, pinned }, now);
 }
 
 function notionPageIsDone(page, config) {
@@ -117,7 +145,7 @@ function notionPageIsVisible(page, config) {
   return propertyValue(property) === true;
 }
 
-async function readNotionTodo(config = {}, maxItems = 5, now = new Date()) {
+async function readNotionTodo(config = {}, maxItems = 3, now = new Date()) {
   const fetchedAt = isoBeijing();
   const tokenEnv = String(config.tokenEnv || 'NOTION_API_KEY');
   const dataSourceIdEnv = String(config.dataSourceIdEnv || 'NOTION_DATA_SOURCE_ID');
@@ -152,12 +180,7 @@ async function readNotionTodo(config = {}, maxItems = 5, now = new Date()) {
       ))
       .map((page) => notionPageToItem(page, config, now))
       .filter(Boolean)
-      .sort((left, right) => {
-        if (!left.dueAt && !right.dueAt) return 0;
-        if (!left.dueAt) return 1;
-        if (!right.dueAt) return -1;
-        return String(left.dueAt).localeCompare(String(right.dueAt));
-      });
+      .sort(compareTodoItems);
     return success(openItems.slice(0, maxItems), 'notion', openItems.length, fetchedAt);
   } catch (error) {
     return failure('notion', error, fetchedAt);
@@ -165,7 +188,7 @@ async function readNotionTodo(config = {}, maxItems = 5, now = new Date()) {
 }
 
 async function collectTodo(config = {}) {
-  const maxItems = Math.max(1, Math.min(5, Number(config.maxItems || 5)));
+  const maxItems = Math.max(1, Math.min(3, Number(config.maxItems || 3)));
   if (config.enabled === false || !config.provider) {
     return {
       ...failure('disabled', '待办数据源未启用'),
@@ -195,6 +218,7 @@ module.exports = {
   notionPageIsDone,
   notionPageIsVisible,
   notionPageToItem,
+  compareTodoItems,
   propertyValue,
   readNotionTodo,
   readTodoFile,

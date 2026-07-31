@@ -12,7 +12,7 @@
     "provider": "file",
     "file": "config/todo.json",
     "fallbackFile": "config/todo.json",
-    "maxItems": 5,
+    "maxItems": 3,
     "notion": {
       "tokenEnv": "NOTION_API_KEY",
       "dataSourceIdEnv": "NOTION_DATA_SOURCE_ID",
@@ -21,6 +21,7 @@
       "dueProperty": "截止日期",
       "priorityProperty": "优先级",
       "visibleProperty": "Kindle显示",
+      "pinnedProperty": "Kindle置顶",
       "doneValues": ["完成", "已完成", "Done", "Completed"]
     }
   },

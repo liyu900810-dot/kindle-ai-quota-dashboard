@@ -144,7 +144,7 @@ npm run serve
 
 ## 待办事项（TO DO）
 
-默认从本机的 `config/todo.json` 读取最多 5 条未完成事项。KPW1 插件为了保证横屏
+默认从本机的 `config/todo.json` 读取未完成事项。KPW1 插件为了保证横屏
 字号和行高，只显示排序最靠前的 3 条；如果总数更多，会在卡片右上角显示
 “3 / 总数 项”。这个文件已被 Git 忽略，可以安全地在电脑上修改，不会把原始文件
 提交到仓库。
@@ -154,11 +154,13 @@ npm run serve
 - 用户环境变量 `NOTION_API_KEY`：Notion integration token；
 - 用户环境变量 `NOTION_DATA_SOURCE_ID`：待办数据库的数据源 ID；
 - 数据源属性：`任务`（标题）、`状态`、`截止日期`、`优先级`、`Kindle显示`（复选框）。
+- 可选属性：`Kindle置顶`（复选框）。置顶任务优先进入 Kindle 前三条。
 
 Windows 用户可以运行 `scripts/enable-notion-todo.ps1 -DataSourceId "你的数据源 ID"`。
 脚本会安全提示输入 token，把凭据保存为当前用户环境变量，并切换数据源；token 不会写入仓库。
 
-电脑端只会同步 `Kindle显示` 已勾选且状态不是“完成”的事项。Notion 数据源必须主动
+电脑端只会同步 `Kindle显示` 已勾选且状态不是“完成”的事项，公开快照最多保留三条，
+并按置顶、截止时间和优先级排序。Notion 数据源必须主动
 共享给相应 connection，否则 API 会返回 404。接口使用 Notion Data Source API：
 https://developers.notion.com/reference/query-a-data-source
 
@@ -223,6 +225,7 @@ https://developers.notion.com/reference/query-a-data-source
 - [隐私说明](docs/privacy.md)
 - [Kindle 兼容性与恢复](docs/compatibility.md)
 - [故障排查](docs/troubleshooting.md)
+- [Notion 待办与 Kindle 同步](docs/notion-todo.md)
 - [安全说明](SECURITY.md)
 - [参与贡献](CONTRIBUTING.md)
 

@@ -22,6 +22,7 @@ const {
   notionPageIsDone,
   notionPageIsVisible,
   notionPageToItem,
+  compareTodoItems,
   readTodoFile,
 } = require('../src/collectors/todo.cjs');
 
@@ -162,6 +163,7 @@ test('Notion task properties map to the public todo schema', () => {
       截止日期: { type: 'date', date: { start: '2026-07-31' } },
       优先级: { type: 'select', select: { name: '高' } },
       Kindle显示: { type: 'checkbox', checkbox: true },
+      Kindle置顶: { type: 'checkbox', checkbox: true },
     },
   };
   const config = {};
@@ -172,12 +174,26 @@ test('Notion task properties map to the public todo schema', () => {
     dueAt: '2026-07-31',
     dueLabel: '明天',
     priority: '高',
+    pinned: true,
   });
   page.properties.状态.status.name = '完成';
   assert.equal(notionPageIsDone(page, config), true);
   page.properties.Kindle显示.checkbox = false;
   assert.equal(notionPageIsVisible(page, config), false);
   assert.equal(dueLabel('2026-07-29', new Date('2026-07-30T08:00:00Z')), '逾期');
+});
+
+test('todo sorting prioritizes pinned, due date, then priority', () => {
+  const items = [
+    { title: '普通任务', dueAt: '2026-08-01', priority: '高', pinned: false },
+    { title: '置顶任务', dueAt: null, priority: '低', pinned: true },
+    { title: '今天任务', dueAt: '2026-07-31', priority: '普通', pinned: false },
+  ];
+  assert.deepEqual(items.sort(compareTodoItems).map((item) => item.title), [
+    '置顶任务',
+    '今天任务',
+    '普通任务',
+  ]);
 });
 
 test('safeError removes obvious credential material', () => {
