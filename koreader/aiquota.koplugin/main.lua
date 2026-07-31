@@ -1,5 +1,5 @@
 -- AI Quota Dashboard for KOReader
--- Version 6.6: top-align the NOW and WEATHER cards while preserving equal frame heights.
+-- Version 6.7: one-minute data checks and minute-accurate local clock refresh.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local CenterContainer = require("ui/widget/container/centercontainer")
@@ -31,8 +31,8 @@ local socketutil = require("socketutil")
 local util = require("util")
 local _ = require("gettext")
 
-local REFRESH_SECONDS = 300
-local LOW_BATTERY_REFRESH_SECONDS = 900
+local REFRESH_SECONDS = 60
+local LOW_BATTERY_REFRESH_SECONDS = 300
 local REQUEST_BLOCK_TIMEOUT = 8
 local REQUEST_TOTAL_TIMEOUT = 15
 local MAX_RESPONSE_BYTES = 256 * 1024
@@ -1082,6 +1082,7 @@ function AiQuota:dataSignature(data, state)
         text_value(state and state.mode, ""),
         text_value(state and state.message, ""),
         text_value(state and state.refresh_seconds, ""),
+        os.date("%Y-%m-%d-%H-%M"),
     }, "|")
 end
 
