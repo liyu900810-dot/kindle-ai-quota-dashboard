@@ -1,5 +1,5 @@
 -- AI Quota Dashboard for KOReader
--- Version 6.5: compact vertical layout with three fully visible to-do rows.
+-- Version 6.6: top-align the NOW and WEATHER cards while preserving equal frame heights.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local CenterContainer = require("ui/widget/container/centercontainer")
@@ -890,6 +890,7 @@ function DashboardView:init()
         weather_body,
     }, weather_width, top_height)
     local top_row = HorizontalGroup:new{
+        align = "top",
         allow_mirroring = false,
         now_card,
         HorizontalSpan:new{ width = card_gap },
