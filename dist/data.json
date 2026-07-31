@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-07-31T14:02:32.654+08:00",
+  "updatedAt": "2026-07-31T14:07:32.747+08:00",
   "calendar": {
     "solar": "2026年7月31日 星期五",
     "lunar": "农历六月十八"
@@ -73,7 +73,7 @@
     ],
     "place": "扬州",
     "observedAt": "2026-07-31T14:00:00+08:00",
-    "fetchedAt": "2026-07-31T14:02:32.667+08:00",
+    "fetchedAt": "2026-07-31T14:07:32.764+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -83,6 +83,13 @@
     "source": "notion",
     "items": [
       {
+        "title": "与笨笨一起设置非诉行政审查、执行异议案由由毕庭专办",
+        "dueAt": "2026-07-31",
+        "dueLabel": "今天",
+        "priority": "普通",
+        "pinned": false
+      },
+      {
         "title": "联系建行分期提前结清",
         "dueAt": "2026-08-01",
         "dueLabel": "明天",
@@ -90,8 +97,8 @@
         "pinned": false
       }
     ],
-    "totalOpen": 1,
-    "fetchedAt": "2026-07-31T14:02:31.638+08:00",
+    "totalOpen": 2,
+    "fetchedAt": "2026-07-31T14:07:31.714+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +106,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-07-31T14:02:31.622+08:00",
+      "fetchedAt": "2026-07-31T14:07:31.699+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -113,14 +120,14 @@
           "resetAt": "2026-08-05T13:13:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-07-31T14:02:31.623+08:00",
+      "fetchedAt": "2026-07-31T14:07:31.700+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-07-31T14:02:31.638+08:00",
+      "fetchedAt": "2026-07-31T14:07:31.714+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -130,7 +137,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-07-31T14:02:31.638+08:00",
+      "fetchedAt": "2026-07-31T14:07:31.714+08:00",
       "error": "未启用",
       "disabled": true
     }
