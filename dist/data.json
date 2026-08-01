@@ -1,83 +1,81 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-01T10:08:25.709+08:00",
+  "updatedAt": "2026-08-02T01:08:17.057+08:00",
   "calendar": {
-    "solar": "2026年8月1日 星期六",
-    "lunar": "农历六月十九"
+    "solar": "2026年8月2日 星期日",
+    "lunar": "农历六月二十"
   },
   "weather": {
     "ok": true,
     "description": "晴",
-    "iconKey": "clear",
-    "tempC": 33.7,
-    "feelsLikeC": 38.3,
-    "humidity": 53,
-    "windKph": 12,
-    "windDir": "西南风",
-    "isDay": 1,
+    "iconKey": "clear-night",
+    "tempC": 28.7,
+    "feelsLikeC": 35,
+    "humidity": 82,
+    "windKph": 3.8,
+    "windDir": "南风",
+    "isDay": 0,
     "forecast": [
       {
-        "time": "2026-08-01T12:00",
-        "tempC": 34.8,
-        "weatherCode": 0,
-        "isDay": 1,
-        "description": "晴",
-        "iconKey": "clear",
-        "precipitationProbability": 7
-      },
-      {
-        "time": "2026-08-01T14:00",
-        "tempC": 35,
-        "weatherCode": 0,
-        "isDay": 1,
-        "description": "晴",
-        "iconKey": "clear",
-        "precipitationProbability": 16
-      },
-      {
-        "time": "2026-08-01T16:00",
-        "tempC": 34.8,
-        "weatherCode": 1,
-        "isDay": 1,
-        "description": "多云",
-        "iconKey": "cloudy",
-        "precipitationProbability": 10
-      },
-      {
-        "time": "2026-08-01T18:00",
-        "tempC": 32.2,
-        "weatherCode": 95,
-        "isDay": 1,
-        "description": "雷雨",
-        "iconKey": "thunder",
-        "precipitationProbability": 3
-      },
-      {
-        "time": "2026-08-01T20:00",
-        "tempC": 30.8,
-        "weatherCode": 1,
-        "isDay": 0,
-        "description": "多云",
-        "iconKey": "cloudy",
-        "precipitationProbability": 0
-      },
-      {
-        "time": "2026-08-01T22:00",
-        "tempC": 29.5,
+        "time": "2026-08-02T03:00",
+        "tempC": 28,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
         "iconKey": "clear-night",
         "precipitationProbability": 0
+      },
+      {
+        "time": "2026-08-02T05:00",
+        "tempC": 27.3,
+        "weatherCode": 0,
+        "isDay": 0,
+        "description": "晴",
+        "iconKey": "clear-night",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-08-02T07:00",
+        "tempC": 29.3,
+        "weatherCode": 0,
+        "isDay": 1,
+        "description": "晴",
+        "iconKey": "clear",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-08-02T09:00",
+        "tempC": 32.9,
+        "weatherCode": 0,
+        "isDay": 1,
+        "description": "晴",
+        "iconKey": "clear",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-08-02T11:00",
+        "tempC": 35,
+        "weatherCode": 0,
+        "isDay": 1,
+        "description": "晴",
+        "iconKey": "clear",
+        "precipitationProbability": 2
+      },
+      {
+        "time": "2026-08-02T13:00",
+        "tempC": 36,
+        "weatherCode": 1,
+        "isDay": 1,
+        "description": "多云",
+        "iconKey": "cloudy",
+        "precipitationProbability": 7
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-01T10:00:00+08:00",
-    "fetchedAt": "2026-08-01T10:02:34.015+08:00",
+    "observedAt": "2026-08-02T01:00:00+08:00",
+    "fetchedAt": "2026-08-02T01:08:17.069+08:00",
     "source": "open-meteo",
-    "error": "fetch failed",
-    "stale": true,
-    "lastAttemptAt": "2026-08-01T10:08:25.728+08:00"
+    "error": null
   },
   "quote": null,
   "todo": {
@@ -87,20 +85,20 @@
       {
         "title": "联系建行分期提前结清",
         "dueAt": "2026-08-01",
-        "dueLabel": "今天",
+        "dueLabel": "逾期",
         "priority": "普通",
         "pinned": false
       },
       {
         "title": "联系华夏银行取消分期",
         "dueAt": "2026-08-02",
-        "dueLabel": "明天",
+        "dueLabel": "今天",
         "priority": "普通",
         "pinned": false
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-08-01T10:08:24.410+08:00",
+    "fetchedAt": "2026-08-02T01:08:14.597+08:00",
     "error": null
   },
   "sources": {
@@ -108,7 +106,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-01T10:08:24.397+08:00",
+      "fetchedAt": "2026-08-02T01:08:14.582+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -118,18 +116,18 @@
       "windows": [
         {
           "name": "周",
-          "usedPct": 71,
-          "resetAt": "2026-08-05T13:13:04.000+08:00"
+          "usedPct": 0,
+          "resetAt": "2026-08-09T01:08:10.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-01T10:08:24.398+08:00",
+      "fetchedAt": "2026-08-02T01:08:14.582+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-01T10:08:24.410+08:00",
+      "fetchedAt": "2026-08-02T01:08:14.597+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -139,7 +137,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-01T10:08:24.410+08:00",
+      "fetchedAt": "2026-08-02T01:08:14.597+08:00",
       "error": "未启用",
       "disabled": true
     }
