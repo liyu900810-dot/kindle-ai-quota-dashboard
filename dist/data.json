@@ -1,79 +1,79 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-02T10:13:02.802+08:00",
+  "updatedAt": "2026-08-03T08:50:30.366+08:00",
   "calendar": {
-    "solar": "2026年8月2日 星期日",
-    "lunar": "农历六月二十"
+    "solar": "2026年8月3日 星期一",
+    "lunar": "农历六月廿一"
   },
   "weather": {
     "ok": true,
     "description": "晴",
     "iconKey": "clear",
-    "tempC": 35,
-    "feelsLikeC": 41,
-    "humidity": 51,
-    "windKph": 6.1,
-    "windDir": "西南风",
+    "tempC": 33.4,
+    "feelsLikeC": 39.8,
+    "humidity": 65,
+    "windKph": 5.5,
+    "windDir": "东南风",
     "isDay": 1,
     "forecast": [
       {
-        "time": "2026-08-02T12:00",
-        "tempC": 36,
-        "weatherCode": 51,
-        "isDay": 1,
-        "description": "雨",
-        "iconKey": "rain",
-        "precipitationProbability": 5
-      },
-      {
-        "time": "2026-08-02T14:00",
-        "tempC": 36,
-        "weatherCode": 51,
-        "isDay": 1,
-        "description": "雨",
-        "iconKey": "rain",
-        "precipitationProbability": 20
-      },
-      {
-        "time": "2026-08-02T16:00",
+        "time": "2026-08-03T10:00",
         "tempC": 35.2,
+        "weatherCode": 1,
+        "isDay": 1,
+        "description": "多云",
+        "iconKey": "cloudy",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-08-03T12:00",
+        "tempC": 36.2,
         "weatherCode": 2,
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
-        "precipitationProbability": 37
+        "precipitationProbability": 0
       },
       {
-        "time": "2026-08-02T18:00",
-        "tempC": 32.5,
+        "time": "2026-08-03T14:00",
+        "tempC": 36.1,
+        "weatherCode": 2,
+        "isDay": 1,
+        "description": "多云",
+        "iconKey": "cloudy",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-08-03T16:00",
+        "tempC": 35.7,
         "weatherCode": 1,
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
-        "precipitationProbability": 30
+        "precipitationProbability": 2
       },
       {
-        "time": "2026-08-02T20:00",
-        "tempC": 31.4,
+        "time": "2026-08-03T18:00",
+        "tempC": 34,
+        "weatherCode": 0,
+        "isDay": 1,
+        "description": "晴",
+        "iconKey": "clear",
+        "precipitationProbability": 2
+      },
+      {
+        "time": "2026-08-03T20:00",
+        "tempC": 31.6,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
         "iconKey": "clear-night",
-        "precipitationProbability": 2
-      },
-      {
-        "time": "2026-08-02T22:00",
-        "tempC": 30,
-        "weatherCode": 1,
-        "isDay": 0,
-        "description": "多云",
-        "iconKey": "cloudy",
         "precipitationProbability": 0
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-02T10:00:00+08:00",
-    "fetchedAt": "2026-08-02T10:13:02.822+08:00",
+    "observedAt": "2026-08-03T08:45:00+08:00",
+    "fetchedAt": "2026-08-03T08:50:30.380+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -92,13 +92,13 @@
       {
         "title": "联系华夏银行取消分期",
         "dueAt": "2026-08-02",
-        "dueLabel": "今天",
+        "dueLabel": "逾期",
         "priority": "普通",
         "pinned": false
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-08-02T10:13:01.700+08:00",
+    "fetchedAt": "2026-08-03T08:50:28.229+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-02T10:13:01.686+08:00",
+      "fetchedAt": "2026-08-03T08:50:28.215+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -120,14 +120,14 @@
           "resetAt": "2026-08-09T09:46:49.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-02T10:13:01.687+08:00",
+      "fetchedAt": "2026-08-03T08:50:28.216+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-02T10:13:01.700+08:00",
+      "fetchedAt": "2026-08-03T08:50:28.229+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -137,7 +137,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-02T10:13:01.700+08:00",
+      "fetchedAt": "2026-08-03T08:50:28.229+08:00",
       "error": "未启用",
       "disabled": true
     }
