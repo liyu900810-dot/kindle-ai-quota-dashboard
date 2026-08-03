@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-03T17:12:33.838+08:00",
+  "updatedAt": "2026-08-03T17:17:32.677+08:00",
   "calendar": {
     "solar": "2026年8月3日 星期一",
     "lunar": "农历六月廿一"
@@ -9,10 +9,10 @@ window.DASH_DATA = {
     "ok": true,
     "description": "晴",
     "iconKey": "clear",
-    "tempC": 35.2,
-    "feelsLikeC": 39.7,
-    "humidity": 51,
-    "windKph": 8.9,
+    "tempC": 35,
+    "feelsLikeC": 39.5,
+    "humidity": 52,
+    "windKph": 8.7,
     "windDir": "东北风",
     "isDay": 1,
     "forecast": [
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-03T17:00:00+08:00",
-    "fetchedAt": "2026-08-03T17:12:33.854+08:00",
+    "observedAt": "2026-08-03T17:15:00+08:00",
+    "fetchedAt": "2026-08-03T17:17:32.689+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -83,7 +83,7 @@ window.DASH_DATA = {
     "source": "notion",
     "items": [],
     "totalOpen": 0,
-    "fetchedAt": "2026-08-03T17:12:32.303+08:00",
+    "fetchedAt": "2026-08-03T17:17:31.656+08:00",
     "error": null
   },
   "sources": {
@@ -91,7 +91,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-03T17:12:32.287+08:00",
+      "fetchedAt": "2026-08-03T17:17:31.643+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -101,18 +101,18 @@ window.DASH_DATA = {
       "windows": [
         {
           "name": "周",
-          "usedPct": 12,
+          "usedPct": 13,
           "resetAt": "2026-08-09T09:46:49.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-03T17:12:32.288+08:00",
+      "fetchedAt": "2026-08-03T17:17:31.644+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-03T17:12:32.302+08:00",
+      "fetchedAt": "2026-08-03T17:17:31.656+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -122,7 +122,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-03T17:12:32.303+08:00",
+      "fetchedAt": "2026-08-03T17:17:31.656+08:00",
       "error": "未启用",
       "disabled": true
     }
