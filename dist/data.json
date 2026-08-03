@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-03T20:52:32.106+08:00",
+  "updatedAt": "2026-08-03T20:57:32.381+08:00",
   "calendar": {
     "solar": "2026年8月3日 星期一",
     "lunar": "农历六月廿一"
@@ -73,7 +73,7 @@
     ],
     "place": "扬州",
     "observedAt": "2026-08-03T20:45:00+08:00",
-    "fetchedAt": "2026-08-03T20:52:32.117+08:00",
+    "fetchedAt": "2026-08-03T20:57:32.392+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -83,7 +83,7 @@
     "source": "notion",
     "items": [],
     "totalOpen": 0,
-    "fetchedAt": "2026-08-03T20:52:30.883+08:00",
+    "fetchedAt": "2026-08-03T20:57:30.923+08:00",
     "error": null
   },
   "sources": {
@@ -91,7 +91,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-03T20:52:30.871+08:00",
+      "fetchedAt": "2026-08-03T20:57:30.911+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -105,14 +105,14 @@
           "resetAt": "2026-08-09T09:46:49.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-03T20:52:30.872+08:00",
+      "fetchedAt": "2026-08-03T20:57:30.911+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-03T20:52:30.883+08:00",
+      "fetchedAt": "2026-08-03T20:57:30.923+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -122,7 +122,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-03T20:52:30.883+08:00",
+      "fetchedAt": "2026-08-03T20:57:30.923+08:00",
       "error": "未启用",
       "disabled": true
     }
