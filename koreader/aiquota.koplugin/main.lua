@@ -1,5 +1,5 @@
 -- AI Quota Dashboard for KOReader
--- Version 7.0: distinguish local Wi-Fi from usable internet connectivity.
+-- Version 7.1: keep automatic refresh silent while Wi-Fi is asleep.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local CenterContainer = require("ui/widget/container/centercontainer")
@@ -1282,6 +1282,10 @@ function AiQuota:refresh(is_automatic)
         if is_automatic then
             self:showCachedError("Wi-Fi 未联网")
             self:startAutoRefresh()
+            self.request_sequence = self.request_sequence + 1
+            local request_id = self.request_sequence
+            self:scheduleOnlineRetry(request_id, 1)
+            return
         end
         self.request_sequence = self.request_sequence + 1
         local request_id = self.request_sequence
