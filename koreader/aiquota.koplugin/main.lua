@@ -1,5 +1,5 @@
 -- AI Quota Dashboard for KOReader
--- Version 6.9: retry dashboard refresh after Wi-Fi connects.
+-- Version 7.0: distinguish local Wi-Fi from usable internet connectivity.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local CenterContainer = require("ui/widget/container/centercontainer")
@@ -516,6 +516,15 @@ local function battery_capacity()
     return nil
 end
 
+local function network_online()
+    local ok_online, online = pcall(function() return NetworkMgr:isOnline() end)
+    if ok_online then
+        return online == true
+    end
+    local ok_connected, connected = pcall(function() return NetworkMgr:isConnected() end)
+    return ok_connected and connected == true
+end
+
 local function device_status()
     local capacity = battery_capacity()
     local battery = capacity and ("电量 " .. capacity .. "%") or "电量 --"
@@ -523,7 +532,13 @@ local function device_status()
     local ok_on, is_on = pcall(function() return NetworkMgr:isWifiOn() end)
     if ok_on and is_on then
         local ok_connected, connected = pcall(function() return NetworkMgr:isConnected() end)
-        wifi = ok_connected and connected and "Wi-Fi 在线" or "Wi-Fi 未联网"
+        if network_online() then
+            wifi = "Wi-Fi 在线"
+        elseif ok_connected and connected then
+            wifi = "Wi-Fi 已连接·无网络"
+        else
+            wifi = "Wi-Fi 未联网"
+        end
     end
     return battery .. " · " .. wifi
 end
@@ -1052,8 +1067,7 @@ function AiQuota:scheduleOnlineRetry(request_id, attempt)
         if request_id ~= self.request_sequence or not self.dashboard_message then
             return
         end
-        local ok, connected = pcall(function() return NetworkMgr:isConnected() end)
-        if ok and connected then
+        if network_online() then
             self:refresh(false)
             return
         end
@@ -1264,23 +1278,22 @@ end
 
 function AiQuota:refresh(is_automatic)
     self:stopOnlineRetry()
-    if is_automatic then
-        local ok, connected = pcall(function() return NetworkMgr:isConnected() end)
-        if not ok or not connected then
+    if not network_online() then
+        if is_automatic then
             self:showCachedError("Wi-Fi 未联网")
             self:startAutoRefresh()
-            self.request_sequence = self.request_sequence + 1
-            local request_id = self.request_sequence
-            self:scheduleOnlineRetry(request_id, 1)
-            NetworkMgr:runWhenOnline(function()
-                if request_id ~= self.request_sequence or not self.dashboard_message then
-                    return
-                end
-                self:stopOnlineRetry()
-                Trapper:wrap(function() self:fetchAndShow(request_id) end)
-            end)
-            return
         end
+        self.request_sequence = self.request_sequence + 1
+        local request_id = self.request_sequence
+        self:scheduleOnlineRetry(request_id, 1)
+        NetworkMgr:runWhenOnline(function()
+            if request_id ~= self.request_sequence or not self.dashboard_message then
+                return
+            end
+            self:stopOnlineRetry()
+            Trapper:wrap(function() self:fetchAndShow(request_id) end)
+        end)
+        return
     end
 
     self.request_sequence = self.request_sequence + 1
