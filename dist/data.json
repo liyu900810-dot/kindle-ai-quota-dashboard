@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-04T08:47:32.932+08:00",
+  "updatedAt": "2026-08-04T08:52:33.082+08:00",
   "calendar": {
     "solar": "2026年8月4日 星期二",
     "lunar": "农历六月廿二"
@@ -73,7 +73,7 @@
     ],
     "place": "扬州",
     "observedAt": "2026-08-04T08:45:00+08:00",
-    "fetchedAt": "2026-08-04T08:47:32.952+08:00",
+    "fetchedAt": "2026-08-04T08:52:33.099+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -83,7 +83,7 @@
     "source": "notion",
     "items": [],
     "totalOpen": 0,
-    "fetchedAt": "2026-08-04T08:47:31.395+08:00",
+    "fetchedAt": "2026-08-04T08:52:31.482+08:00",
     "error": null
   },
   "sources": {
@@ -91,7 +91,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-04T08:47:31.368+08:00",
+      "fetchedAt": "2026-08-04T08:52:31.461+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -102,17 +102,17 @@
         {
           "name": "周",
           "usedPct": 17,
-          "resetAt": "2026-08-09T09:46:49.000+08:00"
+          "resetAt": "2026-08-09T09:46:50.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-04T08:47:31.370+08:00",
+      "fetchedAt": "2026-08-04T08:52:31.462+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-04T08:47:31.394+08:00",
+      "fetchedAt": "2026-08-04T08:52:31.482+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -122,7 +122,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-04T08:47:31.395+08:00",
+      "fetchedAt": "2026-08-04T08:52:31.482+08:00",
       "error": "未启用",
       "disabled": true
     }
