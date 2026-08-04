@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-04T14:07:34.867+08:00",
+  "updatedAt": "2026-08-04T14:17:32.072+08:00",
   "calendar": {
     "solar": "2026年8月4日 星期二",
     "lunar": "农历六月廿二"
@@ -10,9 +10,9 @@
     "description": "多云",
     "iconKey": "cloudy",
     "tempC": 35.1,
-    "feelsLikeC": 39.8,
-    "humidity": 47,
-    "windKph": 12.5,
+    "feelsLikeC": 39.6,
+    "humidity": 48,
+    "windKph": 13.1,
     "windDir": "东风",
     "isDay": 1,
     "forecast": [
@@ -72,8 +72,8 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-04T14:00:00+08:00",
-    "fetchedAt": "2026-08-04T14:07:34.890+08:00",
+    "observedAt": "2026-08-04T14:15:00+08:00",
+    "fetchedAt": "2026-08-04T14:17:32.086+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -83,7 +83,7 @@
     "source": "notion",
     "items": [],
     "totalOpen": 0,
-    "fetchedAt": "2026-08-04T14:07:33.390+08:00",
+    "fetchedAt": "2026-08-04T14:17:31.212+08:00",
     "error": null
   },
   "sources": {
@@ -91,7 +91,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-04T14:07:33.374+08:00",
+      "fetchedAt": "2026-08-04T14:17:31.196+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -101,18 +101,18 @@
       "windows": [
         {
           "name": "周",
-          "usedPct": 22,
+          "usedPct": 23,
           "resetAt": "2026-08-09T09:46:49.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-04T14:07:33.375+08:00",
+      "fetchedAt": "2026-08-04T14:17:31.197+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-04T14:07:33.390+08:00",
+      "fetchedAt": "2026-08-04T14:17:31.212+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -122,7 +122,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-04T14:07:33.390+08:00",
+      "fetchedAt": "2026-08-04T14:17:31.212+08:00",
       "error": "未启用",
       "disabled": true
     }
