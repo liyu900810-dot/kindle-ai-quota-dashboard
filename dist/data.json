@@ -1,18 +1,18 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-04T19:12:33.629+08:00",
+  "updatedAt": "2026-08-04T19:17:33.606+08:00",
   "calendar": {
     "solar": "2026年8月4日 星期二",
     "lunar": "农历六月廿二"
   },
   "weather": {
     "ok": true,
-    "description": "多云",
+    "description": "阴",
     "iconKey": "cloudy",
-    "tempC": 31.4,
-    "feelsLikeC": 35.4,
-    "humidity": 67,
-    "windKph": 16.8,
+    "tempC": 31.2,
+    "feelsLikeC": 35.2,
+    "humidity": 68,
+    "windKph": 16.7,
     "windDir": "东风",
     "isDay": 0,
     "forecast": [
@@ -72,8 +72,8 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-04T19:00:00+08:00",
-    "fetchedAt": "2026-08-04T19:12:33.641+08:00",
+    "observedAt": "2026-08-04T19:15:00+08:00",
+    "fetchedAt": "2026-08-04T19:17:33.618+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -83,7 +83,7 @@
     "source": "notion",
     "items": [],
     "totalOpen": 0,
-    "fetchedAt": "2026-08-04T19:12:31.706+08:00",
+    "fetchedAt": "2026-08-04T19:17:31.681+08:00",
     "error": null
   },
   "sources": {
@@ -91,7 +91,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-04T19:12:31.693+08:00",
+      "fetchedAt": "2026-08-04T19:17:31.668+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -105,14 +105,14 @@
           "resetAt": "2026-08-09T09:46:49.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-04T19:12:31.694+08:00",
+      "fetchedAt": "2026-08-04T19:17:31.669+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-04T19:12:31.705+08:00",
+      "fetchedAt": "2026-08-04T19:17:31.680+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -122,7 +122,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-04T19:12:31.706+08:00",
+      "fetchedAt": "2026-08-04T19:17:31.681+08:00",
       "error": "未启用",
       "disabled": true
     }
