@@ -1,5 +1,5 @@
 -- AI Quota Dashboard for KOReader
--- Version 7.1: keep automatic refresh silent while Wi-Fi is asleep.
+-- Version 7.2: refresh from NetworkConnected events without Wi-Fi prompt races.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local CenterContainer = require("ui/widget/container/centercontainer")
@@ -1068,12 +1068,22 @@ function AiQuota:scheduleOnlineRetry(request_id, attempt)
             return
         end
         if network_online() then
-            self:refresh(false)
+            self:stopOnlineRetry()
+            Trapper:wrap(function() self:fetchAndShow(request_id) end)
             return
         end
         self:scheduleOnlineRetry(request_id, attempt + 1)
     end
     UIManager:scheduleIn(ONLINE_RETRY_SECONDS, self.online_retry_task)
+end
+
+function AiQuota:onNetworkConnected()
+    if not self.dashboard_message then
+        return
+    end
+    self.request_sequence = self.request_sequence + 1
+    local request_id = self.request_sequence
+    self:scheduleOnlineRetry(request_id, 1)
 end
 
 function AiQuota:stopAutoRefresh()
@@ -1290,24 +1300,17 @@ function AiQuota:refresh(is_automatic)
         self.request_sequence = self.request_sequence + 1
         local request_id = self.request_sequence
         self:scheduleOnlineRetry(request_id, 1)
-        NetworkMgr:runWhenOnline(function()
-            if request_id ~= self.request_sequence or not self.dashboard_message then
-                return
+        NetworkMgr:runWhenConnected(function()
+            if request_id == self.request_sequence and self.dashboard_message then
+                self:scheduleOnlineRetry(request_id, 1)
             end
-            self:stopOnlineRetry()
-            Trapper:wrap(function() self:fetchAndShow(request_id) end)
         end)
         return
     end
 
     self.request_sequence = self.request_sequence + 1
     local request_id = self.request_sequence
-    NetworkMgr:runWhenOnline(function()
-        if request_id ~= self.request_sequence or not self.dashboard_message then
-            return
-        end
-        Trapper:wrap(function() self:fetchAndShow(request_id) end)
-    end)
+    Trapper:wrap(function() self:fetchAndShow(request_id) end)
 end
 
 return AiQuota
