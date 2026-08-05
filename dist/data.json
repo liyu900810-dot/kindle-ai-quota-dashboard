@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-05T09:47:49.465+08:00",
+  "updatedAt": "2026-08-05T09:52:39.567+08:00",
   "calendar": {
     "solar": "2026年8月5日 星期三",
     "lunar": "农历六月廿三"
@@ -9,10 +9,10 @@
     "ok": true,
     "description": "多云",
     "iconKey": "cloudy",
-    "tempC": 31.5,
-    "feelsLikeC": 36.6,
-    "humidity": 70,
-    "windKph": 11.9,
+    "tempC": 31.7,
+    "feelsLikeC": 37,
+    "humidity": 69,
+    "windKph": 11.7,
     "windDir": "东风",
     "isDay": 1,
     "forecast": [
@@ -72,12 +72,10 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-05T09:30:00+08:00",
-    "fetchedAt": "2026-08-05T09:42:35.487+08:00",
+    "observedAt": "2026-08-05T09:45:00+08:00",
+    "fetchedAt": "2026-08-05T09:52:39.580+08:00",
     "source": "open-meteo",
-    "error": "fetch failed",
-    "stale": true,
-    "lastAttemptAt": "2026-08-05T09:47:49.478+08:00"
+    "error": null
   },
   "quote": null,
   "todo": {
@@ -107,17 +105,17 @@
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-08-05T09:47:49.464+08:00",
-    "error": "The operation was aborted due to timeout",
+    "fetchedAt": "2026-08-05T09:52:39.566+08:00",
+    "error": "fetch failed",
     "stale": true,
-    "lastAttemptAt": "2026-08-05T09:47:34.448+08:00"
+    "lastAttemptAt": "2026-08-05T09:52:34.523+08:00"
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-05T09:47:34.434+08:00",
+      "fetchedAt": "2026-08-05T09:52:34.508+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -131,14 +129,14 @@
           "resetAt": "2026-08-09T09:46:49.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-05T09:47:34.435+08:00",
+      "fetchedAt": "2026-08-05T09:52:34.509+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-05T09:47:34.448+08:00",
+      "fetchedAt": "2026-08-05T09:52:34.523+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -148,7 +146,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-05T09:47:34.448+08:00",
+      "fetchedAt": "2026-08-05T09:52:34.523+08:00",
       "error": "未启用",
       "disabled": true
     }
