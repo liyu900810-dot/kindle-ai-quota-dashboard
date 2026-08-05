@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-05T09:57:36.451+08:00",
+  "updatedAt": "2026-08-05T10:02:33.829+08:00",
   "calendar": {
     "solar": "2026年8月5日 星期三",
     "lunar": "农历六月廿三"
@@ -9,113 +9,89 @@ window.DASH_DATA = {
     "ok": true,
     "description": "多云",
     "iconKey": "cloudy",
-    "tempC": 31.7,
-    "feelsLikeC": 37,
-    "humidity": 69,
+    "tempC": 32,
+    "feelsLikeC": 37.6,
+    "humidity": 68,
     "windKph": 11.7,
     "windDir": "东风",
     "isDay": 1,
     "forecast": [
       {
-        "time": "2026-08-05T11:00",
-        "tempC": 33.2,
-        "weatherCode": 1,
-        "isDay": 1,
-        "description": "多云",
-        "iconKey": "cloudy",
-        "precipitationProbability": 47
-      },
-      {
-        "time": "2026-08-05T13:00",
-        "tempC": 29.5,
-        "weatherCode": 96,
+        "time": "2026-08-05T12:00",
+        "tempC": 34.1,
+        "weatherCode": 95,
         "isDay": 1,
         "description": "雷雨",
         "iconKey": "thunder",
-        "precipitationProbability": 75
+        "precipitationProbability": 61
       },
       {
-        "time": "2026-08-05T15:00",
-        "tempC": 31.4,
-        "weatherCode": 3,
-        "isDay": 1,
-        "description": "阴",
-        "iconKey": "cloudy",
-        "precipitationProbability": 90
-      },
-      {
-        "time": "2026-08-05T17:00",
-        "tempC": 30,
+        "time": "2026-08-05T14:00",
+        "tempC": 30.3,
         "weatherCode": 51,
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 86
+        "precipitationProbability": 84
       },
       {
-        "time": "2026-08-05T19:00",
-        "tempC": 28.2,
-        "weatherCode": 3,
+        "time": "2026-08-05T16:00",
+        "tempC": 30.7,
+        "weatherCode": 95,
+        "isDay": 1,
+        "description": "雷雨",
+        "iconKey": "thunder",
+        "precipitationProbability": 91
+      },
+      {
+        "time": "2026-08-05T18:00",
+        "tempC": 28.9,
+        "weatherCode": 51,
+        "isDay": 1,
+        "description": "雨",
+        "iconKey": "rain",
+        "precipitationProbability": 70
+      },
+      {
+        "time": "2026-08-05T20:00",
+        "tempC": 27.9,
+        "weatherCode": 0,
         "isDay": 0,
-        "description": "阴",
-        "iconKey": "cloudy",
-        "precipitationProbability": 47
+        "description": "晴",
+        "iconKey": "clear-night",
+        "precipitationProbability": 27
       },
       {
-        "time": "2026-08-05T21:00",
-        "tempC": 27.7,
+        "time": "2026-08-05T22:00",
+        "tempC": 27.4,
         "weatherCode": 1,
         "isDay": 0,
         "description": "多云",
         "iconKey": "cloudy",
-        "precipitationProbability": 15
+        "precipitationProbability": 6
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-05T09:45:00+08:00",
-    "fetchedAt": "2026-08-05T09:57:36.464+08:00",
+    "observedAt": "2026-08-05T10:00:00+08:00",
+    "fetchedAt": "2026-08-05T10:02:33.840+08:00",
     "source": "open-meteo",
     "error": null
   },
   "quote": null,
   "todo": {
     "ok": true,
-    "source": "notion-fallback",
-    "items": [
-      {
-        "title": "检查 Kindle 新版界面",
-        "dueAt": null,
-        "dueLabel": "今天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "完成 Notion 待办数据源授权",
-        "dueAt": null,
-        "dueLabel": "明天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "补充个人待办事项",
-        "dueAt": null,
-        "dueLabel": "本周",
-        "priority": "普通",
-        "pinned": false
-      }
-    ],
-    "totalOpen": 3,
-    "fetchedAt": "2026-08-05T09:57:36.449+08:00",
-    "error": "fetch failed",
-    "stale": true,
-    "lastAttemptAt": "2026-08-05T09:57:31.407+08:00"
+    "source": "notion",
+    "items": [],
+    "totalOpen": 0,
+    "fetchedAt": "2026-08-05T10:02:31.403+08:00",
+    "error": null
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-05T09:57:31.395+08:00",
+      "fetchedAt": "2026-08-05T10:02:31.388+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -129,14 +105,14 @@ window.DASH_DATA = {
           "resetAt": "2026-08-09T09:46:49.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-05T09:57:31.395+08:00",
+      "fetchedAt": "2026-08-05T10:02:31.389+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-05T09:57:31.407+08:00",
+      "fetchedAt": "2026-08-05T10:02:31.403+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -146,7 +122,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-05T09:57:31.407+08:00",
+      "fetchedAt": "2026-08-05T10:02:31.403+08:00",
       "error": "未启用",
       "disabled": true
     }
