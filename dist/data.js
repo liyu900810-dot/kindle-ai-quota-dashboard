@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-06T13:42:39.782+08:00",
+  "updatedAt": "2026-08-06T13:52:39.894+08:00",
   "calendar": {
     "solar": "2026年8月6日 星期四",
     "lunar": "农历六月廿四"
@@ -77,23 +77,47 @@ window.DASH_DATA = {
     "source": "open-meteo",
     "error": "fetch failed",
     "stale": true,
-    "lastAttemptAt": "2026-08-06T13:42:39.793+08:00"
+    "lastAttemptAt": "2026-08-06T13:52:39.906+08:00"
   },
   "quote": null,
   "todo": {
     "ok": true,
-    "source": "notion",
-    "items": [],
-    "totalOpen": 0,
-    "fetchedAt": "2026-08-06T13:42:34.757+08:00",
-    "error": null
+    "source": "notion-fallback",
+    "items": [
+      {
+        "title": "检查 Kindle 新版界面",
+        "dueAt": null,
+        "dueLabel": "今天",
+        "priority": "高",
+        "pinned": false
+      },
+      {
+        "title": "完成 Notion 待办数据源授权",
+        "dueAt": null,
+        "dueLabel": "明天",
+        "priority": "高",
+        "pinned": false
+      },
+      {
+        "title": "补充个人待办事项",
+        "dueAt": null,
+        "dueLabel": "本周",
+        "priority": "普通",
+        "pinned": false
+      }
+    ],
+    "totalOpen": 3,
+    "fetchedAt": "2026-08-06T13:52:39.893+08:00",
+    "error": "fetch failed",
+    "stale": true,
+    "lastAttemptAt": "2026-08-06T13:52:34.850+08:00"
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-06T13:42:34.744+08:00",
+      "fetchedAt": "2026-08-06T13:52:34.836+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -107,14 +131,14 @@ window.DASH_DATA = {
           "resetAt": "2026-08-09T09:46:49.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-06T13:42:34.745+08:00",
+      "fetchedAt": "2026-08-06T13:52:34.837+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-06T13:42:34.757+08:00",
+      "fetchedAt": "2026-08-06T13:52:34.849+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -124,7 +148,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-06T13:42:34.757+08:00",
+      "fetchedAt": "2026-08-06T13:52:34.849+08:00",
       "error": "未启用",
       "disabled": true
     }
