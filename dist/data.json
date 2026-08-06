@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-06T18:57:32.352+08:00",
+  "updatedAt": "2026-08-06T19:02:36.784+08:00",
   "calendar": {
     "solar": "2026年8月6日 星期四",
     "lunar": "农历六月廿四"
@@ -9,34 +9,25 @@
     "ok": true,
     "description": "雨",
     "iconKey": "rain",
-    "tempC": 29.9,
-    "feelsLikeC": 35.5,
-    "humidity": 78,
-    "windKph": 10.1,
+    "tempC": 29.7,
+    "feelsLikeC": 35.3,
+    "humidity": 79,
+    "windKph": 9.9,
     "windDir": "东北风",
-    "isDay": 1,
+    "isDay": 0,
     "forecast": [
       {
-        "time": "2026-08-06T20:00",
-        "tempC": 29.3,
+        "time": "2026-08-06T21:00",
+        "tempC": 29.1,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
         "iconKey": "clear-night",
-        "precipitationProbability": 29
+        "precipitationProbability": 18
       },
       {
-        "time": "2026-08-06T22:00",
-        "tempC": 28.6,
-        "weatherCode": 0,
-        "isDay": 0,
-        "description": "晴",
-        "iconKey": "clear-night",
-        "precipitationProbability": 8
-      },
-      {
-        "time": "2026-08-07T00:00",
-        "tempC": 27.5,
+        "time": "2026-08-06T23:00",
+        "tempC": 28,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -44,8 +35,8 @@
         "precipitationProbability": 0
       },
       {
-        "time": "2026-08-07T02:00",
-        "tempC": 26.9,
+        "time": "2026-08-07T01:00",
+        "tempC": 27.1,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -53,8 +44,8 @@
         "precipitationProbability": 0
       },
       {
-        "time": "2026-08-07T04:00",
-        "tempC": 26.5,
+        "time": "2026-08-07T03:00",
+        "tempC": 26.7,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -62,18 +53,27 @@
         "precipitationProbability": 0
       },
       {
-        "time": "2026-08-07T06:00",
-        "tempC": 26.6,
+        "time": "2026-08-07T05:00",
+        "tempC": 26.3,
         "weatherCode": 0,
+        "isDay": 0,
+        "description": "晴",
+        "iconKey": "clear-night",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-08-07T07:00",
+        "tempC": 27.9,
+        "weatherCode": 1,
         "isDay": 1,
-        "description": "晴",
-        "iconKey": "clear",
+        "description": "多云",
+        "iconKey": "cloudy",
         "precipitationProbability": 0
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-06T18:45:00+08:00",
-    "fetchedAt": "2026-08-06T18:57:32.364+08:00",
+    "observedAt": "2026-08-06T19:00:00+08:00",
+    "fetchedAt": "2026-08-06T19:02:36.795+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -83,7 +83,7 @@
     "source": "notion",
     "items": [],
     "totalOpen": 0,
-    "fetchedAt": "2026-08-06T18:57:31.342+08:00",
+    "fetchedAt": "2026-08-06T19:02:31.003+08:00",
     "error": null
   },
   "sources": {
@@ -91,7 +91,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-06T18:57:31.329+08:00",
+      "fetchedAt": "2026-08-06T19:02:30.989+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -102,17 +102,17 @@
         {
           "name": "周",
           "usedPct": 58,
-          "resetAt": "2026-08-09T09:46:49.000+08:00"
+          "resetAt": "2026-08-09T09:46:50.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-06T18:57:31.330+08:00",
+      "fetchedAt": "2026-08-06T19:02:30.990+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-06T18:57:31.341+08:00",
+      "fetchedAt": "2026-08-06T19:02:31.002+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -122,7 +122,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-06T18:57:31.342+08:00",
+      "fetchedAt": "2026-08-06T19:02:31.002+08:00",
       "error": "未启用",
       "disabled": true
     }
