@@ -27,13 +27,23 @@ test('KOReader plugin protects network requests and preserves cached data', () =
   assert.match(main, /request_url = self\.endpoint .* "_=" \.\. tostring\(os\.time\(\)\)/);
 });
 
-test('KOReader plugin is e-ink aware and includes v7.2 metadata', () => {
+test('KOReader plugin is e-ink aware and includes v7.3 metadata', () => {
   const retrySection = main.match(
     /function AiQuota:scheduleOnlineRetry[\s\S]*?function AiQuota:onNetworkConnected/,
   );
+  const showSection = main.match(
+    /function AiQuota:showDashboard[\s\S]*?function AiQuota:showCachedError/,
+  );
 
   assert.ok(retrySection);
+  assert.ok(showSection);
   assert.doesNotMatch(retrySection[0], /self:refresh\(false\)/);
+  assert.ok(
+    showSection[0].indexOf('UIManager:show(message)')
+      < showSection[0].indexOf('UIManager:close(previous_message)'),
+  );
+  assert.doesNotMatch(showSection[0], /UIManager:close\(self\.dashboard_message\)/);
+  assert.match(showSection[0], /if self\.dashboard_message ~= message then\s+return/);
   assert.match(main, /REFRESH_SECONDS = 60/);
   assert.match(main, /LOW_BATTERY_REFRESH_SECONDS = 300/);
   assert.match(main, /refresh_count % 4 == 0 and "full" or "ui"/);
@@ -59,5 +69,5 @@ test('KOReader plugin is e-ink aware and includes v7.2 metadata', () => {
   assert.match(main, /NetworkMgr:runWhenConnected/);
   assert.doesNotMatch(main, /NetworkMgr:runWhenOnline/);
   assert.doesNotMatch(main, /local footer = fixed_content/);
-  assert.match(meta, /version = "7\.2\.0"/);
+  assert.match(meta, /version = "7\.3\.0"/);
 });

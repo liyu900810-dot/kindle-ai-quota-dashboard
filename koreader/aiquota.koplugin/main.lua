@@ -1,5 +1,5 @@
 -- AI Quota Dashboard for KOReader
--- Version 7.2: refresh from NetworkConnected events without Wi-Fi prompt races.
+-- Version 7.3: replace dashboard views without exposing the file manager.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local CenterContainer = require("ui/widget/container/centercontainer")
@@ -14,6 +14,7 @@ local HorizontalSpan = require("ui/widget/horizontalspan")
 local InputContainer = require("ui/widget/container/inputcontainer")
 local FrameContainer = require("ui/widget/container/framecontainer")
 local LeftContainer = require("ui/widget/container/leftcontainer")
+local logger = require("logger")
 local NetworkMgr = require("ui/network/manager")
 local ProgressWidget = require("ui/widget/progresswidget")
 local RightContainer = require("ui/widget/container/rightcontainer")
@@ -1009,7 +1010,6 @@ local AiQuota = WidgetContainer:extend{
     refresh_task = nil,
     online_retry_task = nil,
     rotation_mode_backup = nil,
-    rebuilding = false,
     request_sequence = 0,
     refresh_count = 0,
     last_good_data = nil,
@@ -1081,6 +1081,7 @@ function AiQuota:onNetworkConnected()
     if not self.dashboard_message then
         return
     end
+    logger.info("AIQuota: network connected; scheduling dashboard refresh")
     self.request_sequence = self.request_sequence + 1
     local request_id = self.request_sequence
     self:scheduleOnlineRetry(request_id, 1)
@@ -1152,12 +1153,7 @@ function AiQuota:showDashboard(data, view_state, force)
         return
     end
 
-    if self.dashboard_message then
-        self.rebuilding = true
-        UIManager:close(self.dashboard_message)
-        self.dashboard_message = nil
-        self.rebuilding = false
-    end
+    local previous_message = self.dashboard_message
     self:enterLandscape()
     self.refresh_count = self.refresh_count + 1
     local refresh_type = self.refresh_count % 4 == 0 and "full" or "ui"
@@ -1167,20 +1163,26 @@ function AiQuota:showDashboard(data, view_state, force)
         view_state = view_state,
         refresh_type = refresh_type,
         on_close = function()
-            if self.dashboard_message == message then
-                self.dashboard_message = nil
-                self:stopAutoRefresh()
+            if self.dashboard_message ~= message then
+                return
             end
-            if not self.rebuilding then
-                self.request_sequence = self.request_sequence + 1
-                self:restoreRotation()
-            end
+            logger.info("AIQuota: dashboard view closed")
+            self.dashboard_message = nil
+            self:stopAutoRefresh()
+            self.request_sequence = self.request_sequence + 1
+            self:restoreRotation()
         end,
     }
     self.dashboard_message = message
     self.last_signature = signature
     self.last_render_at = os.time()
     UIManager:show(message)
+    if previous_message then
+        logger.info("AIQuota: dashboard view replaced")
+        UIManager:close(previous_message)
+    else
+        logger.info("AIQuota: dashboard view opened")
+    end
     self:startAutoRefresh()
 end
 
