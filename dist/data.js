@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-07T17:42:31.917+08:00",
+  "updatedAt": "2026-08-07T17:47:33.643+08:00",
   "calendar": {
     "solar": "2026年8月7日 星期五",
     "lunar": "农历六月廿五"
@@ -9,8 +9,8 @@ window.DASH_DATA = {
     "ok": true,
     "description": "晴",
     "iconKey": "clear",
-    "tempC": 31.6,
-    "feelsLikeC": 36.4,
+    "tempC": 31.5,
+    "feelsLikeC": 36.2,
     "humidity": 69,
     "windKph": 14.1,
     "windDir": "东北风",
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-07T17:30:00+08:00",
-    "fetchedAt": "2026-08-07T17:42:31.932+08:00",
+    "observedAt": "2026-08-07T17:45:00+08:00",
+    "fetchedAt": "2026-08-07T17:47:33.660+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -83,29 +83,15 @@ window.DASH_DATA = {
     "source": "notion",
     "items": [
       {
-        "title": "联系运维处理问题",
-        "dueAt": "2026-08-08",
-        "dueLabel": "明天",
-        "priority": "普通",
-        "pinned": false
-      },
-      {
-        "title": "联系运维处理问题",
-        "dueAt": "2026-08-08",
-        "dueLabel": "明天",
-        "priority": "普通",
-        "pinned": false
-      },
-      {
-        "title": "联系运维处理问题",
-        "dueAt": "2026-08-08",
-        "dueLabel": "明天",
+        "title": "核对最高法院平台法院网段地址表并完善网段地址",
+        "dueAt": null,
+        "dueLabel": "",
         "priority": "普通",
         "pinned": false
       }
     ],
-    "totalOpen": 30,
-    "fetchedAt": "2026-08-07T17:42:31.073+08:00",
+    "totalOpen": 1,
+    "fetchedAt": "2026-08-07T17:47:31.735+08:00",
     "error": null
   },
   "sources": {
@@ -113,7 +99,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-07T17:42:31.060+08:00",
+      "fetchedAt": "2026-08-07T17:47:31.709+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -127,14 +113,14 @@ window.DASH_DATA = {
           "resetAt": "2026-08-09T09:46:49.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-07T17:42:31.061+08:00",
+      "fetchedAt": "2026-08-07T17:47:31.711+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-07T17:42:31.073+08:00",
+      "fetchedAt": "2026-08-07T17:47:31.735+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -144,7 +130,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-07T17:42:31.073+08:00",
+      "fetchedAt": "2026-08-07T17:47:31.735+08:00",
       "error": "未启用",
       "disabled": true
     }
