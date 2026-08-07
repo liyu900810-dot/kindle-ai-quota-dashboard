@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-07T09:07:32.069+08:00",
+  "updatedAt": "2026-08-07T09:12:32.704+08:00",
   "calendar": {
     "solar": "2026年8月7日 星期五",
     "lunar": "农历六月廿五"
@@ -73,7 +73,7 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-08-07T09:00:00+08:00",
-    "fetchedAt": "2026-08-07T09:07:32.081+08:00",
+    "fetchedAt": "2026-08-07T09:12:32.716+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -81,9 +81,17 @@ window.DASH_DATA = {
   "todo": {
     "ok": true,
     "source": "notion",
-    "items": [],
-    "totalOpen": 0,
-    "fetchedAt": "2026-08-07T09:07:31.154+08:00",
+    "items": [
+      {
+        "title": "核对最高法院平台法院网段地址表并完善网段地址",
+        "dueAt": null,
+        "dueLabel": "",
+        "priority": "普通",
+        "pinned": false
+      }
+    ],
+    "totalOpen": 1,
+    "fetchedAt": "2026-08-07T09:12:31.487+08:00",
     "error": null
   },
   "sources": {
@@ -91,7 +99,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-07T09:07:31.141+08:00",
+      "fetchedAt": "2026-08-07T09:12:31.474+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -105,14 +113,14 @@ window.DASH_DATA = {
           "resetAt": "2026-08-09T09:46:49.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-07T09:07:31.142+08:00",
+      "fetchedAt": "2026-08-07T09:12:31.475+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-07T09:07:31.153+08:00",
+      "fetchedAt": "2026-08-07T09:12:31.487+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -122,7 +130,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-07T09:07:31.154+08:00",
+      "fetchedAt": "2026-08-07T09:12:31.487+08:00",
       "error": "未启用",
       "disabled": true
     }
