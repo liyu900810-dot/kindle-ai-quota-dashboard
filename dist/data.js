@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-08T09:25:14.363+08:00",
+  "updatedAt": "2026-08-08T09:27:37.785+08:00",
   "calendar": {
     "solar": "2026年8月8日 星期六",
     "lunar": "农历六月廿六"
@@ -73,7 +73,7 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-08-08T09:15:00+08:00",
-    "fetchedAt": "2026-08-08T09:25:14.382+08:00",
+    "fetchedAt": "2026-08-08T09:27:37.799+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-08-08T09:24:54.364+08:00",
+    "fetchedAt": "2026-08-08T09:27:35.302+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-08T09:24:54.348+08:00",
+      "fetchedAt": "2026-08-08T09:27:35.283+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -113,16 +113,14 @@ window.DASH_DATA = {
           "resetAt": "2026-08-09T09:46:49.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-08T09:22:32.580+08:00",
-      "error": "Codex app-server 查询超时",
-      "stale": true,
-      "lastAttemptAt": "2026-08-08T09:24:54.349+08:00"
+      "fetchedAt": "2026-08-08T09:27:35.284+08:00",
+      "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-08T09:24:54.364+08:00",
+      "fetchedAt": "2026-08-08T09:27:35.301+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -132,7 +130,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-08T09:24:54.364+08:00",
+      "fetchedAt": "2026-08-08T09:27:35.302+08:00",
       "error": "未启用",
       "disabled": true
     }
