@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-09T22:02:33.422+08:00",
+  "updatedAt": "2026-08-09T22:07:32.455+08:00",
   "calendar": {
     "solar": "2026年8月9日 星期日",
     "lunar": "农历六月廿七"
@@ -73,7 +73,7 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-08-09T22:00:00+08:00",
-    "fetchedAt": "2026-08-09T22:02:33.435+08:00",
+    "fetchedAt": "2026-08-09T22:07:32.467+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -83,6 +83,13 @@ window.DASH_DATA = {
     "source": "notion",
     "items": [
       {
+        "title": "取消工行分期",
+        "dueAt": "2026-08-10",
+        "dueLabel": "明天",
+        "priority": "普通",
+        "pinned": false
+      },
+      {
         "title": "核对最高法院平台法院网段地址表并完善网段地址",
         "dueAt": null,
         "dueLabel": "",
@@ -90,8 +97,8 @@ window.DASH_DATA = {
         "pinned": false
       }
     ],
-    "totalOpen": 1,
-    "fetchedAt": "2026-08-09T22:02:32.016+08:00",
+    "totalOpen": 2,
+    "fetchedAt": "2026-08-09T22:07:31.632+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +106,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-09T22:02:32.003+08:00",
+      "fetchedAt": "2026-08-09T22:07:31.617+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -110,17 +117,17 @@ window.DASH_DATA = {
         {
           "name": "周",
           "usedPct": 0,
-          "resetAt": "2026-08-16T22:02:30.000+08:00"
+          "resetAt": "2026-08-16T22:07:29.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-09T22:02:32.004+08:00",
+      "fetchedAt": "2026-08-09T22:07:31.618+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-09T22:02:32.016+08:00",
+      "fetchedAt": "2026-08-09T22:07:31.632+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -130,7 +137,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-09T22:02:32.016+08:00",
+      "fetchedAt": "2026-08-09T22:07:31.632+08:00",
       "error": "未启用",
       "disabled": true
     }
