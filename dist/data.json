@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-10T01:27:31.912+08:00",
+  "updatedAt": "2026-08-10T01:32:32.017+08:00",
   "calendar": {
     "solar": "2026年8月10日 星期一",
     "lunar": "农历六月廿八"
@@ -10,9 +10,9 @@
     "description": "雨",
     "iconKey": "rain",
     "tempC": 25.4,
-    "feelsLikeC": 28.1,
+    "feelsLikeC": 28,
     "humidity": 94,
-    "windKph": 24.6,
+    "windKph": 24.7,
     "windDir": "东北风",
     "isDay": 0,
     "forecast": [
@@ -72,8 +72,8 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-10T01:15:00+08:00",
-    "fetchedAt": "2026-08-10T01:27:31.925+08:00",
+    "observedAt": "2026-08-10T01:30:00+08:00",
+    "fetchedAt": "2026-08-10T01:32:32.029+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-08-10T01:27:31.050+08:00",
+    "fetchedAt": "2026-08-10T01:32:30.995+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-10T01:27:31.036+08:00",
+      "fetchedAt": "2026-08-10T01:32:30.983+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -117,17 +117,17 @@
         {
           "name": "周",
           "usedPct": 0,
-          "resetAt": "2026-08-17T01:27:28.000+08:00"
+          "resetAt": "2026-08-17T01:32:27.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-10T01:27:31.037+08:00",
+      "fetchedAt": "2026-08-10T01:32:30.984+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-10T01:27:31.050+08:00",
+      "fetchedAt": "2026-08-10T01:32:30.994+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -137,7 +137,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-10T01:27:31.050+08:00",
+      "fetchedAt": "2026-08-10T01:32:30.994+08:00",
       "error": "未启用",
       "disabled": true
     }
