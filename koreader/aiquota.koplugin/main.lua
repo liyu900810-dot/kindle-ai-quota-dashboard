@@ -1,5 +1,5 @@
 -- AI Quota Dashboard for KOReader
--- Version 7.3: replace dashboard views without exposing the file manager.
+-- Version 7.4: ignore stray taps and keys; only deliberate swipes close the view.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local CenterContainer = require("ui/widget/container/centercontainer")
@@ -36,6 +36,7 @@ local REFRESH_SECONDS = 60
 local LOW_BATTERY_REFRESH_SECONDS = 300
 local ONLINE_RETRY_SECONDS = 5
 local ONLINE_RETRY_ATTEMPTS = 12
+local CLOSE_GUARD_SECONDS = 3
 local REQUEST_BLOCK_TIMEOUT = 8
 local REQUEST_TOTAL_TIMEOUT = 15
 local MAX_RESPONSE_BYTES = 256 * 1024
@@ -739,6 +740,7 @@ function DashboardView:init()
     local state = self.view_state or {}
     local sources = data.sources or {}
     local codex = sources.codex or {}
+    self.close_guard_until = os.time() + CLOSE_GUARD_SECONDS
     local weather = data.weather or {}
     local todo = data.todo or {}
     local solar_date, lunar_date = calendar_text(data)
@@ -967,7 +969,7 @@ function DashboardView:init()
         VerticalGroup:new{ align = "left", unpack(children) },
     }
 
-    self.ges_events.TapClose = {
+    self.ges_events.TapIgnore = {
         GestureRange:new{
             ges = "tap",
             range = function() return self.dimen end,
@@ -984,23 +986,29 @@ function DashboardView:init()
     end)
 end
 
-function DashboardView:onTapClose()
-    return self:onClose()
+function DashboardView:onTapIgnore()
+    return true
 end
 
 function DashboardView:onSwipeClose()
-    return self:onClose()
+    if os.time() < self.close_guard_until then
+        logger.info("AIQuota: ignored swipe during close guard")
+        return true
+    end
+    return self:onClose("swipe")
 end
 
-function DashboardView:onClose()
+function DashboardView:onAnyKeyPressed()
+    return true
+end
+
+function DashboardView:onClose(source)
     if self.on_close then
-        self.on_close()
+        self.on_close(source or "unknown")
     end
     UIManager:close(self)
     return true
 end
-
-DashboardView.onAnyKeyPressed = DashboardView.onClose
 
 local AiQuota = WidgetContainer:extend{
     name = "ai_quota_dashboard",
@@ -1162,11 +1170,11 @@ function AiQuota:showDashboard(data, view_state, force)
         data = data,
         view_state = view_state,
         refresh_type = refresh_type,
-        on_close = function()
+        on_close = function(source)
             if self.dashboard_message ~= message then
                 return
             end
-            logger.info("AIQuota: dashboard view closed")
+            logger.info("AIQuota: dashboard view closed; source=" .. text_value(source, "unknown"))
             self.dashboard_message = nil
             self:stopAutoRefresh()
             self.request_sequence = self.request_sequence + 1

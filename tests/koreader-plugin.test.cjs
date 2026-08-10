@@ -27,7 +27,7 @@ test('KOReader plugin protects network requests and preserves cached data', () =
   assert.match(main, /request_url = self\.endpoint .* "_=" \.\. tostring\(os\.time\(\)\)/);
 });
 
-test('KOReader plugin is e-ink aware and includes v7.3 metadata', () => {
+test('KOReader plugin is e-ink aware and includes v7.4 metadata', () => {
   const retrySection = main.match(
     /function AiQuota:scheduleOnlineRetry[\s\S]*?function AiQuota:onNetworkConnected/,
   );
@@ -65,9 +65,17 @@ test('KOReader plugin is e-ink aware and includes v7.3 metadata', () => {
   assert.match(main, /Open-Meteo/);
   assert.match(main, /validate_dashboard_data/);
   assert.match(main, /refresh_seconds/);
+  assert.match(main, /CLOSE_GUARD_SECONDS = 3/);
+  assert.match(main, /self\.ges_events\.TapIgnore/);
+  assert.match(main, /function DashboardView:onTapIgnore\(\)\s+return true/);
+  assert.match(main, /function DashboardView:onAnyKeyPressed\(\)\s+return true/);
+  assert.match(main, /return self:onClose\("swipe"\)/);
+  assert.doesNotMatch(main, /self\.ges_events\.TapClose/);
+  assert.doesNotMatch(main, /DashboardView\.onAnyKeyPressed = DashboardView\.onClose/);
+  assert.match(main, /dashboard view closed; source=/);
   assert.match(main, /function AiQuota:onNetworkConnected\(\)/);
   assert.match(main, /NetworkMgr:runWhenConnected/);
   assert.doesNotMatch(main, /NetworkMgr:runWhenOnline/);
   assert.doesNotMatch(main, /local footer = fixed_content/);
-  assert.match(meta, /version = "7\.3\.0"/);
+  assert.match(meta, /version = "7\.4\.0"/);
 });
