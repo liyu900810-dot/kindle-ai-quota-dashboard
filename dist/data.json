@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-10T17:42:33.708+08:00",
+  "updatedAt": "2026-08-10T17:47:34.445+08:00",
   "calendar": {
     "solar": "2026年8月10日 星期一",
     "lunar": "农历六月廿八"
@@ -9,9 +9,9 @@
     "ok": true,
     "description": "雨",
     "iconKey": "rain",
-    "tempC": 25.8,
+    "tempC": 25.9,
     "feelsLikeC": 28.6,
-    "humidity": 95,
+    "humidity": 94,
     "windKph": 26.9,
     "windDir": "东风",
     "isDay": 1,
@@ -72,8 +72,8 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-10T17:30:00+08:00",
-    "fetchedAt": "2026-08-10T17:42:33.724+08:00",
+    "observedAt": "2026-08-10T17:45:00+08:00",
+    "fetchedAt": "2026-08-10T17:47:34.462+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -105,7 +105,7 @@
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-08-10T17:42:30.503+08:00",
+    "fetchedAt": "2026-08-10T17:47:30.898+08:00",
     "error": null
   },
   "sources": {
@@ -113,7 +113,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-10T17:42:30.491+08:00",
+      "fetchedAt": "2026-08-10T17:47:30.885+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -124,17 +124,17 @@
         {
           "name": "周",
           "usedPct": 32,
-          "resetAt": "2026-08-17T08:47:19.000+08:00"
+          "resetAt": "2026-08-17T08:47:22.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-10T17:42:30.492+08:00",
+      "fetchedAt": "2026-08-10T17:47:30.886+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-10T17:42:30.503+08:00",
+      "fetchedAt": "2026-08-10T17:47:30.897+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -144,7 +144,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-10T17:42:30.503+08:00",
+      "fetchedAt": "2026-08-10T17:47:30.898+08:00",
       "error": "未启用",
       "disabled": true
     }
