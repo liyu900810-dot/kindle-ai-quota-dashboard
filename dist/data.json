@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-10T10:52:32.012+08:00",
+  "updatedAt": "2026-08-10T10:57:31.699+08:00",
   "calendar": {
     "solar": "2026年8月10日 星期一",
     "lunar": "农历六月廿八"
@@ -73,7 +73,7 @@
     ],
     "place": "扬州",
     "observedAt": "2026-08-10T10:45:00+08:00",
-    "fetchedAt": "2026-08-10T10:52:32.025+08:00",
+    "fetchedAt": "2026-08-10T10:57:31.713+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -90,6 +90,13 @@
         "pinned": false
       },
       {
+        "title": "取消中行分期",
+        "dueAt": "2026-08-11",
+        "dueLabel": "明天",
+        "priority": "普通",
+        "pinned": false
+      },
+      {
         "title": "核对最高法院平台法院网段地址表并完善网段地址",
         "dueAt": null,
         "dueLabel": "",
@@ -97,8 +104,8 @@
         "pinned": false
       }
     ],
-    "totalOpen": 2,
-    "fetchedAt": "2026-08-10T10:52:30.800+08:00",
+    "totalOpen": 3,
+    "fetchedAt": "2026-08-10T10:57:30.802+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +113,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-10T10:52:30.788+08:00",
+      "fetchedAt": "2026-08-10T10:57:30.789+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -116,18 +123,18 @@
       "windows": [
         {
           "name": "周",
-          "usedPct": 25,
+          "usedPct": 27,
           "resetAt": "2026-08-17T08:47:19.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-10T10:52:30.788+08:00",
+      "fetchedAt": "2026-08-10T10:57:30.790+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-10T10:52:30.800+08:00",
+      "fetchedAt": "2026-08-10T10:57:30.802+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -137,7 +144,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-10T10:52:30.800+08:00",
+      "fetchedAt": "2026-08-10T10:57:30.802+08:00",
       "error": "未启用",
       "disabled": true
     }
