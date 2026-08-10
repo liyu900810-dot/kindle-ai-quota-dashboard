@@ -1,5 +1,5 @@
 -- AI Quota Dashboard for KOReader
--- Version 7.4: ignore stray taps and keys; only deliberate swipes close the view.
+-- Version 7.5: update the clock in place on exact minute boundaries.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local CenterContainer = require("ui/widget/container/centercontainer")
@@ -550,6 +550,12 @@ local function refresh_minutes(seconds)
     return math.max(1, math.floor(value / 60 + 0.5))
 end
 
+local function seconds_until_next_minute()
+    local second = tonumber(os.date("%S")) or 0
+    -- Run just after the minute boundary to avoid rendering the previous minute.
+    return math.max(1, 61 - second)
+end
+
 local function timestamp_time(value)
     return text_value(value, ""):match("[T ](%d%d:%d%d)") or "--:--"
 end
@@ -896,10 +902,16 @@ function DashboardView:init()
         HorizontalSpan:new{ width = weather_body_gap },
         forecast_panel,
     }
+    self.clock_widget = text_widget(os.date("%H:%M"), 35, inner_now, true)
+    self.clock_container = left_cell(
+        self.clock_widget,
+        inner_now,
+        self.clock_widget:getSize().h
+    )
     local now_card = card({
         text_widget("NOW", 13, inner_now, true),
         spacer(S(11)),
-        text_widget(os.date("%H:%M"), 35, inner_now, true),
+        self.clock_container,
         spacer(S(2)),
         text_widget(solar_date, 12, inner_now, true),
         text_widget(lunar_date, 12, inner_now, true),
@@ -986,6 +998,15 @@ function DashboardView:init()
     end)
 end
 
+function DashboardView:updateClock()
+    local value = os.date("%H:%M")
+    if not self.clock_widget or self.clock_widget.text == value then
+        return
+    end
+    self.clock_widget:setText(value)
+    UIManager:setDirty(self, "ui", self.clock_container.dimen)
+end
+
 function DashboardView:onTapIgnore()
     return true
 end
@@ -1016,6 +1037,7 @@ local AiQuota = WidgetContainer:extend{
     endpoint = "https://liyu900810-dot.github.io/kindle-ai-quota-dashboard/data.json",
     dashboard_message = nil,
     refresh_task = nil,
+    clock_task = nil,
     online_retry_task = nil,
     rotation_mode_backup = nil,
     request_sequence = 0,
@@ -1103,6 +1125,13 @@ function AiQuota:stopAutoRefresh()
     self:stopOnlineRetry()
 end
 
+function AiQuota:stopClockRefresh()
+    if self.clock_task then
+        UIManager:unschedule(self.clock_task)
+        self.clock_task = nil
+    end
+end
+
 function AiQuota:refreshInterval()
     local capacity = battery_capacity()
     if capacity and capacity <= 15 then
@@ -1120,6 +1149,18 @@ function AiQuota:startAutoRefresh()
         end
     end
     UIManager:scheduleIn(self:refreshInterval(), self.refresh_task)
+end
+
+function AiQuota:startClockRefresh()
+    self:stopClockRefresh()
+    self.clock_task = function()
+        self.clock_task = nil
+        if self.dashboard_message then
+            self.dashboard_message:updateClock()
+            self:startClockRefresh()
+        end
+    end
+    UIManager:scheduleIn(seconds_until_next_minute(), self.clock_task)
 end
 
 function AiQuota:enterLandscape()
@@ -1146,7 +1187,6 @@ function AiQuota:dataSignature(data, state)
         text_value(state and state.mode, ""),
         text_value(state and state.message, ""),
         text_value(state and state.refresh_seconds, ""),
-        os.date("%Y-%m-%d-%H-%M"),
     }, "|")
 end
 
@@ -1177,6 +1217,7 @@ function AiQuota:showDashboard(data, view_state, force)
             logger.info("AIQuota: dashboard view closed; source=" .. text_value(source, "unknown"))
             self.dashboard_message = nil
             self:stopAutoRefresh()
+            self:stopClockRefresh()
             self.request_sequence = self.request_sequence + 1
             self:restoreRotation()
         end,
@@ -1192,6 +1233,7 @@ function AiQuota:showDashboard(data, view_state, force)
         logger.info("AIQuota: dashboard view opened")
     end
     self:startAutoRefresh()
+    self:startClockRefresh()
 end
 
 function AiQuota:showCachedError(message)

@@ -27,7 +27,7 @@ test('KOReader plugin protects network requests and preserves cached data', () =
   assert.match(main, /request_url = self\.endpoint .* "_=" \.\. tostring\(os\.time\(\)\)/);
 });
 
-test('KOReader plugin is e-ink aware and includes v7.4 metadata', () => {
+test('KOReader plugin is e-ink aware and includes v7.5 metadata', () => {
   const retrySection = main.match(
     /function AiQuota:scheduleOnlineRetry[\s\S]*?function AiQuota:onNetworkConnected/,
   );
@@ -60,7 +60,7 @@ test('KOReader plugin is e-ink aware and includes v7.4 metadata', () => {
   assert.doesNotMatch(main, /只显示未完成事项|Kindle 端只读/);
   assert.match(main, /todo_height = is_landscape and S\(210\)/);
   assert.match(main, /local top_row = HorizontalGroup:new\{\s+align = "top"/);
-  assert.match(main, /os\.date\("%Y-%m-%d-%H-%M"\)/);
+  assert.doesNotMatch(main, /os\.date\("%Y-%m-%d-%H-%M"\)/);
   assert.match(main, /function WeatherIcon:paintMoon/);
   assert.match(main, /Open-Meteo/);
   assert.match(main, /validate_dashboard_data/);
@@ -73,9 +73,15 @@ test('KOReader plugin is e-ink aware and includes v7.4 metadata', () => {
   assert.doesNotMatch(main, /self\.ges_events\.TapClose/);
   assert.doesNotMatch(main, /DashboardView\.onAnyKeyPressed = DashboardView\.onClose/);
   assert.match(main, /dashboard view closed; source=/);
+  assert.match(main, /function DashboardView:updateClock\(\)/);
+  assert.match(main, /self\.clock_widget:setText\(value\)/);
+  assert.match(main, /self\.clock_container\.dimen/);
+  assert.match(main, /function AiQuota:startClockRefresh\(\)/);
+  assert.match(main, /seconds_until_next_minute\(\)/);
+  assert.match(main, /UIManager:scheduleIn\(seconds_until_next_minute\(\), self\.clock_task\)/);
   assert.match(main, /function AiQuota:onNetworkConnected\(\)/);
   assert.match(main, /NetworkMgr:runWhenConnected/);
   assert.doesNotMatch(main, /NetworkMgr:runWhenOnline/);
   assert.doesNotMatch(main, /local footer = fixed_content/);
-  assert.match(meta, /version = "7\.4\.0"/);
+  assert.match(meta, /version = "7\.5\.0"/);
 });
