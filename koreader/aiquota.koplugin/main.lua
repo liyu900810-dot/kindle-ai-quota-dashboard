@@ -1,11 +1,12 @@
 -- AI Quota Dashboard for KOReader
--- Version 7.5: update the clock in place on exact minute boundaries.
+-- Version 7.6: add low-overhead memory protection and automatic recovery.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local CenterContainer = require("ui/widget/container/centercontainer")
 local DataStorage = require("datastorage")
 local Device = require("device")
 local Dispatcher = require("dispatcher")
+local Event = require("ui/event")
 local Font = require("ui/font")
 local Geom = require("ui/geometry")
 local GestureRange = require("ui/gesturerange")
@@ -42,6 +43,13 @@ local REQUEST_TOTAL_TIMEOUT = 15
 local MAX_RESPONSE_BYTES = 256 * 1024
 local DATA_SCHEMA_VERSION = 3
 local CACHE_FILE = DataStorage:getDataDir() .. "/aiquota-dashboard-cache.json"
+local HEALTH_FILE = DataStorage:getDataDir() .. "/aiquota-health.json"
+local MEMORY_CHECK_EVERY_REFRESHES = 5
+local MEMORY_THRESHOLD_MB = 100
+local MEMORY_HIGH_SAMPLES = 2
+local MEMORY_RESTART_COOLDOWN_SECONDS = 6 * 60 * 60
+local REOPEN_MAX_AGE_SECONDS = 10 * 60
+local REOPEN_DELAY_SECONDS = 5
 local S = function(value) return Screen:scaleBySize(value) end
 
 local function text_value(value, fallback)
@@ -686,6 +694,53 @@ local function save_cache(data)
     return false
 end
 
+local function default_health_state()
+    return {
+        last_restart_at = 0,
+        reopen_pending = false,
+        restart_requested_at = 0,
+    }
+end
+
+local function load_health_state()
+    local state = default_health_state()
+    local file = io.open(HEALTH_FILE, "r")
+    if not file then
+        return state
+    end
+    local body = file:read("*a")
+    file:close()
+    local ok, decoded = pcall(json.decode, body)
+    if not ok or type(decoded) ~= "table" then
+        return state
+    end
+    state.last_restart_at = tonumber(decoded.last_restart_at) or 0
+    state.reopen_pending = decoded.reopen_pending == true
+    state.restart_requested_at = tonumber(decoded.restart_requested_at) or 0
+    return state
+end
+
+local function save_health_state(state)
+    local ok, encoded = pcall(json.encode, state)
+    if not ok or type(encoded) ~= "string" then
+        return false
+    end
+    return util.writeToFile(encoded, HEALTH_FILE, true)
+end
+
+local function current_rss_mb()
+    local statm = io.open("/proc/self/statm", "r")
+    if not statm then
+        return nil
+    end
+    local _, rss_pages = statm:read("*number", "*number")
+    statm:close()
+    if not rss_pages then
+        return nil
+    end
+    return math.floor(rss_pages * (4096 / 1024 / 1024))
+end
+
 local function validate_dashboard_data(data)
     if type(data) ~= "table" or tonumber(data.schemaVersion) ~= DATA_SCHEMA_VERSION then
         return false, "数据版本不兼容"
@@ -1039,6 +1094,7 @@ local AiQuota = WidgetContainer:extend{
     refresh_task = nil,
     clock_task = nil,
     online_retry_task = nil,
+    reopen_task = nil,
     rotation_mode_backup = nil,
     request_sequence = 0,
     refresh_count = 0,
@@ -1047,6 +1103,12 @@ local AiQuota = WidgetContainer:extend{
     last_render_at = 0,
     etag = nil,
     last_modified = nil,
+    health_state = nil,
+    memory_check_count = 0,
+    memory_high_samples = 0,
+    memory_restart_pending = false,
+    memory_cooldown_logged = false,
+    last_error_message = nil,
 }
 
 function AiQuota:onDispatcherRegisterActions()
@@ -1060,8 +1122,26 @@ end
 
 function AiQuota:init()
     self.last_good_data = load_cache()
+    self.health_state = load_health_state()
     self:onDispatcherRegisterActions()
     self.ui.menu:registerToMainMenu(self)
+    if self.health_state.reopen_pending then
+        local requested_at = self.health_state.restart_requested_at
+        local age = math.abs(os.time() - requested_at)
+        self.health_state.reopen_pending = false
+        self.health_state.restart_requested_at = 0
+        save_health_state(self.health_state)
+        if requested_at > 0 and age <= REOPEN_MAX_AGE_SECONDS then
+            self.reopen_task = function()
+                self.reopen_task = nil
+                if not self.dashboard_message then
+                    logger.info("AIQuota: reopening dashboard after memory recovery")
+                    self:openDashboard()
+                end
+            end
+            UIManager:scheduleIn(REOPEN_DELAY_SECONDS, self.reopen_task)
+        end
+    end
 end
 
 function AiQuota:addToMainMenu(menu_items)
@@ -1163,6 +1243,55 @@ function AiQuota:startClockRefresh()
     UIManager:scheduleIn(seconds_until_next_minute(), self.clock_task)
 end
 
+function AiQuota:checkMemoryGuard()
+    self.memory_check_count = self.memory_check_count + 1
+    if self.memory_check_count % MEMORY_CHECK_EVERY_REFRESHES ~= 0 then
+        return false
+    end
+    local rss_mb = current_rss_mb()
+    if not rss_mb then
+        return false
+    end
+    if rss_mb < MEMORY_THRESHOLD_MB then
+        self.memory_high_samples = 0
+        self.memory_cooldown_logged = false
+        return false
+    end
+    self.memory_high_samples = self.memory_high_samples + 1
+    if self.memory_high_samples < MEMORY_HIGH_SAMPLES or self.memory_restart_pending then
+        return false
+    end
+
+    local now = os.time()
+    local last_restart_at = tonumber(self.health_state.last_restart_at) or 0
+    if last_restart_at > 0 and now - last_restart_at < MEMORY_RESTART_COOLDOWN_SECONDS then
+        if not self.memory_cooldown_logged then
+            logger.warn("AIQuota: memory remains high during restart cooldown; rss_mb=" .. rss_mb)
+            self.memory_cooldown_logged = true
+        end
+        self.memory_high_samples = 0
+        return false
+    end
+
+    self.health_state.last_restart_at = now
+    self.health_state.reopen_pending = true
+    self.health_state.restart_requested_at = now
+    if not save_health_state(self.health_state) then
+        logger.err("AIQuota: unable to persist memory recovery state")
+        self.memory_high_samples = 0
+        return false
+    end
+    if self.last_good_data then
+        save_cache(self.last_good_data)
+    end
+    self.memory_restart_pending = true
+    logger.warn("AIQuota: restarting KOReader after sustained high memory; rss_mb=" .. rss_mb)
+    UIManager:nextTick(function()
+        self.ui:handleEvent(Event:new("Restart"))
+    end)
+    return true
+end
+
 function AiQuota:enterLandscape()
     local current_mode = Screen:getRotationMode()
     if current_mode % 2 == 0 then
@@ -1220,6 +1349,7 @@ function AiQuota:showDashboard(data, view_state, force)
             self:stopClockRefresh()
             self.request_sequence = self.request_sequence + 1
             self:restoreRotation()
+            UIManager:nextTick(function() collectgarbage("collect") end)
         end,
     }
     self.dashboard_message = message
@@ -1227,8 +1357,9 @@ function AiQuota:showDashboard(data, view_state, force)
     self.last_render_at = os.time()
     UIManager:show(message)
     if previous_message then
-        logger.info("AIQuota: dashboard view replaced")
         UIManager:close(previous_message)
+        previous_message = nil
+        collectgarbage("step", 200)
     else
         logger.info("AIQuota: dashboard view opened")
     end
@@ -1237,6 +1368,10 @@ function AiQuota:showDashboard(data, view_state, force)
 end
 
 function AiQuota:showCachedError(message)
+    if self.last_error_message ~= message then
+        logger.warn("AIQuota: using cached data; reason=" .. text_value(message, "unknown"))
+        self.last_error_message = message
+    end
     if self.last_good_data then
         self:showDashboard(self.last_good_data, {
             mode = "error",
@@ -1331,6 +1466,7 @@ function AiQuota:fetchAndShow(request_id)
         self.last_modified = headers["last-modified"] or headers["Last-Modified"]
     end
     self.last_good_data = data
+    self.last_error_message = nil
     save_cache(data)
     self:showDashboard(data, {
         mode = "online",
@@ -1340,6 +1476,9 @@ end
 
 function AiQuota:refresh(is_automatic)
     self:stopOnlineRetry()
+    if is_automatic and self:checkMemoryGuard() then
+        return
+    end
     if not network_online() then
         if is_automatic then
             self:showCachedError("Wi-Fi 未联网")

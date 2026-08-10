@@ -27,7 +27,7 @@ test('KOReader plugin protects network requests and preserves cached data', () =
   assert.match(main, /request_url = self\.endpoint .* "_=" \.\. tostring\(os\.time\(\)\)/);
 });
 
-test('KOReader plugin is e-ink aware and includes v7.5 metadata', () => {
+test('KOReader plugin is e-ink aware and includes v7.6 metadata', () => {
   const retrySection = main.match(
     /function AiQuota:scheduleOnlineRetry[\s\S]*?function AiQuota:onNetworkConnected/,
   );
@@ -83,5 +83,38 @@ test('KOReader plugin is e-ink aware and includes v7.5 metadata', () => {
   assert.match(main, /NetworkMgr:runWhenConnected/);
   assert.doesNotMatch(main, /NetworkMgr:runWhenOnline/);
   assert.doesNotMatch(main, /local footer = fixed_content/);
-  assert.match(meta, /version = "7\.5\.0"/);
+  assert.match(meta, /version = "7\.6\.0"/);
+});
+
+test('KOReader plugin guards sustained high memory without another timer', () => {
+  const memorySection = main.match(
+    /function AiQuota:checkMemoryGuard[\s\S]*?function AiQuota:enterLandscape/,
+  );
+
+  assert.ok(memorySection);
+  assert.match(main, /MEMORY_CHECK_EVERY_REFRESHES = 5/);
+  assert.match(main, /MEMORY_THRESHOLD_MB = 100/);
+  assert.match(main, /MEMORY_HIGH_SAMPLES = 2/);
+  assert.match(main, /MEMORY_RESTART_COOLDOWN_SECONDS = 6 \* 60 \* 60/);
+  assert.match(main, /local function current_rss_mb\(\)/);
+  assert.match(main, /io\.open\("\/proc\/self\/statm", "r"\)/);
+  assert.match(memorySection[0], /self\.memory_high_samples = self\.memory_high_samples \+ 1/);
+  assert.match(memorySection[0], /save_health_state\(self\.health_state\)/);
+  assert.match(memorySection[0], /Event:new\("Restart"\)/);
+  assert.match(main, /if is_automatic and self:checkMemoryGuard\(\) then/);
+  assert.doesNotMatch(main, /memory_task\s*=/);
+});
+
+test('KOReader plugin reopens safely after memory recovery and tolerates bad state', () => {
+  assert.match(main, /aiquota-health\.json/);
+  assert.match(main, /local function default_health_state\(\)/);
+  assert.match(main, /if not ok or type\(decoded\) ~= "table" then\s+return state/);
+  assert.match(main, /REOPEN_MAX_AGE_SECONDS = 10 \* 60/);
+  assert.match(main, /REOPEN_DELAY_SECONDS = 5/);
+  assert.match(main, /if self\.health_state\.reopen_pending then/);
+  assert.match(main, /self\.health_state\.reopen_pending = false/);
+  assert.match(main, /UIManager:scheduleIn\(REOPEN_DELAY_SECONDS, self\.reopen_task\)/);
+  assert.match(main, /collectgarbage\("step", 200\)/);
+  assert.match(main, /collectgarbage\("collect"\)/);
+  assert.doesNotMatch(main, /dashboard view replaced/);
 });
