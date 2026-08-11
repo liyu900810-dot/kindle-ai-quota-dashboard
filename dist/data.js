@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-11T21:37:32.030+08:00",
+  "updatedAt": "2026-08-11T21:42:32.166+08:00",
   "calendar": {
     "solar": "2026年8月11日 星期二",
     "lunar": "农历六月廿九"
@@ -73,7 +73,7 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-08-11T21:30:00+08:00",
-    "fetchedAt": "2026-08-11T21:37:32.043+08:00",
+    "fetchedAt": "2026-08-11T21:42:32.178+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-08-11T21:37:31.192+08:00",
+    "fetchedAt": "2026-08-11T21:42:30.985+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-11T21:37:31.175+08:00",
+      "fetchedAt": "2026-08-11T21:42:30.973+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -113,14 +113,14 @@ window.DASH_DATA = {
           "resetAt": "2026-08-18T08:56:45.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-11T21:37:31.175+08:00",
+      "fetchedAt": "2026-08-11T21:42:30.974+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-11T21:37:31.192+08:00",
+      "fetchedAt": "2026-08-11T21:42:30.985+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -130,7 +130,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-11T21:37:31.192+08:00",
+      "fetchedAt": "2026-08-11T21:42:30.985+08:00",
       "error": "未启用",
       "disabled": true
     }
