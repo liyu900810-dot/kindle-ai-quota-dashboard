@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-12T23:02:33.555+08:00",
+  "updatedAt": "2026-08-12T23:07:33.343+08:00",
   "calendar": {
     "solar": "2026年8月12日 星期三",
     "lunar": "农历六月三十"
@@ -23,7 +23,7 @@
         "isDay": 0,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 46
+        "precipitationProbability": 65
       },
       {
         "time": "2026-08-13T03:00",
@@ -32,7 +32,7 @@
         "isDay": 0,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 60
+        "precipitationProbability": 62
       },
       {
         "time": "2026-08-13T05:00",
@@ -41,7 +41,7 @@
         "isDay": 0,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 65
+        "precipitationProbability": 67
       },
       {
         "time": "2026-08-13T07:00",
@@ -50,7 +50,7 @@
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 68
+        "precipitationProbability": 66
       },
       {
         "time": "2026-08-13T09:00",
@@ -59,7 +59,7 @@
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 71
+        "precipitationProbability": 65
       },
       {
         "time": "2026-08-13T11:00",
@@ -68,12 +68,12 @@
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 75
+        "precipitationProbability": 65
       }
     ],
     "place": "扬州",
     "observedAt": "2026-08-12T23:00:00+08:00",
-    "fetchedAt": "2026-08-12T23:02:33.570+08:00",
+    "fetchedAt": "2026-08-12T23:07:33.358+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-08-12T23:02:32.109+08:00",
+    "fetchedAt": "2026-08-12T23:07:31.755+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-12T23:02:32.090+08:00",
+      "fetchedAt": "2026-08-12T23:07:31.736+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -113,14 +113,14 @@
           "resetAt": "2026-08-18T08:56:45.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-12T23:02:32.092+08:00",
+      "fetchedAt": "2026-08-12T23:07:31.737+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-12T23:02:32.109+08:00",
+      "fetchedAt": "2026-08-12T23:07:31.754+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -130,7 +130,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-12T23:02:32.109+08:00",
+      "fetchedAt": "2026-08-12T23:07:31.754+08:00",
       "error": "未启用",
       "disabled": true
     }
