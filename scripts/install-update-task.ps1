@@ -10,10 +10,14 @@ $updateScript = Join-Path $PSScriptRoot 'update-dashboard.ps1'
 if (-not (Test-Path -LiteralPath $updateScript -PathType Leaf)) {
     throw "Update script was not found: $updateScript"
 }
+$hiddenLauncher = Join-Path $PSScriptRoot 'run-update-hidden.vbs'
+if (-not (Test-Path -LiteralPath $hiddenLauncher -PathType Leaf)) {
+    throw "Hidden update launcher was not found: $hiddenLauncher"
+}
 
-$powerShell = Join-Path $PSHOME 'powershell.exe'
-$arguments = '-NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File "{0}"' -f $updateScript
-$action = New-ScheduledTaskAction -Execute $powerShell -Argument $arguments
+$wscript = Join-Path $env:WINDIR 'System32\wscript.exe'
+$arguments = '"{0}"' -f $hiddenLauncher
+$action = New-ScheduledTaskAction -Execute $wscript -Argument $arguments
 $repeatTrigger = New-ScheduledTaskTrigger `
     -Once `
     -At (Get-Date).AddMinutes(1) `
