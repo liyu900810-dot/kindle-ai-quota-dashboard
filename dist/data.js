@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-14T09:08:28.550+08:00",
+  "updatedAt": "2026-08-14T09:13:29.825+08:00",
   "calendar": {
     "solar": "2026年8月14日 星期五",
     "lunar": "农历七月初二"
@@ -73,7 +73,7 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-08-14T09:00:00+08:00",
-    "fetchedAt": "2026-08-14T09:08:28.563+08:00",
+    "fetchedAt": "2026-08-14T09:13:29.840+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -90,13 +90,6 @@ window.DASH_DATA = {
         "pinned": false
       },
       {
-        "title": "变更新的自动分案规则",
-        "dueAt": null,
-        "dueLabel": "",
-        "priority": "普通",
-        "pinned": false
-      },
-      {
         "title": "核对最高法院平台法院网段地址表并完善网段地址",
         "dueAt": null,
         "dueLabel": "",
@@ -104,8 +97,8 @@ window.DASH_DATA = {
         "pinned": false
       }
     ],
-    "totalOpen": 3,
-    "fetchedAt": "2026-08-14T09:08:27.541+08:00",
+    "totalOpen": 2,
+    "fetchedAt": "2026-08-14T09:13:28.813+08:00",
     "error": null
   },
   "sources": {
@@ -113,7 +106,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-14T09:08:27.530+08:00",
+      "fetchedAt": "2026-08-14T09:13:28.790+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -127,14 +120,14 @@ window.DASH_DATA = {
           "resetAt": "2026-08-20T11:44:38.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-14T09:08:27.530+08:00",
+      "fetchedAt": "2026-08-14T09:13:28.791+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-14T09:08:27.541+08:00",
+      "fetchedAt": "2026-08-14T09:13:28.812+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -144,7 +137,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-14T09:08:27.541+08:00",
+      "fetchedAt": "2026-08-14T09:13:28.813+08:00",
       "error": "未启用",
       "disabled": true
     }
