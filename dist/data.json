@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-15T17:58:28.133+08:00",
+  "updatedAt": "2026-08-15T18:03:28.115+08:00",
   "calendar": {
     "solar": "2026年8月15日 星期六",
     "lunar": "农历七月初三"
@@ -9,42 +9,51 @@
     "ok": true,
     "description": "多云",
     "iconKey": "cloudy",
-    "tempC": 27.9,
-    "feelsLikeC": 32.1,
-    "humidity": 76,
-    "windKph": 9.9,
+    "tempC": 27.7,
+    "feelsLikeC": 31.9,
+    "humidity": 77,
+    "windKph": 9.5,
     "windDir": "东北风",
     "isDay": 1,
     "forecast": [
       {
-        "time": "2026-08-15T19:00",
-        "tempC": 26.6,
+        "time": "2026-08-15T20:00",
+        "tempC": 25.8,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
         "iconKey": "clear-night",
-        "precipitationProbability": 37
+        "precipitationProbability": 22
       },
       {
-        "time": "2026-08-15T21:00",
-        "tempC": 25.1,
+        "time": "2026-08-15T22:00",
+        "tempC": 24.5,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
         "iconKey": "clear-night",
-        "precipitationProbability": 13
+        "precipitationProbability": 6
       },
       {
-        "time": "2026-08-15T23:00",
-        "tempC": 24.1,
+        "time": "2026-08-16T00:00",
+        "tempC": 23.8,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
         "iconKey": "clear-night",
-        "precipitationProbability": 2
+        "precipitationProbability": 0
       },
       {
-        "time": "2026-08-16T01:00",
+        "time": "2026-08-16T02:00",
+        "tempC": 23.5,
+        "weatherCode": 0,
+        "isDay": 0,
+        "description": "晴",
+        "iconKey": "clear-night",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-08-16T04:00",
         "tempC": 23.6,
         "weatherCode": 0,
         "isDay": 0,
@@ -53,27 +62,18 @@
         "precipitationProbability": 0
       },
       {
-        "time": "2026-08-16T03:00",
-        "tempC": 23.6,
+        "time": "2026-08-16T06:00",
+        "tempC": 23.7,
         "weatherCode": 0,
-        "isDay": 0,
+        "isDay": 1,
         "description": "晴",
-        "iconKey": "clear-night",
-        "precipitationProbability": 0
-      },
-      {
-        "time": "2026-08-16T05:00",
-        "tempC": 23.4,
-        "weatherCode": 0,
-        "isDay": 0,
-        "description": "晴",
-        "iconKey": "clear-night",
+        "iconKey": "clear",
         "precipitationProbability": 0
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-15T17:45:00+08:00",
-    "fetchedAt": "2026-08-15T17:58:28.149+08:00",
+    "observedAt": "2026-08-15T18:00:00+08:00",
+    "fetchedAt": "2026-08-15T18:03:28.129+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-08-15T17:58:27.330+08:00",
+    "fetchedAt": "2026-08-15T18:03:27.296+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-15T17:58:27.318+08:00",
+      "fetchedAt": "2026-08-15T18:03:27.284+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -120,14 +120,14 @@
           "resetAt": "2026-08-20T11:44:37.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-15T17:58:27.319+08:00",
+      "fetchedAt": "2026-08-15T18:03:27.285+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-15T17:58:27.330+08:00",
+      "fetchedAt": "2026-08-15T18:03:27.295+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -137,7 +137,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-15T17:58:27.330+08:00",
+      "fetchedAt": "2026-08-15T18:03:27.296+08:00",
       "error": "未启用",
       "disabled": true
     }
