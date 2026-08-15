@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-16T05:58:27.385+08:00",
+  "updatedAt": "2026-08-16T06:03:27.417+08:00",
   "calendar": {
     "solar": "2026年8月16日 星期日",
     "lunar": "农历七月初四"
@@ -9,16 +9,16 @@ window.DASH_DATA = {
     "ok": true,
     "description": "晴",
     "iconKey": "clear",
-    "tempC": 23.3,
-    "feelsLikeC": 27.5,
+    "tempC": 23.5,
+    "feelsLikeC": 27.7,
     "humidity": 92,
-    "windKph": 4.6,
+    "windKph": 4.7,
     "windDir": "北风",
     "isDay": 1,
     "forecast": [
       {
-        "time": "2026-08-16T07:00",
-        "tempC": 24.8,
+        "time": "2026-08-16T08:00",
+        "tempC": 26.2,
         "weatherCode": 0,
         "isDay": 1,
         "description": "晴",
@@ -26,8 +26,8 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-08-16T09:00",
-        "tempC": 27.4,
+        "time": "2026-08-16T10:00",
+        "tempC": 28.3,
         "weatherCode": 0,
         "isDay": 1,
         "description": "晴",
@@ -35,45 +35,45 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-08-16T11:00",
-        "tempC": 29.1,
-        "weatherCode": 0,
-        "isDay": 1,
-        "description": "晴",
-        "iconKey": "clear",
-        "precipitationProbability": 0
-      },
-      {
-        "time": "2026-08-16T13:00",
-        "tempC": 30.2,
+        "time": "2026-08-16T12:00",
+        "tempC": 29.8,
         "weatherCode": 1,
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
-        "precipitationProbability": 1
+        "precipitationProbability": 0
       },
       {
-        "time": "2026-08-16T15:00",
-        "tempC": 30.6,
-        "weatherCode": 2,
+        "time": "2026-08-16T14:00",
+        "tempC": 30.4,
+        "weatherCode": 1,
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
-        "precipitationProbability": 4
+        "precipitationProbability": 2
       },
       {
-        "time": "2026-08-16T17:00",
-        "tempC": 29.7,
+        "time": "2026-08-16T16:00",
+        "tempC": 30.1,
         "weatherCode": 51,
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 8
+        "precipitationProbability": 7
+      },
+      {
+        "time": "2026-08-16T18:00",
+        "tempC": 28.5,
+        "weatherCode": 0,
+        "isDay": 1,
+        "description": "晴",
+        "iconKey": "clear",
+        "precipitationProbability": 7
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-16T05:45:00+08:00",
-    "fetchedAt": "2026-08-16T05:58:27.398+08:00",
+    "observedAt": "2026-08-16T06:00:00+08:00",
+    "fetchedAt": "2026-08-16T06:03:27.429+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-08-16T05:58:26.610+08:00",
+    "fetchedAt": "2026-08-16T06:03:26.623+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-16T05:58:26.597+08:00",
+      "fetchedAt": "2026-08-16T06:03:26.611+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -120,14 +120,14 @@ window.DASH_DATA = {
           "resetAt": "2026-08-20T11:44:37.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-16T05:58:26.598+08:00",
+      "fetchedAt": "2026-08-16T06:03:26.612+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-16T05:58:26.609+08:00",
+      "fetchedAt": "2026-08-16T06:03:26.623+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -137,7 +137,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-16T05:58:26.609+08:00",
+      "fetchedAt": "2026-08-16T06:03:26.623+08:00",
       "error": "未启用",
       "disabled": true
     }
