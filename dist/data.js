@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-15T14:58:27.742+08:00",
+  "updatedAt": "2026-08-15T15:03:28.092+08:00",
   "calendar": {
     "solar": "2026年8月15日 星期六",
     "lunar": "农历七月初三"
@@ -9,52 +9,52 @@ window.DASH_DATA = {
     "ok": true,
     "description": "多云",
     "iconKey": "cloudy",
-    "tempC": 28.4,
-    "feelsLikeC": 32.8,
-    "humidity": 77,
-    "windKph": 11.2,
+    "tempC": 28.6,
+    "feelsLikeC": 32.2,
+    "humidity": 70,
+    "windKph": 11.1,
     "windDir": "东北风",
     "isDay": 1,
     "forecast": [
       {
-        "time": "2026-08-15T16:00",
-        "tempC": 28.6,
+        "time": "2026-08-15T17:00",
+        "tempC": 28.5,
         "weatherCode": 51,
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 69
+        "precipitationProbability": 67
       },
       {
-        "time": "2026-08-15T18:00",
-        "tempC": 27.3,
-        "weatherCode": 51,
-        "isDay": 1,
-        "description": "雨",
-        "iconKey": "rain",
-        "precipitationProbability": 55
-      },
-      {
-        "time": "2026-08-15T20:00",
-        "tempC": 25.5,
+        "time": "2026-08-15T19:00",
+        "tempC": 26.2,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
         "iconKey": "clear-night",
-        "precipitationProbability": 22
+        "precipitationProbability": 37
       },
       {
-        "time": "2026-08-15T22:00",
-        "tempC": 24.3,
+        "time": "2026-08-15T21:00",
+        "tempC": 24.8,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
         "iconKey": "clear-night",
-        "precipitationProbability": 6
+        "precipitationProbability": 13
       },
       {
-        "time": "2026-08-16T00:00",
-        "tempC": 23.5,
+        "time": "2026-08-15T23:00",
+        "tempC": 23.8,
+        "weatherCode": 0,
+        "isDay": 0,
+        "description": "晴",
+        "iconKey": "clear-night",
+        "precipitationProbability": 2
+      },
+      {
+        "time": "2026-08-16T01:00",
+        "tempC": 23.4,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -62,8 +62,8 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-08-16T02:00",
-        "tempC": 23.3,
+        "time": "2026-08-16T03:00",
+        "tempC": 23.2,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-15T14:45:00+08:00",
-    "fetchedAt": "2026-08-15T14:58:27.754+08:00",
+    "observedAt": "2026-08-15T15:00:00+08:00",
+    "fetchedAt": "2026-08-15T15:03:28.106+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-08-15T14:58:26.863+08:00",
+    "fetchedAt": "2026-08-15T15:03:26.925+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-15T14:58:26.851+08:00",
+      "fetchedAt": "2026-08-15T15:03:26.913+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -120,14 +120,14 @@ window.DASH_DATA = {
           "resetAt": "2026-08-20T11:44:38.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-15T14:58:26.852+08:00",
+      "fetchedAt": "2026-08-15T15:03:26.914+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-15T14:58:26.863+08:00",
+      "fetchedAt": "2026-08-15T15:03:26.925+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -137,7 +137,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-15T14:58:26.863+08:00",
+      "fetchedAt": "2026-08-15T15:03:26.925+08:00",
       "error": "未启用",
       "disabled": true
     }
