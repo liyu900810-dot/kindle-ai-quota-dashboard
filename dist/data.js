@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-19T03:58:28.263+08:00",
+  "updatedAt": "2026-08-19T04:03:28.314+08:00",
   "calendar": {
     "solar": "2026年8月19日 星期三",
     "lunar": "农历七月初七"
@@ -17,63 +17,63 @@ window.DASH_DATA = {
     "isDay": 0,
     "forecast": [
       {
-        "time": "2026-08-19T05:00",
-        "tempC": 25.5,
+        "time": "2026-08-19T06:00",
+        "tempC": 25.7,
+        "weatherCode": 1,
+        "isDay": 1,
+        "description": "多云",
+        "iconKey": "cloudy",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-08-19T08:00",
+        "tempC": 27.9,
         "weatherCode": 2,
-        "isDay": 0,
-        "description": "多云",
-        "iconKey": "cloudy",
-        "precipitationProbability": 0
-      },
-      {
-        "time": "2026-08-19T07:00",
-        "tempC": 26.7,
-        "weatherCode": 1,
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
         "precipitationProbability": 0
       },
       {
-        "time": "2026-08-19T09:00",
-        "tempC": 29,
+        "time": "2026-08-19T10:00",
+        "tempC": 29.8,
         "weatherCode": 1,
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
-        "precipitationProbability": 1
+        "precipitationProbability": 3
       },
       {
-        "time": "2026-08-19T11:00",
-        "tempC": 30.7,
+        "time": "2026-08-19T12:00",
+        "tempC": 31.2,
         "weatherCode": 51,
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 10
+        "precipitationProbability": 27
       },
       {
-        "time": "2026-08-19T13:00",
+        "time": "2026-08-19T14:00",
         "tempC": 31.1,
-        "weatherCode": 51,
+        "weatherCode": 3,
         "isDay": 1,
-        "description": "雨",
-        "iconKey": "rain",
-        "precipitationProbability": 49
+        "description": "阴",
+        "iconKey": "cloudy",
+        "precipitationProbability": 67
       },
       {
-        "time": "2026-08-19T15:00",
-        "tempC": 31,
-        "weatherCode": 95,
+        "time": "2026-08-19T16:00",
+        "tempC": 25.9,
+        "weatherCode": 96,
         "isDay": 1,
         "description": "雷雨",
         "iconKey": "thunder",
-        "precipitationProbability": 78
+        "precipitationProbability": 85
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-19T03:45:00+08:00",
-    "fetchedAt": "2026-08-19T03:58:28.275+08:00",
+    "observedAt": "2026-08-19T04:00:00+08:00",
+    "fetchedAt": "2026-08-19T04:03:28.327+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-08-19T03:58:27.487+08:00",
+    "fetchedAt": "2026-08-19T04:03:27.542+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-19T03:58:27.475+08:00",
+      "fetchedAt": "2026-08-19T04:03:27.526+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -117,17 +117,17 @@ window.DASH_DATA = {
         {
           "name": "周",
           "usedPct": 37,
-          "resetAt": "2026-08-20T11:44:37.000+08:00"
+          "resetAt": "2026-08-20T11:44:38.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-19T03:58:27.476+08:00",
+      "fetchedAt": "2026-08-19T04:03:27.527+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-19T03:58:27.487+08:00",
+      "fetchedAt": "2026-08-19T04:03:27.542+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -137,7 +137,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-19T03:58:27.487+08:00",
+      "fetchedAt": "2026-08-19T04:03:27.542+08:00",
       "error": "未启用",
       "disabled": true
     }
