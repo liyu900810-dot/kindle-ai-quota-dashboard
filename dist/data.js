@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-19T10:53:30.329+08:00",
+  "updatedAt": "2026-08-19T10:58:28.489+08:00",
   "calendar": {
     "solar": "2026年8月19日 星期三",
     "lunar": "农历七月初七"
@@ -73,7 +73,7 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-08-19T10:45:00+08:00",
-    "fetchedAt": "2026-08-19T10:53:30.344+08:00",
+    "fetchedAt": "2026-08-19T10:58:28.503+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -83,13 +83,6 @@ window.DASH_DATA = {
     "source": "notion",
     "items": [
       {
-        "title": "回家时带行驶证和驾驶证",
-        "dueAt": "2026-08-14",
-        "dueLabel": "逾期",
-        "priority": "普通",
-        "pinned": false
-      },
-      {
         "title": "核对最高法院平台法院网段地址表并完善网段地址",
         "dueAt": null,
         "dueLabel": "",
@@ -97,8 +90,8 @@ window.DASH_DATA = {
         "pinned": false
       }
     ],
-    "totalOpen": 2,
-    "fetchedAt": "2026-08-19T10:53:27.233+08:00",
+    "totalOpen": 1,
+    "fetchedAt": "2026-08-19T10:58:27.335+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +99,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-19T10:53:27.221+08:00",
+      "fetchedAt": "2026-08-19T10:58:27.319+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -117,17 +110,17 @@ window.DASH_DATA = {
         {
           "name": "周",
           "usedPct": 53,
-          "resetAt": "2026-08-20T11:44:40.000+08:00"
+          "resetAt": "2026-08-20T11:44:38.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-19T10:53:27.222+08:00",
+      "fetchedAt": "2026-08-19T10:58:27.320+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-19T10:53:27.233+08:00",
+      "fetchedAt": "2026-08-19T10:58:27.334+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -137,7 +130,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-19T10:53:27.233+08:00",
+      "fetchedAt": "2026-08-19T10:58:27.334+08:00",
       "error": "未启用",
       "disabled": true
     }
