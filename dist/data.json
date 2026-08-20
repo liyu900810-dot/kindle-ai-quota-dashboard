@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-21T02:18:32.656+08:00",
+  "updatedAt": "2026-08-21T02:23:28.183+08:00",
   "calendar": {
     "solar": "2026年8月21日 星期五",
     "lunar": "农历七月初九"
@@ -73,49 +73,33 @@
     ],
     "place": "扬州",
     "observedAt": "2026-08-21T02:15:00+08:00",
-    "fetchedAt": "2026-08-21T02:18:32.671+08:00",
+    "fetchedAt": "2026-08-21T02:23:28.195+08:00",
     "source": "open-meteo",
     "error": null
   },
   "quote": null,
   "todo": {
     "ok": true,
-    "source": "notion-fallback",
+    "source": "notion",
     "items": [
       {
-        "title": "检查 Kindle 新版界面",
+        "title": "核对最高法院平台法院网段地址表并完善网段地址",
         "dueAt": null,
-        "dueLabel": "今天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "完成 Notion 待办数据源授权",
-        "dueAt": null,
-        "dueLabel": "明天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "补充个人待办事项",
-        "dueAt": null,
-        "dueLabel": "本周",
+        "dueLabel": "",
         "priority": "普通",
         "pinned": false
       }
     ],
-    "totalOpen": 3,
-    "fetchedAt": "2026-08-21T02:18:32.655+08:00",
-    "error": "fetch failed",
-    "stale": true,
-    "lastAttemptAt": "2026-08-21T02:18:27.613+08:00"
+    "totalOpen": 1,
+    "fetchedAt": "2026-08-21T02:23:27.285+08:00",
+    "error": null
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-21T02:18:27.599+08:00",
+      "fetchedAt": "2026-08-21T02:23:27.273+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -129,14 +113,14 @@
           "resetAt": "2026-08-27T17:30:02.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-21T02:18:27.600+08:00",
+      "fetchedAt": "2026-08-21T02:23:27.274+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-21T02:18:27.613+08:00",
+      "fetchedAt": "2026-08-21T02:23:27.285+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -146,7 +130,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-21T02:18:27.613+08:00",
+      "fetchedAt": "2026-08-21T02:23:27.285+08:00",
       "error": "未启用",
       "disabled": true
     }
