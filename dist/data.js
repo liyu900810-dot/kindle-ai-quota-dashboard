@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-20T16:43:28.577+08:00",
+  "updatedAt": "2026-08-20T16:48:28.992+08:00",
   "calendar": {
     "solar": "2026年8月20日 星期四",
     "lunar": "农历七月初八"
@@ -9,10 +9,10 @@ window.DASH_DATA = {
     "ok": true,
     "description": "雨",
     "iconKey": "rain",
-    "tempC": 27,
-    "feelsLikeC": 32.9,
-    "humidity": 93,
-    "windKph": 8.7,
+    "tempC": 27.3,
+    "feelsLikeC": 33.4,
+    "humidity": 92,
+    "windKph": 7.7,
     "windDir": "东风",
     "isDay": 1,
     "forecast": [
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-20T16:30:00+08:00",
-    "fetchedAt": "2026-08-20T16:43:28.589+08:00",
+    "observedAt": "2026-08-20T16:45:00+08:00",
+    "fetchedAt": "2026-08-20T16:48:29.006+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-08-20T16:43:27.364+08:00",
+    "fetchedAt": "2026-08-20T16:48:27.354+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-20T16:43:27.351+08:00",
+      "fetchedAt": "2026-08-20T16:48:27.342+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -110,17 +110,17 @@ window.DASH_DATA = {
         {
           "name": "周",
           "usedPct": 0,
-          "resetAt": "2026-08-27T16:43:27.000+08:00"
+          "resetAt": "2026-08-27T16:48:28.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-20T16:43:27.352+08:00",
+      "fetchedAt": "2026-08-20T16:48:27.343+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-20T16:43:27.363+08:00",
+      "fetchedAt": "2026-08-20T16:48:27.354+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -130,7 +130,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-20T16:43:27.364+08:00",
+      "fetchedAt": "2026-08-20T16:48:27.354+08:00",
       "error": "未启用",
       "disabled": true
     }
