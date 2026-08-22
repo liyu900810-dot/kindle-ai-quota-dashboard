@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-22T11:48:27.560+08:00",
+  "updatedAt": "2026-08-22T11:53:29.834+08:00",
   "calendar": {
     "solar": "2026年8月22日 星期六",
     "lunar": "农历七月初十"
@@ -73,7 +73,7 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-08-22T11:45:00+08:00",
-    "fetchedAt": "2026-08-22T11:48:27.573+08:00",
+    "fetchedAt": "2026-08-22T11:53:29.846+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-08-22T11:48:26.667+08:00",
+    "fetchedAt": "2026-08-22T11:53:26.997+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-22T11:48:26.653+08:00",
+      "fetchedAt": "2026-08-22T11:53:26.985+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -114,13 +114,15 @@ window.DASH_DATA = {
         }
       ],
       "fetchedAt": "2026-08-22T11:48:26.654+08:00",
-      "error": null
+      "error": "failed to fetch codex rate limits: GET https://chatgpt.com/backend-api/wham/usage failed: 503 Service Unavailable; content-type=text/plain; body=upstream connect error or disconnect/reset before headers. retried and the latest reset reason:",
+      "stale": true,
+      "lastAttemptAt": "2026-08-22T11:53:26.986+08:00"
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-22T11:48:26.667+08:00",
+      "fetchedAt": "2026-08-22T11:53:26.997+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -130,7 +132,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-22T11:48:26.667+08:00",
+      "fetchedAt": "2026-08-22T11:53:26.997+08:00",
       "error": "未启用",
       "disabled": true
     }
