@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-25T14:28:28.128+08:00",
+  "updatedAt": "2026-08-25T14:33:30.216+08:00",
   "calendar": {
     "solar": "2026年8月25日 星期二",
     "lunar": "农历七月十三"
@@ -10,9 +10,9 @@
     "description": "多云",
     "iconKey": "cloudy",
     "tempC": 31.7,
-    "feelsLikeC": 35.6,
+    "feelsLikeC": 35.4,
     "humidity": 59,
-    "windKph": 12.9,
+    "windKph": 12.8,
     "windDir": "东风",
     "isDay": 1,
     "forecast": [
@@ -72,8 +72,8 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-25T14:15:00+08:00",
-    "fetchedAt": "2026-08-25T14:28:28.143+08:00",
+    "observedAt": "2026-08-25T14:30:00+08:00",
+    "fetchedAt": "2026-08-25T14:33:30.230+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-08-25T14:28:27.064+08:00",
+    "fetchedAt": "2026-08-25T14:33:29.206+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-25T14:28:27.050+08:00",
+      "fetchedAt": "2026-08-25T14:33:29.193+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -109,18 +109,18 @@
       "windows": [
         {
           "name": "周",
-          "usedPct": 42,
+          "usedPct": 43,
           "resetAt": "2026-08-31T08:57:13.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-25T14:28:27.051+08:00",
+      "fetchedAt": "2026-08-25T14:33:29.194+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-25T14:28:27.064+08:00",
+      "fetchedAt": "2026-08-25T14:33:29.206+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -130,7 +130,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-25T14:28:27.064+08:00",
+      "fetchedAt": "2026-08-25T14:33:29.206+08:00",
       "error": "未启用",
       "disabled": true
     }
