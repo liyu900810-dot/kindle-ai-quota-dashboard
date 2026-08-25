@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-25T15:58:27.885+08:00",
+  "updatedAt": "2026-08-25T16:03:29.133+08:00",
   "calendar": {
     "solar": "2026年8月25日 星期二",
     "lunar": "农历七月十三"
@@ -10,33 +10,24 @@ window.DASH_DATA = {
     "description": "多云",
     "iconKey": "cloudy",
     "tempC": 31.4,
-    "feelsLikeC": 35.1,
+    "feelsLikeC": 35.2,
     "humidity": 62,
-    "windKph": 12.7,
+    "windKph": 12.4,
     "windDir": "东南风",
     "isDay": 1,
     "forecast": [
       {
-        "time": "2026-08-25T17:00",
-        "tempC": 30.6,
+        "time": "2026-08-25T18:00",
+        "tempC": 29.5,
         "weatherCode": 0,
         "isDay": 1,
         "description": "晴",
         "iconKey": "clear",
-        "precipitationProbability": 2
-      },
-      {
-        "time": "2026-08-25T19:00",
-        "tempC": 28.4,
-        "weatherCode": 0,
-        "isDay": 0,
-        "description": "晴",
-        "iconKey": "clear-night",
         "precipitationProbability": 1
       },
       {
-        "time": "2026-08-25T21:00",
-        "tempC": 27.4,
+        "time": "2026-08-25T20:00",
+        "tempC": 28,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -44,8 +35,8 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-08-25T23:00",
-        "tempC": 26.3,
+        "time": "2026-08-25T22:00",
+        "tempC": 26.8,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -53,8 +44,8 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-08-26T01:00",
-        "tempC": 25.5,
+        "time": "2026-08-26T00:00",
+        "tempC": 25.8,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -62,8 +53,17 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-08-26T03:00",
-        "tempC": 24.9,
+        "time": "2026-08-26T02:00",
+        "tempC": 25.2,
+        "weatherCode": 0,
+        "isDay": 0,
+        "description": "晴",
+        "iconKey": "clear-night",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-08-26T04:00",
+        "tempC": 24.6,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-25T15:45:00+08:00",
-    "fetchedAt": "2026-08-25T15:58:27.897+08:00",
+    "observedAt": "2026-08-25T16:00:00+08:00",
+    "fetchedAt": "2026-08-25T16:03:29.145+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-08-25T15:58:27.100+08:00",
+    "fetchedAt": "2026-08-25T16:03:27.732+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-25T15:58:27.087+08:00",
+      "fetchedAt": "2026-08-25T16:03:27.716+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -109,18 +109,18 @@ window.DASH_DATA = {
       "windows": [
         {
           "name": "周",
-          "usedPct": 45,
-          "resetAt": "2026-08-31T08:57:12.000+08:00"
+          "usedPct": 47,
+          "resetAt": "2026-08-31T08:57:13.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-25T15:58:27.088+08:00",
+      "fetchedAt": "2026-08-25T16:03:27.717+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-25T15:58:27.100+08:00",
+      "fetchedAt": "2026-08-25T16:03:27.732+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -130,7 +130,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-25T15:58:27.100+08:00",
+      "fetchedAt": "2026-08-25T16:03:27.732+08:00",
       "error": "未启用",
       "disabled": true
     }
