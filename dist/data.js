@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-25T16:53:28.467+08:00",
+  "updatedAt": "2026-08-25T16:58:28.125+08:00",
   "calendar": {
     "solar": "2026年8月25日 星期二",
     "lunar": "农历七月十三"
@@ -73,7 +73,7 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-08-25T16:45:00+08:00",
-    "fetchedAt": "2026-08-25T16:53:28.480+08:00",
+    "fetchedAt": "2026-08-25T16:58:28.136+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -83,6 +83,13 @@ window.DASH_DATA = {
     "source": "notion",
     "items": [
       {
+        "title": "过去拿今年合同",
+        "dueAt": "2026-08-26",
+        "dueLabel": "明天",
+        "priority": "普通",
+        "pinned": false
+      },
+      {
         "title": "核对最高法院平台法院网段地址表并完善网段地址",
         "dueAt": null,
         "dueLabel": "",
@@ -90,8 +97,8 @@ window.DASH_DATA = {
         "pinned": false
       }
     ],
-    "totalOpen": 1,
-    "fetchedAt": "2026-08-25T16:53:27.182+08:00",
+    "totalOpen": 2,
+    "fetchedAt": "2026-08-25T16:58:27.136+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +106,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-25T16:53:27.168+08:00",
+      "fetchedAt": "2026-08-25T16:58:27.123+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -113,14 +120,14 @@ window.DASH_DATA = {
           "resetAt": "2026-08-31T08:57:13.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-25T16:53:27.169+08:00",
+      "fetchedAt": "2026-08-25T16:58:27.124+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-25T16:53:27.181+08:00",
+      "fetchedAt": "2026-08-25T16:58:27.136+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -130,7 +137,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-25T16:53:27.182+08:00",
+      "fetchedAt": "2026-08-25T16:58:27.136+08:00",
       "error": "未启用",
       "disabled": true
     }
