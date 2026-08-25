@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-25T15:28:28.197+08:00",
+  "updatedAt": "2026-08-25T15:33:34.073+08:00",
   "calendar": {
     "solar": "2026年8月25日 星期二",
     "lunar": "农历七月十三"
@@ -10,9 +10,9 @@
     "description": "多云",
     "iconKey": "cloudy",
     "tempC": 31.5,
-    "feelsLikeC": 35,
+    "feelsLikeC": 35.1,
     "humidity": 61,
-    "windKph": 13.2,
+    "windKph": 13,
     "windDir": "东南风",
     "isDay": 1,
     "forecast": [
@@ -72,8 +72,8 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-25T15:15:00+08:00",
-    "fetchedAt": "2026-08-25T15:28:28.211+08:00",
+    "observedAt": "2026-08-25T15:30:00+08:00",
+    "fetchedAt": "2026-08-25T15:33:34.085+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-08-25T15:28:27.235+08:00",
+    "fetchedAt": "2026-08-25T15:33:32.607+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-25T15:28:27.222+08:00",
+      "fetchedAt": "2026-08-25T15:33:32.592+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -109,18 +109,18 @@
       "windows": [
         {
           "name": "周",
-          "usedPct": 44,
-          "resetAt": "2026-08-31T08:57:12.000+08:00"
+          "usedPct": 45,
+          "resetAt": "2026-08-31T08:57:13.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-25T15:28:27.223+08:00",
+      "fetchedAt": "2026-08-25T15:33:32.593+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-25T15:28:27.235+08:00",
+      "fetchedAt": "2026-08-25T15:33:32.607+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -130,7 +130,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-25T15:28:27.235+08:00",
+      "fetchedAt": "2026-08-25T15:33:32.607+08:00",
       "error": "未启用",
       "disabled": true
     }
