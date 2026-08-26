@@ -1,5 +1,5 @@
 -- AI Quota Dashboard for KOReader
--- Version 7.6: add low-overhead memory protection and automatic recovery.
+-- Version 7.7: show the Codex five-hour and weekly quotas side by side.
 
 local Blitbuffer = require("ffi/blitbuffer")
 local CenterContainer = require("ui/widget/container/centercontainer")
@@ -568,26 +568,77 @@ local function timestamp_time(value)
     return text_value(value, ""):match("[T ](%d%d:%d%d)") or "--:--"
 end
 
-local function quota_card(window, width, height)
-    local inner_width = width - S(28)
+local function quota_window_panel(window, width, height)
     local used = number_or_nil(window.usedPct)
     local used_text = used and string.format("%d%% used", math.floor(used + 0.5)) or "-- used"
-    local right_inset = S(16)
-    local provider_width = S(104)
-    local value_width = S(176)
-    local row_height = S(30)
+    local value_width = math.floor(width * 0.58)
+    local row_height = S(29)
     local bar = ProgressWidget:new{
-        width = inner_width,
-        height = S(14),
+        width = width,
+        height = S(12),
         percentage = used and used / 100 or 0,
         bordersize = S(2),
-        margin_h = S(3),
+        margin_h = S(2),
         margin_v = S(1),
         radius = 0,
         bordercolor = Blitbuffer.COLOR_BLACK,
         bgcolor = Blitbuffer.COLOR_WHITE,
         fillcolor = Blitbuffer.COLOR_BLACK,
     }
+    local value_row = HorizontalGroup:new{
+        allow_mirroring = false,
+        left_cell(
+            text_widget(quota_label(window), 15, width - value_width, true),
+            width - value_width,
+            row_height
+        ),
+        right_cell(text_widget(used_text, 23, value_width, true), value_width, row_height),
+    }
+    return fixed_content({
+        value_row,
+        spacer(S(3)),
+        bar,
+        spacer(S(4)),
+        text_widget("Reset: " .. compact_timestamp(window.resetAt, true), 10, width, false),
+    }, width, height)
+end
+
+local function select_quota_windows(windows)
+    local short_window
+    local weekly_window
+    for _, window in ipairs(type(windows) == "table" and windows or {}) do
+        local name = text_value(window.name, "")
+        local label = quota_label(window)
+        if not short_window and (name:find("5", 1, true)
+                or name:find("小时", 1, true)) then
+            short_window = window
+        elseif not weekly_window and (label == "周"
+                or name:find("7天", 1, true)) then
+            weekly_window = window
+        end
+    end
+    if not short_window then
+        short_window = windows and windows[1] or nil
+    end
+    if not weekly_window then
+        for _, window in ipairs(type(windows) == "table" and windows or {}) do
+            if window ~= short_window then
+                weekly_window = window
+                break
+            end
+        end
+    end
+    if weekly_window == short_window then
+        weekly_window = nil
+    end
+    return short_window, weekly_window
+end
+
+
+local function quota_card(windows, width, height)
+    local inner_width = width - S(28)
+    local provider_width = S(104)
+    local right_inset = S(8)
     local provider = HorizontalGroup:new{
         allow_mirroring = false,
         CodexIcon:new{},
@@ -604,24 +655,30 @@ local function quota_card(window, width, height)
         right_cell(provider, provider_width, S(22)),
         HorizontalSpan:new{ width = right_inset },
     }
-    local value_row = HorizontalGroup:new{
-        allow_mirroring = false,
-        left_cell(
-            text_widget(quota_label(window), 14, inner_width - value_width - right_inset, true),
-            inner_width - value_width - right_inset,
-            row_height
-        ),
-        right_cell(text_widget(used_text, 27, value_width, true), value_width, row_height),
-        HorizontalSpan:new{ width = right_inset },
-    }
+    local short_window, weekly_window = select_quota_windows(windows)
+    local panels
+    if weekly_window then
+        local divider_width = S(2)
+        local panel_gap = S(12)
+        local panels_width = inner_width - divider_width - panel_gap * 2
+        local left_width = math.floor(panels_width / 2)
+        local right_width = panels_width - left_width
+        local panel_height = S(62)
+        panels = HorizontalGroup:new{
+            allow_mirroring = false,
+            quota_window_panel(short_window, left_width, panel_height),
+            HorizontalSpan:new{ width = panel_gap },
+            ForecastDivider:new{ width = divider_width, height = panel_height },
+            HorizontalSpan:new{ width = panel_gap },
+            quota_window_panel(weekly_window, right_width, panel_height),
+        }
+    else
+        panels = quota_window_panel(short_window, inner_width, S(62))
+    end
     return card({
         top_row,
-        spacer(S(5)),
-        value_row,
-        spacer(S(5)),
-        bar,
-        spacer(S(5)),
-        text_widget("Reset: " .. compact_timestamp(window.resetAt, true), 11, inner_width, false),
+        spacer(S(4)),
+        panels,
     }, width, height)
 end
 
@@ -984,17 +1041,9 @@ function DashboardView:init()
         weather_card,
     }
 
-    local quota_window
-    if codex.ok and type(codex.windows) == "table" then
-        for _, window in ipairs(codex.windows) do
-            if not quota_window or quota_label(window) == "周" then
-                quota_window = window
-            end
-        end
-    end
     local quota
-    if quota_window then
-        quota = quota_card(quota_window, content_width, quota_height)
+    if codex.ok and type(codex.windows) == "table" and #codex.windows > 0 then
+        quota = quota_card(codex.windows, content_width, quota_height)
     else
         local reason = state.message or codex.error or "暂时无法取得额度数据"
         quota = card({

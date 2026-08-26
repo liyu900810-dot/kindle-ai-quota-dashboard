@@ -27,7 +27,7 @@ test('KOReader plugin protects network requests and preserves cached data', () =
   assert.match(main, /request_url = self\.endpoint .* "_=" \.\. tostring\(os\.time\(\)\)/);
 });
 
-test('KOReader plugin is e-ink aware and includes v7.6 metadata', () => {
+test('KOReader plugin is e-ink aware and includes v7.7 metadata', () => {
   const retrySection = main.match(
     /function AiQuota:scheduleOnlineRetry[\s\S]*?function AiQuota:onNetworkConnected/,
   );
@@ -83,7 +83,25 @@ test('KOReader plugin is e-ink aware and includes v7.6 metadata', () => {
   assert.match(main, /NetworkMgr:runWhenConnected/);
   assert.doesNotMatch(main, /NetworkMgr:runWhenOnline/);
   assert.doesNotMatch(main, /local footer = fixed_content/);
-  assert.match(meta, /version = "7\.6\.0"/);
+  assert.match(meta, /version = "7\.7\.0"/);
+});
+
+test('KOReader quota card shows five-hour and weekly windows side by side', () => {
+  const quotaSection = main.match(
+    /local function quota_window_panel[\s\S]*?local function todo_card/,
+  );
+  assert.ok(quotaSection);
+  assert.match(quotaSection[0], /local function select_quota_windows\(windows\)/);
+  assert.match(quotaSection[0], /name:find\("5", 1, true\)/);
+  assert.match(quotaSection[0], /name:find\("小时", 1, true\)/);
+  assert.match(quotaSection[0], /label == "周"/);
+  assert.match(quotaSection[0], /name:find\("7天", 1, true\)/);
+  assert.match(quotaSection[0], /if weekly_window == short_window then\s+weekly_window = nil/);
+  assert.match(quotaSection[0], /quota_window_panel\(short_window, left_width/);
+  assert.match(quotaSection[0], /quota_window_panel\(weekly_window, right_width/);
+  assert.match(quotaSection[0], /ForecastDivider:new\{ width = divider_width/);
+  assert.match(main, /quota_card\(codex\.windows, content_width, quota_height\)/);
+  assert.doesNotMatch(main, /if not quota_window or quota_label\(window\) == "周"/);
 });
 
 test('KOReader plugin guards sustained high memory without another timer', () => {
