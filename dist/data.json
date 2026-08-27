@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-27T08:33:27.873+08:00",
+  "updatedAt": "2026-08-27T08:38:28.122+08:00",
   "calendar": {
     "solar": "2026年8月27日 星期四",
     "lunar": "农历七月十五"
@@ -32,7 +32,7 @@
         "isDay": 1,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 4
+        "precipitationProbability": 2
       },
       {
         "time": "2026-08-27T14:00",
@@ -41,7 +41,7 @@
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
-        "precipitationProbability": 14
+        "precipitationProbability": 10
       },
       {
         "time": "2026-08-27T16:00",
@@ -50,7 +50,7 @@
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 20
+        "precipitationProbability": 29
       },
       {
         "time": "2026-08-27T18:00",
@@ -59,7 +59,7 @@
         "isDay": 1,
         "description": "晴",
         "iconKey": "clear",
-        "precipitationProbability": 15
+        "precipitationProbability": 25
       },
       {
         "time": "2026-08-27T20:00",
@@ -73,7 +73,7 @@
     ],
     "place": "扬州",
     "observedAt": "2026-08-27T08:30:00+08:00",
-    "fetchedAt": "2026-08-27T08:33:27.884+08:00",
+    "fetchedAt": "2026-08-27T08:38:28.133+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-08-27T08:33:27.025+08:00",
+    "fetchedAt": "2026-08-27T08:38:27.007+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-27T08:33:27.012+08:00",
+      "fetchedAt": "2026-08-27T08:38:26.993+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -125,14 +125,14 @@
           "resetAt": "2026-09-02T08:00:04.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-27T08:33:27.012+08:00",
+      "fetchedAt": "2026-08-27T08:38:26.994+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-27T08:33:27.025+08:00",
+      "fetchedAt": "2026-08-27T08:38:27.006+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -142,7 +142,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-27T08:33:27.025+08:00",
+      "fetchedAt": "2026-08-27T08:38:27.006+08:00",
       "error": "未启用",
       "disabled": true
     }
