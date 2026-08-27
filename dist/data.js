@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-27T19:13:28.727+08:00",
+  "updatedAt": "2026-08-27T19:18:27.948+08:00",
   "calendar": {
     "solar": "2026年8月27日 星期四",
     "lunar": "农历七月十五"
@@ -9,10 +9,10 @@ window.DASH_DATA = {
     "ok": true,
     "description": "晴",
     "iconKey": "clear-night",
-    "tempC": 28.5,
-    "feelsLikeC": 33.2,
-    "humidity": 81,
-    "windKph": 12.6,
+    "tempC": 28.2,
+    "feelsLikeC": 33,
+    "humidity": 82,
+    "windKph": 12.5,
     "windDir": "东北风",
     "isDay": 0,
     "forecast": [
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-27T19:00:00+08:00",
-    "fetchedAt": "2026-08-27T19:13:28.740+08:00",
+    "observedAt": "2026-08-27T19:15:00+08:00",
+    "fetchedAt": "2026-08-27T19:18:27.959+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-08-27T19:13:27.738+08:00",
+    "fetchedAt": "2026-08-27T19:18:26.650+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-27T19:13:27.725+08:00",
+      "fetchedAt": "2026-08-27T19:18:26.623+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -125,14 +125,14 @@ window.DASH_DATA = {
           "resetAt": "2026-09-02T08:00:04.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-27T19:13:27.726+08:00",
+      "fetchedAt": "2026-08-27T19:18:26.624+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-27T19:13:27.738+08:00",
+      "fetchedAt": "2026-08-27T19:18:26.650+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -142,7 +142,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-27T19:13:27.738+08:00",
+      "fetchedAt": "2026-08-27T19:18:26.650+08:00",
       "error": "未启用",
       "disabled": true
     }
