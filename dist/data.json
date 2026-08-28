@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-29T04:58:28.037+08:00",
+  "updatedAt": "2026-08-29T05:03:28.124+08:00",
   "calendar": {
     "solar": "2026年8月29日 星期六",
     "lunar": "农历七月十七"
@@ -12,22 +12,13 @@
     "tempC": 26,
     "feelsLikeC": 31.5,
     "humidity": 96,
-    "windKph": 9.6,
+    "windKph": 9.5,
     "windDir": "东风",
     "isDay": 0,
     "forecast": [
       {
-        "time": "2026-08-29T06:00",
-        "tempC": 25.9,
-        "weatherCode": 0,
-        "isDay": 1,
-        "description": "晴",
-        "iconKey": "clear",
-        "precipitationProbability": 0
-      },
-      {
-        "time": "2026-08-29T08:00",
-        "tempC": 28.3,
+        "time": "2026-08-29T07:00",
+        "tempC": 27,
         "weatherCode": 3,
         "isDay": 1,
         "description": "阴",
@@ -35,45 +26,54 @@
         "precipitationProbability": 0
       },
       {
-        "time": "2026-08-29T10:00",
-        "tempC": 30.5,
+        "time": "2026-08-29T09:00",
+        "tempC": 29.1,
         "weatherCode": 51,
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 9
+        "precipitationProbability": 4
       },
       {
-        "time": "2026-08-29T12:00",
-        "tempC": 32.1,
-        "weatherCode": 1,
-        "isDay": 1,
-        "description": "多云",
-        "iconKey": "cloudy",
-        "precipitationProbability": 32
-      },
-      {
-        "time": "2026-08-29T14:00",
-        "tempC": 32.4,
+        "time": "2026-08-29T11:00",
+        "tempC": 31.6,
         "weatherCode": 51,
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 65
+        "precipitationProbability": 18
       },
       {
-        "time": "2026-08-29T16:00",
-        "tempC": 28,
-        "weatherCode": 95,
+        "time": "2026-08-29T13:00",
+        "tempC": 32.3,
+        "weatherCode": 51,
         "isDay": 1,
-        "description": "雷雨",
-        "iconKey": "thunder",
+        "description": "雨",
+        "iconKey": "rain",
+        "precipitationProbability": 50
+      },
+      {
+        "time": "2026-08-29T15:00",
+        "tempC": 32.2,
+        "weatherCode": 51,
+        "isDay": 1,
+        "description": "雨",
+        "iconKey": "rain",
+        "precipitationProbability": 77
+      },
+      {
+        "time": "2026-08-29T17:00",
+        "tempC": 28.8,
+        "weatherCode": 51,
+        "isDay": 1,
+        "description": "雨",
+        "iconKey": "rain",
         "precipitationProbability": 86
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-29T04:45:00+08:00",
-    "fetchedAt": "2026-08-29T04:58:28.050+08:00",
+    "observedAt": "2026-08-29T05:00:00+08:00",
+    "fetchedAt": "2026-08-29T05:03:28.137+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-08-29T04:58:27.203+08:00",
+    "fetchedAt": "2026-08-29T05:03:27.258+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-29T04:58:27.190+08:00",
+      "fetchedAt": "2026-08-29T05:03:27.246+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -117,7 +117,7 @@
         {
           "name": "5小时",
           "usedPct": 0,
-          "resetAt": "2026-08-29T09:58:25.000+08:00"
+          "resetAt": "2026-08-29T10:03:25.000+08:00"
         },
         {
           "name": "周",
@@ -125,14 +125,14 @@
           "resetAt": "2026-09-04T08:00:53.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-29T04:58:27.191+08:00",
+      "fetchedAt": "2026-08-29T05:03:27.246+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-29T04:58:27.202+08:00",
+      "fetchedAt": "2026-08-29T05:03:27.258+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -142,7 +142,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-29T04:58:27.202+08:00",
+      "fetchedAt": "2026-08-29T05:03:27.258+08:00",
       "error": "未启用",
       "disabled": true
     }
