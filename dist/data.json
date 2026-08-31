@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-31T22:33:45.058+08:00",
+  "updatedAt": "2026-08-31T23:08:40.837+08:00",
   "calendar": {
     "solar": "2026年8月31日 星期一",
     "lunar": "农历七月十九"
@@ -77,7 +77,7 @@
     "source": "open-meteo",
     "error": "fetch failed",
     "stale": true,
-    "lastAttemptAt": "2026-08-31T22:33:45.076+08:00"
+    "lastAttemptAt": "2026-08-31T23:08:40.855+08:00"
   },
   "quote": null,
   "todo": {
@@ -107,17 +107,17 @@
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-08-31T22:33:45.056+08:00",
+    "fetchedAt": "2026-08-31T23:08:40.836+08:00",
     "error": "fetch failed",
     "stale": true,
-    "lastAttemptAt": "2026-08-31T22:33:39.830+08:00"
+    "lastAttemptAt": "2026-08-31T23:08:35.623+08:00"
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-31T22:33:39.819+08:00",
+      "fetchedAt": "2026-08-31T23:08:35.609+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -139,13 +139,13 @@
       "fetchedAt": "2026-08-31T20:28:28.430+08:00",
       "error": "failed to fetch codex rate limits: error sending request for url (https://chatgpt.com/backend-api/wham/usage)",
       "stale": true,
-      "lastAttemptAt": "2026-08-31T22:33:39.819+08:00"
+      "lastAttemptAt": "2026-08-31T23:08:35.610+08:00"
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-31T22:33:39.830+08:00",
+      "fetchedAt": "2026-08-31T23:08:35.622+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -155,7 +155,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-31T22:33:39.830+08:00",
+      "fetchedAt": "2026-08-31T23:08:35.622+08:00",
       "error": "未启用",
       "disabled": true
     }
