@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-08-31T15:28:28.114+08:00",
+  "updatedAt": "2026-08-31T15:33:27.994+08:00",
   "calendar": {
     "solar": "2026年8月31日 星期一",
     "lunar": "农历七月十九"
@@ -9,10 +9,10 @@ window.DASH_DATA = {
     "ok": true,
     "description": "雨",
     "iconKey": "rain",
-    "tempC": 26.7,
-    "feelsLikeC": 29.6,
-    "humidity": 78,
-    "windKph": 15.9,
+    "tempC": 26.6,
+    "feelsLikeC": 29.7,
+    "humidity": 80,
+    "windKph": 15.5,
     "windDir": "北风",
     "isDay": 1,
     "forecast": [
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-08-31T15:15:00+08:00",
-    "fetchedAt": "2026-08-31T15:28:28.127+08:00",
+    "observedAt": "2026-08-31T15:30:00+08:00",
+    "fetchedAt": "2026-08-31T15:33:28.006+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-08-31T15:28:27.135+08:00",
+    "fetchedAt": "2026-08-31T15:33:27.088+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-08-31T15:28:27.117+08:00",
+      "fetchedAt": "2026-08-31T15:33:27.071+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -116,7 +116,7 @@ window.DASH_DATA = {
       "windows": [
         {
           "name": "5小时",
-          "usedPct": 65,
+          "usedPct": 67,
           "resetAt": "2026-08-31T16:20:35.000+08:00"
         },
         {
@@ -125,14 +125,14 @@ window.DASH_DATA = {
           "resetAt": "2026-09-07T11:20:35.000+08:00"
         }
       ],
-      "fetchedAt": "2026-08-31T15:28:27.118+08:00",
+      "fetchedAt": "2026-08-31T15:33:27.072+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-08-31T15:28:27.135+08:00",
+      "fetchedAt": "2026-08-31T15:33:27.088+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -142,7 +142,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-08-31T15:28:27.135+08:00",
+      "fetchedAt": "2026-08-31T15:33:27.088+08:00",
       "error": "未启用",
       "disabled": true
     }
