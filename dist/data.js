@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-01T16:13:28.801+08:00",
+  "updatedAt": "2026-09-01T16:18:29.775+08:00",
   "calendar": {
     "solar": "2026年9月1日 星期二",
     "lunar": "农历七月二十"
@@ -9,10 +9,10 @@ window.DASH_DATA = {
     "ok": true,
     "description": "雨",
     "iconKey": "rain",
-    "tempC": 26.7,
+    "tempC": 26.5,
     "feelsLikeC": 28.8,
-    "humidity": 81,
-    "windKph": 23.8,
+    "humidity": 82,
+    "windKph": 23,
     "windDir": "北风",
     "isDay": 1,
     "forecast": [
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-01T16:00:00+08:00",
-    "fetchedAt": "2026-09-01T16:13:28.815+08:00",
+    "observedAt": "2026-09-01T16:15:00+08:00",
+    "fetchedAt": "2026-09-01T16:18:29.789+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-09-01T16:13:27.230+08:00",
+    "fetchedAt": "2026-09-01T16:18:27.494+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-01T16:13:27.216+08:00",
+      "fetchedAt": "2026-09-01T16:18:27.482+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -125,14 +125,14 @@ window.DASH_DATA = {
           "resetAt": "2026-09-07T11:20:35.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-01T16:13:27.217+08:00",
+      "fetchedAt": "2026-09-01T16:18:27.482+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-01T16:13:27.229+08:00",
+      "fetchedAt": "2026-09-01T16:18:27.494+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -142,7 +142,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-01T16:13:27.230+08:00",
+      "fetchedAt": "2026-09-01T16:18:27.494+08:00",
       "error": "未启用",
       "disabled": true
     }
