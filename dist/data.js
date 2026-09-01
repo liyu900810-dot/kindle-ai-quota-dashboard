@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-01T22:58:28.964+08:00",
+  "updatedAt": "2026-09-01T23:03:32.365+08:00",
   "calendar": {
     "solar": "2026年9月1日 星期二",
     "lunar": "农历七月二十"
@@ -12,22 +12,22 @@ window.DASH_DATA = {
     "tempC": 24.5,
     "feelsLikeC": 26.2,
     "humidity": 81,
-    "windKph": 17.9,
+    "windKph": 17.8,
     "windDir": "东北风",
     "isDay": 0,
     "forecast": [
       {
-        "time": "2026-09-02T00:00",
-        "tempC": 24.4,
-        "weatherCode": 3,
+        "time": "2026-09-02T01:00",
+        "tempC": 24,
+        "weatherCode": 51,
         "isDay": 0,
-        "description": "阴",
-        "iconKey": "cloudy",
-        "precipitationProbability": 18
+        "description": "雨",
+        "iconKey": "rain",
+        "precipitationProbability": 22
       },
       {
-        "time": "2026-09-02T02:00",
-        "tempC": 23.6,
+        "time": "2026-09-02T03:00",
+        "tempC": 23.4,
         "weatherCode": 3,
         "isDay": 0,
         "description": "阴",
@@ -35,45 +35,45 @@ window.DASH_DATA = {
         "precipitationProbability": 24
       },
       {
-        "time": "2026-09-02T04:00",
-        "tempC": 23.4,
-        "weatherCode": 3,
+        "time": "2026-09-02T05:00",
+        "tempC": 23.3,
+        "weatherCode": 1,
         "isDay": 0,
-        "description": "阴",
+        "description": "多云",
         "iconKey": "cloudy",
-        "precipitationProbability": 23
+        "precipitationProbability": 20
       },
       {
-        "time": "2026-09-02T06:00",
-        "tempC": 23,
+        "time": "2026-09-02T07:00",
+        "tempC": 23.5,
         "weatherCode": 3,
         "isDay": 1,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 15
+        "precipitationProbability": 9
       },
       {
-        "time": "2026-09-02T08:00",
-        "tempC": 24,
+        "time": "2026-09-02T09:00",
+        "tempC": 25.2,
+        "weatherCode": 2,
+        "isDay": 1,
+        "description": "多云",
+        "iconKey": "cloudy",
+        "precipitationProbability": 7
+      },
+      {
+        "time": "2026-09-02T11:00",
+        "tempC": 26.8,
         "weatherCode": 3,
         "isDay": 1,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 6
-      },
-      {
-        "time": "2026-09-02T10:00",
-        "tempC": 26.6,
-        "weatherCode": 51,
-        "isDay": 1,
-        "description": "雨",
-        "iconKey": "rain",
-        "precipitationProbability": 12
+        "precipitationProbability": 20
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-01T22:45:00+08:00",
-    "fetchedAt": "2026-09-01T22:58:28.977+08:00",
+    "observedAt": "2026-09-01T23:00:00+08:00",
+    "fetchedAt": "2026-09-01T23:03:32.378+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-09-01T22:58:27.369+08:00",
+    "fetchedAt": "2026-09-01T23:03:30.694+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-01T22:58:27.356+08:00",
+      "fetchedAt": "2026-09-01T23:03:30.680+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -125,14 +125,14 @@ window.DASH_DATA = {
           "resetAt": "2026-09-07T11:20:35.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-01T22:58:27.357+08:00",
+      "fetchedAt": "2026-09-01T23:03:30.680+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-01T22:58:27.369+08:00",
+      "fetchedAt": "2026-09-01T23:03:30.694+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -142,7 +142,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-01T22:58:27.369+08:00",
+      "fetchedAt": "2026-09-01T23:03:30.694+08:00",
       "error": "未启用",
       "disabled": true
     }
