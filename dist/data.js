@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-01T12:38:28.362+08:00",
+  "updatedAt": "2026-09-01T12:48:32.819+08:00",
   "calendar": {
     "solar": "2026年9月1日 星期二",
     "lunar": "农历七月二十"
@@ -9,10 +9,10 @@ window.DASH_DATA = {
     "ok": true,
     "description": "多云",
     "iconKey": "cloudy",
-    "tempC": 28.7,
-    "feelsLikeC": 31.9,
+    "tempC": 28.6,
+    "feelsLikeC": 31.6,
     "humidity": 70,
-    "windKph": 20.9,
+    "windKph": 21.2,
     "windDir": "东北风",
     "isDay": 1,
     "forecast": [
@@ -72,41 +72,50 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-01T12:30:00+08:00",
-    "fetchedAt": "2026-09-01T12:38:28.374+08:00",
+    "observedAt": "2026-09-01T12:45:00+08:00",
+    "fetchedAt": "2026-09-01T12:48:32.841+08:00",
     "source": "open-meteo",
     "error": null
   },
   "quote": null,
   "todo": {
     "ok": true,
-    "source": "notion",
+    "source": "notion-fallback",
     "items": [
       {
-        "title": "打回来",
+        "title": "检查 Kindle 新版界面",
         "dueAt": null,
-        "dueLabel": "",
-        "priority": "普通",
+        "dueLabel": "今天",
+        "priority": "高",
         "pinned": false
       },
       {
-        "title": "核对最高法院平台法院网段地址表并完善网段地址",
+        "title": "完成 Notion 待办数据源授权",
         "dueAt": null,
-        "dueLabel": "",
+        "dueLabel": "明天",
+        "priority": "高",
+        "pinned": false
+      },
+      {
+        "title": "补充个人待办事项",
+        "dueAt": null,
+        "dueLabel": "本周",
         "priority": "普通",
         "pinned": false
       }
     ],
-    "totalOpen": 2,
-    "fetchedAt": "2026-09-01T12:38:26.818+08:00",
-    "error": null
+    "totalOpen": 3,
+    "fetchedAt": "2026-09-01T12:48:32.817+08:00",
+    "error": "fetch failed",
+    "stale": true,
+    "lastAttemptAt": "2026-09-01T12:48:27.771+08:00"
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-01T12:38:26.801+08:00",
+      "fetchedAt": "2026-09-01T12:48:27.754+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -125,14 +134,14 @@ window.DASH_DATA = {
           "resetAt": "2026-09-07T11:20:35.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-01T12:38:26.802+08:00",
+      "fetchedAt": "2026-09-01T12:48:27.755+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-01T12:38:26.818+08:00",
+      "fetchedAt": "2026-09-01T12:48:27.770+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -142,7 +151,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-01T12:38:26.818+08:00",
+      "fetchedAt": "2026-09-01T12:48:27.770+08:00",
       "error": "未启用",
       "disabled": true
     }
