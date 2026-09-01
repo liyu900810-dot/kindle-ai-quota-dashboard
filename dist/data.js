@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-01T11:03:32.947+08:00",
+  "updatedAt": "2026-09-01T11:08:32.159+08:00",
   "calendar": {
     "solar": "2026年9月1日 星期二",
     "lunar": "农历七月二十"
@@ -23,7 +23,7 @@ window.DASH_DATA = {
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
-        "precipitationProbability": 65
+        "precipitationProbability": 45
       },
       {
         "time": "2026-09-01T15:00",
@@ -32,7 +32,7 @@ window.DASH_DATA = {
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
-        "precipitationProbability": 69
+        "precipitationProbability": 39
       },
       {
         "time": "2026-09-01T17:00",
@@ -41,7 +41,7 @@ window.DASH_DATA = {
         "isDay": 1,
         "description": "晴",
         "iconKey": "clear",
-        "precipitationProbability": 53
+        "precipitationProbability": 27
       },
       {
         "time": "2026-09-01T19:00",
@@ -50,7 +50,7 @@ window.DASH_DATA = {
         "isDay": 0,
         "description": "晴",
         "iconKey": "clear-night",
-        "precipitationProbability": 27
+        "precipitationProbability": 13
       },
       {
         "time": "2026-09-01T21:00",
@@ -59,7 +59,7 @@ window.DASH_DATA = {
         "isDay": 0,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 12
+        "precipitationProbability": 8
       },
       {
         "time": "2026-09-01T23:00",
@@ -68,54 +68,45 @@ window.DASH_DATA = {
         "isDay": 0,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 12
+        "precipitationProbability": 14
       }
     ],
     "place": "扬州",
     "observedAt": "2026-09-01T11:00:00+08:00",
-    "fetchedAt": "2026-09-01T11:03:32.966+08:00",
+    "fetchedAt": "2026-09-01T11:08:32.233+08:00",
     "source": "open-meteo",
     "error": null
   },
   "quote": null,
   "todo": {
     "ok": true,
-    "source": "notion-fallback",
+    "source": "notion",
     "items": [
       {
-        "title": "检查 Kindle 新版界面",
+        "title": "打回来",
         "dueAt": null,
-        "dueLabel": "今天",
-        "priority": "高",
+        "dueLabel": "",
+        "priority": "普通",
         "pinned": false
       },
       {
-        "title": "完成 Notion 待办数据源授权",
+        "title": "核对最高法院平台法院网段地址表并完善网段地址",
         "dueAt": null,
-        "dueLabel": "明天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "补充个人待办事项",
-        "dueAt": null,
-        "dueLabel": "本周",
+        "dueLabel": "",
         "priority": "普通",
         "pinned": false
       }
     ],
-    "totalOpen": 3,
-    "fetchedAt": "2026-09-01T11:03:32.946+08:00",
-    "error": "fetch failed",
-    "stale": true,
-    "lastAttemptAt": "2026-09-01T11:03:27.902+08:00"
+    "totalOpen": 2,
+    "fetchedAt": "2026-09-01T11:08:28.066+08:00",
+    "error": null
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-01T11:03:27.886+08:00",
+      "fetchedAt": "2026-09-01T11:08:28.053+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -125,7 +116,7 @@ window.DASH_DATA = {
       "windows": [
         {
           "name": "5小时",
-          "usedPct": 25,
+          "usedPct": 26,
           "resetAt": "2026-09-01T13:42:42.000+08:00"
         },
         {
@@ -134,14 +125,14 @@ window.DASH_DATA = {
           "resetAt": "2026-09-07T11:20:35.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-01T11:03:27.887+08:00",
+      "fetchedAt": "2026-09-01T11:08:28.053+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-01T11:03:27.902+08:00",
+      "fetchedAt": "2026-09-01T11:08:28.065+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -151,7 +142,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-01T11:03:27.902+08:00",
+      "fetchedAt": "2026-09-01T11:08:28.066+08:00",
       "error": "未启用",
       "disabled": true
     }
