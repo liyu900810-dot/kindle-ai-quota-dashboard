@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-02T09:23:30.633+08:00",
+  "updatedAt": "2026-09-02T09:28:30.733+08:00",
   "calendar": {
     "solar": "2026年9月2日 星期三",
     "lunar": "农历七月廿一"
@@ -73,7 +73,7 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-09-02T09:15:00+08:00",
-    "fetchedAt": "2026-09-02T09:23:30.702+08:00",
+    "fetchedAt": "2026-09-02T09:28:30.748+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-09-02T09:23:28.862+08:00",
+    "fetchedAt": "2026-09-02T09:28:28.036+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-02T09:23:28.844+08:00",
+      "fetchedAt": "2026-09-02T09:28:28.020+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -117,22 +117,22 @@ window.DASH_DATA = {
         {
           "name": "5小时",
           "usedPct": 11,
-          "resetAt": "2026-09-02T13:46:56.000+08:00"
+          "resetAt": "2026-09-02T13:46:57.000+08:00"
         },
         {
           "name": "周",
           "usedPct": 23,
-          "resetAt": "2026-09-07T11:20:35.000+08:00"
+          "resetAt": "2026-09-07T11:20:36.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-02T09:23:28.845+08:00",
+      "fetchedAt": "2026-09-02T09:28:28.021+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-02T09:23:28.861+08:00",
+      "fetchedAt": "2026-09-02T09:28:28.036+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -142,7 +142,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-02T09:23:28.861+08:00",
+      "fetchedAt": "2026-09-02T09:28:28.036+08:00",
       "error": "未启用",
       "disabled": true
     }
