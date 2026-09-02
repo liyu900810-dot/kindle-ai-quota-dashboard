@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-02T14:38:28.174+08:00",
+  "updatedAt": "2026-09-02T14:43:32.497+08:00",
   "calendar": {
     "solar": "2026年9月2日 星期三",
     "lunar": "农历七月廿一"
@@ -73,7 +73,7 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-09-02T14:30:00+08:00",
-    "fetchedAt": "2026-09-02T14:38:28.187+08:00",
+    "fetchedAt": "2026-09-02T14:43:32.515+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-09-02T14:38:27.012+08:00",
+    "fetchedAt": "2026-09-02T14:43:27.314+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-02T14:38:26.995+08:00",
+      "fetchedAt": "2026-09-02T14:43:27.299+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -126,13 +126,15 @@ window.DASH_DATA = {
         }
       ],
       "fetchedAt": "2026-09-02T14:38:26.996+08:00",
-      "error": null
+      "error": "failed to fetch codex rate limits: error sending request for url (https://chatgpt.com/backend-api/wham/usage)",
+      "stale": true,
+      "lastAttemptAt": "2026-09-02T14:43:27.300+08:00"
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-02T14:38:27.012+08:00",
+      "fetchedAt": "2026-09-02T14:43:27.314+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -142,7 +144,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-02T14:38:27.012+08:00",
+      "fetchedAt": "2026-09-02T14:43:27.314+08:00",
       "error": "未启用",
       "disabled": true
     }
