@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-03T12:58:28.510+08:00",
+  "updatedAt": "2026-09-03T13:03:29.025+08:00",
   "calendar": {
     "solar": "2026年9月3日 星期四",
     "lunar": "农历七月廿二"
@@ -9,43 +9,43 @@ window.DASH_DATA = {
     "ok": true,
     "description": "阴",
     "iconKey": "cloudy",
-    "tempC": 26.6,
-    "feelsLikeC": 28.3,
-    "humidity": 77,
-    "windKph": 22.6,
+    "tempC": 26.8,
+    "feelsLikeC": 28.4,
+    "humidity": 76,
+    "windKph": 22.7,
     "windDir": "东北风",
     "isDay": 1,
     "forecast": [
       {
-        "time": "2026-09-03T14:00",
-        "tempC": 26.9,
-        "weatherCode": 3,
-        "isDay": 1,
-        "description": "阴",
-        "iconKey": "cloudy",
-        "precipitationProbability": 12
-      },
-      {
-        "time": "2026-09-03T16:00",
-        "tempC": 26.3,
+        "time": "2026-09-03T15:00",
+        "tempC": 27,
         "weatherCode": 2,
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
-        "precipitationProbability": 3
+        "precipitationProbability": 7
       },
       {
-        "time": "2026-09-03T18:00",
-        "tempC": 24.9,
-        "weatherCode": 1,
+        "time": "2026-09-03T17:00",
+        "tempC": 25.6,
+        "weatherCode": 2,
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
         "precipitationProbability": 0
       },
       {
-        "time": "2026-09-03T20:00",
-        "tempC": 23.8,
+        "time": "2026-09-03T19:00",
+        "tempC": 24.1,
+        "weatherCode": 2,
+        "isDay": 0,
+        "description": "多云",
+        "iconKey": "cloudy",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-09-03T21:00",
+        "tempC": 23.7,
         "weatherCode": 3,
         "isDay": 0,
         "description": "阴",
@@ -53,8 +53,8 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-09-03T22:00",
-        "tempC": 23.4,
+        "time": "2026-09-03T23:00",
+        "tempC": 23.1,
         "weatherCode": 3,
         "isDay": 0,
         "description": "阴",
@@ -62,18 +62,18 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-09-04T00:00",
-        "tempC": 22.9,
-        "weatherCode": 3,
+        "time": "2026-09-04T01:00",
+        "tempC": 22.7,
+        "weatherCode": 2,
         "isDay": 0,
-        "description": "阴",
+        "description": "多云",
         "iconKey": "cloudy",
         "precipitationProbability": 0
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-03T12:45:00+08:00",
-    "fetchedAt": "2026-09-03T12:58:28.525+08:00",
+    "observedAt": "2026-09-03T13:00:00+08:00",
+    "fetchedAt": "2026-09-03T13:03:29.040+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -105,7 +105,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-09-03T12:58:27.284+08:00",
+    "fetchedAt": "2026-09-03T13:03:27.559+08:00",
     "error": null
   },
   "sources": {
@@ -113,7 +113,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-03T12:58:27.270+08:00",
+      "fetchedAt": "2026-09-03T13:03:27.547+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -132,14 +132,14 @@ window.DASH_DATA = {
           "resetAt": "2026-09-07T11:20:35.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-03T12:58:27.271+08:00",
+      "fetchedAt": "2026-09-03T13:03:27.548+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-03T12:58:27.284+08:00",
+      "fetchedAt": "2026-09-03T13:03:27.559+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -149,7 +149,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-03T12:58:27.284+08:00",
+      "fetchedAt": "2026-09-03T13:03:27.559+08:00",
       "error": "未启用",
       "disabled": true
     }
