@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-03T11:18:28.756+08:00",
+  "updatedAt": "2026-09-03T11:23:33.284+08:00",
   "calendar": {
     "solar": "2026年9月3日 星期四",
     "lunar": "农历七月廿二"
@@ -73,47 +73,49 @@
     ],
     "place": "扬州",
     "observedAt": "2026-09-03T11:15:00+08:00",
-    "fetchedAt": "2026-09-03T11:18:28.769+08:00",
+    "fetchedAt": "2026-09-03T11:23:33.304+08:00",
     "source": "open-meteo",
     "error": null
   },
   "quote": null,
   "todo": {
     "ok": true,
-    "source": "notion",
+    "source": "notion-fallback",
     "items": [
       {
-        "title": "取消华夏银行、农行、中国银行的分期",
-        "dueAt": "2026-09-04",
+        "title": "检查 Kindle 新版界面",
+        "dueAt": null,
+        "dueLabel": "今天",
+        "priority": "高",
+        "pinned": false
+      },
+      {
+        "title": "完成 Notion 待办数据源授权",
+        "dueAt": null,
         "dueLabel": "明天",
-        "priority": "普通",
+        "priority": "高",
         "pinned": false
       },
       {
-        "title": "打回来",
+        "title": "补充个人待办事项",
         "dueAt": null,
-        "dueLabel": "",
-        "priority": "普通",
-        "pinned": false
-      },
-      {
-        "title": "核对最高法院平台法院网段地址表并完善网段地址",
-        "dueAt": null,
-        "dueLabel": "",
+        "dueLabel": "本周",
         "priority": "普通",
         "pinned": false
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-09-03T11:18:27.296+08:00",
-    "error": null
+    "fetchedAt": "2026-09-03T11:23:32.380+08:00",
+    "error": "fetch failed",
+    "stale": true,
+    "lastAttemptAt": "2026-09-03T11:23:27.339+08:00"
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-03T11:18:27.284+08:00",
+      "fetchedAt": "2026-09-03T11:23:27.324+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -123,8 +125,8 @@
       "windows": [
         {
           "name": "5小时",
-          "usedPct": 40,
-          "resetAt": "2026-09-03T15:32:14.000+08:00"
+          "usedPct": 42,
+          "resetAt": "2026-09-03T15:32:13.000+08:00"
         },
         {
           "name": "周",
@@ -132,14 +134,14 @@
           "resetAt": "2026-09-07T11:20:35.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-03T11:18:27.284+08:00",
+      "fetchedAt": "2026-09-03T11:23:27.325+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-03T11:18:27.295+08:00",
+      "fetchedAt": "2026-09-03T11:23:27.339+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -149,7 +151,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-03T11:18:27.296+08:00",
+      "fetchedAt": "2026-09-03T11:23:27.339+08:00",
       "error": "未启用",
       "disabled": true
     }
