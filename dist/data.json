@@ -1,18 +1,18 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-03T10:13:28.094+08:00",
+  "updatedAt": "2026-09-03T10:18:28.418+08:00",
   "calendar": {
     "solar": "2026年9月3日 星期四",
     "lunar": "农历七月廿二"
   },
   "weather": {
     "ok": true,
-    "description": "雨",
-    "iconKey": "rain",
-    "tempC": 24.3,
-    "feelsLikeC": 27.4,
-    "humidity": 94,
-    "windKph": 16.9,
+    "description": "阴",
+    "iconKey": "cloudy",
+    "tempC": 24.4,
+    "feelsLikeC": 27.5,
+    "humidity": 93,
+    "windKph": 16.8,
     "windDir": "东北风",
     "isDay": 1,
     "forecast": [
@@ -72,8 +72,8 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-03T10:00:00+08:00",
-    "fetchedAt": "2026-09-03T10:13:28.109+08:00",
+    "observedAt": "2026-09-03T10:15:00+08:00",
+    "fetchedAt": "2026-09-03T10:18:28.431+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -82,6 +82,13 @@
     "ok": true,
     "source": "notion",
     "items": [
+      {
+        "title": "取消华夏银行和中国银行的分期",
+        "dueAt": "2026-09-04",
+        "dueLabel": "明天",
+        "priority": "普通",
+        "pinned": false
+      },
       {
         "title": "打回来",
         "dueAt": null,
@@ -97,8 +104,8 @@
         "pinned": false
       }
     ],
-    "totalOpen": 2,
-    "fetchedAt": "2026-09-03T10:13:26.946+08:00",
+    "totalOpen": 3,
+    "fetchedAt": "2026-09-03T10:18:27.008+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +113,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-03T10:13:26.932+08:00",
+      "fetchedAt": "2026-09-03T10:18:26.997+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -117,7 +124,7 @@
         {
           "name": "5小时",
           "usedPct": 0,
-          "resetAt": "2026-09-03T15:13:21.000+08:00"
+          "resetAt": "2026-09-03T15:18:21.000+08:00"
         },
         {
           "name": "周",
@@ -125,14 +132,14 @@
           "resetAt": "2026-09-07T11:20:35.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-03T10:13:26.933+08:00",
+      "fetchedAt": "2026-09-03T10:18:26.998+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-03T10:13:26.945+08:00",
+      "fetchedAt": "2026-09-03T10:18:27.008+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -142,7 +149,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-03T10:13:26.946+08:00",
+      "fetchedAt": "2026-09-03T10:18:27.008+08:00",
       "error": "未启用",
       "disabled": true
     }
