@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-03T20:18:29.071+08:00",
+  "updatedAt": "2026-09-03T20:23:28.735+08:00",
   "calendar": {
     "solar": "2026年9月3日 星期四",
     "lunar": "农历七月廿二"
@@ -9,8 +9,8 @@
     "ok": true,
     "description": "阴",
     "iconKey": "cloudy",
-    "tempC": 24.2,
-    "feelsLikeC": 26.2,
+    "tempC": 24.1,
+    "feelsLikeC": 26.1,
     "humidity": 79,
     "windKph": 13.7,
     "windDir": "东北风",
@@ -18,7 +18,7 @@
     "forecast": [
       {
         "time": "2026-09-03T22:00",
-        "tempC": 23.6,
+        "tempC": 23.5,
         "weatherCode": 3,
         "isDay": 0,
         "description": "阴",
@@ -36,7 +36,7 @@
       },
       {
         "time": "2026-09-04T02:00",
-        "tempC": 22.3,
+        "tempC": 22.4,
         "weatherCode": 3,
         "isDay": 0,
         "description": "阴",
@@ -45,7 +45,7 @@
       },
       {
         "time": "2026-09-04T04:00",
-        "tempC": 22,
+        "tempC": 22.1,
         "weatherCode": 3,
         "isDay": 0,
         "description": "阴",
@@ -54,7 +54,7 @@
       },
       {
         "time": "2026-09-04T06:00",
-        "tempC": 21.9,
+        "tempC": 22,
         "weatherCode": 3,
         "isDay": 1,
         "description": "阴",
@@ -63,7 +63,7 @@
       },
       {
         "time": "2026-09-04T08:00",
-        "tempC": 23.5,
+        "tempC": 23.9,
         "weatherCode": 2,
         "isDay": 1,
         "description": "多云",
@@ -73,7 +73,7 @@
     ],
     "place": "扬州",
     "observedAt": "2026-09-03T20:15:00+08:00",
-    "fetchedAt": "2026-09-03T20:18:29.086+08:00",
+    "fetchedAt": "2026-09-03T20:23:28.748+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -105,7 +105,7 @@
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-09-03T20:18:27.750+08:00",
+    "fetchedAt": "2026-09-03T20:23:27.273+08:00",
     "error": null
   },
   "sources": {
@@ -113,7 +113,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-03T20:18:27.739+08:00",
+      "fetchedAt": "2026-09-03T20:23:27.262+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -132,14 +132,14 @@
           "resetAt": "2026-09-07T11:20:35.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-03T20:18:27.740+08:00",
+      "fetchedAt": "2026-09-03T20:23:27.263+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-03T20:18:27.750+08:00",
+      "fetchedAt": "2026-09-03T20:23:27.273+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -149,7 +149,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-03T20:18:27.750+08:00",
+      "fetchedAt": "2026-09-03T20:23:27.273+08:00",
       "error": "未启用",
       "disabled": true
     }
