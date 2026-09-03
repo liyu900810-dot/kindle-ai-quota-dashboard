@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-03T10:58:28.564+08:00",
+  "updatedAt": "2026-09-03T11:03:28.902+08:00",
   "calendar": {
     "solar": "2026年9月3日 星期四",
     "lunar": "农历七月廿二"
@@ -9,52 +9,52 @@ window.DASH_DATA = {
     "ok": true,
     "description": "阴",
     "iconKey": "cloudy",
-    "tempC": 24.6,
-    "feelsLikeC": 27.6,
-    "humidity": 92,
-    "windKph": 17.2,
+    "tempC": 24.8,
+    "feelsLikeC": 27.7,
+    "humidity": 90,
+    "windKph": 17.6,
     "windDir": "东北风",
     "isDay": 1,
     "forecast": [
       {
-        "time": "2026-09-03T12:00",
-        "tempC": 26,
+        "time": "2026-09-03T13:00",
+        "tempC": 26.8,
         "weatherCode": 3,
         "isDay": 1,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 21
+        "precipitationProbability": 16
       },
       {
-        "time": "2026-09-03T14:00",
-        "tempC": 26.9,
-        "weatherCode": 3,
-        "isDay": 1,
-        "description": "阴",
-        "iconKey": "cloudy",
-        "precipitationProbability": 12
-      },
-      {
-        "time": "2026-09-03T16:00",
-        "tempC": 26.3,
+        "time": "2026-09-03T15:00",
+        "tempC": 27,
         "weatherCode": 2,
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
-        "precipitationProbability": 3
+        "precipitationProbability": 7
       },
       {
-        "time": "2026-09-03T18:00",
-        "tempC": 24.9,
-        "weatherCode": 1,
+        "time": "2026-09-03T17:00",
+        "tempC": 25.6,
+        "weatherCode": 2,
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
         "precipitationProbability": 0
       },
       {
-        "time": "2026-09-03T20:00",
-        "tempC": 23.8,
+        "time": "2026-09-03T19:00",
+        "tempC": 24.1,
+        "weatherCode": 2,
+        "isDay": 0,
+        "description": "多云",
+        "iconKey": "cloudy",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-09-03T21:00",
+        "tempC": 23.7,
         "weatherCode": 3,
         "isDay": 0,
         "description": "阴",
@@ -62,8 +62,8 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-09-03T22:00",
-        "tempC": 23.4,
+        "time": "2026-09-03T23:00",
+        "tempC": 23.1,
         "weatherCode": 3,
         "isDay": 0,
         "description": "阴",
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-03T10:45:00+08:00",
-    "fetchedAt": "2026-09-03T10:58:28.578+08:00",
+    "observedAt": "2026-09-03T11:00:00+08:00",
+    "fetchedAt": "2026-09-03T11:03:28.916+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -83,7 +83,7 @@ window.DASH_DATA = {
     "source": "notion",
     "items": [
       {
-        "title": "取消华夏银行和中国银行的分期",
+        "title": "取消华夏银行、农行、中国银行的分期",
         "dueAt": "2026-09-04",
         "dueLabel": "明天",
         "priority": "普通",
@@ -105,7 +105,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-09-03T10:58:27.259+08:00",
+    "fetchedAt": "2026-09-03T11:03:27.252+08:00",
     "error": null
   },
   "sources": {
@@ -113,7 +113,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-03T10:58:27.243+08:00",
+      "fetchedAt": "2026-09-03T11:03:27.235+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -132,14 +132,14 @@ window.DASH_DATA = {
           "resetAt": "2026-09-07T11:20:35.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-03T10:58:27.245+08:00",
+      "fetchedAt": "2026-09-03T11:03:27.235+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-03T10:58:27.259+08:00",
+      "fetchedAt": "2026-09-03T11:03:27.252+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -149,7 +149,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-03T10:58:27.259+08:00",
+      "fetchedAt": "2026-09-03T11:03:27.252+08:00",
       "error": "未启用",
       "disabled": true
     }
