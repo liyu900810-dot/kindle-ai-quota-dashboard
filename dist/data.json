@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-03T11:58:28.641+08:00",
+  "updatedAt": "2026-09-03T12:03:28.628+08:00",
   "calendar": {
     "solar": "2026年9月3日 星期四",
     "lunar": "农历七月廿二"
@@ -9,52 +9,43 @@
     "ok": true,
     "description": "阴",
     "iconKey": "cloudy",
-    "tempC": 25.7,
-    "feelsLikeC": 28,
-    "humidity": 84,
-    "windKph": 20.5,
+    "tempC": 26,
+    "feelsLikeC": 28.1,
+    "humidity": 82,
+    "windKph": 21.3,
     "windDir": "东北风",
     "isDay": 1,
     "forecast": [
       {
-        "time": "2026-09-03T13:00",
-        "tempC": 26.8,
+        "time": "2026-09-03T14:00",
+        "tempC": 26.9,
         "weatherCode": 3,
         "isDay": 1,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 16
+        "precipitationProbability": 12
       },
       {
-        "time": "2026-09-03T15:00",
-        "tempC": 27,
+        "time": "2026-09-03T16:00",
+        "tempC": 26.3,
         "weatherCode": 2,
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
-        "precipitationProbability": 7
+        "precipitationProbability": 3
       },
       {
-        "time": "2026-09-03T17:00",
-        "tempC": 25.6,
-        "weatherCode": 2,
+        "time": "2026-09-03T18:00",
+        "tempC": 24.9,
+        "weatherCode": 1,
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
         "precipitationProbability": 0
       },
       {
-        "time": "2026-09-03T19:00",
-        "tempC": 24.1,
-        "weatherCode": 2,
-        "isDay": 0,
-        "description": "多云",
-        "iconKey": "cloudy",
-        "precipitationProbability": 0
-      },
-      {
-        "time": "2026-09-03T21:00",
-        "tempC": 23.7,
+        "time": "2026-09-03T20:00",
+        "tempC": 23.8,
         "weatherCode": 3,
         "isDay": 0,
         "description": "阴",
@@ -62,8 +53,17 @@
         "precipitationProbability": 0
       },
       {
-        "time": "2026-09-03T23:00",
-        "tempC": 23.1,
+        "time": "2026-09-03T22:00",
+        "tempC": 23.4,
+        "weatherCode": 3,
+        "isDay": 0,
+        "description": "阴",
+        "iconKey": "cloudy",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-09-04T00:00",
+        "tempC": 22.9,
         "weatherCode": 3,
         "isDay": 0,
         "description": "阴",
@@ -72,8 +72,8 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-03T11:45:00+08:00",
-    "fetchedAt": "2026-09-03T11:58:28.654+08:00",
+    "observedAt": "2026-09-03T12:00:00+08:00",
+    "fetchedAt": "2026-09-03T12:03:28.641+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -105,7 +105,7 @@
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-09-03T11:58:27.359+08:00",
+    "fetchedAt": "2026-09-03T12:03:27.325+08:00",
     "error": null
   },
   "sources": {
@@ -113,7 +113,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-03T11:58:27.343+08:00",
+      "fetchedAt": "2026-09-03T12:03:27.308+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -123,7 +123,7 @@
       "windows": [
         {
           "name": "5小时",
-          "usedPct": 77,
+          "usedPct": 78,
           "resetAt": "2026-09-03T15:32:14.000+08:00"
         },
         {
@@ -132,14 +132,14 @@
           "resetAt": "2026-09-07T11:20:35.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-03T11:58:27.344+08:00",
+      "fetchedAt": "2026-09-03T12:03:27.309+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-03T11:58:27.359+08:00",
+      "fetchedAt": "2026-09-03T12:03:27.325+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -149,7 +149,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-03T11:58:27.359+08:00",
+      "fetchedAt": "2026-09-03T12:03:27.325+08:00",
       "error": "未启用",
       "disabled": true
     }
