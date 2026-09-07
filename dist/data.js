@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-08T00:43:29.390+08:00",
+  "updatedAt": "2026-09-08T00:48:29.177+08:00",
   "calendar": {
     "solar": "2026年9月8日 星期二",
     "lunar": "农历七月廿七"
@@ -9,10 +9,10 @@ window.DASH_DATA = {
     "ok": true,
     "description": "晴",
     "iconKey": "clear-night",
-    "tempC": 21.4,
-    "feelsLikeC": 24.4,
+    "tempC": 21.3,
+    "feelsLikeC": 24.3,
     "humidity": 88,
-    "windKph": 3.2,
+    "windKph": 3.3,
     "windDir": "东北风",
     "isDay": 0,
     "forecast": [
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-08T00:30:00+08:00",
-    "fetchedAt": "2026-09-08T00:43:29.404+08:00",
+    "observedAt": "2026-09-08T00:45:00+08:00",
+    "fetchedAt": "2026-09-08T00:48:29.190+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -105,7 +105,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-09-08T00:43:28.181+08:00",
+    "fetchedAt": "2026-09-08T00:48:27.600+08:00",
     "error": null
   },
   "sources": {
@@ -113,7 +113,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-08T00:43:28.161+08:00",
+      "fetchedAt": "2026-09-08T00:48:27.584+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -132,14 +132,14 @@ window.DASH_DATA = {
           "resetAt": "2026-09-14T11:20:49.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-08T00:43:28.162+08:00",
+      "fetchedAt": "2026-09-08T00:48:27.585+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-08T00:43:28.181+08:00",
+      "fetchedAt": "2026-09-08T00:48:27.599+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -149,7 +149,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-08T00:43:28.181+08:00",
+      "fetchedAt": "2026-09-08T00:48:27.599+08:00",
       "error": "未启用",
       "disabled": true
     }
