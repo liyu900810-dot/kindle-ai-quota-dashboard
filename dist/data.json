@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-08T06:43:28.239+08:00",
+  "updatedAt": "2026-09-08T06:48:28.358+08:00",
   "calendar": {
     "solar": "2026年9月8日 星期二",
     "lunar": "农历七月廿七"
@@ -9,11 +9,11 @@
     "ok": true,
     "description": "晴",
     "iconKey": "clear",
-    "tempC": 21.2,
-    "feelsLikeC": 24,
-    "humidity": 91,
-    "windKph": 6.5,
-    "windDir": "东北风",
+    "tempC": 21.5,
+    "feelsLikeC": 24.3,
+    "humidity": 89,
+    "windKph": 6.4,
+    "windDir": "北风",
     "isDay": 1,
     "forecast": [
       {
@@ -72,8 +72,8 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-08T06:30:00+08:00",
-    "fetchedAt": "2026-09-08T06:43:28.252+08:00",
+    "observedAt": "2026-09-08T06:45:00+08:00",
+    "fetchedAt": "2026-09-08T06:48:28.370+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -105,7 +105,7 @@
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-09-08T06:43:27.054+08:00",
+    "fetchedAt": "2026-09-08T06:48:27.090+08:00",
     "error": null
   },
   "sources": {
@@ -113,7 +113,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-08T06:43:27.043+08:00",
+      "fetchedAt": "2026-09-08T06:48:27.076+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -132,14 +132,14 @@
           "resetAt": "2026-09-14T11:20:49.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-08T06:43:27.043+08:00",
+      "fetchedAt": "2026-09-08T06:48:27.077+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-08T06:43:27.054+08:00",
+      "fetchedAt": "2026-09-08T06:48:27.090+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -149,7 +149,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-08T06:43:27.054+08:00",
+      "fetchedAt": "2026-09-08T06:48:27.090+08:00",
       "error": "未启用",
       "disabled": true
     }
