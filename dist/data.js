@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-08T15:43:28.299+08:00",
+  "updatedAt": "2026-09-08T15:48:28.851+08:00",
   "calendar": {
     "solar": "2026年9月8日 星期二",
     "lunar": "农历七月廿七"
@@ -9,10 +9,10 @@ window.DASH_DATA = {
     "ok": true,
     "description": "阴",
     "iconKey": "cloudy",
-    "tempC": 27.2,
+    "tempC": 27.1,
     "feelsLikeC": 28.8,
-    "humidity": 61,
-    "windKph": 12.3,
+    "humidity": 62,
+    "windKph": 12,
     "windDir": "北风",
     "isDay": 1,
     "forecast": [
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-08T15:30:00+08:00",
-    "fetchedAt": "2026-09-08T15:43:28.311+08:00",
+    "observedAt": "2026-09-08T15:45:00+08:00",
+    "fetchedAt": "2026-09-08T15:48:28.863+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -90,22 +90,22 @@ window.DASH_DATA = {
         "pinned": false
       },
       {
-        "title": "打回来",
-        "dueAt": null,
-        "dueLabel": "",
+        "title": "取消工行和华夏银行的分期",
+        "dueAt": "2026-09-09",
+        "dueLabel": "明天",
         "priority": "普通",
         "pinned": false
       },
       {
-        "title": "核对最高法院平台法院网段地址表并完善网段地址",
+        "title": "打回来",
         "dueAt": null,
         "dueLabel": "",
         "priority": "普通",
         "pinned": false
       }
     ],
-    "totalOpen": 3,
-    "fetchedAt": "2026-09-08T15:43:26.893+08:00",
+    "totalOpen": 4,
+    "fetchedAt": "2026-09-08T15:48:26.980+08:00",
     "error": null
   },
   "sources": {
@@ -113,7 +113,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-08T15:43:26.880+08:00",
+      "fetchedAt": "2026-09-08T15:48:26.966+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -132,14 +132,14 @@ window.DASH_DATA = {
           "resetAt": "2026-09-15T14:50:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-08T15:43:26.881+08:00",
+      "fetchedAt": "2026-09-08T15:48:26.966+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-08T15:43:26.893+08:00",
+      "fetchedAt": "2026-09-08T15:48:26.980+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -149,7 +149,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-08T15:43:26.893+08:00",
+      "fetchedAt": "2026-09-08T15:48:26.980+08:00",
       "error": "未启用",
       "disabled": true
     }
