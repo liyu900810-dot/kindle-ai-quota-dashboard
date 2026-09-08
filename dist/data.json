@@ -1,18 +1,18 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-08T17:28:32.691+08:00",
+  "updatedAt": "2026-09-08T17:33:28.742+08:00",
   "calendar": {
     "solar": "2026年9月8日 星期二",
     "lunar": "农历七月廿七"
   },
   "weather": {
     "ok": true,
-    "description": "多云",
-    "iconKey": "cloudy",
-    "tempC": 25.3,
-    "feelsLikeC": 27.5,
-    "humidity": 76,
-    "windKph": 13.5,
+    "description": "晴",
+    "iconKey": "clear",
+    "tempC": 25,
+    "feelsLikeC": 27.3,
+    "humidity": 78,
+    "windKph": 12.9,
     "windDir": "北风",
     "isDay": 1,
     "forecast": [
@@ -72,8 +72,8 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-08T17:15:00+08:00",
-    "fetchedAt": "2026-09-08T17:28:32.707+08:00",
+    "observedAt": "2026-09-08T17:30:00+08:00",
+    "fetchedAt": "2026-09-08T17:33:28.754+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -83,13 +83,6 @@
     "source": "notion",
     "items": [
       {
-        "title": "取消建行的分期",
-        "dueAt": "2026-09-08",
-        "dueLabel": "今天",
-        "priority": "普通",
-        "pinned": false
-      },
-      {
         "title": "取消工行和华夏银行的分期",
         "dueAt": "2026-09-09",
         "dueLabel": "明天",
@@ -97,15 +90,15 @@
         "pinned": false
       },
       {
-        "title": "打回来",
+        "title": "核对最高法院平台法院网段地址表并完善网段地址",
         "dueAt": null,
         "dueLabel": "",
         "priority": "普通",
         "pinned": false
       }
     ],
-    "totalOpen": 4,
-    "fetchedAt": "2026-09-08T17:28:27.165+08:00",
+    "totalOpen": 2,
+    "fetchedAt": "2026-09-08T17:33:27.258+08:00",
     "error": null
   },
   "sources": {
@@ -113,7 +106,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-08T17:28:27.152+08:00",
+      "fetchedAt": "2026-09-08T17:33:27.243+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -124,22 +117,22 @@
         {
           "name": "5小时",
           "usedPct": 9,
-          "resetAt": "2026-09-08T19:50:05.000+08:00"
+          "resetAt": "2026-09-08T19:50:03.000+08:00"
         },
         {
           "name": "周",
           "usedPct": 1,
-          "resetAt": "2026-09-15T14:50:05.000+08:00"
+          "resetAt": "2026-09-15T14:50:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-08T17:28:27.153+08:00",
+      "fetchedAt": "2026-09-08T17:33:27.244+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-08T17:28:27.165+08:00",
+      "fetchedAt": "2026-09-08T17:33:27.258+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -149,7 +142,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-08T17:28:27.165+08:00",
+      "fetchedAt": "2026-09-08T17:33:27.258+08:00",
       "error": "未启用",
       "disabled": true
     }
