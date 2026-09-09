@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-10T01:38:32.121+08:00",
+  "updatedAt": "2026-09-10T01:43:31.761+08:00",
   "calendar": {
     "solar": "2026年9月10日 星期四",
     "lunar": "农历七月廿九"
@@ -73,7 +73,7 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-09-10T01:30:00+08:00",
-    "fetchedAt": "2026-09-10T01:38:32.135+08:00",
+    "fetchedAt": "2026-09-10T01:43:31.773+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-09-10T01:38:29.717+08:00",
+    "fetchedAt": "2026-09-10T01:43:29.680+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-10T01:38:29.702+08:00",
+      "fetchedAt": "2026-09-10T01:43:29.668+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -117,22 +117,22 @@ window.DASH_DATA = {
         {
           "name": "5小时",
           "usedPct": 0,
-          "resetAt": "2026-09-10T06:38:31.000+08:00"
+          "resetAt": "2026-09-10T06:43:31.000+08:00"
         },
         {
           "name": "周",
-          "usedPct": 28,
-          "resetAt": "2026-09-14T11:20:49.000+08:00"
+          "usedPct": 21,
+          "resetAt": "2026-09-15T14:50:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-10T01:38:29.703+08:00",
+      "fetchedAt": "2026-09-10T01:43:29.669+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-10T01:38:29.717+08:00",
+      "fetchedAt": "2026-09-10T01:43:29.679+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -142,7 +142,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-10T01:38:29.717+08:00",
+      "fetchedAt": "2026-09-10T01:43:29.680+08:00",
       "error": "未启用",
       "disabled": true
     }
