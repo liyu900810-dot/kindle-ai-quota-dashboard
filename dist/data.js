@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-11T05:13:27.748+08:00",
+  "updatedAt": "2026-09-11T05:18:27.780+08:00",
   "calendar": {
     "solar": "2026年9月11日 星期五",
     "lunar": "农历八月初一"
@@ -9,9 +9,9 @@ window.DASH_DATA = {
     "ok": true,
     "description": "多云",
     "iconKey": "cloudy",
-    "tempC": 20,
+    "tempC": 19.9,
     "feelsLikeC": 20.8,
-    "humidity": 82,
+    "humidity": 83,
     "windKph": 10.5,
     "windDir": "北风",
     "isDay": 0,
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-11T05:00:00+08:00",
-    "fetchedAt": "2026-09-11T05:13:27.759+08:00",
+    "observedAt": "2026-09-11T05:15:00+08:00",
+    "fetchedAt": "2026-09-11T05:18:27.795+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-09-11T05:13:26.682+08:00",
+    "fetchedAt": "2026-09-11T05:18:26.696+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-11T05:13:26.671+08:00",
+      "fetchedAt": "2026-09-11T05:18:26.685+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -125,14 +125,14 @@ window.DASH_DATA = {
           "resetAt": "2026-09-15T14:50:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-11T05:13:26.672+08:00",
+      "fetchedAt": "2026-09-11T05:18:26.685+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-11T05:13:26.682+08:00",
+      "fetchedAt": "2026-09-11T05:18:26.696+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -142,7 +142,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-11T05:13:26.682+08:00",
+      "fetchedAt": "2026-09-11T05:18:26.696+08:00",
       "error": "未启用",
       "disabled": true
     }
