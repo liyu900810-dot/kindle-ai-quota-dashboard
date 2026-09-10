@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-10T22:23:36.394+08:00",
+  "updatedAt": "2026-09-10T22:33:28.925+08:00",
   "calendar": {
     "solar": "2026年9月10日 星期四",
     "lunar": "农历七月廿九"
@@ -9,10 +9,10 @@ window.DASH_DATA = {
     "ok": true,
     "description": "晴",
     "iconKey": "clear-night",
-    "tempC": 19.9,
+    "tempC": 19.8,
     "feelsLikeC": 21.1,
-    "humidity": 82,
-    "windKph": 7.4,
+    "humidity": 83,
+    "windKph": 7.2,
     "windDir": "西北风",
     "isDay": 0,
     "forecast": [
@@ -72,50 +72,41 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-10T22:15:00+08:00",
-    "fetchedAt": "2026-09-10T22:23:36.409+08:00",
+    "observedAt": "2026-09-10T22:30:00+08:00",
+    "fetchedAt": "2026-09-10T22:33:28.936+08:00",
     "source": "open-meteo",
     "error": null
   },
   "quote": null,
   "todo": {
     "ok": true,
-    "source": "notion-fallback",
+    "source": "notion",
     "items": [
       {
-        "title": "检查 Kindle 新版界面",
-        "dueAt": null,
-        "dueLabel": "今天",
-        "priority": "高",
+        "title": "取消工行和华夏银行的分期",
+        "dueAt": "2026-09-09",
+        "dueLabel": "逾期",
+        "priority": "普通",
         "pinned": false
       },
       {
-        "title": "完成 Notion 待办数据源授权",
+        "title": "核对最高法院平台法院网段地址表并完善网段地址",
         "dueAt": null,
-        "dueLabel": "明天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "补充个人待办事项",
-        "dueAt": null,
-        "dueLabel": "本周",
+        "dueLabel": "",
         "priority": "普通",
         "pinned": false
       }
     ],
-    "totalOpen": 3,
-    "fetchedAt": "2026-09-10T22:23:36.393+08:00",
-    "error": "fetch failed",
-    "stale": true,
-    "lastAttemptAt": "2026-09-10T22:23:31.347+08:00"
+    "totalOpen": 2,
+    "fetchedAt": "2026-09-10T22:33:27.315+08:00",
+    "error": null
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-10T22:23:31.335+08:00",
+      "fetchedAt": "2026-09-10T22:33:27.304+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -125,8 +116,8 @@ window.DASH_DATA = {
       "windows": [
         {
           "name": "5小时",
-          "usedPct": 1,
-          "resetAt": "2026-09-10T22:30:11.000+08:00"
+          "usedPct": 0,
+          "resetAt": "2026-09-11T03:33:26.000+08:00"
         },
         {
           "name": "周",
@@ -134,14 +125,14 @@ window.DASH_DATA = {
           "resetAt": "2026-09-15T14:50:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-10T22:23:31.336+08:00",
+      "fetchedAt": "2026-09-10T22:33:27.305+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-10T22:23:31.347+08:00",
+      "fetchedAt": "2026-09-10T22:33:27.315+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -151,7 +142,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-10T22:23:31.347+08:00",
+      "fetchedAt": "2026-09-10T22:33:27.315+08:00",
       "error": "未启用",
       "disabled": true
     }
