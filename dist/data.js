@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-11T21:58:28.539+08:00",
+  "updatedAt": "2026-09-11T22:03:28.741+08:00",
   "calendar": {
     "solar": "2026年9月11日 星期五",
     "lunar": "农历八月初一"
@@ -9,25 +9,16 @@ window.DASH_DATA = {
     "ok": true,
     "description": "阴",
     "iconKey": "cloudy",
-    "tempC": 20.6,
-    "feelsLikeC": 21.7,
-    "humidity": 78,
-    "windKph": 8.1,
+    "tempC": 20.4,
+    "feelsLikeC": 21.5,
+    "humidity": 79,
+    "windKph": 7.7,
     "windDir": "东风",
     "isDay": 0,
     "forecast": [
       {
-        "time": "2026-09-11T23:00",
-        "tempC": 19.7,
-        "weatherCode": 3,
-        "isDay": 0,
-        "description": "阴",
-        "iconKey": "cloudy",
-        "precipitationProbability": 0
-      },
-      {
-        "time": "2026-09-12T01:00",
-        "tempC": 19,
+        "time": "2026-09-12T00:00",
+        "tempC": 19.3,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -35,8 +26,8 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-09-12T03:00",
-        "tempC": 19,
+        "time": "2026-09-12T02:00",
+        "tempC": 18.9,
         "weatherCode": 1,
         "isDay": 0,
         "description": "多云",
@@ -44,8 +35,8 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-09-12T05:00",
-        "tempC": 18.7,
+        "time": "2026-09-12T04:00",
+        "tempC": 18.9,
         "weatherCode": 2,
         "isDay": 0,
         "description": "多云",
@@ -53,27 +44,36 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-09-12T07:00",
-        "tempC": 19.8,
-        "weatherCode": 2,
+        "time": "2026-09-12T06:00",
+        "tempC": 18.8,
+        "weatherCode": 1,
         "isDay": 1,
         "description": "多云",
         "iconKey": "cloudy",
         "precipitationProbability": 0
       },
       {
-        "time": "2026-09-12T09:00",
-        "tempC": 22.3,
-        "weatherCode": 1,
+        "time": "2026-09-12T08:00",
+        "tempC": 21.3,
+        "weatherCode": 3,
         "isDay": 1,
-        "description": "多云",
+        "description": "阴",
         "iconKey": "cloudy",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-09-12T10:00",
+        "tempC": 23.8,
+        "weatherCode": 0,
+        "isDay": 1,
+        "description": "晴",
+        "iconKey": "clear",
         "precipitationProbability": 0
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-11T21:45:00+08:00",
-    "fetchedAt": "2026-09-11T21:58:28.551+08:00",
+    "observedAt": "2026-09-11T22:00:00+08:00",
+    "fetchedAt": "2026-09-11T22:03:28.753+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -98,7 +98,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 2,
-    "fetchedAt": "2026-09-11T21:58:27.309+08:00",
+    "fetchedAt": "2026-09-11T22:03:27.274+08:00",
     "error": null
   },
   "sources": {
@@ -106,7 +106,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-11T21:58:27.294+08:00",
+      "fetchedAt": "2026-09-11T22:03:27.261+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -125,14 +125,14 @@ window.DASH_DATA = {
           "resetAt": "2026-09-15T14:50:03.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-11T21:58:27.294+08:00",
+      "fetchedAt": "2026-09-11T22:03:27.262+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-11T21:58:27.308+08:00",
+      "fetchedAt": "2026-09-11T22:03:27.274+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -142,7 +142,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-11T21:58:27.309+08:00",
+      "fetchedAt": "2026-09-11T22:03:27.274+08:00",
       "error": "未启用",
       "disabled": true
     }
