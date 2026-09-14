@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-14T14:38:29.478+08:00",
+  "updatedAt": "2026-09-14T14:43:43.828+08:00",
   "calendar": {
     "solar": "2026年9月14日 星期一",
     "lunar": "农历八月初四"
@@ -9,16 +9,16 @@ window.DASH_DATA = {
     "ok": true,
     "description": "多云",
     "iconKey": "cloudy",
-    "tempC": 25.6,
-    "feelsLikeC": 27.2,
-    "humidity": 63,
-    "windKph": 9.1,
-    "windDir": "北风",
+    "tempC": 27.7,
+    "feelsLikeC": 29.5,
+    "humidity": 56,
+    "windKph": 10.7,
+    "windDir": "东北风",
     "isDay": 1,
     "forecast": [
       {
         "time": "2026-09-14T16:00",
-        "tempC": 25.5,
+        "tempC": 26.7,
         "weatherCode": 51,
         "isDay": 1,
         "description": "雨",
@@ -27,7 +27,7 @@ window.DASH_DATA = {
       },
       {
         "time": "2026-09-14T18:00",
-        "tempC": 22.7,
+        "tempC": 23.3,
         "weatherCode": 2,
         "isDay": 1,
         "description": "多云",
@@ -36,7 +36,7 @@ window.DASH_DATA = {
       },
       {
         "time": "2026-09-14T20:00",
-        "tempC": 21.3,
+        "tempC": 22.3,
         "weatherCode": 2,
         "isDay": 0,
         "description": "多云",
@@ -45,7 +45,7 @@ window.DASH_DATA = {
       },
       {
         "time": "2026-09-14T22:00",
-        "tempC": 20.4,
+        "tempC": 21.2,
         "weatherCode": 1,
         "isDay": 0,
         "description": "多云",
@@ -54,7 +54,7 @@ window.DASH_DATA = {
       },
       {
         "time": "2026-09-15T00:00",
-        "tempC": 19,
+        "tempC": 19.7,
         "weatherCode": 1,
         "isDay": 0,
         "description": "多云",
@@ -63,7 +63,7 @@ window.DASH_DATA = {
       },
       {
         "time": "2026-09-15T02:00",
-        "tempC": 18.5,
+        "tempC": 18.7,
         "weatherCode": 1,
         "isDay": 0,
         "description": "多云",
@@ -73,33 +73,49 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-09-14T14:30:00+08:00",
-    "fetchedAt": "2026-09-14T14:38:29.491+08:00",
+    "fetchedAt": "2026-09-14T14:43:43.846+08:00",
     "source": "open-meteo",
     "error": null
   },
   "quote": null,
   "todo": {
     "ok": true,
-    "source": "notion",
+    "source": "notion-fallback",
     "items": [
       {
-        "title": "核对最高法院平台法院网段地址表并完善网段地址",
+        "title": "检查 Kindle 新版界面",
         "dueAt": null,
-        "dueLabel": "",
+        "dueLabel": "今天",
+        "priority": "高",
+        "pinned": false
+      },
+      {
+        "title": "完成 Notion 待办数据源授权",
+        "dueAt": null,
+        "dueLabel": "明天",
+        "priority": "高",
+        "pinned": false
+      },
+      {
+        "title": "补充个人待办事项",
+        "dueAt": null,
+        "dueLabel": "本周",
         "priority": "普通",
         "pinned": false
       }
     ],
-    "totalOpen": 1,
-    "fetchedAt": "2026-09-14T14:38:27.809+08:00",
-    "error": null
+    "totalOpen": 3,
+    "fetchedAt": "2026-09-14T14:43:43.151+08:00",
+    "error": "The operation was aborted due to timeout",
+    "stale": true,
+    "lastAttemptAt": "2026-09-14T14:43:28.144+08:00"
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-14T14:38:27.792+08:00",
+      "fetchedAt": "2026-09-14T14:43:28.130+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -119,13 +135,15 @@ window.DASH_DATA = {
         }
       ],
       "fetchedAt": "2026-09-14T14:38:27.793+08:00",
-      "error": null
+      "error": "failed to fetch codex rate limits: error sending request for url (https://chatgpt.com/backend-api/wham/usage)",
+      "stale": true,
+      "lastAttemptAt": "2026-09-14T14:43:28.131+08:00"
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-14T14:38:27.808+08:00",
+      "fetchedAt": "2026-09-14T14:43:28.143+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -135,7 +153,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-14T14:38:27.808+08:00",
+      "fetchedAt": "2026-09-14T14:43:28.143+08:00",
       "error": "未启用",
       "disabled": true
     }
