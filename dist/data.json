@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-14T14:48:43.503+08:00",
+  "updatedAt": "2026-09-14T14:53:29.080+08:00",
   "calendar": {
     "solar": "2026年9月14日 星期一",
     "lunar": "农历八月初四"
@@ -73,7 +73,7 @@
     ],
     "place": "扬州",
     "observedAt": "2026-09-14T14:45:00+08:00",
-    "fetchedAt": "2026-09-14T14:48:43.523+08:00",
+    "fetchedAt": "2026-09-14T14:53:29.093+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-09-14T14:48:27.820+08:00",
+    "fetchedAt": "2026-09-14T14:53:27.814+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-14T14:48:27.807+08:00",
+      "fetchedAt": "2026-09-14T14:53:27.799+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -109,25 +109,23 @@
       "windows": [
         {
           "name": "5小时",
-          "usedPct": 27,
+          "usedPct": 58,
           "resetAt": "2026-09-14T19:32:48.000+08:00"
         },
         {
           "name": "周",
-          "usedPct": 6,
+          "usedPct": 11,
           "resetAt": "2026-09-19T17:30:06.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-14T14:38:27.793+08:00",
-      "error": "failed to fetch codex rate limits: error sending request for url (https://chatgpt.com/backend-api/wham/usage)",
-      "stale": true,
-      "lastAttemptAt": "2026-09-14T14:48:27.807+08:00"
+      "fetchedAt": "2026-09-14T14:53:27.800+08:00",
+      "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-14T14:48:27.820+08:00",
+      "fetchedAt": "2026-09-14T14:53:27.814+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -137,7 +135,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-14T14:48:27.820+08:00",
+      "fetchedAt": "2026-09-14T14:53:27.814+08:00",
       "error": "未启用",
       "disabled": true
     }
