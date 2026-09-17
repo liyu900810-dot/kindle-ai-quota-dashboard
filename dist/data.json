@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-17T12:58:29.150+08:00",
+  "updatedAt": "2026-09-17T13:03:29.149+08:00",
   "calendar": {
     "solar": "2026年9月17日 星期四",
     "lunar": "农历八月初七"
@@ -10,70 +10,70 @@
     "description": "阴",
     "iconKey": "cloudy",
     "tempC": 25,
-    "feelsLikeC": 26.6,
+    "feelsLikeC": 26.7,
     "humidity": 61,
-    "windKph": 5.3,
+    "windKph": 5,
     "windDir": "东风",
     "isDay": 1,
     "forecast": [
       {
-        "time": "2026-09-17T14:00",
-        "tempC": 24.5,
+        "time": "2026-09-17T15:00",
+        "tempC": 24.4,
         "weatherCode": 3,
         "isDay": 1,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 6
+        "precipitationProbability": 23
       },
       {
-        "time": "2026-09-17T16:00",
-        "tempC": 24,
-        "weatherCode": 51,
-        "isDay": 1,
-        "description": "雨",
-        "iconKey": "rain",
-        "precipitationProbability": 46
-      },
-      {
-        "time": "2026-09-17T18:00",
-        "tempC": 22.4,
+        "time": "2026-09-17T17:00",
+        "tempC": 23.2,
         "weatherCode": 53,
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 70
+        "precipitationProbability": 63
       },
       {
-        "time": "2026-09-17T20:00",
-        "tempC": 21.5,
+        "time": "2026-09-17T19:00",
+        "tempC": 21.9,
         "weatherCode": 53,
         "isDay": 0,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 67
+        "precipitationProbability": 71
       },
       {
-        "time": "2026-09-17T22:00",
+        "time": "2026-09-17T21:00",
+        "tempC": 21.3,
+        "weatherCode": 53,
+        "isDay": 0,
+        "description": "雨",
+        "iconKey": "rain",
+        "precipitationProbability": 57
+      },
+      {
+        "time": "2026-09-17T23:00",
         "tempC": 21.2,
-        "weatherCode": 51,
+        "weatherCode": 3,
         "isDay": 0,
-        "description": "雨",
-        "iconKey": "rain",
-        "precipitationProbability": 44
+        "description": "阴",
+        "iconKey": "cloudy",
+        "precipitationProbability": 31
       },
       {
-        "time": "2026-09-18T00:00",
+        "time": "2026-09-18T01:00",
         "tempC": 21.3,
         "weatherCode": 3,
         "isDay": 0,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 22
+        "precipitationProbability": 14
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-17T12:45:00+08:00",
-    "fetchedAt": "2026-09-17T12:58:29.165+08:00",
+    "observedAt": "2026-09-17T13:00:00+08:00",
+    "fetchedAt": "2026-09-17T13:03:29.165+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-09-17T12:58:27.609+08:00",
+    "fetchedAt": "2026-09-17T13:03:27.615+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-17T12:58:27.595+08:00",
+      "fetchedAt": "2026-09-17T13:03:27.599+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -115,17 +115,17 @@
         {
           "name": "周",
           "usedPct": 29,
-          "resetAt": "2026-09-19T17:30:06.000+08:00"
+          "resetAt": "2026-09-19T17:30:07.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-17T12:58:27.596+08:00",
+      "fetchedAt": "2026-09-17T13:03:27.601+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-17T12:58:27.609+08:00",
+      "fetchedAt": "2026-09-17T13:03:27.615+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -135,7 +135,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-17T12:58:27.609+08:00",
+      "fetchedAt": "2026-09-17T13:03:27.615+08:00",
       "error": "未启用",
       "disabled": true
     }
