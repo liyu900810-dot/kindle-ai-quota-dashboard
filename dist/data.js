@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-19T06:43:28.545+08:00",
+  "updatedAt": "2026-09-19T06:48:28.615+08:00",
   "calendar": {
     "solar": "2026年9月19日 星期六",
     "lunar": "农历八月初九"
@@ -10,9 +10,9 @@ window.DASH_DATA = {
     "description": "雨",
     "iconKey": "rain",
     "tempC": 22.3,
-    "feelsLikeC": 25.9,
+    "feelsLikeC": 26,
     "humidity": 96,
-    "windKph": 7.3,
+    "windKph": 7.2,
     "windDir": "东北风",
     "isDay": 1,
     "forecast": [
@@ -23,7 +23,7 @@ window.DASH_DATA = {
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 82
+        "precipitationProbability": 86
       },
       {
         "time": "2026-09-19T10:00",
@@ -32,7 +32,7 @@ window.DASH_DATA = {
         "isDay": 1,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 67
+        "precipitationProbability": 69
       },
       {
         "time": "2026-09-19T12:00",
@@ -41,7 +41,7 @@ window.DASH_DATA = {
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 50
+        "precipitationProbability": 62
       },
       {
         "time": "2026-09-19T14:00",
@@ -50,7 +50,7 @@ window.DASH_DATA = {
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 41
+        "precipitationProbability": 71
       },
       {
         "time": "2026-09-19T16:00",
@@ -59,7 +59,7 @@ window.DASH_DATA = {
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 42
+        "precipitationProbability": 80
       },
       {
         "time": "2026-09-19T18:00",
@@ -68,12 +68,12 @@ window.DASH_DATA = {
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 34
+        "precipitationProbability": 66
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-19T06:30:00+08:00",
-    "fetchedAt": "2026-09-19T06:43:28.557+08:00",
+    "observedAt": "2026-09-19T06:45:00+08:00",
+    "fetchedAt": "2026-09-19T06:48:28.627+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-09-19T06:43:27.460+08:00",
+    "fetchedAt": "2026-09-19T06:48:27.434+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-19T06:43:27.449+08:00",
+      "fetchedAt": "2026-09-19T06:48:27.422+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -115,17 +115,17 @@ window.DASH_DATA = {
         {
           "name": "周",
           "usedPct": 84,
-          "resetAt": "2026-09-19T17:30:06.000+08:00"
+          "resetAt": "2026-09-19T17:30:07.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-19T06:43:27.450+08:00",
+      "fetchedAt": "2026-09-19T06:48:27.423+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-19T06:43:27.460+08:00",
+      "fetchedAt": "2026-09-19T06:48:27.434+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -135,7 +135,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-19T06:43:27.460+08:00",
+      "fetchedAt": "2026-09-19T06:48:27.434+08:00",
       "error": "未启用",
       "disabled": true
     }
