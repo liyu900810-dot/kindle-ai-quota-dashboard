@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-20T01:18:32.750+08:00",
+  "updatedAt": "2026-09-20T01:23:28.144+08:00",
   "calendar": {
     "solar": "2026年9月20日 星期日",
     "lunar": "农历八月初十"
@@ -73,49 +73,33 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-09-20T01:15:00+08:00",
-    "fetchedAt": "2026-09-20T01:18:32.767+08:00",
+    "fetchedAt": "2026-09-20T01:23:28.157+08:00",
     "source": "open-meteo",
     "error": null
   },
   "quote": null,
   "todo": {
     "ok": true,
-    "source": "notion-fallback",
+    "source": "notion",
     "items": [
       {
-        "title": "检查 Kindle 新版界面",
-        "dueAt": null,
-        "dueLabel": "今天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "完成 Notion 待办数据源授权",
-        "dueAt": null,
-        "dueLabel": "明天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "补充个人待办事项",
-        "dueAt": null,
-        "dueLabel": "本周",
+        "title": "帮袁敦亮重装电脑",
+        "dueAt": "2026-09-16",
+        "dueLabel": "逾期",
         "priority": "普通",
         "pinned": false
       }
     ],
-    "totalOpen": 3,
-    "fetchedAt": "2026-09-20T01:18:32.020+08:00",
-    "error": "fetch failed",
-    "stale": true,
-    "lastAttemptAt": "2026-09-20T01:18:26.978+08:00"
+    "totalOpen": 1,
+    "fetchedAt": "2026-09-20T01:23:26.975+08:00",
+    "error": null
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-20T01:18:26.964+08:00",
+      "fetchedAt": "2026-09-20T01:23:26.964+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -126,22 +110,22 @@ window.DASH_DATA = {
         {
           "name": "5小时",
           "usedPct": 0,
-          "resetAt": "2026-09-20T06:18:31.000+08:00"
+          "resetAt": "2026-09-20T06:23:26.000+08:00"
         },
         {
           "name": "周",
           "usedPct": 0,
-          "resetAt": "2026-09-27T01:18:31.000+08:00"
+          "resetAt": "2026-09-27T01:23:26.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-20T01:18:26.965+08:00",
+      "fetchedAt": "2026-09-20T01:23:26.965+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-20T01:18:26.978+08:00",
+      "fetchedAt": "2026-09-20T01:23:26.975+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -151,7 +135,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-20T01:18:26.978+08:00",
+      "fetchedAt": "2026-09-20T01:23:26.975+08:00",
       "error": "未启用",
       "disabled": true
     }
