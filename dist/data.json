@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-20T17:03:43.406+08:00",
+  "updatedAt": "2026-09-20T17:13:32.761+08:00",
   "calendar": {
     "solar": "2026年9月20日 星期日",
     "lunar": "农历八月初十"
@@ -73,7 +73,7 @@
     ],
     "place": "扬州",
     "observedAt": "2026-09-20T17:00:00+08:00",
-    "fetchedAt": "2026-09-20T17:03:43.421+08:00",
+    "fetchedAt": "2026-09-20T17:13:32.777+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-09-20T17:03:27.787+08:00",
+    "fetchedAt": "2026-09-20T17:13:27.319+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-20T17:03:27.776+08:00",
+      "fetchedAt": "2026-09-20T17:13:27.308+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -110,7 +110,7 @@
         {
           "name": "5小时",
           "usedPct": 0,
-          "resetAt": "2026-09-20T21:58:24.000+08:00"
+          "resetAt": "2026-09-20T22:13:23.000+08:00"
         },
         {
           "name": "周",
@@ -118,16 +118,14 @@
           "resetAt": "2026-09-27T03:00:09.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-20T16:58:27.237+08:00",
-      "error": "failed to fetch codex rate limits: error sending request for url (https://chatgpt.com/backend-api/wham/usage)",
-      "stale": true,
-      "lastAttemptAt": "2026-09-20T17:03:27.777+08:00"
+      "fetchedAt": "2026-09-20T17:13:27.309+08:00",
+      "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-20T17:03:27.787+08:00",
+      "fetchedAt": "2026-09-20T17:13:27.319+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -137,7 +135,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-20T17:03:27.787+08:00",
+      "fetchedAt": "2026-09-20T17:13:27.319+08:00",
       "error": "未启用",
       "disabled": true
     }
