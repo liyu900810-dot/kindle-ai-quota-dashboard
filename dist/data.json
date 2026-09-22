@@ -1,13 +1,13 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-22T08:08:28.121+08:00",
+  "updatedAt": "2026-09-22T08:13:28.170+08:00",
   "calendar": {
     "solar": "2026年9月22日 星期二",
     "lunar": "农历八月十二"
   },
   "weather": {
     "ok": true,
-    "description": "多云",
+    "description": "阴",
     "iconKey": "cloudy",
     "tempC": 22.6,
     "feelsLikeC": 25.9,
@@ -55,25 +55,25 @@
       {
         "time": "2026-09-22T18:00",
         "tempC": 24.5,
-        "weatherCode": 0,
+        "weatherCode": 1,
         "isDay": 1,
-        "description": "晴",
-        "iconKey": "clear",
+        "description": "多云",
+        "iconKey": "cloudy",
         "precipitationProbability": 0
       },
       {
         "time": "2026-09-22T20:00",
         "tempC": 23.2,
-        "weatherCode": 1,
+        "weatherCode": 0,
         "isDay": 0,
-        "description": "多云",
-        "iconKey": "cloudy",
+        "description": "晴",
+        "iconKey": "clear-night",
         "precipitationProbability": 0
       }
     ],
     "place": "扬州",
     "observedAt": "2026-09-22T08:00:00+08:00",
-    "fetchedAt": "2026-09-22T08:08:28.134+08:00",
+    "fetchedAt": "2026-09-22T08:13:28.183+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-09-22T08:08:26.890+08:00",
+    "fetchedAt": "2026-09-22T08:13:26.873+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-22T08:08:26.879+08:00",
+      "fetchedAt": "2026-09-22T08:13:26.859+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -118,14 +118,14 @@
           "resetAt": "2026-09-27T03:00:09.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-22T08:08:26.879+08:00",
+      "fetchedAt": "2026-09-22T08:13:26.860+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-22T08:08:26.890+08:00",
+      "fetchedAt": "2026-09-22T08:13:26.873+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -135,7 +135,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-22T08:08:26.890+08:00",
+      "fetchedAt": "2026-09-22T08:13:26.873+08:00",
       "error": "未启用",
       "disabled": true
     }
