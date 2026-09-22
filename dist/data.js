@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-22T21:58:30.497+08:00",
+  "updatedAt": "2026-09-22T22:03:30.194+08:00",
   "calendar": {
     "solar": "2026年9月22日 星期二",
     "lunar": "农历八月十二"
@@ -9,16 +9,25 @@ window.DASH_DATA = {
     "ok": true,
     "description": "晴",
     "iconKey": "clear-night",
-    "tempC": 22.7,
+    "tempC": 22.6,
     "feelsLikeC": 25,
-    "humidity": 81,
-    "windKph": 7.2,
+    "humidity": 82,
+    "windKph": 7.4,
     "windDir": "东风",
     "isDay": 0,
     "forecast": [
       {
-        "time": "2026-09-22T23:00",
-        "tempC": 22.1,
+        "time": "2026-09-23T00:00",
+        "tempC": 21.8,
+        "weatherCode": 3,
+        "isDay": 0,
+        "description": "阴",
+        "iconKey": "cloudy",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-09-23T02:00",
+        "tempC": 21.2,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -26,8 +35,8 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-09-23T01:00",
-        "tempC": 21.6,
+        "time": "2026-09-23T04:00",
+        "tempC": 20.8,
         "weatherCode": 1,
         "isDay": 0,
         "description": "多云",
@@ -35,26 +44,8 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-09-23T03:00",
-        "tempC": 21,
-        "weatherCode": 1,
-        "isDay": 0,
-        "description": "多云",
-        "iconKey": "cloudy",
-        "precipitationProbability": 0
-      },
-      {
-        "time": "2026-09-23T05:00",
+        "time": "2026-09-23T06:00",
         "tempC": 20.6,
-        "weatherCode": 2,
-        "isDay": 0,
-        "description": "多云",
-        "iconKey": "cloudy",
-        "precipitationProbability": 0
-      },
-      {
-        "time": "2026-09-23T07:00",
-        "tempC": 21.6,
         "weatherCode": 3,
         "isDay": 1,
         "description": "阴",
@@ -62,8 +53,17 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-09-23T09:00",
-        "tempC": 23.9,
+        "time": "2026-09-23T08:00",
+        "tempC": 22.8,
+        "weatherCode": 3,
+        "isDay": 1,
+        "description": "阴",
+        "iconKey": "cloudy",
+        "precipitationProbability": 0
+      },
+      {
+        "time": "2026-09-23T10:00",
+        "tempC": 25.2,
         "weatherCode": 3,
         "isDay": 1,
         "description": "阴",
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-22T21:45:00+08:00",
-    "fetchedAt": "2026-09-22T21:58:30.509+08:00",
+    "observedAt": "2026-09-22T22:00:00+08:00",
+    "fetchedAt": "2026-09-22T22:03:30.206+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-09-22T21:58:28.740+08:00",
+    "fetchedAt": "2026-09-22T22:03:28.817+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-22T21:58:28.729+08:00",
+      "fetchedAt": "2026-09-22T22:03:28.805+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -118,14 +118,14 @@ window.DASH_DATA = {
           "resetAt": "2026-09-27T03:00:09.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-22T21:58:28.729+08:00",
+      "fetchedAt": "2026-09-22T22:03:28.805+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-22T21:58:28.739+08:00",
+      "fetchedAt": "2026-09-22T22:03:28.816+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -135,7 +135,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-22T21:58:28.740+08:00",
+      "fetchedAt": "2026-09-22T22:03:28.816+08:00",
       "error": "未启用",
       "disabled": true
     }
