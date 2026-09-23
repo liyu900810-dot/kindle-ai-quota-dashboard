@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-24T02:59:25.796+08:00",
+  "updatedAt": "2026-09-24T03:09:10.600+08:00",
   "calendar": {
     "solar": "2026年9月24日 星期四",
     "lunar": "农历八月十四"
@@ -9,115 +9,97 @@
     "ok": true,
     "description": "阴",
     "iconKey": "cloudy",
-    "tempC": 22.7,
-    "feelsLikeC": 25.6,
+    "tempC": 22.8,
+    "feelsLikeC": 25.7,
     "humidity": 87,
-    "windKph": 8.6,
+    "windKph": 8.3,
     "windDir": "东南风",
     "isDay": 0,
     "forecast": [
       {
-        "time": "2026-09-24T04:00",
+        "time": "2026-09-24T05:00",
         "tempC": 22.5,
-        "weatherCode": 3,
+        "weatherCode": 51,
         "isDay": 0,
-        "description": "阴",
-        "iconKey": "cloudy",
-        "precipitationProbability": 20
+        "description": "雨",
+        "iconKey": "rain",
+        "precipitationProbability": 35
       },
       {
-        "time": "2026-09-24T06:00",
-        "tempC": 22,
+        "time": "2026-09-24T07:00",
+        "tempC": 22.1,
+        "weatherCode": 51,
+        "isDay": 1,
+        "description": "雨",
+        "iconKey": "rain",
+        "precipitationProbability": 78
+      },
+      {
+        "time": "2026-09-24T09:00",
+        "tempC": 22.7,
         "weatherCode": 53,
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 55
+        "precipitationProbability": 90
       },
       {
-        "time": "2026-09-24T08:00",
-        "tempC": 21.9,
-        "weatherCode": 55,
+        "time": "2026-09-24T11:00",
+        "tempC": 24.2,
+        "weatherCode": 3,
+        "isDay": 1,
+        "description": "阴",
+        "iconKey": "cloudy",
+        "precipitationProbability": 67
+      },
+      {
+        "time": "2026-09-24T13:00",
+        "tempC": 24.9,
+        "weatherCode": 51,
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 92
+        "precipitationProbability": 37
       },
       {
-        "time": "2026-09-24T10:00",
-        "tempC": 23.2,
-        "weatherCode": 3,
+        "time": "2026-09-24T15:00",
+        "tempC": 25.1,
+        "weatherCode": 51,
         "isDay": 1,
-        "description": "阴",
-        "iconKey": "cloudy",
-        "precipitationProbability": 80
-      },
-      {
-        "time": "2026-09-24T12:00",
-        "tempC": 24.7,
-        "weatherCode": 3,
-        "isDay": 1,
-        "description": "阴",
-        "iconKey": "cloudy",
-        "precipitationProbability": 53
-      },
-      {
-        "time": "2026-09-24T14:00",
-        "tempC": 25.9,
-        "weatherCode": 3,
-        "isDay": 1,
-        "description": "阴",
-        "iconKey": "cloudy",
-        "precipitationProbability": 24
+        "description": "雨",
+        "iconKey": "rain",
+        "precipitationProbability": 17
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-24T02:00:00+08:00",
-    "fetchedAt": "2026-09-24T02:08:28.535+08:00",
+    "observedAt": "2026-09-24T03:00:00+08:00",
+    "fetchedAt": "2026-09-24T03:09:10.625+08:00",
     "source": "open-meteo",
-    "error": "fetch failed",
-    "stale": true,
-    "lastAttemptAt": "2026-09-24T02:59:25.815+08:00"
+    "error": null
   },
   "quote": null,
   "todo": {
     "ok": true,
-    "source": "notion-fallback",
+    "source": "notion",
     "items": [
       {
-        "title": "检查 Kindle 新版界面",
-        "dueAt": null,
-        "dueLabel": "今天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "完成 Notion 待办数据源授权",
-        "dueAt": null,
-        "dueLabel": "明天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "补充个人待办事项",
-        "dueAt": null,
-        "dueLabel": "本周",
+        "title": "帮袁敦亮重装电脑",
+        "dueAt": "2026-09-16",
+        "dueLabel": "逾期",
         "priority": "普通",
         "pinned": false
       }
     ],
-    "totalOpen": 3,
-    "fetchedAt": "2026-09-24T02:59:25.794+08:00",
-    "error": "fetch failed",
-    "stale": true,
-    "lastAttemptAt": "2026-09-24T02:59:15.133+08:00"
+    "totalOpen": 1,
+    "fetchedAt": "2026-09-24T03:09:02.035+08:00",
+    "error": null
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-24T02:59:15.122+08:00",
+      "fetchedAt": "2026-09-24T03:09:02.024+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -127,8 +109,8 @@
       "windows": [
         {
           "name": "5小时",
-          "usedPct": 0,
-          "resetAt": "2026-09-24T07:59:11.000+08:00"
+          "usedPct": 1,
+          "resetAt": "2026-09-24T08:00:03.000+08:00"
         },
         {
           "name": "周",
@@ -136,14 +118,14 @@
           "resetAt": "2026-09-27T03:00:09.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-24T02:59:15.123+08:00",
+      "fetchedAt": "2026-09-24T03:09:02.025+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-24T02:59:15.133+08:00",
+      "fetchedAt": "2026-09-24T03:09:02.035+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -153,7 +135,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-24T02:59:15.133+08:00",
+      "fetchedAt": "2026-09-24T03:09:02.035+08:00",
       "error": "未启用",
       "disabled": true
     }
