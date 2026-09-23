@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-24T04:28:47.087+08:00",
+  "updatedAt": "2026-09-24T04:33:44.285+08:00",
   "calendar": {
     "solar": "2026年9月24日 星期四",
     "lunar": "农历八月十四"
@@ -9,10 +9,10 @@ window.DASH_DATA = {
     "ok": true,
     "description": "阴",
     "iconKey": "cloudy",
-    "tempC": 22.7,
-    "feelsLikeC": 25.6,
-    "humidity": 86,
-    "windKph": 7.8,
+    "tempC": 22.6,
+    "feelsLikeC": 25.5,
+    "humidity": 87,
+    "windKph": 7.7,
     "windDir": "东风",
     "isDay": 0,
     "forecast": [
@@ -72,12 +72,10 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-24T04:00:00+08:00",
-    "fetchedAt": "2026-09-24T04:13:37.679+08:00",
+    "observedAt": "2026-09-24T04:30:00+08:00",
+    "fetchedAt": "2026-09-24T04:33:44.297+08:00",
     "source": "open-meteo",
-    "error": "fetch failed",
-    "stale": true,
-    "lastAttemptAt": "2026-09-24T04:28:47.110+08:00"
+    "error": null
   },
   "quote": null,
   "todo": {
@@ -93,7 +91,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-09-24T04:28:38.505+08:00",
+    "fetchedAt": "2026-09-24T04:33:43.066+08:00",
     "error": null
   },
   "sources": {
@@ -101,7 +99,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-24T04:28:38.493+08:00",
+      "fetchedAt": "2026-09-24T04:33:43.052+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -120,14 +118,14 @@ window.DASH_DATA = {
           "resetAt": "2026-09-27T03:00:09.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-24T04:28:38.494+08:00",
+      "fetchedAt": "2026-09-24T04:33:43.053+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-24T04:28:38.504+08:00",
+      "fetchedAt": "2026-09-24T04:33:43.066+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -137,7 +135,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-24T04:28:38.505+08:00",
+      "fetchedAt": "2026-09-24T04:33:43.066+08:00",
       "error": "未启用",
       "disabled": true
     }
