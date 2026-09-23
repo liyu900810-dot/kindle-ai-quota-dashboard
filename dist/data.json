@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-24T06:29:45.448+08:00",
+  "updatedAt": "2026-09-24T06:33:31.717+08:00",
   "calendar": {
     "solar": "2026年9月24日 星期四",
     "lunar": "农历八月十四"
@@ -77,47 +77,31 @@
     "source": "open-meteo",
     "error": "fetch failed",
     "stale": true,
-    "lastAttemptAt": "2026-09-24T06:29:45.464+08:00"
+    "lastAttemptAt": "2026-09-24T06:33:31.737+08:00"
   },
   "quote": null,
   "todo": {
     "ok": true,
-    "source": "notion-fallback",
+    "source": "notion",
     "items": [
       {
-        "title": "检查 Kindle 新版界面",
-        "dueAt": null,
-        "dueLabel": "今天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "完成 Notion 待办数据源授权",
-        "dueAt": null,
-        "dueLabel": "明天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "补充个人待办事项",
-        "dueAt": null,
-        "dueLabel": "本周",
+        "title": "帮袁敦亮重装电脑",
+        "dueAt": "2026-09-16",
+        "dueLabel": "逾期",
         "priority": "普通",
         "pinned": false
       }
     ],
-    "totalOpen": 3,
-    "fetchedAt": "2026-09-24T06:29:45.447+08:00",
-    "error": "fetch failed",
-    "stale": true,
-    "lastAttemptAt": "2026-09-24T06:29:34.793+08:00"
+    "totalOpen": 1,
+    "fetchedAt": "2026-09-24T06:33:27.160+08:00",
+    "error": null
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-24T06:29:34.778+08:00",
+      "fetchedAt": "2026-09-24T06:33:27.149+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -136,14 +120,14 @@
           "resetAt": "2026-09-27T03:00:09.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-24T06:29:34.779+08:00",
+      "fetchedAt": "2026-09-24T06:33:27.149+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-24T06:29:34.793+08:00",
+      "fetchedAt": "2026-09-24T06:33:27.159+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -153,7 +137,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-24T06:29:34.793+08:00",
+      "fetchedAt": "2026-09-24T06:33:27.159+08:00",
       "error": "未启用",
       "disabled": true
     }
