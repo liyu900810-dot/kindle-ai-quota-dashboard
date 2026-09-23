@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-23T21:58:28.999+08:00",
+  "updatedAt": "2026-09-23T22:03:47.467+08:00",
   "calendar": {
     "solar": "2026年9月23日 星期三",
     "lunar": "农历八月十三"
@@ -77,7 +77,7 @@ window.DASH_DATA = {
     "source": "open-meteo",
     "error": "fetch failed",
     "stale": true,
-    "lastAttemptAt": "2026-09-23T21:58:29.011+08:00"
+    "lastAttemptAt": "2026-09-23T22:03:47.483+08:00"
   },
   "quote": null,
   "todo": {
@@ -93,7 +93,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-09-23T21:58:27.337+08:00",
+    "fetchedAt": "2026-09-23T22:03:27.456+08:00",
     "error": null
   },
   "sources": {
@@ -101,7 +101,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-23T21:58:27.324+08:00",
+      "fetchedAt": "2026-09-23T22:03:27.445+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -121,13 +121,15 @@ window.DASH_DATA = {
         }
       ],
       "fetchedAt": "2026-09-23T21:58:27.325+08:00",
-      "error": null
+      "error": "Codex app-server 查询超时",
+      "stale": true,
+      "lastAttemptAt": "2026-09-23T22:03:27.446+08:00"
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-23T21:58:27.337+08:00",
+      "fetchedAt": "2026-09-23T22:03:27.456+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -137,7 +139,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-23T21:58:27.337+08:00",
+      "fetchedAt": "2026-09-23T22:03:27.456+08:00",
       "error": "未启用",
       "disabled": true
     }
