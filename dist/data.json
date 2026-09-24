@@ -1,83 +1,81 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-24T09:29:08.182+08:00",
+  "updatedAt": "2026-09-24T09:33:28.697+08:00",
   "calendar": {
     "solar": "2026年9月24日 星期四",
     "lunar": "农历八月十四"
   },
   "weather": {
     "ok": true,
-    "description": "雨",
-    "iconKey": "rain",
-    "tempC": 22.1,
-    "feelsLikeC": 24.9,
+    "description": "阴",
+    "iconKey": "cloudy",
+    "tempC": 23.2,
+    "feelsLikeC": 26.4,
     "humidity": 93,
-    "windKph": 10.6,
+    "windKph": 11,
     "windDir": "东风",
     "isDay": 1,
     "forecast": [
       {
-        "time": "2026-09-24T09:00",
-        "tempC": 22.7,
-        "weatherCode": 53,
-        "isDay": 1,
-        "description": "雨",
-        "iconKey": "rain",
-        "precipitationProbability": 90
-      },
-      {
         "time": "2026-09-24T11:00",
-        "tempC": 24.2,
+        "tempC": 24.7,
         "weatherCode": 3,
         "isDay": 1,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 67
+        "precipitationProbability": 61
       },
       {
         "time": "2026-09-24T13:00",
-        "tempC": 24.9,
+        "tempC": 25.6,
         "weatherCode": 51,
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 37
+        "precipitationProbability": 48
       },
       {
         "time": "2026-09-24T15:00",
-        "tempC": 25.1,
-        "weatherCode": 51,
+        "tempC": 25.4,
+        "weatherCode": 3,
         "isDay": 1,
-        "description": "雨",
-        "iconKey": "rain",
-        "precipitationProbability": 17
+        "description": "阴",
+        "iconKey": "cloudy",
+        "precipitationProbability": 48
       },
       {
         "time": "2026-09-24T17:00",
-        "tempC": 24,
+        "tempC": 24.5,
         "weatherCode": 51,
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 12
+        "precipitationProbability": 59
       },
       {
         "time": "2026-09-24T19:00",
-        "tempC": 23.2,
+        "tempC": 22.8,
+        "weatherCode": 51,
+        "isDay": 0,
+        "description": "雨",
+        "iconKey": "rain",
+        "precipitationProbability": 55
+      },
+      {
+        "time": "2026-09-24T21:00",
+        "tempC": 22.6,
         "weatherCode": 3,
         "isDay": 0,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 14
+        "precipitationProbability": 38
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-24T07:00:00+08:00",
-    "fetchedAt": "2026-09-24T07:14:05.851+08:00",
+    "observedAt": "2026-09-24T09:30:00+08:00",
+    "fetchedAt": "2026-09-24T09:33:28.709+08:00",
     "source": "open-meteo",
-    "error": "fetch failed",
-    "stale": true,
-    "lastAttemptAt": "2026-09-24T09:29:08.205+08:00"
+    "error": null
   },
   "quote": null,
   "todo": {
@@ -93,7 +91,7 @@
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-09-24T09:28:59.590+08:00",
+    "fetchedAt": "2026-09-24T09:33:27.493+08:00",
     "error": null
   },
   "sources": {
@@ -101,7 +99,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-24T09:28:59.577+08:00",
+      "fetchedAt": "2026-09-24T09:33:27.475+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -120,14 +118,14 @@
           "resetAt": "2026-09-27T03:00:09.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-24T09:28:59.578+08:00",
+      "fetchedAt": "2026-09-24T09:33:27.476+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-24T09:28:59.590+08:00",
+      "fetchedAt": "2026-09-24T09:33:27.493+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -137,7 +135,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-24T09:28:59.590+08:00",
+      "fetchedAt": "2026-09-24T09:33:27.493+08:00",
       "error": "未启用",
       "disabled": true
     }
