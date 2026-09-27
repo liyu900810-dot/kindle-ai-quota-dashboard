@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-27T15:08:46.720+08:00",
+  "updatedAt": "2026-09-27T15:13:27.807+08:00",
   "calendar": {
     "solar": "2026年9月27日 星期日",
     "lunar": "农历八月十七"
@@ -73,7 +73,7 @@
     ],
     "place": "扬州",
     "observedAt": "2026-09-27T15:00:00+08:00",
-    "fetchedAt": "2026-09-27T15:08:46.737+08:00",
+    "fetchedAt": "2026-09-27T15:13:27.819+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-09-27T15:08:26.707+08:00",
+    "fetchedAt": "2026-09-27T15:13:26.735+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-27T15:08:26.695+08:00",
+      "fetchedAt": "2026-09-27T15:13:26.723+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -110,7 +110,7 @@
         {
           "name": "5小时",
           "usedPct": 0,
-          "resetAt": "2026-09-27T20:03:26.000+08:00"
+          "resetAt": "2026-09-27T20:13:26.000+08:00"
         },
         {
           "name": "周",
@@ -118,16 +118,14 @@
           "resetAt": "2026-10-04T03:00:06.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-27T15:03:26.697+08:00",
-      "error": "Codex app-server 查询超时",
-      "stale": true,
-      "lastAttemptAt": "2026-09-27T15:08:26.696+08:00"
+      "fetchedAt": "2026-09-27T15:13:26.724+08:00",
+      "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-27T15:08:26.707+08:00",
+      "fetchedAt": "2026-09-27T15:13:26.734+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -137,7 +135,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-27T15:08:26.707+08:00",
+      "fetchedAt": "2026-09-27T15:13:26.734+08:00",
       "error": "未启用",
       "disabled": true
     }
