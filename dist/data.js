@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-09-29T10:13:27.793+08:00",
+  "updatedAt": "2026-09-29T10:18:27.788+08:00",
   "calendar": {
     "solar": "2026年9月29日 星期二",
     "lunar": "农历八月十九"
@@ -10,7 +10,7 @@ window.DASH_DATA = {
     "description": "雨",
     "iconKey": "rain",
     "tempC": 19.8,
-    "feelsLikeC": 20.9,
+    "feelsLikeC": 20.8,
     "humidity": 94,
     "windKph": 14.9,
     "windDir": "东北风",
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-09-29T10:00:00+08:00",
-    "fetchedAt": "2026-09-29T10:13:27.805+08:00",
+    "observedAt": "2026-09-29T10:15:00+08:00",
+    "fetchedAt": "2026-09-29T10:18:27.800+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-09-29T10:13:26.824+08:00",
+    "fetchedAt": "2026-09-29T10:18:26.847+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-09-29T10:13:26.809+08:00",
+      "fetchedAt": "2026-09-29T10:18:26.830+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -110,7 +110,7 @@ window.DASH_DATA = {
         {
           "name": "5小时",
           "usedPct": 0,
-          "resetAt": "2026-09-29T15:13:21.000+08:00"
+          "resetAt": "2026-09-29T15:18:21.000+08:00"
         },
         {
           "name": "周",
@@ -118,14 +118,14 @@ window.DASH_DATA = {
           "resetAt": "2026-10-04T03:00:06.000+08:00"
         }
       ],
-      "fetchedAt": "2026-09-29T10:13:26.810+08:00",
+      "fetchedAt": "2026-09-29T10:18:26.831+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-09-29T10:13:26.824+08:00",
+      "fetchedAt": "2026-09-29T10:18:26.847+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -135,7 +135,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-09-29T10:13:26.824+08:00",
+      "fetchedAt": "2026-09-29T10:18:26.847+08:00",
       "error": "未启用",
       "disabled": true
     }
