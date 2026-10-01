@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-10-01T20:03:28.209+08:00",
+  "updatedAt": "2026-10-01T20:08:28.955+08:00",
   "calendar": {
     "solar": "2026年10月1日 星期四",
     "lunar": "农历八月廿一"
@@ -9,8 +9,8 @@ window.DASH_DATA = {
     "ok": true,
     "description": "阴",
     "iconKey": "cloudy",
-    "tempC": 19,
-    "feelsLikeC": 20.4,
+    "tempC": 18.9,
+    "feelsLikeC": 20.2,
     "humidity": 84,
     "windKph": 5,
     "windDir": "东北风",
@@ -27,7 +27,7 @@ window.DASH_DATA = {
       },
       {
         "time": "2026-10-02T00:00",
-        "tempC": 18.5,
+        "tempC": 18.4,
         "weatherCode": 3,
         "isDay": 0,
         "description": "阴",
@@ -36,7 +36,7 @@ window.DASH_DATA = {
       },
       {
         "time": "2026-10-02T02:00",
-        "tempC": 18.1,
+        "tempC": 17,
         "weatherCode": 3,
         "isDay": 0,
         "description": "阴",
@@ -45,7 +45,7 @@ window.DASH_DATA = {
       },
       {
         "time": "2026-10-02T04:00",
-        "tempC": 17.8,
+        "tempC": 16.9,
         "weatherCode": 3,
         "isDay": 0,
         "description": "阴",
@@ -54,7 +54,7 @@ window.DASH_DATA = {
       },
       {
         "time": "2026-10-02T06:00",
-        "tempC": 17.5,
+        "tempC": 16.8,
         "weatherCode": 3,
         "isDay": 1,
         "description": "阴",
@@ -63,7 +63,7 @@ window.DASH_DATA = {
       },
       {
         "time": "2026-10-02T08:00",
-        "tempC": 18,
+        "tempC": 17.7,
         "weatherCode": 3,
         "isDay": 1,
         "description": "阴",
@@ -73,49 +73,33 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-10-01T20:00:00+08:00",
-    "fetchedAt": "2026-10-01T20:03:28.223+08:00",
+    "fetchedAt": "2026-10-01T20:08:28.967+08:00",
     "source": "open-meteo",
     "error": null
   },
   "quote": null,
   "todo": {
     "ok": true,
-    "source": "notion-fallback",
+    "source": "notion",
     "items": [
       {
-        "title": "检查 Kindle 新版界面",
-        "dueAt": null,
-        "dueLabel": "今天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "完成 Notion 待办数据源授权",
-        "dueAt": null,
-        "dueLabel": "明天",
-        "priority": "高",
-        "pinned": false
-      },
-      {
-        "title": "补充个人待办事项",
-        "dueAt": null,
-        "dueLabel": "本周",
+        "title": "帮袁敦亮重装电脑",
+        "dueAt": "2026-09-16",
+        "dueLabel": "逾期",
         "priority": "普通",
         "pinned": false
       }
     ],
-    "totalOpen": 3,
-    "fetchedAt": "2026-10-01T20:03:27.563+08:00",
-    "error": "Notion 请求失败（HTTP 500）：Cross-cell memcached access is not allowed",
-    "stale": true,
-    "lastAttemptAt": "2026-10-01T20:03:27.094+08:00"
+    "totalOpen": 1,
+    "fetchedAt": "2026-10-01T20:08:27.140+08:00",
+    "error": null
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-10-01T20:03:27.082+08:00",
+      "fetchedAt": "2026-10-01T20:08:27.127+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -134,14 +118,14 @@ window.DASH_DATA = {
           "resetAt": "2026-10-04T03:00:06.000+08:00"
         }
       ],
-      "fetchedAt": "2026-10-01T20:03:27.083+08:00",
+      "fetchedAt": "2026-10-01T20:08:27.128+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-10-01T20:03:27.094+08:00",
+      "fetchedAt": "2026-10-01T20:08:27.140+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -151,7 +135,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-10-01T20:03:27.094+08:00",
+      "fetchedAt": "2026-10-01T20:08:27.140+08:00",
       "error": "未启用",
       "disabled": true
     }
