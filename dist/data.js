@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-10-01T19:33:28.192+08:00",
+  "updatedAt": "2026-10-01T19:38:29.487+08:00",
   "calendar": {
     "solar": "2026年10月1日 星期四",
     "lunar": "农历八月廿一"
@@ -73,7 +73,7 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-10-01T19:30:00+08:00",
-    "fetchedAt": "2026-10-01T19:33:28.205+08:00",
+    "fetchedAt": "2026-10-01T19:38:29.501+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -105,17 +105,17 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-10-01T19:33:27.507+08:00",
+    "fetchedAt": "2026-10-01T19:38:28.597+08:00",
     "error": "Notion 请求失败（HTTP 500）：Cross-cell memcached access is not allowed",
     "stale": true,
-    "lastAttemptAt": "2026-10-01T19:33:27.038+08:00"
+    "lastAttemptAt": "2026-10-01T19:38:28.137+08:00"
   },
   "sources": {
     "claude": {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-10-01T19:33:27.026+08:00",
+      "fetchedAt": "2026-10-01T19:38:28.106+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -134,14 +134,14 @@ window.DASH_DATA = {
           "resetAt": "2026-10-04T03:00:06.000+08:00"
         }
       ],
-      "fetchedAt": "2026-10-01T19:33:27.027+08:00",
+      "fetchedAt": "2026-10-01T19:38:28.107+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-10-01T19:33:27.038+08:00",
+      "fetchedAt": "2026-10-01T19:38:28.137+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -151,7 +151,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-10-01T19:33:27.038+08:00",
+      "fetchedAt": "2026-10-01T19:38:28.137+08:00",
       "error": "未启用",
       "disabled": true
     }
