@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-10-02T21:18:28.353+08:00",
+  "updatedAt": "2026-10-02T21:23:28.531+08:00",
   "calendar": {
     "solar": "2026年10月2日 星期五",
     "lunar": "农历八月廿二"
@@ -23,7 +23,7 @@
         "isDay": 0,
         "description": "多云",
         "iconKey": "cloudy",
-        "precipitationProbability": 0
+        "precipitationProbability": 2
       },
       {
         "time": "2026-10-03T01:00",
@@ -32,7 +32,7 @@
         "isDay": 0,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 0
+        "precipitationProbability": 11
       },
       {
         "time": "2026-10-03T03:00",
@@ -41,7 +41,7 @@
         "isDay": 0,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 1
+        "precipitationProbability": 19
       },
       {
         "time": "2026-10-03T05:00",
@@ -50,7 +50,7 @@
         "isDay": 0,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 6
+        "precipitationProbability": 24
       },
       {
         "time": "2026-10-03T07:00",
@@ -59,7 +59,7 @@
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 13
+        "precipitationProbability": 38
       },
       {
         "time": "2026-10-03T09:00",
@@ -68,12 +68,12 @@
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
-        "precipitationProbability": 24
+        "precipitationProbability": 60
       }
     ],
     "place": "扬州",
     "observedAt": "2026-10-02T21:15:00+08:00",
-    "fetchedAt": "2026-10-02T21:18:28.365+08:00",
+    "fetchedAt": "2026-10-02T21:23:28.542+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-10-02T21:18:27.396+08:00",
+    "fetchedAt": "2026-10-02T21:23:27.377+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-10-02T21:18:27.381+08:00",
+      "fetchedAt": "2026-10-02T21:23:27.364+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -118,14 +118,14 @@
           "resetAt": "2026-10-04T03:00:06.000+08:00"
         }
       ],
-      "fetchedAt": "2026-10-02T21:18:27.382+08:00",
+      "fetchedAt": "2026-10-02T21:23:27.364+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-10-02T21:18:27.396+08:00",
+      "fetchedAt": "2026-10-02T21:23:27.376+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -135,7 +135,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-10-02T21:18:27.396+08:00",
+      "fetchedAt": "2026-10-02T21:23:27.377+08:00",
       "error": "未启用",
       "disabled": true
     }
