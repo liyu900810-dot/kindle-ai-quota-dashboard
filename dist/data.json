@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-10-03T04:58:28.046+08:00",
+  "updatedAt": "2026-10-03T05:03:28.053+08:00",
   "calendar": {
     "solar": "2026年10月3日 星期六",
     "lunar": "农历八月廿三"
@@ -17,63 +17,63 @@
     "isDay": 0,
     "forecast": [
       {
-        "time": "2026-10-03T06:00",
-        "tempC": 16.6,
-        "weatherCode": 51,
-        "isDay": 1,
-        "description": "雨",
-        "iconKey": "rain",
-        "precipitationProbability": 67
-      },
-      {
-        "time": "2026-10-03T08:00",
-        "tempC": 17.7,
+        "time": "2026-10-03T07:00",
+        "tempC": 16.9,
         "weatherCode": 3,
         "isDay": 1,
         "description": "阴",
         "iconKey": "cloudy",
-        "precipitationProbability": 63
+        "precipitationProbability": 64
       },
       {
-        "time": "2026-10-03T10:00",
-        "tempC": 19.1,
+        "time": "2026-10-03T09:00",
+        "tempC": 17.9,
+        "weatherCode": 53,
+        "isDay": 1,
+        "description": "雨",
+        "iconKey": "rain",
+        "precipitationProbability": 69
+      },
+      {
+        "time": "2026-10-03T11:00",
+        "tempC": 20.4,
         "weatherCode": 51,
         "isDay": 1,
         "description": "雨",
         "iconKey": "rain",
+        "precipitationProbability": 84
+      },
+      {
+        "time": "2026-10-03T13:00",
+        "tempC": 19.8,
+        "weatherCode": 53,
+        "isDay": 1,
+        "description": "雨",
+        "iconKey": "rain",
+        "precipitationProbability": 88
+      },
+      {
+        "time": "2026-10-03T15:00",
+        "tempC": 19.7,
+        "weatherCode": 3,
+        "isDay": 1,
+        "description": "阴",
+        "iconKey": "cloudy",
         "precipitationProbability": 78
       },
       {
-        "time": "2026-10-03T12:00",
-        "tempC": 20.8,
-        "weatherCode": 51,
+        "time": "2026-10-03T17:00",
+        "tempC": 18.8,
+        "weatherCode": 3,
         "isDay": 1,
-        "description": "雨",
-        "iconKey": "rain",
-        "precipitationProbability": 87
-      },
-      {
-        "time": "2026-10-03T14:00",
-        "tempC": 19.6,
-        "weatherCode": 51,
-        "isDay": 1,
-        "description": "雨",
-        "iconKey": "rain",
-        "precipitationProbability": 86
-      },
-      {
-        "time": "2026-10-03T16:00",
-        "tempC": 19,
-        "weatherCode": 51,
-        "isDay": 1,
-        "description": "雨",
-        "iconKey": "rain",
-        "precipitationProbability": 68
+        "description": "阴",
+        "iconKey": "cloudy",
+        "precipitationProbability": 59
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-10-03T04:45:00+08:00",
-    "fetchedAt": "2026-10-03T04:58:28.061+08:00",
+    "observedAt": "2026-10-03T05:00:00+08:00",
+    "fetchedAt": "2026-10-03T05:03:28.068+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-10-03T04:58:27.152+08:00",
+    "fetchedAt": "2026-10-03T05:03:27.087+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-10-03T04:58:27.140+08:00",
+      "fetchedAt": "2026-10-03T05:03:27.075+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -118,14 +118,14 @@
           "resetAt": "2026-10-04T03:00:06.000+08:00"
         }
       ],
-      "fetchedAt": "2026-10-03T04:58:27.140+08:00",
+      "fetchedAt": "2026-10-03T05:03:27.076+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-10-03T04:58:27.151+08:00",
+      "fetchedAt": "2026-10-03T05:03:27.086+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -135,7 +135,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-10-03T04:58:27.151+08:00",
+      "fetchedAt": "2026-10-03T05:03:27.086+08:00",
       "error": "未启用",
       "disabled": true
     }
