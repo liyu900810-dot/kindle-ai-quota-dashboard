@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-10-06T13:13:28.630+08:00",
+  "updatedAt": "2026-10-06T13:18:28.554+08:00",
   "calendar": {
     "solar": "2026年10月6日 星期二",
     "lunar": "农历八月廿六"
@@ -10,9 +10,9 @@
     "description": "晴",
     "iconKey": "clear",
     "tempC": 23.6,
-    "feelsLikeC": 22.9,
+    "feelsLikeC": 22.8,
     "humidity": 33,
-    "windKph": 7.9,
+    "windKph": 8.2,
     "windDir": "西北风",
     "isDay": 1,
     "forecast": [
@@ -72,8 +72,8 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-10-06T13:00:00+08:00",
-    "fetchedAt": "2026-10-06T13:13:28.644+08:00",
+    "observedAt": "2026-10-06T13:15:00+08:00",
+    "fetchedAt": "2026-10-06T13:18:28.567+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-10-06T13:13:27.425+08:00",
+    "fetchedAt": "2026-10-06T13:18:27.444+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-10-06T13:13:27.413+08:00",
+      "fetchedAt": "2026-10-06T13:18:27.430+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -110,7 +110,7 @@
         {
           "name": "5小时",
           "usedPct": 0,
-          "resetAt": "2026-10-06T18:13:22.000+08:00"
+          "resetAt": "2026-10-06T18:18:22.000+08:00"
         },
         {
           "name": "周",
@@ -118,14 +118,14 @@
           "resetAt": "2026-10-10T07:59:58.000+08:00"
         }
       ],
-      "fetchedAt": "2026-10-06T13:13:27.414+08:00",
+      "fetchedAt": "2026-10-06T13:18:27.430+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-10-06T13:13:27.425+08:00",
+      "fetchedAt": "2026-10-06T13:18:27.444+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -135,7 +135,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-10-06T13:13:27.425+08:00",
+      "fetchedAt": "2026-10-06T13:18:27.444+08:00",
       "error": "未启用",
       "disabled": true
     }
