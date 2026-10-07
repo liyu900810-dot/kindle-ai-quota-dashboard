@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-10-08T03:13:28.408+08:00",
+  "updatedAt": "2026-10-08T03:18:32.302+08:00",
   "calendar": {
     "solar": "2026年10月8日 星期四",
     "lunar": "农历八月廿八"
@@ -9,9 +9,9 @@ window.DASH_DATA = {
     "ok": true,
     "description": "晴",
     "iconKey": "clear-night",
-    "tempC": 14.6,
-    "feelsLikeC": 14.9,
-    "humidity": 94,
+    "tempC": 14.5,
+    "feelsLikeC": 14.8,
+    "humidity": 95,
     "windKph": 5.8,
     "windDir": "东风",
     "isDay": 0,
@@ -72,8 +72,8 @@ window.DASH_DATA = {
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-10-08T03:00:00+08:00",
-    "fetchedAt": "2026-10-08T03:13:28.423+08:00",
+    "observedAt": "2026-10-08T03:15:00+08:00",
+    "fetchedAt": "2026-10-08T03:18:32.324+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-10-08T03:13:27.473+08:00",
+    "fetchedAt": "2026-10-08T03:18:27.462+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-10-08T03:13:27.460+08:00",
+      "fetchedAt": "2026-10-08T03:18:27.451+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -118,14 +118,14 @@ window.DASH_DATA = {
           "resetAt": "2026-10-14T13:38:26.000+08:00"
         }
       ],
-      "fetchedAt": "2026-10-08T03:13:27.461+08:00",
+      "fetchedAt": "2026-10-08T03:18:27.451+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-10-08T03:13:27.473+08:00",
+      "fetchedAt": "2026-10-08T03:18:27.462+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -135,7 +135,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-10-08T03:13:27.473+08:00",
+      "fetchedAt": "2026-10-08T03:18:27.462+08:00",
       "error": "未启用",
       "disabled": true
     }
