@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-10-07T20:58:28.370+08:00",
+  "updatedAt": "2026-10-07T21:03:27.752+08:00",
   "calendar": {
     "solar": "2026年10月7日 星期三",
     "lunar": "农历八月廿七"
@@ -9,16 +9,16 @@ window.DASH_DATA = {
     "ok": true,
     "description": "晴",
     "iconKey": "clear-night",
-    "tempC": 18.1,
-    "feelsLikeC": 18.1,
+    "tempC": 17.9,
+    "feelsLikeC": 18,
     "humidity": 64,
-    "windKph": 1.9,
+    "windKph": 1.6,
     "windDir": "东风",
     "isDay": 0,
     "forecast": [
       {
-        "time": "2026-10-07T22:00",
-        "tempC": 16.6,
+        "time": "2026-10-07T23:00",
+        "tempC": 16,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -26,16 +26,7 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-10-08T00:00",
-        "tempC": 15.5,
-        "weatherCode": 0,
-        "isDay": 0,
-        "description": "晴",
-        "iconKey": "clear-night",
-        "precipitationProbability": 0
-      },
-      {
-        "time": "2026-10-08T02:00",
+        "time": "2026-10-08T01:00",
         "tempC": 15.1,
         "weatherCode": 0,
         "isDay": 0,
@@ -44,8 +35,8 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-10-08T04:00",
-        "tempC": 14.6,
+        "time": "2026-10-08T03:00",
+        "tempC": 14.8,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -53,27 +44,36 @@ window.DASH_DATA = {
         "precipitationProbability": 0
       },
       {
-        "time": "2026-10-08T06:00",
-        "tempC": 14,
-        "weatherCode": 1,
+        "time": "2026-10-08T05:00",
+        "tempC": 14.3,
+        "weatherCode": 0,
         "isDay": 0,
-        "description": "多云",
-        "iconKey": "cloudy",
+        "description": "晴",
+        "iconKey": "clear-night",
         "precipitationProbability": 0
       },
       {
-        "time": "2026-10-08T08:00",
-        "tempC": 17.8,
+        "time": "2026-10-08T07:00",
+        "tempC": 15.5,
         "weatherCode": 0,
         "isDay": 1,
         "description": "晴",
         "iconKey": "clear",
         "precipitationProbability": 0
+      },
+      {
+        "time": "2026-10-08T09:00",
+        "tempC": 20.3,
+        "weatherCode": 1,
+        "isDay": 1,
+        "description": "多云",
+        "iconKey": "cloudy",
+        "precipitationProbability": 0
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-10-07T20:45:00+08:00",
-    "fetchedAt": "2026-10-07T20:58:28.382+08:00",
+    "observedAt": "2026-10-07T21:00:00+08:00",
+    "fetchedAt": "2026-10-07T21:03:27.763+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -91,7 +91,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 1,
-    "fetchedAt": "2026-10-07T20:58:26.864+08:00",
+    "fetchedAt": "2026-10-07T21:03:26.946+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +99,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-10-07T20:58:26.850+08:00",
+      "fetchedAt": "2026-10-07T21:03:26.904+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -110,7 +110,7 @@ window.DASH_DATA = {
         {
           "name": "5小时",
           "usedPct": 0,
-          "resetAt": "2026-10-08T01:58:20.000+08:00"
+          "resetAt": "2026-10-08T02:03:20.000+08:00"
         },
         {
           "name": "周",
@@ -118,14 +118,14 @@ window.DASH_DATA = {
           "resetAt": "2026-10-14T13:38:26.000+08:00"
         }
       ],
-      "fetchedAt": "2026-10-07T20:58:26.851+08:00",
+      "fetchedAt": "2026-10-07T21:03:26.905+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-10-07T20:58:26.864+08:00",
+      "fetchedAt": "2026-10-07T21:03:26.946+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -135,7 +135,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-10-07T20:58:26.864+08:00",
+      "fetchedAt": "2026-10-07T21:03:26.946+08:00",
       "error": "未启用",
       "disabled": true
     }
