@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-10-08T09:28:29.162+08:00",
+  "updatedAt": "2026-10-08T09:33:28.636+08:00",
   "calendar": {
     "solar": "2026年10月8日 星期四",
     "lunar": "农历八月廿八"
@@ -9,10 +9,10 @@
     "ok": true,
     "description": "多云",
     "iconKey": "cloudy",
-    "tempC": 20.9,
-    "feelsLikeC": 22.6,
-    "humidity": 77,
-    "windKph": 4.4,
+    "tempC": 21.4,
+    "feelsLikeC": 23.2,
+    "humidity": 74,
+    "windKph": 4.6,
     "windDir": "东南风",
     "isDay": 1,
     "forecast": [
@@ -72,8 +72,8 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-10-08T09:15:00+08:00",
-    "fetchedAt": "2026-10-08T09:28:29.174+08:00",
+    "observedAt": "2026-10-08T09:30:00+08:00",
+    "fetchedAt": "2026-10-08T09:33:28.648+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -88,10 +88,17 @@
         "dueLabel": "逾期",
         "priority": "普通",
         "pinned": false
+      },
+      {
+        "title": "执行项目设备费用结算",
+        "dueAt": null,
+        "dueLabel": "",
+        "priority": "普通",
+        "pinned": false
       }
     ],
-    "totalOpen": 1,
-    "fetchedAt": "2026-10-08T09:28:27.313+08:00",
+    "totalOpen": 2,
+    "fetchedAt": "2026-10-08T09:33:27.333+08:00",
     "error": null
   },
   "sources": {
@@ -99,7 +106,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-10-08T09:28:27.296+08:00",
+      "fetchedAt": "2026-10-08T09:33:27.321+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -115,17 +122,17 @@
         {
           "name": "周",
           "usedPct": 3,
-          "resetAt": "2026-10-14T13:38:27.000+08:00"
+          "resetAt": "2026-10-14T13:38:26.000+08:00"
         }
       ],
-      "fetchedAt": "2026-10-08T09:28:27.297+08:00",
+      "fetchedAt": "2026-10-08T09:33:27.322+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-10-08T09:28:27.311+08:00",
+      "fetchedAt": "2026-10-08T09:33:27.333+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -135,7 +142,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-10-08T09:28:27.312+08:00",
+      "fetchedAt": "2026-10-08T09:33:27.333+08:00",
       "error": "未启用",
       "disabled": true
     }
