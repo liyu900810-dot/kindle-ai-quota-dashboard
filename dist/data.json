@@ -1,24 +1,24 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-10-09T23:58:28.255+08:00",
+  "updatedAt": "2026-10-10T00:03:28.121+08:00",
   "calendar": {
-    "solar": "2026年10月9日 星期五",
-    "lunar": "农历八月廿九"
+    "solar": "2026年10月10日 星期六",
+    "lunar": "农历九月初一"
   },
   "weather": {
     "ok": true,
     "description": "晴",
     "iconKey": "clear-night",
-    "tempC": 17.5,
+    "tempC": 17.4,
     "feelsLikeC": 18.1,
     "humidity": 87,
-    "windKph": 7.9,
+    "windKph": 7.4,
     "windDir": "东南风",
     "isDay": 0,
     "forecast": [
       {
-        "time": "2026-10-10T01:00",
-        "tempC": 17,
+        "time": "2026-10-10T02:00",
+        "tempC": 16.7,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -26,8 +26,8 @@
         "precipitationProbability": 0
       },
       {
-        "time": "2026-10-10T03:00",
-        "tempC": 16.5,
+        "time": "2026-10-10T04:00",
+        "tempC": 16.3,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -35,8 +35,8 @@
         "precipitationProbability": 0
       },
       {
-        "time": "2026-10-10T05:00",
-        "tempC": 16.1,
+        "time": "2026-10-10T06:00",
+        "tempC": 15.8,
         "weatherCode": 0,
         "isDay": 0,
         "description": "晴",
@@ -44,8 +44,8 @@
         "precipitationProbability": 0
       },
       {
-        "time": "2026-10-10T07:00",
-        "tempC": 17.2,
+        "time": "2026-10-10T08:00",
+        "tempC": 19.2,
         "weatherCode": 0,
         "isDay": 1,
         "description": "晴",
@@ -53,8 +53,8 @@
         "precipitationProbability": 0
       },
       {
-        "time": "2026-10-10T09:00",
-        "tempC": 21.3,
+        "time": "2026-10-10T10:00",
+        "tempC": 22.9,
         "weatherCode": 0,
         "isDay": 1,
         "description": "晴",
@@ -62,8 +62,8 @@
         "precipitationProbability": 0
       },
       {
-        "time": "2026-10-10T11:00",
-        "tempC": 24,
+        "time": "2026-10-10T12:00",
+        "tempC": 24.5,
         "weatherCode": 1,
         "isDay": 1,
         "description": "多云",
@@ -72,8 +72,8 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-10-09T23:45:00+08:00",
-    "fetchedAt": "2026-10-09T23:58:28.269+08:00",
+    "observedAt": "2026-10-10T00:00:00+08:00",
+    "fetchedAt": "2026-10-10T00:03:28.134+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -105,7 +105,7 @@
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-10-09T23:58:27.138+08:00",
+    "fetchedAt": "2026-10-10T00:03:27.126+08:00",
     "error": null
   },
   "sources": {
@@ -113,7 +113,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-10-09T23:58:27.126+08:00",
+      "fetchedAt": "2026-10-10T00:03:27.113+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -124,7 +124,7 @@
         {
           "name": "5小时",
           "usedPct": 0,
-          "resetAt": "2026-10-10T04:58:25.000+08:00"
+          "resetAt": "2026-10-10T05:03:25.000+08:00"
         },
         {
           "name": "周",
@@ -132,14 +132,14 @@
           "resetAt": "2026-10-14T13:38:26.000+08:00"
         }
       ],
-      "fetchedAt": "2026-10-09T23:58:27.126+08:00",
+      "fetchedAt": "2026-10-10T00:03:27.114+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-10-09T23:58:27.138+08:00",
+      "fetchedAt": "2026-10-10T00:03:27.125+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -149,7 +149,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-10-09T23:58:27.138+08:00",
+      "fetchedAt": "2026-10-10T00:03:27.125+08:00",
       "error": "未启用",
       "disabled": true
     }
