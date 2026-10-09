@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "updatedAt": "2026-10-09T20:43:28.219+08:00",
+  "updatedAt": "2026-10-09T20:48:28.968+08:00",
   "calendar": {
     "solar": "2026年10月9日 星期五",
     "lunar": "农历八月廿九"
@@ -9,8 +9,8 @@
     "ok": true,
     "description": "晴",
     "iconKey": "clear-night",
-    "tempC": 18.8,
-    "feelsLikeC": 19.6,
+    "tempC": 18.6,
+    "feelsLikeC": 19.4,
     "humidity": 81,
     "windKph": 6.7,
     "windDir": "东风",
@@ -72,8 +72,8 @@
       }
     ],
     "place": "扬州",
-    "observedAt": "2026-10-09T20:30:00+08:00",
-    "fetchedAt": "2026-10-09T20:43:28.234+08:00",
+    "observedAt": "2026-10-09T20:45:00+08:00",
+    "fetchedAt": "2026-10-09T20:48:28.980+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -105,7 +105,7 @@
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-10-09T20:43:26.880+08:00",
+    "fetchedAt": "2026-10-09T20:48:26.877+08:00",
     "error": null
   },
   "sources": {
@@ -113,7 +113,7 @@
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-10-09T20:43:26.864+08:00",
+      "fetchedAt": "2026-10-09T20:48:26.864+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -124,22 +124,22 @@
         {
           "name": "5小时",
           "usedPct": 0,
-          "resetAt": "2026-10-10T01:43:26.000+08:00"
+          "resetAt": "2026-10-10T01:48:27.000+08:00"
         },
         {
           "name": "周",
           "usedPct": 32,
-          "resetAt": "2026-10-14T13:38:26.000+08:00"
+          "resetAt": "2026-10-14T13:38:27.000+08:00"
         }
       ],
-      "fetchedAt": "2026-10-09T20:43:26.865+08:00",
+      "fetchedAt": "2026-10-09T20:48:26.865+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-10-09T20:43:26.880+08:00",
+      "fetchedAt": "2026-10-09T20:48:26.877+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -149,7 +149,7 @@
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-10-09T20:43:26.880+08:00",
+      "fetchedAt": "2026-10-09T20:48:26.877+08:00",
       "error": "未启用",
       "disabled": true
     }
