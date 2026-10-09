@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-10-09T09:03:28.052+08:00",
+  "updatedAt": "2026-10-09T09:08:28.360+08:00",
   "calendar": {
     "solar": "2026年10月9日 星期五",
     "lunar": "农历八月廿九"
@@ -73,7 +73,7 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-10-09T09:00:00+08:00",
-    "fetchedAt": "2026-10-09T09:03:28.069+08:00",
+    "fetchedAt": "2026-10-09T09:08:28.374+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -105,7 +105,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-10-09T09:03:26.819+08:00",
+    "fetchedAt": "2026-10-09T09:08:26.953+08:00",
     "error": null
   },
   "sources": {
@@ -113,7 +113,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-10-09T09:03:26.806+08:00",
+      "fetchedAt": "2026-10-09T09:08:26.912+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -124,22 +124,22 @@ window.DASH_DATA = {
         {
           "name": "5小时",
           "usedPct": 0,
-          "resetAt": "2026-10-09T14:03:27.000+08:00"
+          "resetAt": "2026-10-09T14:08:27.000+08:00"
         },
         {
           "name": "周",
           "usedPct": 3,
-          "resetAt": "2026-10-14T13:38:27.000+08:00"
+          "resetAt": "2026-10-14T13:38:26.000+08:00"
         }
       ],
-      "fetchedAt": "2026-10-09T09:03:26.807+08:00",
+      "fetchedAt": "2026-10-09T09:08:26.913+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-10-09T09:03:26.819+08:00",
+      "fetchedAt": "2026-10-09T09:08:26.952+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -149,7 +149,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-10-09T09:03:26.819+08:00",
+      "fetchedAt": "2026-10-09T09:08:26.953+08:00",
       "error": "未启用",
       "disabled": true
     }
