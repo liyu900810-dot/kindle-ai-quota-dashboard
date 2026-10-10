@@ -1,6 +1,6 @@
 window.DASH_DATA = {
   "schemaVersion": 3,
-  "updatedAt": "2026-10-10T20:53:28.942+08:00",
+  "updatedAt": "2026-10-10T20:58:28.794+08:00",
   "calendar": {
     "solar": "2026年10月10日 星期六",
     "lunar": "农历九月初一"
@@ -73,7 +73,7 @@ window.DASH_DATA = {
     ],
     "place": "扬州",
     "observedAt": "2026-10-10T20:45:00+08:00",
-    "fetchedAt": "2026-10-10T20:53:28.955+08:00",
+    "fetchedAt": "2026-10-10T20:58:28.807+08:00",
     "source": "open-meteo",
     "error": null
   },
@@ -105,7 +105,7 @@ window.DASH_DATA = {
       }
     ],
     "totalOpen": 3,
-    "fetchedAt": "2026-10-10T20:53:27.556+08:00",
+    "fetchedAt": "2026-10-10T20:58:27.695+08:00",
     "error": null
   },
   "sources": {
@@ -113,7 +113,7 @@ window.DASH_DATA = {
       "ok": false,
       "label": "Claude",
       "windows": [],
-      "fetchedAt": "2026-10-10T20:53:27.541+08:00",
+      "fetchedAt": "2026-10-10T20:58:27.682+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -124,22 +124,22 @@ window.DASH_DATA = {
         {
           "name": "5小时",
           "usedPct": 0,
-          "resetAt": "2026-10-11T01:53:26.000+08:00"
+          "resetAt": "2026-10-11T01:58:25.000+08:00"
         },
         {
           "name": "周",
           "usedPct": 64,
-          "resetAt": "2026-10-14T13:38:27.000+08:00"
+          "resetAt": "2026-10-14T13:38:26.000+08:00"
         }
       ],
-      "fetchedAt": "2026-10-10T20:53:27.542+08:00",
+      "fetchedAt": "2026-10-10T20:58:27.683+08:00",
       "error": null
     },
     "kimi": {
       "ok": false,
       "label": "Kimi",
       "windows": [],
-      "fetchedAt": "2026-10-10T20:53:27.555+08:00",
+      "fetchedAt": "2026-10-10T20:58:27.694+08:00",
       "error": "未启用",
       "disabled": true
     },
@@ -149,7 +149,7 @@ window.DASH_DATA = {
       "balance": null,
       "currency": "CNY",
       "detail": null,
-      "fetchedAt": "2026-10-10T20:53:27.555+08:00",
+      "fetchedAt": "2026-10-10T20:58:27.695+08:00",
       "error": "未启用",
       "disabled": true
     }
